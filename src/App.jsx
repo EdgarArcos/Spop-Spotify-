@@ -4,7 +4,7 @@ import { RouterProvider } from "react-router-dom";
 function App() {
 
   return (
-    <div className="bg-newblack">
+    <div className="bg-newblack min-h-screen h-full text-white">
       <RouterProvider router={router} />
     </div>
   )
