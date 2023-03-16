@@ -2,6 +2,6 @@ import React from 'react'
 
 export const LikeLibrary = () => {
   return (
-    <div>LikeLibrary</div>
+    <div className="bg-teal">LikeLibrary</div>
   )
 }
