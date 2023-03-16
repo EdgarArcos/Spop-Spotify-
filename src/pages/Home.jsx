@@ -3,12 +3,8 @@ import { makeRequest } from "../api/api-utils";
 
 export const Home = () => {
   useEffect(() => {
-    const response = makeRequest("tracks");
+    makeRequest("tracks").then((data) => console.log(data));
   }, []);
 
-  return (
-    <div className="bg-gray-900">
-      <p className="text-red-500">Home</p>
-    </div>
-  );
+  return <div>Home</div>;
 };
