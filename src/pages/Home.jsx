@@ -1,10 +1,9 @@
-import { useEffect } from "react";
-import { makeRequest } from "../api/api-utils";
+import { ContainerAllGenres } from "../components/HomePage";
 
 export const Home = () => {
-  useEffect(() => {
-    makeRequest("tracks").then((data) => console.log(data));
-  }, []);
-
-  return <div>Home</div>;
+  return (
+    <>
+      <ContainerAllGenres />
+    </>
+  );
 };
