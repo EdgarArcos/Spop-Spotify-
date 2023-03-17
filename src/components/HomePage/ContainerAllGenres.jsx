@@ -9,9 +9,9 @@ export const ContainerAllGenres = () => {
   }, []);
 
   return (
-    <div>
+    <div className="pb-4">
       {genres.map(({ name }) => (
-        <ContainerEachGenre genre={name} />
+        <ContainerEachGenre key={name} genre={name} />
       ))}
     </div>
   );
