@@ -3,6 +3,7 @@ import { makeRequest } from "../../api/api-utils";
 import React from 'react';
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from './PlayButtonLibrary';
+import { SideMenu } from "./SideMenu";
 
 export const ContainerLikeLibrary = () => {
     const [likelist, setlikelist] = useState([]);
@@ -22,14 +23,12 @@ export const ContainerLikeLibrary = () => {
     return(
 
     <div className="min-h-screen h-full text-white flex flex-col">
+        <SideMenu />
         <div className="flex justify-center">
-            <img className="rounded-b-3xl w-full" src={photolist.thumbnail} alt="cover" />
+            <img className="rounded-b-3xl w-full sm:w-1/4 rounded-3xl" src={photolist.thumbnail} alt="cover" />
         </div>
         <div>
-            
             <PlayButtonLibrary />
-            
-
         </div>
         <div className="flex flex-col m-5">
             {likelist.map((song) => (
