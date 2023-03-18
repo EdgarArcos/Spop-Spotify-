@@ -7,7 +7,7 @@ import { BsFillPlusSquareFill } from 'react-icons/bs'
 
 export const SideMenu = () => {
     return (
-    <div className="hidden sm:block w-1/5 h-full bg-newgray">
+    <div className="hidden sm:flex flex-col h-full bg-newblack p-4">
         <img src={fulllogo} alt="logo" />
         <div>
             <AiFillHome />
