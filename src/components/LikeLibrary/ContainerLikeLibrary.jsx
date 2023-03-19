@@ -4,6 +4,7 @@ import React from 'react';
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from './PlayButtonLibrary';
 import { SideMenu } from "./SideMenu";
+import { SlHeart } from "react-icons/sl"
 
 export const ContainerLikeLibrary = () => {
     const [likelist, setlikelist] = useState([]);
@@ -31,8 +32,11 @@ export const ContainerLikeLibrary = () => {
                 <img className="rounded-b-3xl w-full sm:w-52 sm:rounded-2xl sm:m-4 sm:mt-32" src={photolist.thumbnail} alt="cover" />
             </div>
             <div className="bg-newblack sm:bg-gradient-to-b from-zinc-800 to-newblack pt-2">
-                <div>
+                <div className="flex flex-row">
                     <PlayButtonLibrary />
+                    <div className="hidden sm:flex m-4 items-center">
+                    <SlHeart className="text-2xl" />
+                    </div>    
                 </div>
                 <div className="flex flex-col m-5">
                     {likelist.map((song) => (

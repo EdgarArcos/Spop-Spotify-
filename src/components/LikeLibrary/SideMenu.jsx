@@ -8,29 +8,31 @@ import { BsFillPlusSquareFill } from 'react-icons/bs'
 export const SideMenu = () => {
     return (
     <div className="hidden sm:flex flex-col h-full bg-newblack p-4">
-        <img src={fulllogo} alt="logo" />
-        <div>
-            <AiFillHome />
+        <img className="mb-6" src={fulllogo} alt="logo" />
+        <div className="flex flex-row p-2 hover:bg-newgray rounded-md cursor-pointer">
+            <AiFillHome className="text-2xl mr-5" />
             <p>Home</p>
         </div>
-        <div>
-            <AiOutlineSearch />
-            <p>Search</p>
+        <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
+            <AiOutlineSearch className="text-2xl mr-3" />
+            <p className="ml-2">Search</p>
         </div>
-        <div>
-            <BiLibrary />
-            <p>Your Library</p>
+        <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
+            <BiLibrary className="text-2xl mr-3" />
+            <p className="ml-2">Your Library</p>
         </div>
-        <div>
-            <p className="text-graytext mt-2">PLAYLIST</p>
+        <div className="flex flex-row p-2">
+            <p className="text-graytext m-3">PLAYLIST</p>
         </div>
-        <div>
-            <BsFillPlusSquareFill />
-            <p>Create Playlist</p>
+        <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
+            <div>
+            <BsFillPlusSquareFill className="text-2xl mr-3" />
+            </div>
+            <p className="ml-2">Create Playlist</p>
         </div>
-        <div>
-        <img className="w-10" src={likedsongs} alt="liekdsongs" />
-        <p>Liked Songs</p>
+        <div className="flex flex-row p-2 border-solid border-b border-newgray pb-5  hover:bg-newgray rounded-md cursor-pointer">
+        <img className="w-7 rounded mr-2" src={likedsongs} alt="liekdsongs" />
+        <p className="ml-2">Liked Songs</p>
         </div>
     </div>
     )
