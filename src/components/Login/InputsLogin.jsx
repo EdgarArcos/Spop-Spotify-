@@ -6,7 +6,7 @@ export const InputsLogin = () => {
   return (
     <div>
     <div className='relative'>
-    <input className='bg-newgray  my-6 w-80 h-14 rounded-lg border-none placeholder: pl-8' placeholder='Name' type="text"/>
+    <input className='bg-newgray  my-6 w-80 h-14 rounded-lg placeholder: pl-8' placeholder='Name' type="text"/>
     <div className='absolute top-11 insert-y-0 left-3 align-top'><BiUser/></div>
     </div>
     <div className='relative'>
