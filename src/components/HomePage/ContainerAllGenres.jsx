@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../api/api-utils";
+import { useScreenWidth } from "../../hooks/useScreenWidth";
+import { SideMenu } from "../LikeLibrary/SideMenu";
 import { ContainerEachGenre } from "./ContainerEachGenre";
 import { NavBarMov } from "./NavBarMov";
 
 export const ContainerAllGenres = () => {
   const [genres, setGenres] = useState([]);
-  const [screenWidth, setScreenWidth] = useState(0);
+  const screenWidth = useScreenWidth();
 
   useEffect(() => {
     makeRequest("genres").then((data) => setGenres(data));
-    const handleWidth = () => setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleWidth);
-    return () => window.removeEventListener("resize", handleWidth);
   }, []);
 
   return (
-    <div className="sm:flex">
-      {screenWidth < 640 ? <NavBarMov /> : <div className="bg-teal w-40"></div>}
-      <div className="pb-4">
+    <div className="w-full sm:flex">
+      {screenWidth < 640 ? (
+        <NavBarMov />
+      ) : (
+        <div className="h-screen fixed w-60 ">
+          <SideMenu />
+        </div>
+      )}
+      <div className="pb-4 w-screen sm:pl-[16rem]">
         {genres.map(({ name }) => (
           <ContainerEachGenre key={name} genre={name} />
         ))}
