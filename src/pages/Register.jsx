@@ -1,6 +1,6 @@
 import React from 'react'
 import { ButtonCreate } from '../components/Register/buttonCreate'
-import { Inputs } from '../components/Register/Inputs'
+import { Inputs } from '../components/Register/InputsRegister'
 
 export const Register = () => {
   return (
