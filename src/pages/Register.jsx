@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { LogoResponsive } from '../components/Logo/LogoResponsive'
 import { ButtonCreate } from '../components/Register/buttonCreate'
 import { Inputs } from '../components/Register/InputsRegister'
-import  fulllogo  from "../assets/testimg/fulllogo.png";
+
 
 export const Register = () => {
   return (
     <div className='flex justify-center items-center h-screen'>
-    <img className='absolute top-10' src={fulllogo} alt="" />
+    <LogoResponsive/>
     <div className='text-center'>
     <h2 className='text-2xl'>Create an account</h2>
     <Inputs/>
