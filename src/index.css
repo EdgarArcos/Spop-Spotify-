@@ -8,3 +8,17 @@
   box-sizing: border-box;
   font-family: poppins, sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 0.2rem;
+  height: 0rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #100f0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #02e4e6;
+  border-radius: 1rem;
+}
