@@ -1,7 +1,10 @@
-import React from 'react'
+import { ContainerLikeLibrary } from "../components/LikeLibrary/ContainerLikeLibrary"
 
 export const LikeLibrary = () => {
   return (
-    <div className="min-h-screen h-full text-white">LikeLibrary</div>
+   
+    <>
+    <ContainerLikeLibrary />
+  </>
   )
 }
