@@ -1,9 +1,10 @@
 import { useScreenWidth } from "../../hooks/useScreenWidth";
 import { SideMenu } from "../LikeLibrary/SideMenu";
 import { NavBarMov } from "../HomePage/NavBarMov";
+import { SearchResultsContainer } from "./SearchResultsContainer";
 
-export const SearchContainer = () => {
-  const screenWidth = useScreenWidth();
+export const SearchMainContainer = () => {
+  const screenWidth = useScreenWidth([]);
 
   return (
     <div>
@@ -14,6 +15,7 @@ export const SearchContainer = () => {
           <SideMenu />
         </div>
       )}
+      <SearchResultsContainer />
     </div>
   );
 };

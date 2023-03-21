@@ -1,1 +1,2 @@
-export * from "./SearchContainer";
+export * from "./SearchMainContainer";
+export * from "./SearchResultsContainer";

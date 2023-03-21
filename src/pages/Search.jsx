@@ -1,9 +1,9 @@
-import { SearchContainer } from "../components/SearchPage";
+import { SearchMainContainer } from "../components/SearchPage";
 
 export const Search = () => {
   return (
     <>
-      <SearchContainer />
+      <SearchMainContainer />
     </>
   );
 };
