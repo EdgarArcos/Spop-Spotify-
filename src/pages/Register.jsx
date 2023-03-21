@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { LogoResponsive } from '../components/Logo/LogoResponsive'
-import { ButtonCreate } from '../components/Register/buttonCreate'
 import { Inputs } from '../components/Register/InputsRegister'
 
 
@@ -12,7 +11,6 @@ export const Register = () => {
     <div className='text-center'>
     <h2 className='text-2xl'>Create an account</h2>
     <Inputs/>
-    <ButtonCreate/>
     <p>Do you have an account? <Link className='text-teal' to={"/login"}>Login</Link></p>
     </div>
     </div>
