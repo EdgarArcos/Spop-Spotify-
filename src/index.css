@@ -9,6 +9,10 @@
   font-family: poppins, sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 ::-webkit-scrollbar {
   width: 0.2rem;
   height: 0rem;
@@ -21,4 +25,10 @@
 ::-webkit-scrollbar-thumb {
   background: #02e4e6;
   border-radius: 1rem;
+}
+
+@media (min-width: 640px) {
+  ::-webkit-scrollbar {
+    height: 0.2rem;
+  }
 }

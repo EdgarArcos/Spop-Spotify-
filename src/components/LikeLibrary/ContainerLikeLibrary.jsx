@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../api/api-utils";
-import React from 'react';
+import React from "react";
 import { EachLikeSong } from "./EachLikeSong";
-import { PlayButtonLibrary } from './PlayButtonLibrary';
+import { PlayButtonLibrary } from "./PlayButtonLibrary";
 import { SideMenu } from "./SideMenu";
 import { SlHeart } from "react-icons/sl"
 import { BiTime } from "react-icons/bi"
@@ -10,13 +10,12 @@ import { AudioBar } from "../AudioBar/AudioBar";
 
 
 export const ContainerLikeLibrary = () => {
-    const [likelist, setlikelist] = useState([]);
-    const [photolist, setPhotolist] = useState([]);
-    
+  const [likelist, setlikelist] = useState([]);
+  const [photolist, setPhotolist] = useState([]);
 
-    useEffect(() => {
-        makeRequest("tracks").then((data) => setlikelist(data));
-    }, []);
+  useEffect(() => {
+    makeRequest("tracks").then((data) => setlikelist(data));
+  }, []);
 
     useEffect(() => {
         const randomIndex = Math.floor(Math.random() * 20);
@@ -26,7 +25,7 @@ export const ContainerLikeLibrary = () => {
     return(
 
     <div className="min-h-screen h-full w-full text-white flex flex-col">
-        <div className="h-screen fixed w-60 ">
+      <div className="h-screen fixed w-60 ">
         <SideMenu />
         </div>
         <div className=" bg-newblack sm:pl-60">
@@ -64,6 +63,5 @@ export const ContainerLikeLibrary = () => {
             </div>
         </div>
     </div>
-
-)
+  );
 };
