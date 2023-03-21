@@ -14,7 +14,7 @@ export const ContainerAllGenres = () => {
   }, []);
 
   return (
-    <div className="w-full sm:flex">
+    <div className="w-full pt-5 sm:flex">
       {screenWidth < 640 ? (
         <NavBarMov />
       ) : (

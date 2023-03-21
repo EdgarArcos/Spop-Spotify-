@@ -1,6 +1,6 @@
 export const SongCard = ({ id, name, url, thumbnail }) => {
   return (
-    <div key={id} className="m-2 w-32">
+    <div key={id} className="w-32 h-48">
       <img
         src={thumbnail}
         alt="img"
