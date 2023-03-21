@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../api/api-utils";
-import { SongCard } from "./SongCard";
+import { SongCard } from "../Reusable/SongCard";
 import { AiFillFire } from "react-icons/ai";
 
 export const ContainerEachGenre = ({ genre }) => {
@@ -12,7 +12,7 @@ export const ContainerEachGenre = ({ genre }) => {
   return (
     <>
       {songsByGenre.length > 0 && (
-        <section className="w-full">
+        <section className="w-full pb-2">
           <h2 className="px-4 text-teal flex align-middle justify-start">
             <AiFillFire className="self-center mr-1" />
             {genre.toUpperCase()}

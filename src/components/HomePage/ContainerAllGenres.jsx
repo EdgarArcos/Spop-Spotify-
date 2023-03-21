@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { makeRequest } from "../../api/api-utils";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
 import { SideMenu } from "../LikeLibrary/SideMenu";
+import { NavBarMov } from "../Reusable";
 import { ContainerEachGenre } from "./ContainerEachGenre";
-import { NavBarMov } from "./NavBarMov";
 
 export const ContainerAllGenres = () => {
   const [genres, setGenres] = useState([]);
@@ -14,9 +14,9 @@ export const ContainerAllGenres = () => {
   }, []);
 
   return (
-    <div className="w-full pt-5 sm:flex">
+    <div className="w-full pt-10 sm:flex">
       {screenWidth < 640 ? (
-        <NavBarMov />
+        <NavBarMov currentPage="home" />
       ) : (
         <div className="h-screen fixed w-60 ">
           <SideMenu />

@@ -1,6 +1,6 @@
 import { useScreenWidth } from "../../hooks/useScreenWidth";
 import { SideMenu } from "../LikeLibrary/SideMenu";
-import { NavBarMov } from "../HomePage/NavBarMov";
+import { NavBarMov } from "../Reusable";
 import { SearchResultsContainer } from "./SearchResultsContainer";
 
 export const SearchMainContainer = () => {
@@ -9,7 +9,7 @@ export const SearchMainContainer = () => {
   return (
     <div>
       {screenWidth < 640 ? (
-        <NavBarMov />
+        <NavBarMov currentPage="search" />
       ) : (
         <div className="h-screen fixed w-60 ">
           <SideMenu />

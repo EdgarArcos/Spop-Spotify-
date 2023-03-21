@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useSearchParams } from "react-router-dom";
 import { makeRequest } from "../../api/api-utils";
-import { SongCard } from "../HomePage/SongCard";
+import { SongCard } from "../Reusable/SongCard";
 
 export const SearchResultsContainer = () => {
   const [allData, setAllData] = useState([]);
@@ -29,7 +29,7 @@ export const SearchResultsContainer = () => {
   return (
     <div className="sm:pl-[16rem]">
       <section className="flex flex-col w-full px-2 sm:pt-12 sm:pb-3 sm:px-10">
-        <h2 className="text-2xl m-2 mt-8">Search</h2>
+        <h2 className="text-3xl m-2 mt-8">Search</h2>
         <label className="flex relative align-middle justify-center mb-2 md:w-11/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12">
           <BiSearch className="absolute top-5 left-5 text-2xl" />
           <input

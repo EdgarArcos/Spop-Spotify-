@@ -1,4 +1,3 @@
 export * from "./ContainerAllGenres";
 export * from "./ContainerEachGenre";
-export * from "./NavBarMov";
-export * from "./SongCard";
+export * from "../Reusable/SongCard";
