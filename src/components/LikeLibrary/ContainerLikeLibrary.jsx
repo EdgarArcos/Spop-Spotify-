@@ -6,7 +6,7 @@ import { PlayButtonLibrary } from './PlayButtonLibrary';
 import { SideMenu } from "./SideMenu";
 import { SlHeart } from "react-icons/sl"
 import { BiTime } from "react-icons/bi"
-import { ProgressBar } from "./ProgressBar";
+import { AudioBar } from "../AudioBar/AudioBar";
 
 
 export const ContainerLikeLibrary = () => {
@@ -58,8 +58,10 @@ export const ContainerLikeLibrary = () => {
                 </div>
             </div>
             <div>
-            <ProgressBar />
         </div>
+            <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
+                <AudioBar />
+            </div>
         </div>
     </div>
 
