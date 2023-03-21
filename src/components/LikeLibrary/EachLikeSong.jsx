@@ -3,7 +3,7 @@ import { AudioBar } from '../AudioBar/AudioBar';
 import { FaPlay } from 'react-icons/fa';
 
 
-export const EachLikeSong = ({ song, num }) => {
+export const EachLikeSong = ({ song, num, setPlay }) => {
 
     const {id, thumbnail, name, artist, url } = song;
 
@@ -17,7 +17,7 @@ export const EachLikeSong = ({ song, num }) => {
                 <tr className="flex hover:bg-newgray rounded-md cursor-pointer sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-4 sm:justify-center m-3">
                     <td className="hidden sm:grid justify-center pt-6">
                         <p>{num}</p>
-                        <FaPlay onClick={url} />
+                        <FaPlay onClick={()=>setPlay(url)} />
                     </td>
                     <td className="flex sm:grid sm:grid-cols-2">
                         <div className="flex sm:hidden">

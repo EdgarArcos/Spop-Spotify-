@@ -6,9 +6,6 @@ import "./AudioBar.css"
 
 export const AudioBar = ({url}) => {
 
-
-
-
     return (
         <div>
             <AudioPlayerDk src={url} />

@@ -10,8 +10,10 @@ import { AudioBar } from "../AudioBar/AudioBar";
 
 
 export const ContainerLikeLibrary = () => {
-  const [likelist, setlikelist] = useState([]);
-  const [photolist, setPhotolist] = useState([]);
+    const [likelist, setlikelist] = useState([]);
+    const [photolist, setPhotolist] = useState([]);
+    const [play, setPlay] = useState("");
+
 
   useEffect(() => {
     makeRequest("tracks").then((data) => setlikelist(data));
@@ -51,7 +53,7 @@ export const ContainerLikeLibrary = () => {
                             </tr>
                         </thead>
                     {likelist.map((song, index) => (
-                        <EachLikeSong key={song.id} num={index+1} song={song}/>
+                        <EachLikeSong key={song.id} num={index+1} song={song} setPlay={setPlay}/>
                     ))} 
                     </table>
                 </div>
@@ -59,7 +61,7 @@ export const ContainerLikeLibrary = () => {
             <div>
         </div>
             <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
-                <AudioBar />
+                <AudioBar url={play}/>
             </div>
         </div>
     </div>
