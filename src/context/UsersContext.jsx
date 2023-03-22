@@ -1,8 +1,8 @@
-import { createContext, useState, useEffect} from 'react';
+import { createContext, useState} from 'react';
 
 export const UsersContext = createContext();
 
-const CartProvider = ({children}) => {
+const UserName = ({children}) => {
     const [users, setUsers] = useState(JSON.parse(localStorage.getItem({}))||[]);
     return (
         <UsersContext.Provider value={[users, setUsers]}>
@@ -11,4 +11,4 @@ const CartProvider = ({children}) => {
     );
 };
 
-export default CartProvider;
+export default UserName;
