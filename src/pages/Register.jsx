@@ -1,15 +1,17 @@
 import React from 'react'
-import { ButtonCreate } from '../components/Register/buttonCreate'
+import { Link } from 'react-router-dom'
+import { LogoResponsive } from '../components/Logo/LogoResponsive'
 import { Inputs } from '../components/Register/InputsRegister'
+
 
 export const Register = () => {
   return (
     <div className='flex justify-center items-center h-screen'>
-    <img className='absolute top-40' src="" alt="" />
+    <LogoResponsive/>
     <div className='text-center'>
     <h2 className='text-2xl'>Create an account</h2>
     <Inputs/>
-    <ButtonCreate/>
+    <p>Do you have an account? <Link className='text-teal' to={"/login"}>Login</Link></p>
     </div>
     </div>
   )
