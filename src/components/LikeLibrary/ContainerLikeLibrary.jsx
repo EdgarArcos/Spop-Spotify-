@@ -3,35 +3,29 @@ import { makeRequest } from "../../api/api-utils";
 import React from "react";
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from "./PlayButtonLibrary";
-import { SideMenu } from "./SideMenu";
-import { SlHeart } from "react-icons/sl"
-import { BiTime } from "react-icons/bi"
+import { SideMenu } from "../Reusable/SideMenu";
+import { SlHeart } from "react-icons/sl";
+import { BiTime } from "react-icons/bi";
 import { AudioBar } from "../AudioBar/AudioBar";
 
-
 export const ContainerLikeLibrary = () => {
-    const [likelist, setlikelist] = useState([]);
-    const [photolist, setPhotolist] = useState([]);
+  const [likelist, setlikelist] = useState([]);
+  const [photolist, setPhotolist] = useState([]);
     const [indexPlay, setIndexPlay] = useState(0);
-    const [playOn, setPlayOn] = useState(false);
+  const [playOn, setPlayOn] = useState(false);
 
 
-
-    useEffect(() => {
+  useEffect(() => {
     makeRequest("tracks").then((data) => setlikelist(data));
     
 }, []);
 
-    useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * 20);
-        makeRequest("tracks").then((data) => setPhotolist(data[randomIndex]));
-    }, []);
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * 20);
+    makeRequest("tracks").then((data) => setPhotolist(data[randomIndex]));
+  }, []);
 
-
-
-
-    return(
-
+  return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">
         <div className="h-screen fixed w-60 ">
         <SideMenu />
@@ -68,10 +62,7 @@ export const ContainerLikeLibrary = () => {
             </div>
             <div>
         </div>
-            <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
-                <AudioBar url={playOn&&likelist[indexPlay].url} setPlayOn={setPlayOn} setIndexPlay={setIndexPlay} />
-            </div>
-        </div>
+      </div>
     </div>
     );
 };
