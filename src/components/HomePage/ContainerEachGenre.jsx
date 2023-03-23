@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../api/api-utils";
-import { SongCard } from "./SongCard";
+import { SongCard } from "../Reusable";
 import { AiFillFire } from "react-icons/ai";
 
 export const ContainerEachGenre = ({ genre }) => {
@@ -12,12 +12,12 @@ export const ContainerEachGenre = ({ genre }) => {
   return (
     <>
       {songsByGenre.length > 0 && (
-        <section className="pt-4 w-full">
-          <h2 className="px-4 py-2 text-teal flex align-middle justify-start">
+        <section className="w-full pb-2">
+          <h2 className="px-4 text-teal flex align-middle justify-start">
             <AiFillFire className="self-center mr-1" />
             {genre.toUpperCase()}
           </h2>
-          <div className="px-2 flex flex-row flex-nowrap align-middle justify-start overflow-x-auto">
+          <div className="px-4 pt-2 flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
             {songsByGenre.map(({ id, name, url, thumbnail }) => (
               <SongCard
                 id={id}
