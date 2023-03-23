@@ -1,13 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { ProfilePicture } from "../components/Profile/ProfilePictureSet/ProfilePicture";
 import { ButtonLogout } from "../components/Profile/Buttons/ButtonLogout";
 import { ButtonEditProfile } from "../components/Profile/Buttons/ButtonEditProfile";
-import { ButtonCancel } from "../components/Profile/Buttons/ButtonCancel";
-import { ButtonSave } from "../components/Profile/Buttons/ButtonSave";
-import { InputsProfile } from "../components/Profile/Inputs/InputsProfile";
+import { InputsActualProfile } from "../components/Profile/Inputs/ActualProfile/InputsActualProfile";
 
-export const Profile = () => {
+export const Profile = ({ setUsers, setEmail }) => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("users");
+    localStorage.removeItem("email");
+    setUsers;
+    setEmail;
+    navigate("/profile");
+  };
+
   return (
     <>
       <Link to={"/"}>
@@ -17,15 +25,14 @@ export const Profile = () => {
         />
       </Link>
       <ProfilePicture />
-      <InputsProfile />
+      <InputsActualProfile />
+
       <div className="sm:flex sm:flex-col sm:items-center flex flex-col items-center">
         <div className="sm:flex sm:flex-row sm:space-x-24 sm:mb-10 flex flex-col mb-10">
-          <ButtonEditProfile />
-          <ButtonLogout />
-        </div>
-        <div className="sm:flex sm:flex-row sm:space-x-24 sm:mb-10 sm:hidden flex flex-col mb-10 hidden">
-          <ButtonCancel />
-          <ButtonSave />
+          <Link to={"/editprofile"}>
+            <ButtonEditProfile />
+          </Link>
+          <ButtonLogout logout={logout} />
         </div>
       </div>
     </>

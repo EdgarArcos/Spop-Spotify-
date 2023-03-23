@@ -66,22 +66,22 @@ export const ProfilePicture = () => {
                 // className={styles.container}
                 // class="container"
               />
-                <div className="flex flex-row justify-around w-12 items-center mt-4 space-x-20 mb-2">
+              <div className="flex flex-row justify-around w-12 items-center mt-4 space-x-20 mb-2">
                 <Button
-                    onClick={cancel}
-                    label="Cancel"
-                    icon="pi pi-check"
-                    className="sm:py-0 sm:px-2 sm:text-black sm:bg-teal sm:rounded-lg sm:w-18 sm:h-10 sm:text-1xl sm:hover:opacity-80 sm:transition sm:duration-500
+                  onClick={cancel}
+                  label="Cancel"
+                  icon="pi pi-check"
+                  className="sm:py-0 sm:px-2 sm:text-black sm:bg-teal sm:rounded-lg sm:w-18 sm:h-10 sm:text-1xl sm:hover:opacity-80 sm:transition sm:duration-500
                     py-0 px-2 text-black bg-teal rounded-lg w-18 h-10 text-1xl hover:opacity-80 transition duration-500"
-                  />
-                  <Button
-                    onClick={saveCropImage}
-                    label="Save"
-                    icon="pi pi-check"
-                    className="sm:py-0 sm:px-5 sm:text-white sm:bg-cancel sm:rounded-lg sm:w-20 sm:h-10 sm:text-1xl sm:hover:opacity-80 sm:transition sm:duration-500
+                />
+                <Button
+                  onClick={saveCropImage}
+                  label="Save"
+                  icon="pi pi-check"
+                  className="sm:py-0 sm:px-5 sm:text-white sm:bg-cancel sm:rounded-lg sm:w-20 sm:h-10 sm:text-1xl sm:hover:opacity-80 sm:transition sm:duration-500
                     py-0 px-5 text-white bg-cancel rounded-lg w-20 h-10 text-1xl hover:opacity-80 transition duration-500"
-                  />
-                </div>
+                />
+              </div>
             </div>
           </Dialog>
           <InputText

@@ -5,6 +5,7 @@ import {
   Home,
   SplashScreen,
   Login,
+  EditProfile,
   Profile,
   Register,
   ResetPassword,
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
   {
     path: "register",
     element: <Register />,
+  },
+  {
+    path: "editprofile",
+    element: <EditProfile />,
   },
   {
     path: "profile",

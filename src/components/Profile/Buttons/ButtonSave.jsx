@@ -1,7 +1,8 @@
-export const ButtonSave = () => {
+export const ButtonSave = ({ saveChanges }) => {
   return (
-    <div>
+    <>
       <button
+        onClick={saveChanges}
         className="sm:bg-transparent sm:w-60 sm:border-2 sm:border-teal sm:rounded-lg sm:text-2xl sm:hover:opacity-60 sm:transition sm:duration-500
       bg-transparent w-60 border-2 border-teal rounded-lg text-2xl hover:opacity-60 transition duration-500"
       >
@@ -9,6 +10,6 @@ export const ButtonSave = () => {
           Save changes
         </p>
       </button>
-    </div>
+    </>
   );
 };

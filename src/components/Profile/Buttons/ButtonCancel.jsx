@@ -1,6 +1,6 @@
 export const ButtonCancel = () => {
   return (
-    <div>
+    <>
       <button
         type="button"
         className="sm:w-60 sm:border-2 sm:border-graytext sm:rounded-lg sm:text-2xl sm:hover:opacity-60 sm:transition sm:duration-500
@@ -10,6 +10,6 @@ export const ButtonCancel = () => {
           Cancel
         </p>
       </button>
-    </div>
+    </>
   );
 };
