@@ -1,4 +1,5 @@
 export * from "./Home";
+export * from "./Library";
 export * from "./LikeLibrary";
 export * from "./Login";
 export * from "./NowPlaying";
