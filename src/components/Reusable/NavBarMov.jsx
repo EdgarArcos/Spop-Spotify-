@@ -1,5 +1,6 @@
 import { AiFillHome } from "react-icons/ai";
 import { BiLibrary, BiSearch } from "react-icons/bi";
+import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const NavBarMov = ({ currentPage }) => {
@@ -8,6 +9,9 @@ export const NavBarMov = ({ currentPage }) => {
       <div className=" p-4 rounded-3xl w-full h-16 bg-newgray flex align-middle justify-around text-4xl">
         <Link to="/">
           <AiFillHome className={currentPage === "home" ? "text-teal" : ""} />
+        </Link>
+        <Link to="/profile"> 
+        <FaUserCircle className={currentPage === "profile" ? "text-teal" : ""}/>
         </Link>
         <Link to="/search">
           <BiSearch

@@ -2,7 +2,8 @@ import React from "react";
 import fulllogo from "../../assets/testimg/fulllogo.png";
 import likedsongs from "../../assets/testimg/likedsongs.png";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
-import { BiLibrary } from "react-icons/bi";
+import { BiLibrary} from "react-icons/bi";
+import { FaUserCircle } from "react-icons/fa";
 import { BsFillPlusSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -17,6 +18,12 @@ export const SideMenu = () => {
         <AiFillHome className="text-2xl mr-5" />
         <p>Home</p>
       </Link>
+    <Link 
+    to="/profile" 
+    className="flex flex-row p-2 hover:bg-newgray rounded-md cursor-pointer">
+    <FaUserCircle className="text-2xl mr-5"/>
+    <p>Perfil</p>
+    </Link>
       <Link
         to="/search"
         className="flex flex-row p-2 hover:bg-newgray rounded-md cursor-pointer"
