@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../api/api-utils";
-import { SongCard } from "../Reusable/SongCard";
+import { SongCard } from "../Reusable";
 import { AiFillFire } from "react-icons/ai";
 
 export const ContainerEachGenre = ({ genre }) => {

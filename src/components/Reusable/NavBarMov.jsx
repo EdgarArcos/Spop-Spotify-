@@ -14,8 +14,9 @@ export const NavBarMov = ({ currentPage }) => {
             className={currentPage === "search" ? "text-teal m-0.5" : "m-0.5"}
           />
         </Link>
-
-        <BiLibrary className={currentPage === "library" ? "text-teal" : ""} />
+        <Link to="/library">
+          <BiLibrary className={currentPage === "library" ? "text-teal" : ""} />
+        </Link>
       </div>
     </nav>
   );

@@ -9,6 +9,7 @@ import {
   Register,
   ResetPassword,
   Search,
+  Library,
 } from "../pages";
 
 export const router = createBrowserRouter([
@@ -47,5 +48,9 @@ export const router = createBrowserRouter([
   {
     path: "search",
     element: <Search />,
+  },
+  {
+    path: "library",
+    element: <Library />,
   },
 ]);

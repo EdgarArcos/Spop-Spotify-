@@ -19,15 +19,18 @@ export const SideMenu = () => {
       </Link>
       <Link
         to="/search"
-        className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer"
+        className="flex flex-row p-2 hover:bg-newgray rounded-md cursor-pointer"
       >
         <AiOutlineSearch className="text-2xl mr-3" />
         <p className="ml-2">Search</p>
       </Link>
-      <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
+      <Link
+        to="/library"
+        className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer"
+      >
         <BiLibrary className="text-2xl mr-3" />
         <p className="ml-2">Your Library</p>
-      </div>
+      </Link>
       <div className="flex flex-row p-2">
         <p className="text-graytext m-3">PLAYLIST</p>
       </div>
