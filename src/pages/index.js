@@ -8,3 +8,4 @@ export * from "./Register";
 export * from "./ResetPassword";
 export * from "./Search";
 export * from "./SplashScreen";
+export * from "./EditProfile"
