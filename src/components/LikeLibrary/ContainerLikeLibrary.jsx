@@ -62,7 +62,10 @@ export const ContainerLikeLibrary = () => {
         <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
           <AudioBar
             url={playOn ? likelist[indexPlay].url : ""}
+            name={playOn ? likelist[indexPlay].name : ""}
+            artist={playOn ? likelist[indexPlay].artist : ""}
             indexPlay={indexPlay}
+            likelist={likelist}
           />
         </div>
       </div>

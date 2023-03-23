@@ -88,3 +88,259 @@
         
     
 }
+
+/* 
+to clean */
+
+
+
+
+.actions {
+  background: #3a3a3a;
+  color:white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.actions button {
+  background: none;
+  border: none;
+  color: white;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 32px;
+  height: 22px;
+  cursor: pointer;
+  margin: 0 10px ;
+}
+.action_btns{
+  display: flex;
+  flex-direction: row;
+  flex:1;
+  justify-content: center;
+}
+.album_meta{
+  padding-left: 15px;
+}
+.alb_label{
+  font-size: 0.8em;
+}
+.playlist {
+  background: #e3e3e3;
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.selected {
+  background: white;
+}
+
+
+
+.songContainer {
+  cursor: pointer;
+  user-select: none;
+}
+
+.pltext {
+  padding: 5px;
+}
+
+.loi {
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  padding: 0;
+  width: 70vw;
+}
+
+.loi li {
+  margin: 2px;
+  font-weight: 450;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.loi li:hover{
+  background-color: #dfdfdf;
+}
+
+.songlist {
+  overflow-y: auto;
+}
+.songmeta{
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+
+}
+.songname {
+  padding: 0 10px;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+.songauthors {
+  padding: 0 10px;
+  font-weight: normal;
+  color: #555;
+  font-size: 0.875rem;
+}
+.song_duration{
+  color:#555;
+}
+.fav_song{
+  color: red;
+  margin-right: 5px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  height: 110px;
+  background: #3a3a3a;
+  color: white;
+  align-items: center;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.vlme {
+  display: flex;
+  align-content: center;
+  overflow: hidden;
+  width: 25px;
+  transition: all 500ms;
+  position: absolute;
+  left: 0;
+}
+
+.vlme:hover {
+  width: 90px;
+}
+
+.volum {
+  padding: 10px;
+}
+
+#volBar {
+  padding: 0;
+  margin: 0;
+  width: 50px;
+  background: transparent;
+}
+
+#volBar::-moz-range-thumb {
+  height: 10px;
+  width: 3px;
+  background: #2A6586;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.musicControls {
+  margin-left: 90px;
+  min-width: 120px;
+}
+
+.musicControls span {
+  cursor: pointer;
+}
+
+.musicControls span:hover {
+  color: #2A6586;
+}
+
+.play {
+  background: #4AA9DE;
+  padding: 15px 18px;
+  border-radius: 100%;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 3;
+}
+
+.play:active {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.play:hover {
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+}
+
+.prev {
+  background: #4aa9de;
+  border-radius: 10px 0 0px 10px;
+  padding-left: 15px;
+  padding-right: 10px;
+  margin-right: -5px;
+  z-index: 1;
+}
+
+.next {
+  background: #4aa9de;
+  border-radius: 0px 10px 10px 0px;
+  padding-right: 15px;
+  padding-left: 10px;
+  margin-left: -5px;
+  z-index: 1;
+}
+
+.progressb {
+display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    flex: 1;
+}
+.songMeta{
+  width: 25vw;
+}
+.songmeta_playlist{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.songtitle{
+  display: block;
+  font-size: 1.125em;
+  font-weight: 600;
+}
+.songartistName{
+  font-size: 0.8em;
+}
+#prgbar {
+  background: transparent;
+  width: 100%;
+}
+
+.plsoptions {
+  display: flex;
+  justify-content: space-evenly;
+  width: 10vw;
+}
+
+.plsoptions span {
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+
+.plsoptions span:hover {
+  color: #2A6586;
+}
+
+.plsoptions span.active {
+  color: rgb(95 181 233);
+  border-bottom: 3px solid rgb(95 181 233);
+  border-radius: 4px;
+}
+
+.currentT, .totalT {
+  width: 35px;
+  margin: 0 10px;
+}

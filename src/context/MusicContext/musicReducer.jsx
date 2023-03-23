@@ -16,6 +16,17 @@ const musicReducer = (state, action) => {
       case types.HANDLE_INDEX:
       return { ...state, indexPlay:payload};
 
+    case types.TOGGLE_RANDOM:
+      return {
+        ...state,
+        random: payload.data,
+      }
+    case types.TOGGLE_REPEAT:
+      return {
+        ...state,
+        repeat: payload.data,
+      }
+
     default:
       state;
   }
