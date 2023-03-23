@@ -5,7 +5,6 @@ import { BiUser } from "react-icons/bi";
 import { IoMailOutline } from "react-icons/io5";
 import { HiOutlineLockClosed } from "react-icons/hi";   
 import { ButtonCreate } from './ButtonCreate';
-import { Link } from 'react-router-dom';
 
 export const Inputs = () => {
   const [users, setUsers]  = useContext(UsersContext);
@@ -36,7 +35,6 @@ export const Inputs = () => {
     <div className='absolute top-5 insert-y-0 left-2 align-top'><HiOutlineLockClosed/></div>
     </div>
     <ButtonCreate saveInputs={saveInputs}/>
-    
     </form>
   )
 }
