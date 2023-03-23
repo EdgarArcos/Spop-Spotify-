@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import React from "react";
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from "./PlayButtonLibrary";
@@ -9,10 +9,9 @@ import { AudioBar } from "../AudioBar/AudioBar";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const ContainerLikeLibrary = () => {
-  const {musicState} = useContext(MusicContext);
-  const {likelist, photolist, playOn} = musicState
-  
-  const [indexPlay, setIndexPlay] = useState(0);
+  const { musicState } = useContext(MusicContext);
+  const { likelist, photolist, playOn, indexPlay } = musicState;
+
 
   return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">
@@ -32,10 +31,7 @@ export const ContainerLikeLibrary = () => {
         </div>
         <div className="bg-newblack sm:bg-gradient-to-b from-zinc-800 to-newblack pt-2">
           <div className="flex flex-row">
-            <PlayButtonLibrary
-              
-              setIndexPlay={setIndexPlay}
-            />
+            <PlayButtonLibrary  />
             <div className="hidden sm:flex m-4 items-center">
               <SlHeart className="text-2xl" />
             </div>
@@ -57,8 +53,6 @@ export const ContainerLikeLibrary = () => {
                   key={song.id}
                   index={index}
                   song={song}
-                  setIndexPlay={setIndexPlay}
-                  
                 />
               ))}
             </table>
@@ -68,8 +62,7 @@ export const ContainerLikeLibrary = () => {
         <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
           <AudioBar
             url={playOn ? likelist[indexPlay].url : ""}
-          
-            setIndexPlay={setIndexPlay}
+            indexPlay={indexPlay}
           />
         </div>
       </div>

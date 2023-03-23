@@ -5,19 +5,14 @@ import "./AudioBar.css";
 import { useContext } from "react";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 
-
-export const AudioBar = ({ url, setIndexPlay }) => {
-
-  const {handlePlayOn}=useContext(MusicContext)
+export const AudioBar = ({ url, indexPlay }) => {
+  const { handleIndex } = useContext(MusicContext);
 
   return (
-
     <div>
       <AudioPlayerDk
         src={url}
-        onEnded={() => setIndexPlay((prev) => prev + 1)}
-        onPlay={handlePlayOn}
-        onPause={handlePlayOn}
+        onEnded={() => handleIndex(indexPlay + 1)}
       />
     </div>
   );
