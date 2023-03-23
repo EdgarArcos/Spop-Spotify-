@@ -10,9 +10,7 @@ import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const ContainerLikeLibrary = () => {
   const {musicState} = useContext(MusicContext);
-  const {
-    
-    likelist, photolist, playOn} = musicState
+  const {likelist, photolist, playOn} = musicState
   
   const [indexPlay, setIndexPlay] = useState(0);
 
