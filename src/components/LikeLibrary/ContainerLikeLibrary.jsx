@@ -3,20 +3,23 @@ import { makeRequest } from "../../api/api-utils";
 import React from "react";
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from "./PlayButtonLibrary";
-import { SideMenu } from "./SideMenu";
+import { SideMenu } from "../Reusable";
 import { SlHeart } from "react-icons/sl";
 import { BiTime } from "react-icons/bi";
+import { AudioBar } from "../AudioBar/AudioBar";
 
 export const ContainerLikeLibrary = () => {
   const [likelist, setlikelist] = useState([]);
   const [photolist, setPhotolist] = useState([]);
+  const [indexPlay, setIndexPlay] = useState(0);
+  const [playOn, setPlayOn] = useState(false);
 
   useEffect(() => {
     makeRequest("tracks").then((data) => setlikelist(data));
   }, []);
 
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * makeRequest.length);
+    const randomIndex = Math.floor(Math.random() * 20);
     makeRequest("tracks").then((data) => setPhotolist(data[randomIndex]));
   }, []);
 
@@ -33,12 +36,16 @@ export const ContainerLikeLibrary = () => {
             alt="cover"
           />
           <h1 className="hidden sm:flex items-center m-4 mt-32 text-white text-5xl font-bold">
-            Playlists Name
+            Liked Songs
           </h1>
         </div>
         <div className="bg-newblack sm:bg-gradient-to-b from-zinc-800 to-newblack pt-2">
           <div className="flex flex-row">
-            <PlayButtonLibrary />
+            <PlayButtonLibrary
+              setPlayOn={setPlayOn}
+              playOn={playOn}
+              setIndexPlay={setIndexPlay}
+            />
             <div className="hidden sm:flex m-4 items-center">
               <SlHeart className="text-2xl" />
             </div>
@@ -55,11 +62,25 @@ export const ContainerLikeLibrary = () => {
                   </th>
                 </tr>
               </thead>
-              {likelist.map((song) => (
-                <EachLikeSong key={song.id} song={song} />
+              {likelist.map((song, index) => (
+                <EachLikeSong
+                  key={song.id}
+                  index={index}
+                  song={song}
+                  setIndexPlay={setIndexPlay}
+                  setPlayOn={setPlayOn}
+                />
               ))}
             </table>
           </div>
+        </div>
+        <div></div>
+        <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
+          <AudioBar
+            url={playOn ? likelist[indexPlay].url : ""}
+            setPlayOn={setPlayOn}
+            setIndexPlay={setIndexPlay}
+          />
         </div>
       </div>
     </div>
