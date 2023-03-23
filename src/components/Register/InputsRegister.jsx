@@ -16,7 +16,7 @@ export const Inputs = () => {
     console.log(email);
     }
   return (
-    <form action="saveInputs">
+    <form>
     <div className='relative'>
     <input className='name bg-newgray  my-6 w-80 h-14 rounded-lg border-none placeholder: pl-8' placeholder='Name' value={users} onChange={event => {setUsers (event.target.value);}} required minLength="5"  type="text"/>
     <div className='absolute top-11 insert-y-0 left-2 align-top'><BiUser/></div>
