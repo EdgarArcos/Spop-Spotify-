@@ -12,22 +12,28 @@ import { AudioBar } from "../AudioBar/AudioBar";
 export const ContainerLikeLibrary = () => {
     const [likelist, setlikelist] = useState([]);
     const [photolist, setPhotolist] = useState([]);
-    const [play, setPlay] = useState("");
+    const [indexPlay, setIndexPlay] = useState(0);
+    const [playOn, setPlayOn] = useState(false);
 
 
-  useEffect(() => {
+
+    useEffect(() => {
     makeRequest("tracks").then((data) => setlikelist(data));
-  }, []);
+    
+}, []);
 
     useEffect(() => {
         const randomIndex = Math.floor(Math.random() * 20);
         makeRequest("tracks").then((data) => setPhotolist(data[randomIndex]));
     }, []);
 
+
+
+
     return(
 
     <div className="min-h-screen h-full w-full text-white flex flex-col">
-      <div className="h-screen fixed w-60 ">
+        <div className="h-screen fixed w-60 ">
         <SideMenu />
         </div>
         <div className=" bg-newblack sm:pl-60">
@@ -37,7 +43,7 @@ export const ContainerLikeLibrary = () => {
             </div>
             <div className="bg-newblack sm:bg-gradient-to-b from-zinc-800 to-newblack pt-2">
                 <div className="flex flex-row">
-                    <PlayButtonLibrary />
+                    <PlayButtonLibrary setPlayOn={setPlayOn} playOn={playOn} setIndexPlay={setIndexPlay}/>
                     <div className="hidden sm:flex m-4 items-center">
                     <SlHeart className="text-2xl" />
                     </div>    
@@ -53,7 +59,9 @@ export const ContainerLikeLibrary = () => {
                             </tr>
                         </thead>
                     {likelist.map((song, index) => (
-                        <EachLikeSong key={song.id} num={index+1} song={song} setPlay={setPlay}/>
+                        <EachLikeSong key={song.id} index={index} song={song} 
+                        setIndexPlay={setIndexPlay}
+                        setPlayOn={setPlayOn} />
                     ))} 
                     </table>
                 </div>
@@ -61,9 +69,9 @@ export const ContainerLikeLibrary = () => {
             <div>
         </div>
             <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
-                <AudioBar url={play}/>
+                <AudioBar url={playOn&&likelist[indexPlay].url} setPlayOn={setPlayOn} setIndexPlay={setIndexPlay} />
             </div>
         </div>
     </div>
-  );
+    );
 };

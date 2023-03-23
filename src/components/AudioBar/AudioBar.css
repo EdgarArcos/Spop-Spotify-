@@ -37,11 +37,38 @@
     color: #02E4E6;
 }
 
+
+@media (max-width: 1320px) {
+
+
+    .rhap_container{
+        width: 80%;
+    }
+}
+
+
+@media (max-width:1024px) {
+
+
+    .rhap_container{
+        width:77%;
+    }
+}
+
+@media (max-width:850px) {
+
+
+    .rhap_container{
+        width: 75%;
+    }
+}
+
+
 @media (max-width: 640px) {
 
 
     .rhap_container{
-        width: 100%;
+        width: 95%;
     }
 
     .rhap_main{
