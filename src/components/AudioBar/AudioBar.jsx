@@ -10,8 +10,8 @@ export const AudioBar = ({url, setPlayOn, playOn, setIndexPlay}) => {
         <div>
             <AudioPlayerDk src={url}
                             onEnded={()=>setIndexPlay((prev)=>prev+1)}
-                            onPlay={setPlayOn(!playOn)}
-                            onPause={setPlayOn(!playOn)} />
+                            onPlay={()=>setPlayOn(!playOn)}
+                            onPause={()=>setPlayOn(!playOn)} />
         </div>
     
     )
