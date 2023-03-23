@@ -1,13 +1,15 @@
 import { FaPlay } from 'react-icons/fa';
+import { useContext } from 'react';
+import { MusicContext } from '../../context/MusicContext/MusicContext';
 
+export const EachLikeSong = ({ song, index, setIndexPlay}) => {
 
-export const EachLikeSong = ({ song, index, setIndexPlay, playOn, setPlayOn }) => {
-
+    const {handlePlayOn}=useContext(MusicContext)
     const {id, thumbnail, name, artist, url } = song;
 
     const handlePlay = (index) => {
         setIndexPlay(index);
-        setPlayOn(!playOn);
+        handlePlayOn();
 
 
     }

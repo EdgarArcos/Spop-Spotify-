@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { AiFillPlayCircle, AiFillStepBackward } from 'react-icons/ai'
 import { BiSkipNext } from 'react-icons/bi'
+import { makeRequest } from '../api/api-utils'
 
 export const NowPlaying = () => {
   const [songTitle, setSongTitle] = useState('Song Title');

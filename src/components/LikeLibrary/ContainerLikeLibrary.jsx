@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { makeRequest } from "../../api/api-utils";
+import { useState, useContext } from "react";
 import React from "react";
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from "./PlayButtonLibrary";
@@ -7,21 +6,15 @@ import { SideMenu } from "../Reusable";
 import { SlHeart } from "react-icons/sl";
 import { BiTime } from "react-icons/bi";
 import { AudioBar } from "../AudioBar/AudioBar";
+import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const ContainerLikeLibrary = () => {
-  const [likelist, setlikelist] = useState([]);
-  const [photolist, setPhotolist] = useState([]);
+  const {musicState} = useContext(MusicContext);
+  const {
+    
+    likelist, photolist, playOn} = musicState
+  
   const [indexPlay, setIndexPlay] = useState(0);
-  const [playOn, setPlayOn] = useState(false);
-
-  useEffect(() => {
-    makeRequest("tracks").then((data) => setlikelist(data));
-  }, []);
-
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * 20);
-    makeRequest("tracks").then((data) => setPhotolist(data[randomIndex]));
-  }, []);
 
   return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">
@@ -42,8 +35,7 @@ export const ContainerLikeLibrary = () => {
         <div className="bg-newblack sm:bg-gradient-to-b from-zinc-800 to-newblack pt-2">
           <div className="flex flex-row">
             <PlayButtonLibrary
-              setPlayOn={setPlayOn}
-              playOn={playOn}
+              
               setIndexPlay={setIndexPlay}
             />
             <div className="hidden sm:flex m-4 items-center">
@@ -68,7 +60,7 @@ export const ContainerLikeLibrary = () => {
                   index={index}
                   song={song}
                   setIndexPlay={setIndexPlay}
-                  setPlayOn={setPlayOn}
+                  
                 />
               ))}
             </table>
@@ -78,7 +70,7 @@ export const ContainerLikeLibrary = () => {
         <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
           <AudioBar
             url={playOn ? likelist[indexPlay].url : ""}
-            setPlayOn={setPlayOn}
+          
             setIndexPlay={setIndexPlay}
           />
         </div>
