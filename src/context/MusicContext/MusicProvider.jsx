@@ -2,7 +2,7 @@ import { useEffect, useReducer } from "react"
 import { makeRequest } from "../../api/api-utils"
 import { MusicContext } from "./MusicContext"
 import { types } from "./types/types"
-import musicReducer from "./MusicReducer"
+import musicReducer from "./musicReducer"
 
 const initialState = {likelist:[], photolist:[], indexPlay:0, playOn: false}
 

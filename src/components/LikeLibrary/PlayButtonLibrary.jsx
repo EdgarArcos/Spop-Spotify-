@@ -1,10 +1,11 @@
-import {useContext } from 'react'
+import { useContext } from 'react'
 import { FaPlay } from 'react-icons/fa';
 import { MusicContext } from '../../context/MusicContext/MusicContext';
 
 export const PlayButtonLibrary = ({setIndexPlay}) => {
 
     const {handlePlayOn}=useContext(MusicContext)
+    
     const handleIndex = () => {
         setIndexPlay(0);
         handlePlayOn();
