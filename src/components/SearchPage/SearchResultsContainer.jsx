@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { makeRequest } from "../../api/api-utils";
-import { SongCard } from "../Reusable/SongCard";
 import { MessageNotFound } from "./MessageNotFound";
 import { ResultsOfSearch } from "./ResultsOfSearch";
 import { SearchInputContainer } from "./SearchInputContainer";
