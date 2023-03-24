@@ -11,7 +11,6 @@ const initialState = {
   playOn: false,
   repeat: false,
   random: false,
-  // playing: false,
 };
 
 export const MusicProvider = ({ children }) => {
@@ -32,34 +31,10 @@ export const MusicProvider = ({ children }) => {
     dispatch({ type: types.HANDLE_INDEX, payload: index });
   };
 
-  // const togglePlaying = () =>
-  //   dispatch({ type: types.TOGGLE_PLAYING, payload: state.playing ? false : true })
 
-  const prevSong = () => {
-    if (state.random) {
-      return handleIndex(Math.random() * state.likelist.length);
-    }
 
-    if (state.indexPlay === 0) {
-      return handleIndex(state.likelist.length - 1);
-    } else {
-      return handleIndex(state.indexPlay - 1);
-    }
-  };
-
-  const nextSong = () => {
-    if (state.random) {
-      return handleIndex(Math.random() * state.likelist.length);
-    }
-    if (state.indexPlay === state.likelist.length - 1) {
-      handleIndex(0);
-    } else {
-      handleIndex(state.indexPlay + 1);
-    }
-  };
-
-  const toggleRepeat = (index) =>
-    dispatch({ type: types.TOGGLE_REPEAT, data: state.repeat ? false : true });
+  const toggleRepeat = () =>
+    dispatch({ type: types.TOGGLE_REPEAT});
 
   const toggleRandom = () => dispatch({ type: types.TOGGLE_RANDOM });
 
@@ -83,8 +58,6 @@ export const MusicProvider = ({ children }) => {
         musicState,
         handlePlayOn,
         handleIndex,
-        prevSong,
-        nextSong,
         toggleRepeat,
         toggleRandom,
         handleEnd,

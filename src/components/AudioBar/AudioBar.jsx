@@ -20,8 +20,6 @@ export const AudioBar = ({ url, name, artist }) => {
   const {
     handlePlayOn,
     handleIndex,
-    prevSong,
-    nextSong,
     toggleRepeat,
     toggleRandom,
     musicState,
@@ -59,14 +57,43 @@ export const AudioBar = ({ url, name, artist }) => {
     }
   }, [indexPlay, playOn]);
 
+  const prevSong = () => {
+    if (indexPlay === 0) {
+      handleIndex(0);
+    } else {
+      handleIndex(indexPlay - 1);
+    }
+  };
+
+  const nextSong = () => {
+    if (indexPlay === likelist.length - 1) {
+      handleIndex(0);
+    } else {
+      handleIndex(indexPlay + 1);
+    }
+  };
+
+  const repeatSong = () =>{
+    if(repeat){
+      handleIndex(indexPlay)
+      toggleAudio()
+    }else{
+      handleIndex(indexPlay + 1)
+    }
+  }
+
+  
+
+
+
   return (
     <div className="controls ">
       <div className="flex flex-row h-28 bg-newgray text-white w-screen align-center fixed">
-        <audio
+      <audio
           ref={audio}
           onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
           onCanPlay={(e) => setDur(e.target.duration)}
-          onEnded={() => handleIndex(indexPlay + 1)}
+          onEnded={repeatSong}
           type="audio/mpeg"
           preload="true"
           src={url}
@@ -96,10 +123,10 @@ export const AudioBar = ({ url, name, artist }) => {
               toggleAudio();
             }}
           >
-            <span className={!playOn ? "" : "hide"}>
+            <span onClick={handlePlayOn} className={!playOn ? "" : "hidden"}>
               <FaPlay />
             </span>
-            <span className={!playOn ? "hide" : ""}>
+            <span onClick={handlePlayOn} className={!playOn ? "hidden" : ""}>
               <FaPause />
             </span>
           </span>

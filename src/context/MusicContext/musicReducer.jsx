@@ -11,7 +11,7 @@ const musicReducer = (state, action) => {
       };
 
     case types.CHANGE_PLAYON:
-      return { ...state, playOn: true };
+      return { ...state, playOn: !state.playOn };
 
     case types.HANDLE_INDEX:
       return { ...state, indexPlay: payload };
@@ -24,7 +24,7 @@ const musicReducer = (state, action) => {
     case types.TOGGLE_REPEAT:
       return {
         ...state,
-        repeat: payload.data,
+        repeat: !state.repeat,
       };
 
     default:
