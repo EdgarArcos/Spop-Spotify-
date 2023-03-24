@@ -10,13 +10,10 @@ import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const ContainerLikeLibrary = () => {
   const { musicState } = useContext(MusicContext);
-  const { likelist, photolist, playOn, indexPlay } = musicState;
+  const { likelist, photolist } = musicState;
 
   return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">
-      {/* <div className="h-screen fixed w-60 ">
-        <SideMenu />
-      </div> */}
       <div className=" bg-newblack sm:pl-60">
         <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-cyan-700 to-zinc-800 smborder-b border-graytext">
           <img
