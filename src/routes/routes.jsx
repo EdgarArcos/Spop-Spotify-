@@ -34,6 +34,10 @@ export const router = createBrowserRouter([
         path: "likelibrary",
         element: <ContainerLikeLibrary />,
       },
+      {
+        path: "nowplaying",
+        element: <NowPlaying />,
+      },
     ],
   },
   {
@@ -55,9 +59,5 @@ export const router = createBrowserRouter([
   {
     path: "resetpassword",
     element: <ResetPassword />,
-  },
-  {
-    path: "nowplaying",
-    element: <NowPlaying />,
   },
 ]);
