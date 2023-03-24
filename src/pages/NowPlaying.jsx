@@ -1,21 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { AiFillPlayCircle, AiFillStepBackward } from 'react-icons/ai'
 import { BiSkipNext } from 'react-icons/bi'
-import { makeRequest } from '../api/api-utils'
+import { MusicContext } from '../context/MusicContext/MusicContext'
 
 export const NowPlaying = () => {
-  const [songTitle, setSongTitle] = useState('Song Title');
-  const [artistName, setArtistName] = useState('Artist Name');
-  const [albumCoverUrl, setAlbumCoverUrl] = useState('https://picsum.photos/500/500');
+
+  const { musicState } = useContext(MusicContext);
+  const { likelist, indexPlay } = musicState;
 
   return (
     <div className="bg-black h-screen w-screen flex flex-col items-center justify-center ">
       <div className="rounded-lg w-full h-full overflow-hidden sm:justify-center sm:flex sm:items-center ">
-        <img src={albumCoverUrl} alt="album cover" className="w-full h-full object-cover  sm:h-96  sm:w-96" />  
+        <img src={likelist[indexPlay].thumbnail} alt="album cover" className="w-full h-full object-cover  sm:h-96  sm:w-96" />  
       </div>
       <div className="text-white text-center mt-8">
-        <p className="text-lg font-bold">{songTitle}</p>
-        <p className="text-gray-400">{artistName}</p>
+        <p className="text-lg font-bold">{likelist[indexPlay].name}</p>
+        <p className="text-gray-400">{likelist[indexPlay].artist}</p>
       </div>
       <div className="flex items-center justify-center mt-8">
         <button className="w-2 rounded-full p-4 shadow-md">

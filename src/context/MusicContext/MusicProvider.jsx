@@ -11,7 +11,7 @@ const initialState = {
   playOn: false,
   repeat: false,
   random: false,
-  playing: false,
+  // playing: false,
 };
 
 export const MusicProvider = ({ children }) => {

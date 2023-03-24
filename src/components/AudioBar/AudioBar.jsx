@@ -5,9 +5,13 @@ import "./AudioBar.css";
 import { useContext, useRef, useState, useEffect} from "react";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 import { FaVolumeDown, FaStepBackward, FaPlay , FaStepForward, FaPause, FaRandom, FaRedoAlt} from 'react-icons/fa';
+import { AiOutlineExpandAlt } from 'react-icons/ai';
+import { Link } from "react-router-dom";
 
-export const AudioBar = ({ url, indexPlay, playing, likelist, playOn, random, repeat, name, artist}) => {
-  const { handlePlayOn, handleIndex, togglePlaying, prevSong, nextSong, toggleRepeat, toggleRandom, handleEnd } = useContext(MusicContext);
+export const AudioBar = ({ url, indexPlay, likelist, playOn}) => {
+
+  const { handlePlayOn, handleIndex, prevSong, nextSong, toggleRepeat, toggleRandom, handleEnd, musicState } = useContext(MusicContext);
+  const { random, repeat, name, artist} = musicState;
   
   const [statevolum, setStateVolum] = useState(0.3)
   const [dur, setDur] = useState(0)
@@ -50,7 +54,8 @@ export const AudioBar = ({ url, indexPlay, playing, likelist, playOn, random, re
         onEnded={handleEnd}
         type="audio/mpeg"
         preload="true"
-        src={url}/>
+        src={url}
+        audioPlay/>
           <div className="vlme">
             <span className="volum">
               <FaVolumeDown />
@@ -71,9 +76,10 @@ export const AudioBar = ({ url, indexPlay, playing, likelist, playOn, random, re
 
         <span className="play"
           onClick={() => {
-            togglePlaying()
+            handlePlayOn()
             toggleAudio()
           }}
+          onEnded={() => handleIndex(indexPlay + 1)}
         >
           <span className={!playOn ? '' : 'hide'}>
             <FaPlay />
@@ -88,11 +94,12 @@ export const AudioBar = ({ url, indexPlay, playing, likelist, playOn, random, re
         </span>
       </div>
 
+
       <div className="progressb">
         <div className="songMeta">
-          <span className="songtitle">{name}</span>
+          <span className="songtitle">{likelist[indexPlay].name}</span>
           <span className="songartistName">
-            {artist}
+            {likelist[indexPlay].artist}
           </span>
         </div>
         <input
@@ -118,6 +125,16 @@ export const AudioBar = ({ url, indexPlay, playing, likelist, playOn, random, re
         >
           <FaRedoAlt />
         </span>
+      </div>
+
+      <div>
+        <Link to="/nowplaying" >
+          <AiOutlineExpandAlt url={url}
+            name={name}
+            artist={artist}
+            indexPlay={indexPlay}
+            likelist={likelist}/>
+        </Link>
       </div>
     
 
