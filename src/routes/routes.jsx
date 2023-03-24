@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import { ContainerAllGenres } from "../components/HomePage";
+import { MainContainerLibrary } from "../components/LibraryPage";
+import { ContainerLikeLibrary } from "../components/LikeLibrary/ContainerLikeLibrary";
+import { SearchResultsContainer } from "../components/SearchPage";
 import {
-  LikeLibrary,
   NowPlaying,
   Home,
   SplashScreen,
@@ -8,14 +11,30 @@ import {
   Profile,
   Register,
   ResetPassword,
-  Search,
-  Library,
 } from "../pages";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    children: [
+      {
+        path: "/",
+        element: <ContainerAllGenres />,
+      },
+      {
+        path: "search",
+        element: <SearchResultsContainer />,
+      },
+      {
+        path: "library",
+        element: <MainContainerLibrary />,
+      },
+      {
+        path: "likelibrary",
+        element: <ContainerLikeLibrary />,
+      },
+    ],
   },
   {
     path: "splashscreen",
@@ -40,17 +59,5 @@ export const router = createBrowserRouter([
   {
     path: "nowplaying",
     element: <NowPlaying />,
-  },
-  {
-    path: "likelibrary",
-    element: <LikeLibrary />,
-  },
-  {
-    path: "search",
-    element: <Search />,
-  },
-  {
-    path: "library",
-    element: <Library />,
   },
 ]);

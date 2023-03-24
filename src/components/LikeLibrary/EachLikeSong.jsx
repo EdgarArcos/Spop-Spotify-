@@ -4,13 +4,12 @@ import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const EachLikeSong = ({ song, index }) => {
   const { handlePlayOn, handleIndex } = useContext(MusicContext);
-  
+
   const { id, thumbnail, name, artist, url } = song;
 
   const handlePlay = (index) => {
     handleIndex(index);
     handlePlayOn();
-    toggleAudio()
   };
 
   return (

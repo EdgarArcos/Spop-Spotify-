@@ -12,12 +12,11 @@ export const ContainerLikeLibrary = () => {
   const { musicState } = useContext(MusicContext);
   const { likelist, photolist, playOn, indexPlay } = musicState;
 
-
   return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">
-      <div className="h-screen fixed w-60 ">
+      {/* <div className="h-screen fixed w-60 ">
         <SideMenu />
-      </div>
+      </div> */}
       <div className=" bg-newblack sm:pl-60">
         <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-cyan-700 to-zinc-800 smborder-b border-graytext">
           <img
@@ -31,7 +30,7 @@ export const ContainerLikeLibrary = () => {
         </div>
         <div className="bg-newblack sm:bg-gradient-to-b from-zinc-800 to-newblack pt-2">
           <div className="flex flex-row">
-            <PlayButtonLibrary  />
+            <PlayButtonLibrary />
             <div className="hidden sm:flex m-4 items-center">
               <SlHeart className="text-2xl" />
             </div>
@@ -49,24 +48,19 @@ export const ContainerLikeLibrary = () => {
                 </tr>
               </thead>
               {likelist.map((song, index) => (
-                <EachLikeSong
-                  key={song.id}
-                  index={index}
-                  song={song}
-                />
+                <EachLikeSong key={song.id} index={index} song={song} />
               ))}
             </table>
           </div>
         </div>
         <div></div>
-        <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
-          <AudioBar
+        {/* <div className="fixed bottom-3 p-3 w-full sm:w-11/12"> */}
+        {/* <AudioBar
             url={playOn ? likelist[indexPlay].url : ""}
             name={playOn ? likelist[indexPlay].name : ""}
             artist={playOn ? likelist[indexPlay].artist : ""}
-
-          />
-        </div>
+          /> */}
+        {/* </div> */}
       </div>
     </div>
   );
