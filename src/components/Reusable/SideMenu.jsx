@@ -22,7 +22,7 @@ export const SideMenu = () => {
     to="/profile" 
     className="flex flex-row p-2 hover:bg-newgray rounded-md cursor-pointer">
     <FaUserCircle className="text-2xl mr-5"/>
-    <p>Perfil</p>
+    <p>Profile</p>
     </Link>
       <Link
         to="/search"
