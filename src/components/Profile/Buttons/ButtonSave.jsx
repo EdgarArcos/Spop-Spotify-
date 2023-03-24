@@ -1,6 +1,6 @@
 export const ButtonSave = ({ saveChanges }) => {
   return (
-    <>
+    <div>
       <button
         onClick={saveChanges}
         className="sm:bg-transparent sm:w-60 sm:border-2 sm:border-teal sm:rounded-lg sm:text-2xl sm:hover:opacity-60 sm:transition sm:duration-500
@@ -10,6 +10,6 @@ export const ButtonSave = ({ saveChanges }) => {
           Save changes
         </p>
       </button>
-    </>
+    </div>
   );
 };
