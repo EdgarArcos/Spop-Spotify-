@@ -32,7 +32,7 @@ export const Profile = ({ setUsers, setEmail }) => {
           <Link to={"/editprofile"}>
             <ButtonEditProfile />
           </Link>
-          <ButtonLogout logout={logout} />
+            <ButtonLogout logout={logout} />
         </div>
       </div>
     </>
