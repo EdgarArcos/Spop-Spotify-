@@ -1,5 +1,5 @@
 // import { ContainerAllGenres } from "../components/HomePage";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { AudioBar } from "../components/AudioBar/AudioBar";
 import { NavBarMov, SideMenu } from "../components/Reusable";
@@ -7,9 +7,22 @@ import { MusicContext } from "../context/MusicContext/MusicContext";
 import { useScreenWidth } from "../hooks/useScreenWidth";
 
 export const Home = () => {
-  const { musicState } = useContext(MusicContext);
-  const { likelist, playOn, indexPlay } = musicState;
   const screenWidth = useScreenWidth();
+  const { musicState } = useContext(MusicContext);
+  const { likelist, playOn, indexPlay, random } = musicState;
+
+  const [musicToPlay, setMusicToPlay] = useState(null);
+
+  const randomList = (listArr) => listArr.sort(() => Math.random() - 0.5);
+
+  useEffect(() => {
+    const newList = [...likelist];
+    if (random) {
+      setMusicToPlay(randomList(newList));
+    } else {
+      setMusicToPlay(likelist);
+    }
+  }, [likelist, random]);
 
   return (
     <>
@@ -23,9 +36,9 @@ export const Home = () => {
       <Outlet />
       <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
         <AudioBar
-          url={playOn ? likelist[indexPlay].url : ""}
-          name={playOn ? likelist[indexPlay].name : ""}
-          artist={playOn ? likelist[indexPlay].artist : ""}
+          url={playOn ? musicToPlay[indexPlay].url : ""}
+          name={playOn ? musicToPlay[indexPlay].name : ""}
+          artist={playOn ? musicToPlay[indexPlay].artist : ""}
         />
       </div>
     </>
