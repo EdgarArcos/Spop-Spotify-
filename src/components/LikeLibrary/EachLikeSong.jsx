@@ -10,6 +10,7 @@ export const EachLikeSong = ({ song, index }) => {
   const handlePlay = (index) => {
     handleIndex(index);
     handlePlayOn();
+    toggleAudio()
   };
 
   return (

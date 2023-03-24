@@ -1,5 +1,5 @@
 import React from "react";
-import AudioPlayerDk from "react-h5-audio-player";
+// import AudioPlayerDk from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import "./AudioBar.css";
 import { useContext, useRef, useState, useEffect} from "react";
@@ -8,10 +8,10 @@ import { FaVolumeDown, FaStepBackward, FaPlay , FaStepForward, FaPause, FaRandom
 import { AiOutlineExpandAlt } from 'react-icons/ai';
 import { Link } from "react-router-dom";
 
-export const AudioBar = ({ url, indexPlay, likelist, playOn}) => {
+export const AudioBar = ({ url, playOn, name, artist}) => {
 
-  const { handlePlayOn, handleIndex, prevSong, nextSong, toggleRepeat, toggleRandom, handleEnd, musicState } = useContext(MusicContext);
-  const { random, repeat, name, artist} = musicState;
+  const { handlePlayOn, handleIndex, prevSong, nextSong, toggleRepeat, toggleRandom, musicState } = useContext(MusicContext);
+  const { indexPlay, likelist, random, repeat} = musicState;
   
   const [statevolum, setStateVolum] = useState(0.3)
   const [dur, setDur] = useState(0)
@@ -41,21 +41,24 @@ export const AudioBar = ({ url, indexPlay, likelist, playOn}) => {
       audio.current.volume = statevolum
       if (playOn) {
         toggleAudio()
-      }
-      
+      }    
     }, [indexPlay])
 
   return (
-    <div className="controls">
-      <div className="flex flex-row h-20 bg-newgray text-white w-screen align-center fixed">
+
+
+
+
+    <div className="controls ">
+      <div className="flex flex-row h-28 bg-newgray text-white w-screen align-center fixed">
         <audio ref={audio} 
         onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
         onCanPlay={(e) => setDur(e.target.duration)}
-        onEnded={handleEnd}
+        onEnded={() => handleIndex(indexPlay + 1)}
         type="audio/mpeg"
         preload="true"
         src={url}
-        audioPlay/>
+        />
           <div className="vlme">
             <span className="volum">
               <FaVolumeDown />
@@ -79,7 +82,7 @@ export const AudioBar = ({ url, indexPlay, likelist, playOn}) => {
             handlePlayOn()
             toggleAudio()
           }}
-          onEnded={() => handleIndex(indexPlay + 1)}
+          
         >
           <span className={!playOn ? '' : 'hide'}>
             <FaPlay />
@@ -97,9 +100,9 @@ export const AudioBar = ({ url, indexPlay, likelist, playOn}) => {
 
       <div className="progressb">
         <div className="songMeta">
-          <span className="songtitle">{likelist[indexPlay].name}</span>
+          <span className="songtitle">{name}</span>
           <span className="songartistName">
-            {likelist[indexPlay].artist}
+            {artist}
           </span>
         </div>
         <input
@@ -129,11 +132,7 @@ export const AudioBar = ({ url, indexPlay, likelist, playOn}) => {
 
       <div>
         <Link to="/nowplaying" >
-          <AiOutlineExpandAlt url={url}
-            name={name}
-            artist={artist}
-            indexPlay={indexPlay}
-            likelist={likelist}/>
+          <AiOutlineExpandAlt />
         </Link>
       </div>
     

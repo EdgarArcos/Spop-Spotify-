@@ -37,7 +37,7 @@ export const MusicProvider = ({ children }) => {
 
   const prevSong = () => {
     if (state.random) {
-      return handleIndex(~~(Math.random() * state.likelist.length))
+      return handleIndex((Math.random() * state.likelist.length))
       }
   
     if (state.indexPlay === 0) {
@@ -49,7 +49,7 @@ export const MusicProvider = ({ children }) => {
     
     const nextSong = () => {
       if (state.random) {
-        return handleIndex(~~(Math.random() * state.likelist.length))
+        return handleIndex((Math.random() * state.likelist.length))
       }
       if (state.indexPlay === state.likelist.length - 1) {
         handleIndex(0)

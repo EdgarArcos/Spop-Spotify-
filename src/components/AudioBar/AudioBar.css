@@ -93,110 +93,6 @@
 to clean */
 
 
-
-
-.actions {
-  background: #3a3a3a;
-  color:white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.actions button {
-  background: none;
-  border: none;
-  color: white;
-  -webkit-user-select: none;
-  user-select: none;
-  width: 32px;
-  height: 22px;
-  cursor: pointer;
-  margin: 0 10px ;
-}
-.action_btns{
-  display: flex;
-  flex-direction: row;
-  flex:1;
-  justify-content: center;
-}
-.album_meta{
-  padding-left: 15px;
-}
-.alb_label{
-  font-size: 0.8em;
-}
-.playlist {
-  background: #e3e3e3;
-  flex: 1 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.selected {
-  background: white;
-}
-
-
-
-.songContainer {
-  cursor: pointer;
-  user-select: none;
-}
-
-.pltext {
-  padding: 5px;
-}
-
-.loi {
-  margin: 0 auto;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1;
-  padding: 0;
-  width: 70vw;
-}
-
-.loi li {
-  margin: 2px;
-  font-weight: 450;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.loi li:hover{
-  background-color: #dfdfdf;
-}
-
-.songlist {
-  overflow-y: auto;
-}
-.songmeta{
-  display: flex;
-  flex-direction: column;
-  flex: 1 1;
-
-}
-.songname {
-  padding: 0 10px;
-  font-weight: 600;
-  font-size: 1.125rem;
-}
-.songauthors {
-  padding: 0 10px;
-  font-weight: normal;
-  color: #555;
-  font-size: 0.875rem;
-}
-.song_duration{
-  color:#555;
-}
-.fav_song{
-  color: red;
-  margin-right: 5px;
-}
-
 .controls {
   display: flex;
   flex-direction: row;
@@ -257,8 +153,7 @@ to clean */
 }
 
 .play {
-  background: #4AA9DE;
-  padding: 15px 18px;
+  
   border-radius: 100%;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
   position: relative;
@@ -274,20 +169,16 @@ to clean */
 }
 
 .prev {
-  background: #4aa9de;
+  
   border-radius: 10px 0 0px 10px;
-  padding-left: 15px;
-  padding-right: 10px;
-  margin-right: -5px;
+ 
   z-index: 1;
 }
 
 .next {
-  background: #4aa9de;
+  
   border-radius: 0px 10px 10px 0px;
-  padding-right: 15px;
-  padding-left: 10px;
-  margin-left: -5px;
+ 
   z-index: 1;
 }
 
