@@ -1,128 +1,3 @@
-.rhap_container{
-    background-color: #282828;
-    border-radius: 0.5rem;
-    width: 90%;
-}
-
-.rhap_main{
-    flex-direction: column;
-}
-
-.rhap_time{
-    color:white;
-}
-
-.rhap_progress-filled{
-    background-color: #02E4E6;
-}
-
-.rhap_download-progress{
-    background-color: #a1e2e3ad;
-}
-
-.rhap_volume-bar{
-    background-color: #02E4E6;
-}
-
-
-.rhap_main-controls-button{
-    color: #02E4E6;
-}
-
-.rhap_repeat-button{
-    color: #02E4E6;
-}
-
-.rhap_button-clear{
-    color: #02E4E6;
-}
-
-
-@media (max-width: 1320px) {
-
-
-    .rhap_container{
-        width: 80%;
-    }
-}
-
-
-@media (max-width:1024px) {
-
-
-    .rhap_container{
-        width:77%;
-    }
-}
-
-@media (max-width:850px) {
-
-
-    .rhap_container{
-        width: 75%;
-    }
-}
-
-
-@media (max-width: 640px) {
-
-
-    .rhap_container{
-        width: 95%;
-    }
-
-    .rhap_main{
-        flex-direction: row;
-    }
-    .rhap_repeat-button{
-        display: none;
-    }
-
-    .rhap_forward-button{
-        display: none;
-    }
-
-    .rhap_rewind-button{
-        display: none;
-    }
-        
-    
-}
-
-/* 
-to clean */
-
-
-.controls {
-  display: flex;
-  flex-direction: row;
-  height: 110px;
-  background: #3a3a3a;
-  color: white;
-  align-items: center;
-  width: 100vw;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
-.vlme {
-  display: flex;
-  align-content: center;
-  overflow: hidden;
-  width: 25px;
-  transition: all 500ms;
-  position: absolute;
-  left: 0;
-}
-
-.vlme:hover {
-  width: 90px;
-}
-
-.volum {
-  padding: 10px;
-}
 
 #volBar {
   padding: 0;
@@ -134,53 +9,13 @@ to clean */
 #volBar::-moz-range-thumb {
   height: 10px;
   width: 3px;
-  background: #2A6586;
+  background: #02E4E6;
+  color:#02E4E6;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.musicControls {
-  margin-left: 90px;
-  min-width: 120px;
-}
 
-.musicControls span {
-  cursor: pointer;
-}
-
-.musicControls span:hover {
-  color: #2A6586;
-}
-
-.play {
-  
-  border-radius: 100%;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
-  position: relative;
-  z-index: 3;
-}
-
-.play:active {
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-}
-
-.play:hover {
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
-}
-
-.prev {
-  
-  border-radius: 10px 0 0px 10px;
- 
-  z-index: 1;
-}
-
-.next {
-  
-  border-radius: 0px 10px 10px 0px;
- 
-  z-index: 1;
-}
 
 .progressb {
 display: flex;
@@ -197,41 +32,8 @@ display: flex;
   display: flex;
   flex-direction: column;
 }
-.songtitle{
-  display: block;
-  font-size: 1.125em;
-  font-weight: 600;
-}
-.songartistName{
-  font-size: 0.8em;
-}
+
 #prgbar {
   background: transparent;
   width: 100%;
-}
-
-.plsoptions {
-  display: flex;
-  justify-content: space-evenly;
-  width: 10vw;
-}
-
-.plsoptions span {
-  cursor: pointer;
-  border-bottom: 3px solid transparent;
-}
-
-.plsoptions span:hover {
-  color: #2A6586;
-}
-
-.plsoptions span.active {
-  color: rgb(95 181 233);
-  border-bottom: 3px solid rgb(95 181 233);
-  border-radius: 4px;
-}
-
-.currentT, .totalT {
-  width: 35px;
-  margin: 0 10px;
-}
+} 

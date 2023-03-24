@@ -1,5 +1,4 @@
 import React from "react";
-// import AudioPlayerDk from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import "./AudioBar.css";
 import { useContext, useRef, useState, useEffect } from "react";
@@ -87,8 +86,8 @@ export const AudioBar = ({ url, name, artist }) => {
 
 
   return (
-    <div className="controls ">
-      <div className="flex flex-row h-28 bg-newgray text-white w-screen align-center fixed">
+    
+      <div className="flex flex-row">
       <audio
           ref={audio}
           onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
@@ -98,8 +97,8 @@ export const AudioBar = ({ url, name, artist }) => {
           preload="true"
           src={url}
         />
-        <div className="vlme">
-          <span className="volum">
+        <div className="flex content-center overflow-hidden w-6 transition-all delay-500 absolute left-3 hover:w-20">
+          <span className="w-2.5">
             <FaVolumeDown />
           </span>
           <input
@@ -111,35 +110,35 @@ export const AudioBar = ({ url, name, artist }) => {
           />
         </div>
 
-        <div className="musicControls">
-          <span className="prev" onClick={prevSong}>
+        <div className="flex flex-row ml-24 min-w-32">
+          <span className="m-4 mt-5 text-xl text-teal cursor-pointer hover:text-cyan-800" onClick={prevSong}>
             <FaStepBackward />
           </span>
 
           <span
-            className="play"
+            className="flex flex-row m-2 p-2 items-center bg-teal w-20 rounded-full sm:w-12 h-12"
             onClick={() => {
               handlePlayOn();
               toggleAudio();
             }}
           >
-            <span onClick={handlePlayOn} className={!playOn ? "" : "hidden"}>
-              <FaPlay />
+            <span className={!playOn ? "" : "hidden"}>
+              <FaPlay className="ml-3"/>
             </span>
-            <span onClick={handlePlayOn} className={!playOn ? "hidden" : ""}>
-              <FaPause />
+            <span className={!playOn ? "hidden" : ""}>
+              <FaPause className="ml-3" />
             </span>
           </span>
 
-          <span className="next" onClick={nextSong}>
+          <span className="m-4 mt-5 text-xl cursor-pointer text-teal hover:text-cyan-800" onClick={nextSong}>
             <FaStepForward />
           </span>
         </div>
 
-        <div className="progressb">
-          <div className="songMeta">
-            <span className="songtitle">{name}</span>
-            <span className="songartistName">{artist}</span>
+        <div className="flex justify-center items-center ml-5">
+          <div>
+            <span className="block text-md font-semibold">{name}</span>
+            <span className="text-sm">{artist}</span>
           </div>
           <input
             onChange={handleProgress}
@@ -148,10 +147,10 @@ export const AudioBar = ({ url, name, artist }) => {
             name="progresBar"
             id="prgbar"
           />
-          <span className="currentT">{fmtMSS(currentTime)}</span>/
-          <span className="totalT">{fmtMSS(dur)}</span>
+          <span className="w-9 mt-2.5 mb-2.5">{fmtMSS(currentTime)}</span>/
+          <span className="w-9 mt-2.5 mb-2.5">{fmtMSS(dur)}</span>
         </div>
-        <div className="plsoptions">
+        <div className="flex justify-evenly w-[10vw] text-teal ml-6 mt-5 cursor-pointer hover:text-cyan-800">
           <span
             onClick={toggleRandom}
             className={"random " + (random ? "active" : "")}
@@ -166,17 +165,11 @@ export const AudioBar = ({ url, name, artist }) => {
           </span>
         </div>
 
-        <div>
+        <div className="text-teal text-xl mt-5 cursor-pointer hover:text-cyan-800">
           <Link to="/nowplaying">
             <AiOutlineExpandAlt />
           </Link>
         </div>
       </div>
-
-      {/* <AudioPlayerDk
-        src={url}
-        onEnded={() => handleIndex(indexPlay + 1)}
-      /> */}
-    </div>
   );
 };

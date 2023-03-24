@@ -34,7 +34,7 @@ export const Home = () => {
         </div>
       )}
       <Outlet />
-      <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
+      <div className="bottom-3 p-3 flex flex-row h-24 bg-newgray text-white w-11/12 items-center justify-center fixed rounded-md ml-14">
         <AudioBar
           url={playOn ? musicToPlay[indexPlay].url : ""}
           name={playOn ? musicToPlay[indexPlay].name : ""}
