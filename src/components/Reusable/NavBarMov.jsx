@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const NavBarMov = ({ currentPage }) => {
   return (
-    <nav className="fixed bottom-[8rem] p-3 w-full">
+    <nav className=" static  bottom-[8rem] p-3 w-full">
       <div className=" p-4 rounded-3xl w-full h-16 bg-newgray flex align-middle justify-around text-4xl">
         <Link to="/">
           <AiFillHome className={currentPage === "home" ? "text-teal" : ""} />

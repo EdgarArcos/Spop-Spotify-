@@ -47,10 +47,12 @@ export const SideMenu = () => {
         </div>
         <p className="ml-2">Create Playlist</p>
       </div>
+      <Link to="/likelibrary">
       <div className="flex flex-row p-2 border-solid border-b border-newgray pb-5  hover:bg-newgray rounded-md cursor-pointer">
         <img className="w-7 rounded mr-2" src={likedsongs} alt="liekdsongs" />
         <p className="ml-2">Liked Songs</p>
       </div>
+      </Link>
     </div>
   );
 };
