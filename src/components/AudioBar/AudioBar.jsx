@@ -131,10 +131,10 @@ export const AudioBar = ({ url, name, artist }) => {
           >
 
             <span className={!playOn ? "" : "hidden"}>
-              <FaPlay className="ml-1 sm:ml-3"/>
+              <FaPlay className="ml-1 sm:ml-1"/>
             </span>
             <span className={!playOn ? "hidden" : ""}>
-              <FaPause className="ml-0 sm:ml-3" />
+              <FaPause className="ml-0 sm:ml-1" />
             </span>
           </span>
 
@@ -168,7 +168,7 @@ export const AudioBar = ({ url, name, artist }) => {
 
 
 
-        <div className="flex justify-evenly w-[10vw] text-teal ml-6  cursor-pointer hover:text-cyan-800">
+        <div className="hidden sm:flex justify-evenly w-[10vw] text-teal ml-6  cursor-pointer hover:text-cyan-800">
         <div className="text-teal text-xl mt-5 cursor-pointer hover:text-cyan-800">
           <span
             onClick={handleRandom}
