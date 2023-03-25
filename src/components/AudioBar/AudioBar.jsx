@@ -87,7 +87,7 @@ export const AudioBar = ({ url, name, artist }) => {
 
   return (
     
-      <div className="flex flex-row">
+      <div className="flex flex-col sm:flex-row">
       <audio
           ref={audio}
           onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
@@ -97,7 +97,12 @@ export const AudioBar = ({ url, name, artist }) => {
           preload="true"
           src={url}
         />
-        <div className="flex content-center overflow-hidden w-6 transition-all delay-500 absolute left-3 hover:w-20">
+
+        
+
+
+
+        <div className="hidden sm:flex content-center overflow-hidden w-6 transition-all delay-500 absolute left-3 hover:w-20">
           <span className="w-2.5">
             <FaVolumeDown />
           </span>
@@ -110,35 +115,45 @@ export const AudioBar = ({ url, name, artist }) => {
           />
         </div>
 
+
+
         <div className="flex flex-row ml-24 min-w-32">
-          <span className="m-4 mt-5 text-xl text-teal cursor-pointer hover:text-cyan-800" onClick={prevSong}>
+        <span className="m-2 mt-3 text-md sm:m-4 sm:mt-5 sm:text-xl text-teal cursor-pointer hover:text-cyan-800" onClick={prevSong}>
             <FaStepBackward />
           </span>
 
           <span
-            className="flex flex-row m-2 p-2 items-center bg-teal w-20 rounded-full sm:w-12 h-12"
+            className="flex flex-row m-2 p-2 justify-center bg-teal rounded-full text-md w-8 h-8 sm:w-12 sm:h-12 sm:items-center"
             onClick={() => {
               handlePlayOn();
-              toggleAudio();
+              // toggleAudio();
             }}
           >
+
             <span className={!playOn ? "" : "hidden"}>
-              <FaPlay className="ml-3"/>
+              <FaPlay className="ml-1 sm:ml-3"/>
             </span>
             <span className={!playOn ? "hidden" : ""}>
-              <FaPause className="ml-3" />
+              <FaPause className="ml-0 sm:ml-3" />
             </span>
           </span>
 
-          <span className="m-4 mt-5 text-xl cursor-pointer text-teal hover:text-cyan-800" onClick={nextSong}>
+          <span className="m-2 ml-0 mt-3 text-md sm:m-4 sm:mt-5 sm:text-xl cursor-pointer text-teal hover:text-cyan-800" onClick={nextSong}>
             <FaStepForward />
           </span>
+          <div className="text-teal text-xl cursor-pointer hover:text-cyan-800 flex justify-end m-2 ml-10 mt-3 sm:hidden">
+          <Link to="/nowplaying">
+            <AiOutlineExpandAlt />
+          </Link>
         </div>
+
+        </div>
+
 
         <div className="flex justify-center items-center ml-5">
           <div>
             <span className="block text-md font-semibold">{name}</span>
-            <span className="text-sm">{artist}</span>
+            <span className="hidden sm:text-sm">{artist}</span>
           </div>
           <input
             onChange={handleProgress}
@@ -150,6 +165,9 @@ export const AudioBar = ({ url, name, artist }) => {
           <span className="w-9 mt-2.5 mb-2.5">{fmtMSS(currentTime)}</span>/
           <span className="w-9 mt-2.5 mb-2.5">{fmtMSS(dur)}</span>
         </div>
+
+
+
         <div className="flex justify-evenly w-[10vw] text-teal ml-6  cursor-pointer hover:text-cyan-800">
         <div className="text-teal text-xl mt-5 cursor-pointer hover:text-cyan-800">
           <span
