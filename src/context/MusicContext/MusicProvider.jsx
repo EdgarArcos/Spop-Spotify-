@@ -33,14 +33,14 @@ export const MusicProvider = ({ children }) => {
 
 
 
-  const toggleRepeat = () =>
-    dispatch({ type: types.TOGGLE_REPEAT});
+  const handleRepeat = () =>
+    dispatch({ type: types.HANDLE_REPEAT});
 
-  const toggleRandom = () => dispatch({ type: types.TOGGLE_RANDOM });
+  const handleRandom = () => dispatch({ type: types.HANDLE_RANDOM });
 
   const handleEnd = () => {
     if (state.random) {
-      return handleIndex(~~(Math.random() * state.likelist.length));
+      return handleIndex((Math.random() * state.likelist.length));
     } else {
       if (state.repeat) {
         nextSong();
@@ -58,8 +58,8 @@ export const MusicProvider = ({ children }) => {
         musicState,
         handlePlayOn,
         handleIndex,
-        toggleRepeat,
-        toggleRandom,
+        handleRepeat,
+        handleRandom,
         handleEnd,
       }}
     >

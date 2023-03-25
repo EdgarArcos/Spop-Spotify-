@@ -10,8 +10,8 @@ import {
   FaStepForward,
   FaPause,
   FaRandom,
-  FaRedoAlt,
 } from "react-icons/fa";
+import { TbRepeatOnce } from "react-icons/tb";
 import { AiOutlineExpandAlt } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
@@ -19,8 +19,8 @@ export const AudioBar = ({ url, name, artist }) => {
   const {
     handlePlayOn,
     handleIndex,
-    toggleRepeat,
-    toggleRandom,
+    handleRepeat,
+    handleRandom,
     musicState,
   } = useContext(MusicContext);
   const { indexPlay, likelist, random, repeat, playOn } = musicState;
@@ -150,26 +150,31 @@ export const AudioBar = ({ url, name, artist }) => {
           <span className="w-9 mt-2.5 mb-2.5">{fmtMSS(currentTime)}</span>/
           <span className="w-9 mt-2.5 mb-2.5">{fmtMSS(dur)}</span>
         </div>
-        <div className="flex justify-evenly w-[10vw] text-teal ml-6 mt-5 cursor-pointer hover:text-cyan-800">
+        <div className="flex justify-evenly w-[10vw] text-teal ml-6  cursor-pointer hover:text-cyan-800">
+        <div className="text-teal text-xl mt-5 cursor-pointer hover:text-cyan-800">
           <span
-            onClick={toggleRandom}
+            onClick={handleRandom}
             className={"random " + (random ? "active" : "")}
           >
             <FaRandom />
           </span>
+        </div>
+          <div className="text-teal text-2xl mt-5 cursor-pointer hover:text-cyan-800">
           <span
-            onClick={toggleRepeat}
+            onClick={handleRepeat}
             className={"repeat " + (repeat ? "active" : "")}
           >
-            <FaRedoAlt />
+            <TbRepeatOnce />
           </span>
-        </div>
+          </div>
+        
 
-        <div className="text-teal text-xl mt-5 cursor-pointer hover:text-cyan-800">
+        <div className="text-teal text-2xl mt-5 cursor-pointer hover:text-cyan-800">
           <Link to="/nowplaying">
             <AiOutlineExpandAlt />
           </Link>
         </div>
+      </div>
       </div>
   );
 };
