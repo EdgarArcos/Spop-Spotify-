@@ -1,5 +1,4 @@
 import React from "react";
-// import AudioPlayerDk from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import "./AudioBar.css";
 import { useContext, useRef, useState, useEffect } from "react";
@@ -11,13 +10,13 @@ import {
   FaStepForward,
   FaPause,
   FaRandom,
-  FaRedoAlt,
 } from "react-icons/fa";
+import { TbRepeatOnce } from "react-icons/tb";
 import { AiOutlineExpandAlt } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 export const AudioBar = ({ url, name, artist }) => {
-  const { handlePlayOn, handleIndex, toggleRepeat, toggleRandom, musicState } =
+  const { handlePlayOn, handleIndex, handleRepeat, handleRandom, musicState } =
     useContext(MusicContext);
   const { indexPlay, likelist, random, repeat, playOn } = musicState;
 
@@ -78,96 +77,106 @@ export const AudioBar = ({ url, name, artist }) => {
   };
 
   return (
-    <div className="controls ">
-      <div className="flex flex-row h-28 bg-newgray text-white w-screen align-center fixed">
-        <audio
-          ref={audio}
-          onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
-          onCanPlay={(e) => setDur(e.target.duration)}
-          onEnded={repeatSong}
-          type="audio/mpeg"
-          preload="true"
-          src={url}
+    <div className="flex flex-col sm:flex-row">
+      <audio
+        ref={audio}
+        onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
+        onCanPlay={(e) => setDur(e.target.duration)}
+        onEnded={repeatSong}
+        type="audio/mpeg"
+        preload="true"
+        src={url}
+      />
+
+      <div className="hidden sm:flex content-center overflow-hidden w-6 transition-all delay-500 absolute left-3 hover:w-20">
+        <span className="w-2.5">
+          <FaVolumeDown />
+        </span>
+        <input
+          value={Math.round(statevolum * 100)}
+          type="range"
+          name="volBar"
+          id="volBar"
+          onChange={(e) => handleVolume(e.target.value / 100)}
         />
-        <div className="vlme">
-          <span className="volum">
-            <FaVolumeDown />
-          </span>
-          <input
-            value={Math.round(statevolum * 100)}
-            type="range"
-            name="volBar"
-            id="volBar"
-            onChange={(e) => handleVolume(e.target.value / 100)}
-          />
-        </div>
+      </div>
 
-        <div className="musicControls">
-          <span className="prev" onClick={prevSong}>
-            <FaStepBackward />
-          </span>
+      <div className="flex flex-row ml-24 min-w-32">
+        <span
+          className="m-2 mt-3 text-md sm:m-4 sm:mt-5 sm:text-xl text-teal cursor-pointer hover:text-cyan-800"
+          onClick={prevSong}
+        >
+          <FaStepBackward />
+        </span>
 
-          <span
-            className="play"
-            onClick={() => {
-              handlePlayOn();
-              toggleAudio();
-            }}
-          >
-            <span className={!playOn ? "" : "hidden"}>
-              <FaPlay />
-            </span>
-            <span className={!playOn ? "hidden" : ""}>
-              <FaPause />
-            </span>
+        <span
+          className="flex flex-row m-2 p-2 justify-center bg-teal rounded-full text-md w-8 h-8 sm:w-12 sm:h-12 sm:items-center"
+          onClick={() => {
+            handlePlayOn();
+            // toggleAudio();
+          }}
+        >
+          <span className={!playOn ? "" : "hidden"}>
+            <FaPlay className="ml-1 sm:ml-1" />
           </span>
+          <span className={!playOn ? "hidden" : ""}>
+            <FaPause className="ml-0 sm:ml-1" />
+          </span>
+        </span>
 
-          <span className="next" onClick={nextSong}>
-            <FaStepForward />
-          </span>
-        </div>
-
-        <div className="progressb">
-          <div className="songMeta">
-            <span className="songtitle">{name}</span>
-            <span className="songartistName">{artist}</span>
-          </div>
-          <input
-            onChange={handleProgress}
-            value={dur ? (currentTime * 100) / dur : 0}
-            type="range"
-            name="progresBar"
-            id="prgbar"
-          />
-          <span className="currentT">{fmtMSS(currentTime)}</span>/
-          <span className="totalT">{fmtMSS(dur)}</span>
-        </div>
-        <div className="plsoptions">
-          <span
-            onClick={toggleRandom}
-            className={"random " + (random ? "active" : "")}
-          >
-            <FaRandom />
-          </span>
-          <span
-            onClick={toggleRepeat}
-            className={"repeat " + (repeat ? "active" : "")}
-          >
-            <FaRedoAlt />
-          </span>
-        </div>
-
-        <div>
+        <span
+          className="m-2 ml-0 mt-3 text-md sm:m-4 sm:mt-5 sm:text-xl cursor-pointer text-teal hover:text-cyan-800"
+          onClick={nextSong}
+        >
+          <FaStepForward />
+        </span>
+        <div className="text-teal text-xl cursor-pointer hover:text-cyan-800 flex justify-end m-2 ml-10 mt-3 sm:hidden">
           <Link to="/nowplaying">
             <AiOutlineExpandAlt />
           </Link>
         </div>
       </div>
 
-      {/* <AudioPlayerDk
-        src={url}
-        onEnded={() => handleIndex(indexPlay + 1)}
-      /> */}
+      <div className="flex justify-center items-center ml-5">
+        <div>
+          <span className="block text-md font-semibold">{name}</span>
+          <span className="hidden sm:text-sm">{artist}</span>
+        </div>
+        <input
+          onChange={handleProgress}
+          value={dur ? (currentTime * 100) / dur : 0}
+          type="range"
+          name="progresBar"
+          id="prgbar"
+        />
+        <span className="w-9 mt-2.5 mb-2.5">{fmtMSS(currentTime)}</span>/
+        <span className="w-9 mt-2.5 mb-2.5">{fmtMSS(dur)}</span>
+      </div>
+
+      <div className="hidden sm:flex justify-evenly w-[10vw] text-teal ml-6  cursor-pointer hover:text-cyan-800">
+        <div className="text-teal text-xl mt-5 cursor-pointer hover:text-cyan-800">
+          <span
+            onClick={handleRandom}
+            className={"random " + (random ? "active" : "")}
+          >
+            <FaRandom />
+          </span>
+        </div>
+        <div className="text-teal text-2xl mt-5 cursor-pointer hover:text-cyan-800">
+          <span
+            onClick={handleRepeat}
+            className={"repeat " + (repeat ? "active" : "")}
+          >
+            <TbRepeatOnce />
+          </span>
+        </div>
+
+        <div className="text-teal text-2xl mt-5 cursor-pointer hover:text-cyan-800">
+          <Link to="/nowplaying">
+            <AiOutlineExpandAlt />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
