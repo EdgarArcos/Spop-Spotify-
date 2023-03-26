@@ -17,13 +17,8 @@ import { AiOutlineExpandAlt } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 export const AudioBar = ({ url, name, artist }) => {
-  const {
-    handlePlayOn,
-    handleIndex,
-    toggleRepeat,
-    toggleRandom,
-    musicState,
-  } = useContext(MusicContext);
+  const { handlePlayOn, handleIndex, toggleRepeat, toggleRandom, musicState } =
+    useContext(MusicContext);
   const { indexPlay, likelist, random, repeat, playOn } = musicState;
 
   const [statevolum, setStateVolum] = useState(0.3);
@@ -73,23 +68,19 @@ export const AudioBar = ({ url, name, artist }) => {
     }
   };
 
-  const repeatSong = () =>{
-    if(repeat){
-      handleIndex(indexPlay)
-      toggleAudio()
-    }else{
-      handleIndex(indexPlay + 1)
+  const repeatSong = () => {
+    if (repeat) {
+      handleIndex(indexPlay);
+      toggleAudio();
+    } else {
+      handleIndex(indexPlay + 1);
     }
-  }
-
-  
-
-
+  };
 
   return (
     <div className="controls ">
       <div className="flex flex-row h-28 bg-newgray text-white w-screen align-center fixed">
-      <audio
+        <audio
           ref={audio}
           onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
           onCanPlay={(e) => setDur(e.target.duration)}
@@ -123,10 +114,10 @@ export const AudioBar = ({ url, name, artist }) => {
               toggleAudio();
             }}
           >
-            <span onClick={handlePlayOn} className={!playOn ? "" : "hidden"}>
+            <span className={!playOn ? "" : "hidden"}>
               <FaPlay />
             </span>
-            <span onClick={handlePlayOn} className={!playOn ? "hidden" : ""}>
+            <span className={!playOn ? "hidden" : ""}>
               <FaPause />
             </span>
           </span>
