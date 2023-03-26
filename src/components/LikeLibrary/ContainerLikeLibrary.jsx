@@ -2,10 +2,8 @@ import { useContext } from "react";
 import React from "react";
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from "./PlayButtonLibrary";
-import { SideMenu } from "../Reusable";
-import { SlHeart } from "react-icons/sl";
-import { BiTime } from "react-icons/bi";
-import { AudioBar } from "../AudioBar/AudioBar";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const ContainerLikeLibrary = () => {
@@ -29,7 +27,7 @@ export const ContainerLikeLibrary = () => {
           <div className="flex flex-row">
             <PlayButtonLibrary />
             <div className="hidden sm:flex m-4 items-center">
-              <SlHeart className="text-2xl" />
+              <FaHeart className="text-2xl text-teal" />
             </div>
           </div>
           <div className="flex flex-col m-5">
@@ -40,7 +38,7 @@ export const ContainerLikeLibrary = () => {
                   <th>Title</th>
                   <th className="hidden md:grid">Artist</th>
                   <th className="hidden lg:grid">
-                    <BiTime />
+                    <FaRegHeart />
                   </th>
                 </tr>
               </thead>
@@ -50,14 +48,6 @@ export const ContainerLikeLibrary = () => {
             </table>
           </div>
         </div>
-        <div></div>
-        {/* <div className="fixed bottom-3 p-3 w-full sm:w-11/12"> */}
-        {/* <AudioBar
-            url={playOn ? likelist[indexPlay].url : ""}
-            name={playOn ? likelist[indexPlay].name : ""}
-            artist={playOn ? likelist[indexPlay].artist : ""}
-          /> */}
-        {/* </div> */}
       </div>
     </div>
   );

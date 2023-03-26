@@ -1,5 +1,5 @@
-import { FaPlay } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { FaPlay, FaHeart } from "react-icons/fa";
+import { useContext } from "react";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const EachLikeSong = ({ song, index }) => {
@@ -43,7 +43,7 @@ export const EachLikeSong = ({ song, index }) => {
         <td className="hidden md:grid  pt-6 justify-start pl-14 font-bold text-graytext">
           Playlist · {artist}
         </td>
-        <td className="hidden lg:grid  pt-6 justify-start">Time</td>
+        <td className="hidden lg:grid  pt-6 justify-start"><FaHeart className="text-teal"/></td>
       </tr>
     </tbody>
   );

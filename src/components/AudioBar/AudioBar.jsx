@@ -157,7 +157,7 @@ export const AudioBar = ({ url, name, artist }) => {
         <div className="text-teal text-xl mt-5 cursor-pointer hover:text-cyan-800">
           <span
             onClick={handleRandom}
-            className={"random " + (random ? "active" : "")}
+            className={!random ? "text-teal" : "text-cyan-800"}
           >
             <FaRandom />
           </span>
@@ -165,7 +165,7 @@ export const AudioBar = ({ url, name, artist }) => {
         <div className="text-teal text-2xl mt-5 cursor-pointer hover:text-cyan-800">
           <span
             onClick={handleRepeat}
-            className={"repeat " + (repeat ? "active" : "")}
+            className={!repeat ? "text-teal" : "text-cyan-800"}
           >
             <TbRepeatOnce />
           </span>
