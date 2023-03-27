@@ -12,7 +12,6 @@ export const LikeButton = ({
   const addSongFavList = (id) => {
     setIsLiked(!isLiked);
     console.log(id);
-    // falta la lógica de guardar en lista cuándo tengamos el backend
   };
 
   return (

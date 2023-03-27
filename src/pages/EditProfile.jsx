@@ -37,7 +37,7 @@ export const EditProfile = () => {
           <button
             type="button"
             className="sm:w-40 sm:border sm:border-teal sm:rounded-lg sm:text-1xl sm:bg-graytext sm:hover:opacity-60 sm:transition sm:duration-500 sm:mb-5
-      w-40 border border-teal rounded-lg text-1xl sm:bg-graytext hover:opacity-60 transition duration-500 mb-5"
+      w-40 border border-teal rounded-lg text-1xl hover:opacity-60 transition duration-500 mb-5"
           >
             <p className="sm:py-2 sm:px-5 sm:text-white py-2 px-5 text-white">
               Reset password

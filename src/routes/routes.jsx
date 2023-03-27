@@ -6,12 +6,12 @@ import { SearchResultsContainer } from "../components/SearchPage";
 import {
   NowPlaying,
   Home,
-  SplashScreen,
   Login,
   EditProfile,
   Profile,
   Register,
   ResetPassword,
+  Errorpage,
 } from "../pages";
 
 export const router = createBrowserRouter([
@@ -42,10 +42,6 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "splashscreen",
-    element: <SplashScreen />,
-  },
-  {
     path: "login",
     element: <Login />,
   },
@@ -64,5 +60,9 @@ export const router = createBrowserRouter([
   {
     path: "resetpassword",
     element: <ResetPassword />,
+  },
+  {
+    path: "*",
+    element: <Errorpage />,
   },
 ]);

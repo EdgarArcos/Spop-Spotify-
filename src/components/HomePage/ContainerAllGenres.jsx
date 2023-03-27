@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../api/api-utils";
-import { useScreenWidth } from "../../hooks/useScreenWidth";
-import { NavBarMov, SideMenu } from "../Reusable";
 import { ContainerEachGenre } from "./ContainerEachGenre";
 
 export const ContainerAllGenres = () => {
