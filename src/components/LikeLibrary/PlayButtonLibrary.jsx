@@ -1,20 +1,33 @@
-import React from 'react'
-import { FaPlay } from 'react-icons/fa';
+import { useContext } from "react";
+import { FaPlay, FaPause } from "react-icons/fa";
+import { MusicContext } from "../../context/MusicContext/MusicContext";
 
-export const PlayButtonLibrary = ({setPlayOn, playOn, setIndexPlay}) => {
+export const PlayButtonLibrary = () => {
+  const { handlePlayOn, handleIndex, musicState } = useContext(MusicContext);
+  const { playOn } = musicState;
 
-    const handleIndex = () => {
-        setIndexPlay(0);
-        setPlayOn(!playOn);
+  const handleIndexPlay = () => {
+    handleIndex(0);
+    handlePlayOn();
+  };
 
-    }
-
-    return (
+  return (
     <div>
-        <button className="flex flex-row m-4 p-2 items-center bg-teal w-20 rounded-full sm:w-14 h-14">
-            <FaPlay onClick={handleIndex}  className="w-5 pl-2 sm:w-20" />
-            <p className="ml-2 sm:hidden">Play</p>
-        </button>
-    </div> 
-    )
-}
+      <button onClick={handleIndexPlay} className="flex flex-row m-4 p-2 items-center bg-teal w-24 rounded-full sm:w-14 h-14 justify-center">
+        <span className={!playOn ? "" : "hidden"}>
+          <FaPlay className="w-5 sm:w-20" />
+        </span>
+        <span className={!playOn ? "" : "hidden"}>
+          <p className="ml-2 sm:hidden">Play</p>
+        </span> 
+        <span className={!playOn ? "hidden" : ""}>
+          <FaPause  className="w-5 sm:w-20"/>     
+          </span>
+        <span className={!playOn ? "hidden" : ""}>
+          <p className="ml-2 sm:hidden">Pause</p>
+        </span>
+        
+      </button>
+    </div>
+  );
+};

@@ -1,33 +1,17 @@
-import { useEffect, useState } from "react";
-import { makeRequest } from "../../api/api-utils";
+import { useContext } from "react";
 import React from "react";
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from "./PlayButtonLibrary";
-import { SideMenu } from "../Reusable";
-import { SlHeart } from "react-icons/sl";
-import { BiTime } from "react-icons/bi";
-import { AudioBar } from "../AudioBar/AudioBar";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+
+import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const ContainerLikeLibrary = () => {
-  const [likelist, setlikelist] = useState([]);
-  const [photolist, setPhotolist] = useState([]);
-  const [indexPlay, setIndexPlay] = useState(0);
-  const [playOn, setPlayOn] = useState(false);
-
-  useEffect(() => {
-    makeRequest("tracks").then((data) => setlikelist(data));
-  }, []);
-
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * 20);
-    makeRequest("tracks").then((data) => setPhotolist(data[randomIndex]));
-  }, []);
+  const { musicState } = useContext(MusicContext);
+  const { likelist, photolist } = musicState;
 
   return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">
-      <div className="h-screen fixed w-60 ">
-        <SideMenu />
-      </div>
       <div className=" bg-newblack sm:pl-60">
         <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-cyan-700 to-zinc-800 smborder-b border-graytext">
           <img
@@ -41,13 +25,9 @@ export const ContainerLikeLibrary = () => {
         </div>
         <div className="bg-newblack sm:bg-gradient-to-b from-zinc-800 to-newblack pt-2">
           <div className="flex flex-row">
-            <PlayButtonLibrary
-              setPlayOn={setPlayOn}
-              playOn={playOn}
-              setIndexPlay={setIndexPlay}
-            />
+            <PlayButtonLibrary />
             <div className="hidden sm:flex m-4 items-center">
-              <SlHeart className="text-2xl" />
+              <FaHeart className="text-2xl text-teal" />
             </div>
           </div>
           <div className="flex flex-col m-5">
@@ -58,29 +38,15 @@ export const ContainerLikeLibrary = () => {
                   <th>Title</th>
                   <th className="hidden md:grid">Artist</th>
                   <th className="hidden lg:grid">
-                    <BiTime />
+                    <FaRegHeart />
                   </th>
                 </tr>
               </thead>
               {likelist.map((song, index) => (
-                <EachLikeSong
-                  key={song.id}
-                  index={index}
-                  song={song}
-                  setIndexPlay={setIndexPlay}
-                  setPlayOn={setPlayOn}
-                />
+                <EachLikeSong key={song.id} index={index} song={song} />
               ))}
             </table>
           </div>
-        </div>
-        <div></div>
-        <div className="fixed bottom-3 p-3 w-full sm:w-11/12">
-          <AudioBar
-            url={playOn ? likelist[indexPlay].url : ""}
-            setPlayOn={setPlayOn}
-            setIndexPlay={setIndexPlay}
-          />
         </div>
       </div>
     </div>

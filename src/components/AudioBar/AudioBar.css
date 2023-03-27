@@ -1,90 +1,39 @@
-.rhap_container{
-    background-color: #282828;
-    border-radius: 0.5rem;
-    width: 90%;
+
+#volBar {
+  padding: 0;
+  margin: 0;
+  width: 50px;
+  background: transparent;
 }
 
-.rhap_main{
-    flex-direction: column;
-}
-
-.rhap_time{
-    color:white;
-}
-
-.rhap_progress-filled{
-    background-color: #02E4E6;
-}
-
-.rhap_download-progress{
-    background-color: #a1e2e3ad;
-}
-
-.rhap_volume-bar{
-    background-color: #02E4E6;
+#volBar::-moz-range-thumb {
+  height: 10px;
+  width: 3px;
+  background: #02E4E6;
+  color:#02E4E6;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 
-.rhap_main-controls-button{
-    color: #02E4E6;
+
+.progressb {
+display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    flex: 1;
+}
+.songMeta{
+  width: 25vw;
+}
+.songmeta_playlist{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.rhap_repeat-button{
-    color: #02E4E6;
-}
-
-.rhap_button-clear{
-    color: #02E4E6;
-}
-
-
-@media (max-width: 1320px) {
-
-
-    .rhap_container{
-        width: 80%;
-    }
-}
-
-
-@media (max-width:1024px) {
-
-
-    .rhap_container{
-        width:77%;
-    }
-}
-
-@media (max-width:850px) {
-
-
-    .rhap_container{
-        width: 75%;
-    }
-}
-
-
-@media (max-width: 640px) {
-
-
-    .rhap_container{
-        width: 95%;
-    }
-
-    .rhap_main{
-        flex-direction: row;
-    }
-    .rhap_repeat-button{
-        display: none;
-    }
-
-    .rhap_forward-button{
-        display: none;
-    }
-
-    .rhap_rewind-button{
-        display: none;
-    }
-        
-    
-}
+#prgbar {
+  background: transparent;
+  width: 100%;
+} 
