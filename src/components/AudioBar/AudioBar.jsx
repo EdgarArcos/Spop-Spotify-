@@ -140,7 +140,7 @@ export const AudioBar = ({ url, name, artist }) => {
       <div className="flex justify-center items-center ml-5">
         <div>
           <span className="block text-md font-semibold">{name}</span>
-          <span className="hidden sm:text-sm">{artist}</span>
+          <span className="hidden sm:block text-sm">{artist}</span>
         </div>
         <input
           onChange={handleProgress}

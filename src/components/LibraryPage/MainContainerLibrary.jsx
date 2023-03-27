@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { makeRequest } from "../../api/api-utils";
 import { PlaylistCard } from "./PlaylistCard";
-import likedsongsImg from "../../assets/testimg/likedsongs.png";
+import likedsongsbig from "../../assets/testimg/likedsongsbig.png";
 import { Link } from "react-router-dom";
 
 export const MainContainerLibrary = () => {
@@ -19,7 +19,7 @@ export const MainContainerLibrary = () => {
       <div className="grid grid-cols-2 place-items-center gap-y-4 p-5 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
       <Link to="/likelibrary">
         <PlaylistCard
-          srcImg={likedsongsImg}
+          srcImg={likedsongsbig}
           nameList="Liked Songs"
           infoList={`Playlist - ${likedSongs.length} songs`}
         />
