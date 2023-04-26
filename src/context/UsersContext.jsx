@@ -1,14 +1,13 @@
-import { createContext, useState} from 'react';
+import { createContext, useState } from "react";
 
 export const UsersContext = createContext();
 
-const UserName = ({children}) => {
-    const [users, setUsers] = useState(JSON.parse(localStorage.getItem({}))||[]);
-    return (
-        <UsersContext.Provider value={[users, setUsers]}>
-            {children}
-        </UsersContext.Provider>
-    );
-};
+export const UsersProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
-export default UserName;
+  return (
+    <UsersContext.Provider value={{ user, setUser }}>
+      {children}
+    </UsersContext.Provider>
+  );
+};
