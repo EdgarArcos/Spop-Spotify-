@@ -4,8 +4,8 @@ import likedsongs from "../../assets/testimg/likedsongs.png";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { BiLibrary} from "react-icons/bi";
 import { FaUserCircle } from "react-icons/fa";
-import { BsFillPlusSquareFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { CreatePlaylist } from "../List/CreatePlaylist";
 
 export const SideMenu = () => {
   return (
@@ -41,12 +41,7 @@ export const SideMenu = () => {
       <div className="flex flex-row p-2">
         <p className="text-graytext m-3">PLAYLIST</p>
       </div>
-      <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
-        <div>
-          <BsFillPlusSquareFill className="text-2xl mr-3" />
-        </div>
-        <p className="ml-2">Create Playlist</p>
-      </div>
+        <CreatePlaylist />
       <Link to="/likelibrary">
       <div className="flex flex-row p-2 border-solid border-b border-newgray pb-5  hover:bg-newgray rounded-md cursor-pointer">
         <img className="w-7 rounded mr-2" src={likedsongs} alt="liekdsongs" />

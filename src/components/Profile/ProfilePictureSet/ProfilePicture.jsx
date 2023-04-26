@@ -102,53 +102,114 @@
 //   );
 // };
 
-import React, { Component } from "react";
-export class ProfilePicture extends Component {
-  state = {
-    profileImg: "https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE=",
-  };
-  imageHandler = (e) => {
-    const reader = new FileReader();
-    console.log(reader)
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        this.setState({ profileImg: reader.result });
-      }
-    };
-    reader.readAsDataURL(e.target.files[0]);
-  };
-  render() {
-    const { profileImg } = this.state;
-    return (
-      <div className="sm:pt-20 pt-10 pb-16 ">
-        <div className="sm:m-auto sm:rounded-full sm:w-40 sm:h-40 m-auto rounded-full w-40 h-40">
-          <img
-            src={profileImg}
-            alt="Profile image"
-            className="sm:object-cover sm:border-2 sm:border-teal sm:rounded-full sm:w-40 sm:h-40 object-cover border-2 border-teal rounded-full w-40 h-40"
-          />
-          <h3 className="sm:pt-6 sm:flex sm:justify-center sm:text-3xl pt-6 flex justify-center text-xl">
-            Username
-          </h3>
-        </div>
-        <div className="sm:flex sm:justify-center flex justify-center">
-          <label
-            className="sm:-mt-40 sm:cursor-pointer sm:rounded-full sm:w-40 sm:h-40 -mt-40 cursor-pointer rounded-full w-40 h-40"
-            htmlFor="input"
-          >
-            <input
-              type="file"
-              className="hidden"
-              accept="image/*"
-              name="image-upload"
-              id="input"
-              onChange={this.imageHandler}
-            />
-          </label>
-        </div>
-      </div>
-    );
+import React, { useState } from "react";
+import profileimg from "./set-profile-picture.png"
+
+
+
+export const ProfilePicture = () => {
+
+  const [img, setImg] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const uploadImage = async (e) => {
+    const files = e.target.files[0];
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "Profile_Picture_Spop");
+    setLoading(true)
+    const res = await fetch("https://api.cloudinary.com/v1_1/dycz1nib9/Profile_Picture_Spop/upload",
+    {
+      method: "POST",
+      body: data,
+    })
+    const file = await res.json();
+    console.log(res)
+    setImg(file.secure_url)
+    setLoading(false)
   }
+  
+  return (
+    <div className="sm:pt-20 pt-10 pb-16 ">
+    <div className="sm:m-auto sm:rounded-full sm:w-40 sm:h-40 m-auto rounded-full w-40 h-40">
+      <img
+        src={profileimg}
+        alt="Profile image"
+        className="sm:object-cover sm:border-2 sm:border-teal sm:rounded-full sm:w-40 sm:h-40 object-cover border-2 border-teal rounded-full w-40 h-40"
+      />
+      <h3 className="sm:pt-6 sm:flex sm:justify-center sm:text-3xl pt-6 flex justify-center text-xl">
+        Username
+      </h3>
+    </div>
+    <div className="sm:flex sm:justify-center flex justify-center">
+      <label
+        className="sm:-mt-40 sm:cursor-pointer sm:rounded-full sm:w-40 sm:h-40 -mt-40 cursor-pointer rounded-full w-40 h-40"
+        htmlFor="input"
+      >
+        <input
+          type="file"
+                  className="hidden"
+                  accept="image/*"
+                  name="image-upload"
+                  id="input"
+          
+          onChange={uploadImage}
+          
+        />
+      </label>
+    </div>
+  </div>
+  )
 }
 
-export default ProfilePicture;
+
+
+// export class ProfilePicture extends Component {
+//   state = {
+//     profileImg: "https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE=",
+//   };
+//   imageHandler = (e) => {
+//     const reader = new FileReader();
+//     console.log(reader)
+//     reader.onload = () => {
+//       if (reader.readyState === 2) {
+//         this.setState({ profileImg: reader.result });
+//       }
+//     };
+//     reader.readAsDataURL(e.target.files[0]);
+//   };
+//   render() {
+//     const { profileImg } = this.state;
+//     return (
+      // <div className="sm:pt-20 pt-10 pb-16 ">
+      //   <div className="sm:m-auto sm:rounded-full sm:w-40 sm:h-40 m-auto rounded-full w-40 h-40">
+      //     <img
+      //       src={profileImg}
+      //       alt="Profile image"
+      //       className="sm:object-cover sm:border-2 sm:border-teal sm:rounded-full sm:w-40 sm:h-40 object-cover border-2 border-teal rounded-full w-40 h-40"
+      //     />
+      //     <h3 className="sm:pt-6 sm:flex sm:justify-center sm:text-3xl pt-6 flex justify-center text-xl">
+      //       Username
+      //     </h3>
+      //   </div>
+      //   <div className="sm:flex sm:justify-center flex justify-center">
+      //     <label
+      //       className="sm:-mt-40 sm:cursor-pointer sm:rounded-full sm:w-40 sm:h-40 -mt-40 cursor-pointer rounded-full w-40 h-40"
+      //       htmlFor="input"
+      //     >
+      //       <input
+      //         type="file"
+      //         className="hidden"
+      //         accept="image/*"
+      //         name="image-upload"
+      //         id="input"
+      //         onChange={this.imageHandler}
+      //       />
+      //     </label>
+      //   </div>
+      // </div>
+//     );
+//   }
+// }
+
+// export default ProfilePicture;
