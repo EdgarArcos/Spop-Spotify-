@@ -6,7 +6,6 @@ export const Login = () => {
     <div className='flex justify-center items-center h-screen'>
       <LogoResponsive />
       <div className='text-center'>
-        <h2 className='text-2xl'>Login</h2>
         <ButtonLogin />
       </div>
     </div>
