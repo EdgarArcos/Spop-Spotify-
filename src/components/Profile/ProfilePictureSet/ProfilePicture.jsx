@@ -117,18 +117,33 @@ export const ProfilePicture = () => {
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "Profile_Picture_Spop");
-    setLoading(true)
-    const res = await fetch("https://api.cloudinary.com/v1_1/dycz1nib9/Profile_Picture_Spop/upload",
-    {
+    setLoading(true);
+    const res = await fetch("https://api.cloudinary.com/v1_1/dycz1nib9/Profile_Picture_Spop/upload", {
       method: "POST",
       body: data,
-    })
+    });
     const file = await res.json();
-    console.log(res)
-    setImg(file.secure_url)
-    setLoading(false)
-  }
+    console.log(res);
+    setImg(file.secure_url);
+    setLoading(false);
   
+    try {
+      const response = await fetch("http://localhost:4000/users/img", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          public_id: file.public_id,
+          secure_url: file.secure_url,
+        }),
+      });
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="sm:pt-20 pt-10 pb-16 ">
     <div className="sm:m-auto sm:rounded-full sm:w-40 sm:h-40 m-auto rounded-full w-40 h-40">
