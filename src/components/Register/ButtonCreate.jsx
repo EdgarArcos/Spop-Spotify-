@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
 
-export const ButtonCreate = ({saveInputs}) => {
+export const ButtonCreate = () => {
   return (
     <div>
-    <button className='bg-transparent w-80 border-2 border-teal rounded-lg text-2xl hover:bg-teal' onClick={saveInputs}><p className=' hover:text-black py-2 px-5 text-teal'>Create</p></button>
+      <button
+        type="submit"
+        className="bg-transparent w-80 py-2 px-5 border-2 border-teal text-teal rounded-lg text-2xl hover:bg-teal hover:text-black"
+      >
+        Create
+      </button>
     </div>
-  )
-}
+  );
+};
