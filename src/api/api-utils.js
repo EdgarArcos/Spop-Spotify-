@@ -12,9 +12,17 @@ export const makeRequest = async (endPoint) => {
   }
 };
 
-export const addListFetch = async () => {
-  return await axios.post(`${API_URL}/api/list/add`, newList);
-};
+// export const addListFetch = async () => {
+//   return await axios.post(`${API_URL}/api/list/add`, newList);
+// };
 
+
+export const editImgFetch = async (data) => {
+  return await axios.post(`${API_URL}/users/img`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
 
 
