@@ -13,6 +13,7 @@ import {
   ResetPassword,
   Errorpage,
 } from "../pages";
+import { CreateList } from "../components/CreateList/CreateList";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "nowplaying",
         element: <NowPlaying />,
+      },
+      {
+        path: "createplaylist",
+        element: <CreateList />,
       },
     ],
   },
