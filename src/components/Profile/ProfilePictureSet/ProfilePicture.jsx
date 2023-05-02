@@ -1,39 +1,30 @@
-
 import React, { useContext, useState } from "react";
-import profileimage from "./set-profile-picture.png"
-import { editImgFetch } from "../../../api/userRequests"; 
+import profileimage from "./set-profile-picture.png";
+import { editImgFetch } from "../../../api/userRequests";
 import { UsersContext } from "../../../context/UsersContext";
 
-
-
-
 export const ProfilePicture = () => {
-
   const { user, editImg } = useContext(UsersContext);
-  
+
   const handleEditImage = (e) => {
-    
     const data = new FormData();
     data.append("file", e.target.files[0]);
-    data.append("userId",  user && user.id); 
+    data.append("userId", user && user.id);
     editImgFetch(data)
-      .then(response => {
-        console.log(response.data.img)
+      .then((response) => {
         editImg(response.data.img);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
-        
       });
   };
-
 
   return (
     <div className="sm:pt-20 pt-10 pb-16 ">
       <div className="sm:m-auto sm:rounded-full sm:w-40 sm:h-40 m-auto rounded-full w-40 h-40">
         {user && user.img && (
           <img
-            src={profileimg || user.img}
+            src={user.img}
             alt="Profile image"
             className="sm:object-cover sm:border-2 sm:border-teal sm:rounded-full sm:w-40 sm:h-40 object-cover border-2 border-teal rounded-full w-40 h-40"
           />
@@ -48,5 +39,5 @@ export const ProfilePicture = () => {
         </label>
       </div>
     </div>
-  )
-}
+  );
+};
