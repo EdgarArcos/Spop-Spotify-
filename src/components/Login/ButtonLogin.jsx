@@ -5,16 +5,20 @@ import { UsersContext } from '../../context/UsersContext';
 
 export const ButtonLogin = () => {
   const { loginWithRedirect, user} = useAuth0();
-  const { setUser } = useContext(UsersContext);
+  const { auth0Login } = useContext(UsersContext);
 
   const handleLogin = async () => {
     await loginWithRedirect();
-    const { name, email } = user;
-    const response = await auth0loginRequest({ name, email });
-    if (response && response.data.user) {
-      setUser(response.data.user);
-    } else {
-      console.log("Error");
+    if (user) {
+      const { name, email } = user;
+      const response = await auth0loginRequest({ name, email });
+      console.log(user);
+      if (response && response.data.user) {
+        console.log(response.data.user);
+        auth0Login(response.data.user);
+      } else {
+        console.log("Error");
+      }
     }
   };
 
