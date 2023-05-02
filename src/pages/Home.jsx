@@ -4,6 +4,9 @@ import { AudioBar } from "../components/AudioBar/AudioBar";
 import { NavBarMov, SideMenu } from "../components/Reusable";
 import { MusicContext } from "../context/MusicContext/MusicContext";
 import { useScreenWidth } from "../hooks/useScreenWidth";
+import { useAuth0 } from "@auth0/auth0-react";
+import { auth0loginRequest } from "../api/userRequests";
+import { UsersContext } from "../context/UsersContext";
 
 export const Home = () => {
   const screenWidth = useScreenWidth();
@@ -12,10 +15,13 @@ export const Home = () => {
   const { likelist, playOn, indexPlay, random } = musicState;
 
   const [musicToPlay, setMusicToPlay] = useState(null);
+  const { user } = useAuth0();
+  const { auth0Login } = useContext(UsersContext);
 
   const randomList = (listArr) => listArr.sort(() => Math.random() - 0.5);
 
   useEffect(() => {
+    
     const newList = [...likelist];
     if (random) {
       setMusicToPlay(randomList(newList));
@@ -24,6 +30,29 @@ export const Home = () => {
     }
   }, [likelist, random]);
 
+  useEffect(()=>{
+
+    async function fetchData () {
+      if(user?.email && user?.name) {
+        const { name, email } = user;
+      const response = await auth0loginRequest({ name, email });
+      
+      if (response && response.data.user) {
+
+        auth0Login(response.data.user);
+      } else {
+        console.log("Error");
+      }
+      }
+      
+    }
+
+      fetchData();
+    
+  }, [user])
+
+
+  
   return (
     <>
       {screenWidth < 640 ? (

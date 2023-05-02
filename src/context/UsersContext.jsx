@@ -9,8 +9,12 @@ export const UsersProvider = ({ children }) => {
     setUser(user)
 }
 
+const editImg = (url) => {
+  setUser({...user, img:url})
+}
+
   return (
-    <UsersContext.Provider value={{ auth0Login }}>
+    <UsersContext.Provider value={{ auth0Login, user, editImg }}>
       {children}
     </UsersContext.Provider>
   );

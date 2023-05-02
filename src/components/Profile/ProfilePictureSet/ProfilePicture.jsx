@@ -9,17 +9,17 @@ import { UsersContext } from "../../../context/UsersContext";
 
 export const ProfilePicture = () => {
 
-  const { user } = useContext(UsersContext);
-  const [profileimg, setProfileImg] = useState(null);
-
+  const { user, editImg } = useContext(UsersContext);
+  
   const handleEditImage = (e) => {
-    console.log(user)
+    
     const data = new FormData();
     data.append("file", e.target.files[0]);
-    data.append("userId",  user && user.userId); 
+    data.append("userId",  user && user.id); 
     editImgFetch(data)
       .then(response => {
-        setProfileImg(response.data.img);
+        console.log(response.data.img)
+        editImg(response.data.img);
       })
       .catch(error => {
         console.log(error);
@@ -33,7 +33,7 @@ export const ProfilePicture = () => {
       <div className="sm:m-auto sm:rounded-full sm:w-40 sm:h-40 m-auto rounded-full w-40 h-40">
         {user && user.img && (
           <img
-            src={profileimage || user.img}
+            src={profileimg || user.img}
             alt="Profile image"
             className="sm:object-cover sm:border-2 sm:border-teal sm:rounded-full sm:w-40 sm:h-40 object-cover border-2 border-teal rounded-full w-40 h-40"
           />

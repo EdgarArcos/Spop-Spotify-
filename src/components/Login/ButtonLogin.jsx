@@ -9,17 +9,20 @@ export const ButtonLogin = () => {
 
   const handleLogin = async () => {
     await loginWithRedirect();
-    if (user) {
-      const { name, email } = user;
-      const response = await auth0loginRequest({ name, email });
-      console.log(user);
-      if (response && response.data.user) {
-        console.log(response.data.user);
-        auth0Login(response.data.user);
-      } else {
-        console.log("Error");
-      }
-    }
+    
+    // if (user) {
+    //   const { name, email } = user;
+    //   const response = await auth0loginRequest({ name, email });
+    //   console.log(user);
+    //   if (response && response.data.user) {
+        
+    //     console.log(response.data.user);
+    //     auth0Login(response.data.user);
+    //   } else {
+    //     console.log("Error");
+    //   }
+    // }
+    
   };
 
   return (
