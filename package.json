@@ -6,6 +6,7 @@
   "scripts": {
     "json": "json-server --watch db.json",
     "dev": "vite",
+    "start": "npm run dev -- --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview"
   },

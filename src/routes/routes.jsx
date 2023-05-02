@@ -9,7 +9,6 @@ import {
   Login,
   EditProfile,
   Profile,
-  Register,
   ResetPassword,
   Errorpage,
 } from "../pages";
