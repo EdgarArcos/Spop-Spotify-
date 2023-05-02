@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ButtonCancel } from "../components/Profile/Buttons/ButtonCancel";
 import { ButtonSave } from "../components/Profile/Buttons/ButtonSave";
-import { ActualPassword } from "../components/Profile/Inputs/ActualProfile/ActualPassword";
+
 import NewPassword from "../components/Profile/Inputs/EditProfile/NewPassword";
 
 export const ResetPassword = () => {
@@ -14,7 +14,6 @@ export const ResetPassword = () => {
         <h2 className="sm:text-5xl sm:mb-20 text-5xl sm:mt-10 mb-10">
           Reset password
         </h2>
-        <ActualPassword />
         <NewPassword />
       </div>
       <div className="sm:flex sm:flex-col sm:items-center flex flex-col items-center">

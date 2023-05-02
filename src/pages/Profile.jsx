@@ -25,16 +25,7 @@ export const Profile = ({ setUsers, setEmail }) => {
         />
       </Link>
       <ProfilePicture />
-      <InputsActualProfile />
-
-      <div className="sm:flex sm:flex-col sm:items-center flex flex-col items-center">
-        <div className="sm:flex sm:flex-row sm:space-x-24 sm:mb-10 flex flex-col mb-10">
-          <Link to={"/editprofile"}>
-            <ButtonEditProfile />
-          </Link>
-          <ButtonLogout logout={logout} />
-        </div>
-      </div>
+      <ButtonLogout logout={logout} />
     </>
   );
 };
