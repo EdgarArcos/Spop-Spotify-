@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import profileimage from "./set-profile-picture.png";
-import { editImgFetch } from "../../../api/userRequests";
-import { UsersContext } from "../../../context/UsersContext";
+import { editImgFetch } from "../../api/userRequests";
+import { UsersContext } from "../../context/UsersContext";
 
 export const ProfilePicture = () => {
   const { user, editImg } = useContext(UsersContext);

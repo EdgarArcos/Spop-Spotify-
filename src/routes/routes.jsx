@@ -3,15 +3,7 @@ import { ContainerAllGenres } from "../components/HomePage";
 import { MainContainerLibrary } from "../components/LibraryPage";
 import { ContainerLikeLibrary } from "../components/LikeLibrary/ContainerLikeLibrary";
 import { SearchResultsContainer } from "../components/SearchPage";
-import {
-  NowPlaying,
-  Home,
-  Login,
-  EditProfile,
-  Profile,
-  ResetPassword,
-  Errorpage,
-} from "../pages";
+import { NowPlaying, Home, Login, Profile, Errorpage } from "../pages";
 import { CreateList } from "../components/CreateList/CreateList";
 
 export const router = createBrowserRouter([
@@ -50,16 +42,8 @@ export const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "editprofile",
-    element: <EditProfile />,
-  },
-  {
     path: "profile",
     element: <Profile />,
-  },
-  {
-    path: "resetpassword",
-    element: <ResetPassword />,
   },
   {
     path: "*",

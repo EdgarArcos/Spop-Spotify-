@@ -1,9 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import { ProfilePicture } from "../components/Profile/ProfilePictureSet/ProfilePicture";
-import { ButtonLogout } from "../components/Profile/Buttons/ButtonLogout";
-import { ButtonEditProfile } from "../components/Profile/Buttons/ButtonEditProfile";
-import { InputsActualProfile } from "../components/Profile/Inputs/ActualProfile/InputsActualProfile";
+import { ProfilePicture } from "../components/Profile/ProfilePicture";
+import { ButtonLogout } from "../components/Profile/ButtonLogout";
+import { UserInput } from "../components/Profile/userInput";
 
 export const Profile = ({ setUsers, setEmail }) => {
   const navigate = useNavigate();
@@ -25,6 +24,7 @@ export const Profile = ({ setUsers, setEmail }) => {
         />
       </Link>
       <ProfilePicture />
+      <UserInput />
       <ButtonLogout logout={logout} />
     </>
   );
