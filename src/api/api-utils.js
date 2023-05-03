@@ -12,8 +12,5 @@ export const makeRequest = async (endPoint) => {
   }
 };
 
-export const addListFetch = async () => {
-  return await axios.post(`${API_URL}/api/list/add`, newList);
-};
 
 
