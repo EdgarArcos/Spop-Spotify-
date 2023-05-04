@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const API_URL = "http://localhost:4000";
 
 export const makeRequest = async (endPoint) => {
@@ -12,5 +11,8 @@ export const makeRequest = async (endPoint) => {
   }
 };
 
-
-
+export const getMusicRequest = async (endPoint) => {
+  return await axios
+    .get(`${API_URL}/music/${endPoint}`)
+    .catch((res) => res.response.data.msg);
+};
