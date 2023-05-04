@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import fulllogo from "../../assets/testimg/fulllogo.png";
 import likedsongs from "../../assets/testimg/likedsongs.png";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
@@ -6,8 +6,23 @@ import { BiLibrary} from "react-icons/bi";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { BsFillPlusSquareFill } from "react-icons/bs";
+import { UsersContext } from "../../context/UsersContext";
 
 export const SideMenu = () => {
+
+  const { user } = useContext(UsersContext);
+
+  const [playlist, setPlaylist] = useState("");
+
+  // const newPlaylist = {
+  //   title: "My playlist",
+  //   songs: [],
+  //   user: user.id
+  // }
+
+  const handleCreate = (e) => {
+
+  }
   return (
     <div className="hidden sm:flex flex-col h-full bg-newblack p-4">
       <img className="mb-6" src={fulllogo} alt="logo" />
@@ -49,7 +64,7 @@ export const SideMenu = () => {
           <p className="ml-2">Create Playlist</p>
         </div>
       </Link>
-      <Link to="/likelibrary">
+      <Link to="/likelibrary" onClick={handleCreate}>
       <div className="flex flex-row p-2 border-solid border-b border-newgray pb-5  hover:bg-newgray rounded-md cursor-pointer">
         <img className="w-7 rounded mr-2" src={likedsongs} alt="liekdsongs" />
         <p className="ml-2">Liked Songs</p>
