@@ -4,4 +4,5 @@ export * from "./Login";
 export * from "./NowPlaying";
 export * from "./Profile";
 export * from "./SplashScreen";
+export * from "./UserPage";
 export * from "./index";

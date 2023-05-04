@@ -26,7 +26,7 @@ export const ContainerEachGenre = ({ genre }) => {
                 id={_id}
                 name={name}
                 urlSong={url}
-                thumbnail={img}
+                img={img}
                 key={_id}
               />
             ))}

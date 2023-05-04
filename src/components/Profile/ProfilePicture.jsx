@@ -21,12 +21,12 @@ export const ProfilePicture = () => {
 
   return (
     <div className="sm:pt-20 pt-10 pb-16 ">
-      <div className="sm:m-auto sm:rounded-full sm:w-40 sm:h-40 m-auto rounded-full w-40 h-40">
+      <div className="bg-[url(profileimage)] m-auto rounded-full w-40 h-40">
         {user && user.img && (
           <img
             src={user.img}
             alt="Profile image"
-            className="sm:object-cover sm:border-2 sm:border-teal sm:rounded-full sm:w-40 sm:h-40 object-cover border-2 border-teal rounded-full w-40 h-40"
+            className="object-cover rounded-full w-40 h-40"
           />
         )}
       </div>
