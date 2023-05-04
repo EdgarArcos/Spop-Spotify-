@@ -16,7 +16,3 @@ export const getMusicRequest = async (endPoint) => {
     .get(`${API_URL}/music/${endPoint}`)
     .catch((res) => res.response.data.msg);
 };
-
-export const addListFetch = async () => {
-  return await axios.post(`${API_URL}/api/list/add`, newList);
-};
