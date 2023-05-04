@@ -2,11 +2,11 @@
 export const ResultsOfSearchSongs = ({ resultsArr }) => {
     return (
         <div>
-            {resultsArr.map(({ id, artist, name, thumbnail }) => (
-                <div key={id} className="grid grid-cols-3 gap-2 w-full hover:bg-newgray rounded-md cursor-pointer m-4">
+            {resultsArr.map(({ _id, artist, name, img }) => (
+                <div key={_id} className="grid grid-cols-3 gap-2 w-full hover:bg-newgray rounded-md cursor-pointer m-4">
                 <img
                     className="grid items-center rounded-2xl w-20 max-w-none"
-                    src={thumbnail}
+                    src={img}
                     alt={name}
                 />
                 

@@ -5,9 +5,10 @@ import { useSearchParams } from 'react-router-dom';
 import { makeRequest } from '../../api/api-utils';
 import { ResultsOfSearchSongs } from './ResultsOfSearchSongs';
 import { MessageNotFound } from '../SearchPage/MessageNotFound';
+import { getSongsFetch } from '../../api/playlistRequests';
 
 export const CreateList = () => {
-    const [allData, setAllData] = useState([]);
+    const [songs, setSongs] = useState([]);
     const [showResults, setShowResults] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const [searchResults, setSearchResults] = useState([]);
@@ -20,15 +21,24 @@ export const CreateList = () => {
     };
 
     useEffect(() => {
-        makeRequest("tracks").then((data) => setAllData(data));
-    }, []);
-    
-    useEffect(() => {
-        const resultsArr = allData.filter(({ name }) => {
-            return name.toLowerCase().includes(query.toLowerCase());
+        getSongsFetch("songs").then((data) => {
+            setSongs(data.data);
         });
+        }, []);
+
+
+    useEffect(() => {
+
+        if (songs.length > 0){
+            const resultsArr = songs.filter(({ name }) => {
+                
+                return name?.toLowerCase().includes(query.toLowerCase());    
+            }
+            );
         setSearchResults(resultsArr);
-    }, [allData, query]);
+        }       
+        }, [songs, query]);
+    
     
 
     return (
@@ -70,7 +80,7 @@ export const CreateList = () => {
                     <section>
                         {showResults && (
                             query === "" ? (
-                            <ResultsOfSearchSongs resultsArr={allData} />
+                            <ResultsOfSearchSongs resultsArr={songs} />
                         ) : searchResults.length > 0 ? (
                             <ResultsOfSearchSongs resultsArr={searchResults} />
                         ) : (
