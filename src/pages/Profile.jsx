@@ -1,31 +1,20 @@
-import { Link, useNavigate } from "react-router-dom";
-import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import { ProfilePicture } from "../components/Profile/ProfilePicture";
-import { ButtonLogout } from "../components/Profile/ButtonLogout";
-import { UserInput } from "../components/Profile/userInput";
+import { useState } from "react";
+import { ContainerLists } from "../components/Profile/ContainerLists";
+import { HeaderProfile } from "../components/Profile/HeaderProfile";
+import { EditUserInfo } from "../components/Profile/EditUserInfo";
 
-export const Profile = ({ setUsers, setEmail }) => {
-  const navigate = useNavigate();
+export const Profile = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const logout = () => {
-    localStorage.removeItem("users");
-    localStorage.removeItem("email");
-    setUsers;
-    setEmail;
-    navigate("/profile");
+  const editUserInfo = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
-    <>
-      <Link to={"/"}>
-        <BsFillArrowLeftCircleFill
-          className="sm:absolute sm:z-10 sm:cursor-pointer sm:h-20 sm:w-10 sm:hover:opacity-60 sm:transition sm:duration-500 sm:mt-0 sm:ml-20
-    absolute z-10 mt-0 ml-5 cursor-pointer h-20 w-10 hover:opacity-60 transition duration-500"
-        />
-      </Link>
-      <ProfilePicture />
-      <UserInput />
-      <ButtonLogout logout={logout} />
-    </>
+    <div className="sm:pl-[16rem]">
+      <HeaderProfile editUserInfo={editUserInfo} />
+      <ContainerLists />
+      {isModalOpen && <EditUserInfo />}
+    </div>
   );
 };
