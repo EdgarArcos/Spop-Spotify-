@@ -13,3 +13,8 @@ export const getSongsFetch = async (data) => {
     .catch((res) => res.response.data.msg)
 }
 
+export const addSongPlaylistFetch = async(data) => {
+    return await axios
+    .post(`${API_URL}/playlist/:id/songs`, data
+    .catch((res) => res.response.data.msg))
+}
