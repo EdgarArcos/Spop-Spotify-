@@ -7,6 +7,7 @@ import { UsersContext } from "../../context/UsersContext";
 export const HeaderProfile = () => {
   const { user } = useContext(UsersContext);
 
+  console.log(user)
   return (
     <section className="flex flex-col">
       <IoArrowBackOutline />
