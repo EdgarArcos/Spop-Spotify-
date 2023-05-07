@@ -9,7 +9,7 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <div className="bg-newblack min-h-screen h-full text-white">
+    <div className="bg-newblack min-h-screen h-full w-full text-white">
       <UsersProvider>
         <MusicProvider>
           <QueryClientProvider client={queryClient}>

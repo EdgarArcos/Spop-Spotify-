@@ -10,7 +10,6 @@ import {
   Profile,
   Errorpage,
   Artistprofile,
-  UserPage,
 } from "../pages";
 import { CreateList } from "../components/CreateList/CreateList";
 
@@ -45,7 +44,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <UserPage />,
+        element: <Profile />,
       },
     ],
   },
