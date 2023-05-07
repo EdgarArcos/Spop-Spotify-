@@ -20,8 +20,8 @@ export const ProfilePicture = () => {
   };
 
   return (
-    <div className="sm:pt-20 pt-10 pb-16 ">
-      <label className="mt-40 cursor-pointer rounded-full w-40 h-40">
+    <div className="sm:pt-20 md:py-[5%] pt-10 pb-16 lg:pr-3">
+      <label className="cursor-pointer text-[0.6rem] flex flex-col items-center justify-center hover:text-teal">
         <ImgProfile />
         Change the picture
         <input type="file" className="hidden" onChange={handleEditImage} />

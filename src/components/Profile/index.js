@@ -1,4 +1,3 @@
-export * from "./ButtonLogout";
 export * from "./ContainerLists";
 export * from "./EditUserInfo";
 export * from "./HeaderProfile";

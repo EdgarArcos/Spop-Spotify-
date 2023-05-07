@@ -5,15 +5,15 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ImgProfile } from "./ImgProfile";
 
-export const HeaderProfile = ({ editUserInfo }) => {
+export const HeaderProfile = ({ handleEditUserInfo }) => {
   const { user } = useContext(UsersContext);
 
   const { logout } = useAuth0();
 
   return (
     <section className="flex flex-col">
-      <div className="flex items-center justify-between p-3 min-[650px]:justify-end">
-        <IoArrowBackOutline className="text-2xl cursor-pointer min-[650px]:hidden" />
+      <div className="flex items-center justify-between p-3 min-[640px]:justify-end">
+        <IoArrowBackOutline className="text-2xl cursor-pointer min-[640px]:hidden" />
         <RiLogoutCircleLine
           className="text-xl ml-5 hover:text-teal cursor-pointer lg:text-2xl"
           onClick={logout}
@@ -35,7 +35,7 @@ export const HeaderProfile = ({ editUserInfo }) => {
 
           <button
             className="border rounded-full w-14 text-xs py-1 lg:text-sm hover:text-teal hover:border-teal"
-            onClick={editUserInfo}
+            onClick={handleEditUserInfo}
           >
             Edit
           </button>
