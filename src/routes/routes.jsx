@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
         element: <NowPlaying />,
       },
       {
-        path: "createplaylist/:id",
+        path: "playlist/:id",
         element: <CreateList />,
       },
       {

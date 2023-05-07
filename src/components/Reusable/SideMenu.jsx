@@ -30,9 +30,11 @@ export const SideMenu = () => {
       console.log(res)
       if (res.ok) {
         // Set the new playlist state
+        console.log(res.playlist)
         setPlaylist([...playlist, res.playlist]);
+        
         // Redirect the user to the new playlist page
-        navigate(`/createplaylist/${res.playlist._id}`);
+        navigate(`/playlist/${res.playlist._id}`);
       }
     } catch (err) {
       console.log(err);
@@ -75,6 +77,16 @@ export const SideMenu = () => {
       
         
       {/* Render the list of playlists */}
+      
+
+      {/* Create playlist button */}
+      <div onClick={handleCreate} className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
+        <div>
+          <BsFillPlusSquareFill className="text-2xl mr-3" />
+        </div>
+        <p className="ml-2">Create Playlist</p>
+      </div>
+      
       {playlist.map((p) => (
         <Link key={p._id} to={`/playlist/${p._id}`}>
           <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
@@ -85,14 +97,6 @@ export const SideMenu = () => {
           </div>
         </Link>
       ))}
-
-      {/* Create playlist button */}
-      <div onClick={handleCreate} className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
-        <div>
-          <BsFillPlusSquareFill className="text-2xl mr-3" />
-        </div>
-        <p className="ml-2">Create Playlist</p>
-      </div>
 
       
       <Link to="/likelibrary" >
