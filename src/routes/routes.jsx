@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
     element: <Profile />,
   },
   {
-    path: "artprofile",
+    path: "artist/",
     element: <Artistprofile />,
   },
   {

@@ -1,13 +1,12 @@
 import axios from "axios";
 
-export const getSongsRequests = async () => await axios.get('http://localhost:4000/artist')
-export const createSongRequest = async (post) => {
+export const getSongsRequests = async () => await axios.get('http://localhost:4000/artist/')
+export const createSongRequest = async (song) => {
     const form = new FormData();
-
-    for (let key in post) {
-        form.append(key, post[key]);
+    for (let key in song) {
+        form.append(key, song[key]);
     }
-    return await axios.post('http://localhost:4000/artist', form, {
+    return await axios.post('http://localhost:4000/artist/', form, {
         headers: {
             "Content-Type": "multipart/form-data"
         }
