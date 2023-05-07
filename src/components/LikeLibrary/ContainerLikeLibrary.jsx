@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import React from "react";
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from "./PlayButtonLibrary";
@@ -9,6 +9,28 @@ import { MusicContext } from "../../context/MusicContext/MusicContext";
 export const ContainerLikeLibrary = () => {
   const { musicState } = useContext(MusicContext);
   const { likelist, photolist } = musicState;
+
+  const dragItem = useRef();
+  const dragOverItem = useRef();
+  const [dragabbleList, setDragabbleList] = useState([...likelist]);
+
+  const dragStart = (e, position) => {
+    dragItem.current = position;
+  };
+
+  const dragEnter = (e, position) => {
+    dragOverItem.current = position;
+  };
+
+  const drop = (e) => {
+    const copyListItems = [...dragabbleList];
+    const dragItemContent = copyListItems[dragItem.current];
+    copyListItems.splice(dragItem.current, 1);
+    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+    dragItem.current = null;
+    dragOverItem.current = null;
+    setDragabbleList(copyListItems);
+  };
 
   return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">
@@ -42,8 +64,15 @@ export const ContainerLikeLibrary = () => {
                   </th>
                 </tr>
               </thead>
-              {likelist.map((song, index) => (
-                <EachLikeSong key={song.id} index={index} song={song} />
+              {dragabbleList.map((song, index) => (
+                <EachLikeSong
+                  key={song.id}
+                  index={index}
+                  song={song}
+                  onDragStart={(e) => dragStart(e, index)}
+                  onDragEnter={(e) => dragEnter(e, index)}
+                  onDragEnd={drop}
+                />
               ))}
             </table>
           </div>
