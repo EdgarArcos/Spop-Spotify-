@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { makeRequest } from "../../api/api-utils";
+
 import { SongCard } from "../Reusable";
 import { AiFillFire } from "react-icons/ai";
 import { getMusicRequest } from "../../api/api-utils";
@@ -10,7 +9,7 @@ export const ContainerEachGenre = ({ genre }) => {
     queryKey: [genre],
     queryFn: () => getMusicRequest(genre),
   });
-
+  
   return (
     <>
       {error && <p>An error has occurred: {error.message}</p>}
