@@ -9,7 +9,7 @@ module.exports = {
         teal: "#02E4E6",
         newgray: "#282828",
         graytext: "#424242",
-        cancel: "#d63031"
+        cancel: "#d63031",
       },
     },
     fontFamily: {

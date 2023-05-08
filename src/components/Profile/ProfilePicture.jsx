@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
-import profileimage from "./set-profile-picture.png";
+import { useContext } from "react";
 import { editImgFetch } from "../../api/userRequests";
+import { ImgProfile } from "./ImgProfile";
 import { UsersContext } from "../../context/UsersContext";
 
 export const ProfilePicture = () => {
@@ -20,24 +20,12 @@ export const ProfilePicture = () => {
   };
 
   return (
-    <div className="sm:pt-20 pt-10 pb-16 ">
-      <div className="sm:m-auto sm:rounded-full sm:w-40 sm:h-40 m-auto rounded-full w-40 h-40">
-        {user && user.img && (
-          <img
-            src={user.img}
-            alt="Profile image"
-            className="sm:object-cover sm:border-2 sm:border-teal sm:rounded-full sm:w-40 sm:h-40 object-cover border-2 border-teal rounded-full w-40 h-40"
-          />
-        )}
-      </div>
-      <div className="sm:flex sm:justify-center flex justify-center">
-        <label
-          className="sm:-mt-40 sm:cursor-pointer sm:rounded-full sm:w-40 sm:h-40 -mt-40 cursor-pointer rounded-full w-40 h-40"
-          htmlFor="input"
-        >
-          <input type="file" onChange={handleEditImage} />
-        </label>
-      </div>
+    <div className="sm:pt-20 md:py-[5%] pt-10 pb-16 lg:pr-3">
+      <label className="cursor-pointer text-[0.6rem] flex flex-col items-center justify-center hover:text-teal">
+        <ImgProfile />
+        Change the picture
+        <input type="file" className="hidden" onChange={handleEditImage} />
+      </label>
     </div>
   );
 };

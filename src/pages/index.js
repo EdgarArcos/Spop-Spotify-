@@ -1,3 +1,4 @@
+export * from "./Artistprofile";
 export * from "./Errorpage";
 export * from "./Home";
 export * from "./Login";

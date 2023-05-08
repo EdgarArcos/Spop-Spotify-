@@ -1,19 +1,22 @@
-import { useEffect, useState } from "react";
-import { makeRequest } from "../../api/api-utils";
 import { ContainerEachGenre } from "./ContainerEachGenre";
+import { getMusicRequest } from "../../api/api-utils";
+import { useQuery } from "@tanstack/react-query";
 
 export const ContainerAllGenres = () => {
-  const [genres, setGenres] = useState([]);
-
-  useEffect(() => {
-    makeRequest("genres").then((data) => setGenres(data));
-  }, []);
-
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["genres"],
+    queryFn: () => getMusicRequest("genres"),
+  });
   return (
-    <div className="pb-4 w-screen pt-10 sm:pl-[16rem]">
-      {genres.map(({ name }) => (
-        <ContainerEachGenre key={name} genre={name} />
-      ))}
+    <div className="pb-4 w-screen min-h-screen pt-10 sm:pl-[16rem]">
+      {error && <p>An error has occurred: {error.message}</p>}
+      {isLoading ? (
+        <p>Is Loading...</p>
+      ) : (
+        data.data.genres.map((genre) => (
+          <ContainerEachGenre key={genre._id} genre={genre.name} />
+        ))
+      )}
     </div>
   );
 };

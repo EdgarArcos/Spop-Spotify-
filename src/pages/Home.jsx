@@ -11,7 +11,7 @@ import { UsersContext } from "../context/UsersContext";
 export const Home = () => {
   const screenWidth = useScreenWidth();
   const location = useLocation();
-  const { musicState } = useContext(MusicContext);
+  const { musicState, userMusic } = useContext(MusicContext);
   const { likelist, playOn, indexPlay, random } = musicState;
 
   const [musicToPlay, setMusicToPlay] = useState(null);
@@ -21,7 +21,6 @@ export const Home = () => {
   const randomList = (listArr) => listArr.sort(() => Math.random() - 0.5);
 
   useEffect(() => {
-    
     const newList = [...likelist];
     if (random) {
       setMusicToPlay(randomList(newList));
@@ -30,37 +29,30 @@ export const Home = () => {
     }
   }, [likelist, random]);
 
-  useEffect(()=>{
-
-    async function fetchData () {
-      if(user?.email && user?.name) {
+  useEffect(() => {
+    async function fetchData() {
+      if (user?.email && user?.name) {
         const { name, email } = user;
-      const response = await auth0loginRequest({ name, email });
-      
-      if (response && response.data.user) {
-
-        auth0Login(response.data.user);
-      } else {
-        console.log("Error");
+        const response = await auth0loginRequest({ name, email });
+        console.log(response)
+        if (response && response.data.user) {
+          auth0Login(response.data.user);
+          userMusic(response.data.playlist)
+        } else {
+          console.log("Error");
+        }
       }
-      }
-      
     }
 
-      fetchData();
-    
-  }, [user])
+    fetchData();
+  }, [user]);
 
-
-  
   return (
-    <>
+    <div className="w-full">
       {screenWidth < 640 ? (
         <NavBarMov currentPage={location.pathname} />
       ) : (
-        <div className="h-screen fixed w-60 ">
-          <SideMenu />
-        </div>
+        <SideMenu />
       )}
       <Outlet />
       <div className="fixed w-11/12 ml-4 bottom-[5rem] flex flex-row justify-evenly rounded-md bg-newgray text-white sm:bottom-3 sm:p-6 sm:h-24 sm:w-11/12 sm:items-center sm:justify-center sm:ml-14">
@@ -70,6 +62,6 @@ export const Home = () => {
           artist={playOn ? musicToPlay[indexPlay].artist : ""}
         />
       </div>
-    </>
+    </div>
   );
 };

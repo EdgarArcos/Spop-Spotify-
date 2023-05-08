@@ -3,10 +3,13 @@ import { makeRequest } from "../../api/api-utils";
 import { MusicContext } from "./MusicContext";
 import { types } from "./types/types";
 import musicReducer from "./musicReducer";
+import { createplaylistFetch } from "../../api/playlistRequests";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   likelist: [],
   photolist: [],
+  playlist: [],
   indexPlay: 0,
   playOn: false,
   repeat: false,
@@ -15,13 +18,18 @@ const initialState = {
 
 export const MusicProvider = ({ children }) => {
   const [musicState, dispatch] = useReducer(musicReducer, initialState);
+  
 
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * 20);
-    makeRequest("tracks").then((data) =>
-      dispatch({ type: types.GET_ALL_MUSIC, payload: { data, randomIndex } })
-    );
-  }, []);
+  const userMusic = (playlist) => {
+    dispatch({ type: types.GET_ALL_MUSIC, payload: playlist})
+  }
+
+  // useEffect(() => {
+  //   const randomIndex = Math.floor(Math.random() * 20);
+  //   makeRequest("tracks").then((data) =>
+  //     dispatch({ type: types.GET_ALL_MUSIC, payload: { data, randomIndex } })
+  //   );
+  // }, []);
 
   const handlePlayOn = () => {
     dispatch({ type: types.CHANGE_PLAYON });
@@ -50,7 +58,16 @@ export const MusicProvider = ({ children }) => {
         nextSong();
       }
     }
-  };
+  }
+  
+  const handleAddPlaylist =  (newPlaylist) => {  
+        dispatch({
+          type: "ADD_PLAYLIST",
+          payload: newPlaylist
+        });
+      }
+    
+
 
   return (
     <MusicContext.Provider
@@ -61,6 +78,8 @@ export const MusicProvider = ({ children }) => {
         handleRepeat,
         handleRandom,
         handleEnd,
+        handleAddPlaylist,
+        userMusic
       }}
     >
       {children}
