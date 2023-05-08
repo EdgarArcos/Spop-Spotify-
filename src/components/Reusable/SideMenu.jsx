@@ -4,22 +4,40 @@ import likedsongs from "../../assets/testimg/likedsongs.png";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { BiLibrary } from "react-icons/bi";
 import { FaUserCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsFillPlusSquareFill } from "react-icons/bs";
 import { UsersContext } from "../../context/UsersContext";
+import { createplaylistFetch } from "../../api/playlistRequests";
+import axios from "axios";
+
 
 export const SideMenu = () => {
   const { user } = useContext(UsersContext);
+  const navigate = useNavigate();
+  const [playlist, setPlaylist] = useState([]);
 
-  const [playlist, setPlaylist] = useState("");
+  const handleCreate = async () => {
+    const newPlaylist = {
+      title: "My playlist",
+      img: "https://res.cloudinary.com/dycz1nib9/image/upload/v1683280442/Artist_Songs/createplaylist_ml9at0.png",
+      songs: [],
+      userId: user.id
+    };
+    
+    try {
+      const res = await createplaylistFetch(newPlaylist);
+      console.log(res)
+      if (res.ok) {
+        console.log(res.playlist)
+        setPlaylist([...playlist, res.playlist]);
 
-  // const newPlaylist = {
-  //   title: "My playlist",
-  //   songs: [],
-  //   user: user.id
-  // }
-
-  const handleCreate = (e) => {};
+        navigate(`/playlist/${res.playlist._id}`);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
   return (
     <div className="flex flex-col h-screen bg-newblack p-4 w-60 fixed">
       <img className="pb-3" src={fulllogo} alt="logo" />
@@ -54,19 +72,31 @@ export const SideMenu = () => {
       <div className="flex flex-row p-2">
         <p className="text-graytext py-2">PLAYLIST</p>
       </div>
-      <Link to="/createplaylist">
-        <div className="flex flex-row p-2 hover:bg-newgray rounded-md cursor-pointer">
-          <div>
-            <BsFillPlusSquareFill className="text-2xl" />
+
+      <div onClick={handleCreate} className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
+        <div>
+          <BsFillPlusSquareFill className="text-2xl mr-3" />
+        </div>
+        <p className="ml-2">Create Playlist</p>
+      </div>
+      
+      {playlist.map((p) => (
+        <Link key={p._id} to={`/playlist/${p._id}`}>
+          <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
+            <div>
+              <img className="w-7 rounded mr-2" src={p.img} alt="playlist" />
+            </div>
+            <p className="ml-2">{p.title}</p>
           </div>
-          <p className="pl-2 text-md">Create Playlist</p>
-        </div>
-      </Link>
-      <Link to="/likelibrary" onClick={handleCreate}>
-        <div className="flex flex-row p-2 border-solid border-b border-newgray pb15  hover:bg-newgray rounded-md cursor-pointer">
-          <img className="w-6 h-6 rounded" src={likedsongs} alt="liekdsongs" />
-          <p className="pl-2 text-md">Liked Songs</p>
-        </div>
+        </Link>
+      ))}
+
+      
+      <Link to="/likelibrary" >
+      <div className="flex flex-row p-2 border-solid border-b border-newgray pb-5  hover:bg-newgray rounded-md cursor-pointer">
+        <img className="w-7 rounded mr-2" src={likedsongs} alt="liekdsongs" />
+        <p className="ml-2">Liked Songs</p>
+      </div>
       </Link>
     </div>
   );
