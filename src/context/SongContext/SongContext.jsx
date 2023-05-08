@@ -22,7 +22,7 @@ export function SongProvider({ children }) {
 
     const createSong = async (song) => {
         const res = await createSongRequest(song)
-        setPosts([...songs, res.data])
+        setSongs([...songs, res.data])
     }
 
     const deleteSong = async (_id) => {

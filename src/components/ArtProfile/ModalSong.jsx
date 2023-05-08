@@ -7,20 +7,15 @@ export const ModalSong = () => {
     const { createSong } = useSongs()
     const { register, handleSubmit } = useForm()
     const { user } = useAuth0()
-    const [createdSong, setCreatedSong] = useState({
-        name: "",
-        artist: null,
-        genre: "",
-        song: null
-    })
+
     const onSubmit = async (data) => {
-        setCreatedSong({
+        const song = data.file[0]
+        await createSong({
             name: data.name,
             artist: user.nickname,
             genre: data.genre,
-            song: data.file
+            song: song
         })
-        await createSong(data)
     }
 
     return (
@@ -49,7 +44,7 @@ export const ModalSong = () => {
                 <div>
                     <label>File</label>
                     <input type='file' {...register('file', {
-                        required: true,
+                        required: false,
                     })} />
                 </div>
                 <input type='submit' value="Save"></input>
