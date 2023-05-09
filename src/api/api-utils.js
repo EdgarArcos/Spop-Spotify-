@@ -16,3 +16,9 @@ export const getMusicRequest = async (endPoint) => {
     .get(`${API_URL}/music/${endPoint}`)
     .catch((res) => res.response.data.msg);
 };
+
+export const handleLikeSong = async (likeInfo) => {
+  return await axios
+    .post(`${API_URL}/music/handlelikesong`, likeInfo)
+    .catch((res) => res.response.data.msg);
+};
