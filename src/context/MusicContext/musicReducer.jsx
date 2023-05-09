@@ -35,11 +35,7 @@ const musicReducer = (state, action) => {
     case types.EDIT_PLAYLIST_TITLE:
       return {
         ...state,
-<<<<<<< HEAD
         playlist: payload 
-=======
-        playlist: { ...state.playlist, title: payload },
->>>>>>> c6c9415b0cb56f3501a36da7c49410dfe655a4a1
       };
 
     case types.EDIT_IMG:
