@@ -29,7 +29,6 @@ export const HeaderPlaylist = ({ playlist }) => {
 
   const editImage = async (e) => {
     const data = new FormData();
-    console.log(playlist._id);
     data.append("file", e.target.files[0]);
     data.append("playlistId", playlist._id);
 
@@ -57,14 +56,14 @@ export const HeaderPlaylist = ({ playlist }) => {
             type="text"
             value={currentTitle}
             onChange={(e) => setCurrentTitle(e.target.value)}
-            className="hidden sm:flex-row items-center w-1/2 m-4 mt-48 text-white text-7xl font-bold bg-transparent"
+            className="sm:flex-row items-center w-1/2 m-4 mt-48 text-white text-7xl font-bold bg-transparent"
             ref={inputRef}
             onBlur={saveInputChanges}
             onKeyDown={(e) => e.key === "Enter" && saveInputChanges()}
           />
         ) : (
           <div
-            className="hidden sm:flex items-center m-4 mt-48 text-white text-7xl font-bold bg-transparent cursor-pointer"
+            className="sm:flex items-center m-4 mt-48 text-white text-7xl font-bold bg-transparent cursor-pointer"
             onClick={startEdit}
           >
             {currentTitle || "Click to add a title"}
@@ -72,7 +71,7 @@ export const HeaderPlaylist = ({ playlist }) => {
         )}
         {isEditing && (
           <FiEdit2
-            className="hidden sm:cursor-pointer text-teal text-lg"
+            className=" sm:cursor-pointer text-teal text-lg"
             onClick={startEdit}
           />
         )}

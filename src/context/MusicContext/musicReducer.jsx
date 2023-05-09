@@ -50,6 +50,13 @@ const musicReducer = (state, action) => {
         playlist: payload,
       };
 
+      case types.HANDLE_PLAYLIST:
+        return {
+          ...state,
+          playlist: payload,
+        };
+  
+
     default:
       state;
   }

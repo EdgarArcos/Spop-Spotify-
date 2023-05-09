@@ -89,6 +89,13 @@ export const MusicProvider = ({ children }) => {
     dispatch({ type: types.HANDLE_LIKELIST, payload: newPlayList });
   };
 
+  const handleAddSong = (playlistSongs) => {
+    const playlistArr = musicState.playlist.map((list) => {
+      return list._id === playlistSongs._id ? playlistSongs : list;
+    });
+    dispatch({ type: types.HANDLE_PLAYLIST, payload: playlistArr});
+  }
+
   return (
     <MusicContext.Provider
       value={{
@@ -103,6 +110,7 @@ export const MusicProvider = ({ children }) => {
         handleEdit,
         handleEditImg,
         handleLikedSongs,
+        handleAddSong
       }}
     >
       {children}
