@@ -43,7 +43,7 @@ export const HeaderPlaylist = ({ playlist }) => {
       <div>
       <label className="cursor-pointer text-[0.6rem] flex flex-col items-center justify-center hover:text-teal">
       <img
-        className="w-full rounded-b-3xl sm:w-52 sm:rounded-2xl sm:m-4 sm:mt-32"
+        className="w-full rounded-b-3xl sm:w-52 h-52 sm:rounded-2xl sm:m-4 sm:mt-32"
         src={playlist.img}
         alt="cover"
       />
@@ -57,7 +57,7 @@ export const HeaderPlaylist = ({ playlist }) => {
             type="text"
             value={currentTitle}
             onChange={(e) => setCurrentTitle(e.target.value)}
-            className="flex items-center w-96 m-4 mt-48 text-white text-7xl font-bold bg-transparent"
+            className="hidden sm:flex-row items-center w-1/2 m-4 mt-48 text-white text-7xl font-bold bg-transparent"
             ref={inputRef}
             onBlur={saveInputChanges}
             onKeyDown={(e) => e.key === "Enter" && saveInputChanges()}

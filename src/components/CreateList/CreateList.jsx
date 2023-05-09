@@ -63,7 +63,7 @@ export const CreateList = () => {
               </thead>
             </table>
             <div>
-              <p className="text-xl font-semibold">
+              <p className="text-lg sm:text-xl font-semibold">
                 Let's find something for your list
               </p>
               <label className="flex relative mt-4 md:w-11/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12">

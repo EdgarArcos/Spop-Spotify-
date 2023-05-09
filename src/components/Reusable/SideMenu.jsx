@@ -79,7 +79,7 @@ export const SideMenu = () => {
         <Link key={p._id} to={p.title === "Liked Songs" ? "/likelibrary" : `/playlist/${p._id}`}>
           <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
             <div>
-              <img className="w-7 rounded mr-2" src={p.img} alt="playlist" />
+              <img className="w-7 h-7 rounded mr-2" src={p.img} alt="playlist" />
             </div>
             <p className="ml-2">{p.title}</p>
           </div>
