@@ -37,13 +37,13 @@ const musicReducer = (state, action) => {
       case types.EDIT_PLAYLIST_TITLE:
       return {
         ...state,
-        playlist: { ...state.playlist, title: payload }
+        playlist: payload 
       };
 
       case types.EDIT_IMG:
       return {
         ...state,
-        playlist: { ...state.playlist, img: payload },
+        playlist: payload,
       };
 
     default:

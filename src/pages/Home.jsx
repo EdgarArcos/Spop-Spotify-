@@ -34,7 +34,6 @@ export const Home = () => {
       if (user?.email && user?.name) {
         const { name, email } = user;
         const response = await auth0loginRequest({ name, email });
-        console.log(response)
         if (response && response.data.user) {
           auth0Login(response.data.user);
           userMusic(response.data.playlist)

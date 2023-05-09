@@ -24,33 +24,21 @@ export const HeaderPlaylist = ({playlist}) => {
         setIsEditing(false);
         const res = await editTitleFetch({
           newTitle: currentTitle,
-          playlistId: playlist.id,
+          playlistId: playlist._id,
         });
-        console.log(res)
-        if (res.ok) handleEdit(currentTitle);
+        if (res.data.ok) handleEdit(currentTitle, playlist._id);
       };
 
-      const editImage = async(e) => {
-
-        const res = await editImgFetch(playlist._id);
-        console.log(res)
-
-    //     if (res.data.ok) {
-      
-    // }
-  
-    //     const data = new FormData();
+      const editImage = async(e) => { 
+        const data = new FormData();
         
-    //     data.append("file", e.target.files[0]);
-    //     data.append("playlistId", musicState.playlist.id);
-    //     console.log(data)
-    //     editImgFetch(data)
-    //       .then((response) => {
-    //         handleEditImg (response.data.img);
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
+        data.append("file", e.target.files[0]);
+        data.append("playlistId", playlist && playlist._id)
+        
+        const res = await editImgFetch(data);
+        console.log(res)
+        if(res.data.ok) handleEditImg(data, playlist._id) 
+        
       };
 
 
