@@ -6,6 +6,7 @@ import { MessageNotFound } from "../SearchPage/MessageNotFound";
 import { getSongsFetch } from "../../api/playlistRequests";
 import { HeaderPlaylist } from "./HeaderPlaylist";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
+import { MainCointainerPlaylist } from "./MainCointainerPlaylist";
 
 export const CreateList = () => {
 
@@ -47,10 +48,15 @@ export const CreateList = () => {
     
     <div className="min-h-screen h-full w-full text-white flex flex-col">     
       <div className=" bg-newblack sm:pl-60">
-        {musicState.playlist.map(playlist => playlist._id === id && <HeaderPlaylist key={id} playlist={playlist}/>)}
-      
+        {musicState.playlist.map(playlist => playlist._id === id && (
+          <React.Fragment key={id}>
+            <HeaderPlaylist playlist={playlist} />
+            <MainCointainerPlaylist playlist={playlist} />
+          </React.Fragment>
+        )
+        )}
         
-        <div className="bg-newblack sm:bg-gradient-to-b from-zinc-900 to-newblack pt-2">
+        {/* <div className="bg-newblack sm:bg-gradient-to-b from-zinc-900 to-newblack pt-2">
           <div className="flex flex-col m-5">
             <table className="w-full mt-4">
               <thead>
@@ -61,7 +67,7 @@ export const CreateList = () => {
                   <th className="hidden lg:grid"></th>
                 </tr>
               </thead>
-            </table>
+            </table> */}
             <div>
               <p className="text-xl font-semibold">
                 Let's find something for your list
@@ -92,7 +98,7 @@ export const CreateList = () => {
             
           </div>
         </div>
-      </div>
-    </div>
+    //   </div>
+    // </div>
   );
 };
