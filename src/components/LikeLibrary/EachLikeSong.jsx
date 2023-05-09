@@ -2,12 +2,16 @@ import { FaPlay, FaHeart } from "react-icons/fa";
 import { useContext } from "react";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 
-export const EachLikeSong = ({ song, index }) => {
+export const EachLikeSong = ({
+  song,
+  index,
+  onDragStart,
+  onDragEnter,
+  onDragEnd,
+}) => {
   const { handlePlayOn, handleIndex } = useContext(MusicContext);
 
   const { id, thumbnail, name, artist } = song;
-
-
 
   const handlePlay = (index) => {
     handleIndex(index);
@@ -15,8 +19,18 @@ export const EachLikeSong = ({ song, index }) => {
   };
 
   return (
-    <tbody key={id} onClick={() => handlePlay(index)}>
-      <tr className="group/item flex hover:bg-newgray rounded-md cursor-pointer sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-4 sm:justify-center m-3">
+    <tbody
+      key={id}
+      onClick={() => handlePlay(index)}
+      draggable
+      onDragStart={onDragStart}
+      onDragEnter={onDragEnter}
+      onDragEnd={onDragEnd}
+    >
+      <tr
+        onDragOver={(e) => e.preventDefault()}
+        className="group/item flex hover:bg-newgray rounded-md cursor-pointer sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-4 sm:justify-center m-3"
+      >
         <td className="hidden sm:flex justify-center pt-6">
           <p className="visible group-hover/item:invisible">{index + 1}</p>
           <FaPlay className="invisible group-hover/item:visible flex justify-center" />
@@ -43,7 +57,9 @@ export const EachLikeSong = ({ song, index }) => {
         <td className="hidden md:grid  pt-6 justify-start pl-14 font-bold text-graytext">
           Playlist · {artist}
         </td>
-        <td className="hidden lg:grid  pt-6 justify-start"><FaHeart className="text-teal"/></td>
+        <td className="hidden lg:grid  pt-6 justify-start">
+          <FaHeart className="text-teal" />
+        </td>
       </tr>
     </tbody>
   );

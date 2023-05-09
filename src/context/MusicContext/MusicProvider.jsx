@@ -7,8 +7,8 @@ import { createplaylistFetch } from "../../api/playlistRequests";
 import { useNavigate } from "react-router-dom";
 
 const initialState = {
-  likelist: [],
-  photolist: [],
+  // likelist: [],
+  // photolist: [],
   playlist: [],
   indexPlay: 0,
   playOn: false,
@@ -18,11 +18,10 @@ const initialState = {
 
 export const MusicProvider = ({ children }) => {
   const [musicState, dispatch] = useReducer(musicReducer, initialState);
-  
 
   const userMusic = (playlist) => {
-    dispatch({ type: types.GET_ALL_MUSIC, payload: playlist})
-  }
+    dispatch({ type: types.GET_ALL_MUSIC, payload: playlist });
+  };
 
   // useEffect(() => {
   //   const randomIndex = Math.floor(Math.random() * 20);
@@ -39,16 +38,13 @@ export const MusicProvider = ({ children }) => {
     dispatch({ type: types.HANDLE_INDEX, payload: index });
   };
 
-
-
-  const handleRepeat = () =>
-    dispatch({ type: types.HANDLE_REPEAT});
+  const handleRepeat = () => dispatch({ type: types.HANDLE_REPEAT });
 
   const handleRandom = () => dispatch({ type: types.HANDLE_RANDOM });
 
   const handleEnd = () => {
     if (state.random) {
-      return handleIndex((Math.random() * state.likelist.length));
+      return handleIndex(Math.random() * state.likelist.length);
     } else {
       if (state.repeat) {
         nextSong();
@@ -108,7 +104,7 @@ export const MusicProvider = ({ children }) => {
         handleAddPlaylist,
         userMusic,
         handleEdit,
-        handleEditImg
+        handleEditImg,
       }}
     >
       {children}
