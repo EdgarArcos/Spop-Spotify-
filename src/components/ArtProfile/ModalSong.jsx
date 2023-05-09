@@ -9,11 +9,13 @@ export const ModalSong = ({ isVisible, onClose }) => {
 
     const onSubmit = async (data) => {
         const song = data.file[0]
+        const image = data.image[0]
         await createSong({
             name: data.name,
             artist: user.nickname,
             genre: data.genre,
-            song: song
+            song: song,
+            image: image
         })
         onClose()
     }
@@ -44,9 +46,15 @@ export const ModalSong = ({ isVisible, onClose }) => {
                         </select>
                     </div>
                     <div>
-                        <label>File</label>
+                        <label>File Song</label>
                         <input type='file' {...register('file', {
                             required: false,
+                        })} />
+                    </div>
+                    <div>
+                        <label>File Image</label>
+                        <input type='file' {...register('image', {
+                            required: true,
                         })} />
                     </div>
                     <input type='submit' value="Save"></input>
