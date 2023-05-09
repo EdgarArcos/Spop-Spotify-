@@ -40,28 +40,42 @@ export const HeaderPlaylist = ({ playlist }) => {
 
   return (
     <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-zinc-500 to-zinc-900 smborder-b border-graytext">
+      <div>
+      <label className="cursor-pointer text-[0.6rem] flex flex-col items-center justify-center hover:text-teal">
       <img
         className="w-full rounded-b-3xl sm:w-52 sm:rounded-2xl sm:m-4 sm:mt-32"
         src={playlist.img}
         alt="cover"
       />
-      <label className="flex flex-col w-10/12 text-xs relative border-b lg:w-5/12 xl:w-[45%]">
-        <input type="file" onChange={(e) => editImage(e, playlist.id)} />
+      <input type="file" className="hidden" onChange={(e) => editImage(e, playlist.id)} />
+      </label>
+      </div>
 
-        <input
-          type="text"
-          value={currentTitle}
-          onChange={(e) => setCurrentTitle(e.target.value)}
-          className="flex items-center m-4 mt-32 text-white text-7xl font-bold bg-transparent"
-          ref={inputRef}
-          disabled={!isEditing}
-          onBlur={saveInputChanges}
-          onKeyDown={(e) => e.key === "Enter" && saveInputChanges()}
-        />
-        <FiEdit2
-          className="absolute right-0 cursor-pointer hover:text-teal"
-          onClick={startEdit}
-        />
+      <label className="w-10/12 text-xs relative lg:w-5/12 xl:w-[45%]">
+        {isEditing ? (
+          <input
+            type="text"
+            value={currentTitle}
+            onChange={(e) => setCurrentTitle(e.target.value)}
+            className="flex items-center w-96 m-4 mt-48 text-white text-7xl font-bold bg-transparent"
+            ref={inputRef}
+            onBlur={saveInputChanges}
+            onKeyDown={(e) => e.key === "Enter" && saveInputChanges()}
+          />
+        ) : (
+          <div
+            className="hidden sm:flex items-center m-4 mt-48 text-white text-7xl font-bold bg-transparent cursor-pointer"
+            onClick={startEdit}
+          >
+            {currentTitle || "Click to add a title"}
+          </div>
+        )}
+        {isEditing && (
+          <FiEdit2
+            className="hidden sm:cursor-pointer text-teal text-lg"
+            onClick={startEdit}
+          />
+        )}
       </label>
     </div>
   );
