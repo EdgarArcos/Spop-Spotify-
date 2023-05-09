@@ -12,7 +12,7 @@ export const Home = () => {
   const screenWidth = useScreenWidth();
   const location = useLocation();
   const { musicState, userMusic } = useContext(MusicContext);
-  const { likelist, playOn, indexPlay, random } = musicState;
+  const { playOn, indexPlay } = musicState;
 
   const [musicToPlay, setMusicToPlay] = useState(null);
   const { user } = useAuth0();
@@ -20,24 +20,23 @@ export const Home = () => {
 
   const randomList = (listArr) => listArr.sort(() => Math.random() - 0.5);
 
-  useEffect(() => {
-    const newList = [...likelist];
-    if (random) {
-      setMusicToPlay(randomList(newList));
-    } else {
-      setMusicToPlay(likelist);
-    }
-  }, [likelist, random]);
+  // useEffect(() => {
+  //   const newList = [...likelist];
+  //   if (random) {
+  //     setMusicToPlay(randomList(newList));
+  //   } else {
+  //     setMusicToPlay(likelist);
+  //   }
+  // }, [likelist, random]);
 
   useEffect(() => {
     async function fetchData() {
       if (user?.email && user?.name) {
         const { name, email } = user;
         const response = await auth0loginRequest({ name, email });
-        console.log(response)
         if (response && response.data.user) {
           auth0Login(response.data.user);
-          userMusic(response.data.playlist)
+          userMusic(response.data.playlist);
         } else {
           console.log("Error");
         }

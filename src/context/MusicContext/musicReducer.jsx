@@ -6,9 +6,7 @@ const musicReducer = (state, action) => {
     case types.GET_ALL_MUSIC:
       return {
         ...state,
-        playlist: payload
-        // // likelist: payload.data,
-        // photolist: payload.data[payload.randomIndex],
+        playlist: payload,
       };
 
     case types.CHANGE_PLAYON:
@@ -31,19 +29,25 @@ const musicReducer = (state, action) => {
     case types.ADD_PLAYLIST:
       return {
         ...state,
-        playlist: [...state.playlist, payload]
+        playlist: [...state.playlist, payload],
       };
 
-      case types.EDIT_PLAYLIST_TITLE:
+    case types.EDIT_PLAYLIST_TITLE:
       return {
         ...state,
-        playlist: { ...state.playlist, title: payload }
+        playlist: payload,
       };
 
-      case types.EDIT_IMG:
+    case types.EDIT_PLAYLIST_IMG:
       return {
         ...state,
-        playlist: { ...state.playlist, img: payload },
+        playlist: payload,
+      };
+
+    case types.HANDLE_LIKELIST:
+      return {
+        ...state,
+        playlist: payload,
       };
 
     default:
