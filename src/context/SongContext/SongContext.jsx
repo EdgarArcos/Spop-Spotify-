@@ -10,14 +10,13 @@ export const useSongs = () => {
 
 export function SongProvider({ children }) {
     const [songs, setSongs] = useState([])
-
     const getSongs = async (user) => {
         const resultado = await getSongsRequests()
-        let songs = []
+        let newsongs = []
         if (user?.nickname) {
-            resultado.data.map((song) => { if (song.artist === user.nickname) songs.push(song) })
+            resultado.data.map((song) => { if (song.artist === user.nickname) newsongs.push(song) })
         }
-        return songs
+        return newsongs
     }
 
     const createSong = async (song) => {
@@ -27,7 +26,7 @@ export function SongProvider({ children }) {
 
     const deleteSong = async (_id) => {
         const res = await deleteSongRequest(_id)
-        setPosts(songs.filter(song => song._id !== _id))
+        setSongs(songs.filter(song => song._id !== _id))
     }
 
     const getSong = async (_id) => {
@@ -37,8 +36,7 @@ export function SongProvider({ children }) {
 
     const updateSong = async (id, newSong) => {
         const res = await updateSongRequest(id, newSong)
-        setSongs(posts.map((song) => (song._id === id ? newSong : song)))
-
+        setSongs(songs.map((song) => (song._id === id ? newSong : song)))
     }
 
 

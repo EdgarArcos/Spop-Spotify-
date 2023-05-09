@@ -50,6 +50,10 @@ export const router = createBrowserRouter([
     element: <Artistprofile />,
   },
   {
+    path: "artist/:id",
+    element: <Artistprofile />,
+  },
+  {
     path: "*",
     element: <Errorpage />,
   },

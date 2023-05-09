@@ -22,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-h5-audio-player": "^3.8.6",
     "react-hook-form": "^7.43.9",
+    "react-hot-toast": "^2.4.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
     "uuid": "^9.0.0"
