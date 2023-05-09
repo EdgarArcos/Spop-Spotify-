@@ -35,10 +35,10 @@ const musicReducer = (state, action) => {
     case types.EDIT_PLAYLIST_TITLE:
       return {
         ...state,
-        playlist: payload 
+        playlist: payload,
       };
 
-    case types.EDIT_IMG:
+    case types.EDIT_PLAYLIST_IMG:
       return {
         ...state,
         playlist: payload,

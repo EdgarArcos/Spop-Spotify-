@@ -54,43 +54,35 @@ export const MusicProvider = ({ children }) => {
         nextSong();
       }
     }
-  }
-  
-  const handleAddPlaylist =  (newPlaylist) => {  
-        dispatch({
-          type: "ADD_PLAYLIST",
-          payload: newPlaylist
-        });
-      }
-  
+  };
+
+  const handleAddPlaylist = (newPlaylist) => {
+    dispatch({
+      type: "ADD_PLAYLIST",
+      payload: newPlaylist,
+    });
+  };
+
   const handleEdit = (newTitle, playlistId) => {
-    const newPlaylist = musicState.playlist.map(list => {
-      return list._id === playlistId ? {...list, title: newTitle} : list
-    })
+    const newPlaylist = musicState.playlist.map((list) => {
+      return list._id === playlistId ? { ...list, title: newTitle } : list;
+    });
     dispatch({
       type: "EDIT_PLAYLIST_TITLE",
-      payload: newPlaylist
+      payload: newPlaylist,
     });
-  }
-  
+  };
+
   const handleEditImg = (newImg, playlistId) => {
-    const newPlaylist = musicState.playlist.map(list => {
-      console.log(playlistId)
-
-
-      return list._id === playlistId ? {...list, img: newImg} : list
-    })
-    console.log(newPlaylist)
+    const newPlaylist = musicState.playlist.map((list) => {
+      return list._id === playlistId ? { ...list, img: newImg } : list;
+    });
+    console.log(newPlaylist);
     dispatch({
       type: "EDIT_PLAYLIST_IMG",
-      payload: newPlaylist
+      payload: newPlaylist,
     });
-    
-    }
-  
-
-  
-
+  };
 
   return (
     <MusicContext.Provider

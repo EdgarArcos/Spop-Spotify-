@@ -12,7 +12,7 @@ export const Home = () => {
   const screenWidth = useScreenWidth();
   const location = useLocation();
   const { musicState, userMusic } = useContext(MusicContext);
-  const {  playOn, indexPlay} = musicState;
+  const { playOn, indexPlay } = musicState;
 
   const [musicToPlay, setMusicToPlay] = useState(null);
   const { user } = useAuth0();
@@ -36,7 +36,7 @@ export const Home = () => {
         const response = await auth0loginRequest({ name, email });
         if (response && response.data.user) {
           auth0Login(response.data.user);
-          userMusic(response.data.playlist)
+          userMusic(response.data.playlist);
         } else {
           console.log("Error");
         }
