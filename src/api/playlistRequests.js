@@ -30,3 +30,15 @@ export const createplaylistFetch = async(userId) => {
     .post(`${API_URL}/playlist/add`, {userId} )
     .catch((res) => res.response.data.msg);
 }
+
+export const editTitleFetch = async (playlistData) => {
+  return await axios
+    .put(`${API_URL}/playlist/edittitle`, playlistData)
+    .catch((res) => res.response.data.msg);
+};
+
+export const editImgFetch = async (playlistData) => {
+  return await axios
+    .post(`${API_URL}/playlist/editimg`, playlistData)
+    .catch((res) => res.response.data.msg);
+};
