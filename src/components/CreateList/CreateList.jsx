@@ -1,24 +1,30 @@
-import React, { useEffect, useState } from "react";
-import cover from "../../assets/testimg/Sense títol.png";
+import React, { useContext, useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
-import { useSearchParams } from "react-router-dom";
-import { makeRequest } from "../../api/api-utils";
+import { useParams, useSearchParams } from "react-router-dom";
 import { ResultsOfSearchSongs } from "./ResultsOfSearchSongs";
 import { MessageNotFound } from "../SearchPage/MessageNotFound";
 import { getSongsFetch } from "../../api/playlistRequests";
+import { HeaderPlaylist } from "./HeaderPlaylist";
+import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const CreateList = () => {
+
+  const {id} = useParams();
+  const {musicState} = useContext(MusicContext)
+
   const [songs, setSongs] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchResults, setSearchResults] = useState([]);
+  
+
   const query = searchParams.get("q") ?? "";
 
-  const handleSearch = ({ target }) => {
+    const handleSearch = ({ target }) => {
     const { value } = target;
     setSearchParams({ q: value });
     setShowResults(value !== "");
-  };
+};
 
   useEffect(() => {
     getSongsFetch("songs").then((data) => {
@@ -36,18 +42,12 @@ export const CreateList = () => {
   }, [songs, query]);
 
   return (
-    <div className="min-h-screen h-full w-full text-white flex flex-col">
+    
+    <div className="min-h-screen h-full w-full text-white flex flex-col">     
       <div className=" bg-newblack sm:pl-60">
-        <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-zinc-500 to-zinc-900 smborder-b border-graytext">
-          <img
-            className="w-full rounded-b-3xl sm:w-52 sm:rounded-2xl sm:m-4 sm:mt-32"
-            src={cover}
-            alt="cover"
-          />
-          <h1 className="hidden sm:flex items-center m-4 mt-32 text-white text-7xl font-bold">
-            My Playlist
-          </h1>
-        </div>
+        {musicState.playlist.map(playlist => playlist._id === id && <HeaderPlaylist key={id} playlist={playlist}/>)}
+      
+        
         <div className="bg-newblack sm:bg-gradient-to-b from-zinc-900 to-newblack pt-2">
           <div className="flex flex-col m-5">
             <table className="w-full mt-4">
@@ -87,7 +87,7 @@ export const CreateList = () => {
                   <MessageNotFound query={query} />
                 ))}
             </section>
-            {/* <EachLikeSong key={song.id} index={index} song={song} /> */}
+            
           </div>
         </div>
       </div>

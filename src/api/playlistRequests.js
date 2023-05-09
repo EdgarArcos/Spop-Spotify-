@@ -12,17 +12,21 @@ export const getSongsFetch = async (data) => {
     .catch((res) => res.response.data.msg)
 }
 
+export const getPlaylisFetch = async(userId) => {
+  return await axios
+    .get(`${API_URL}/playlist/getplaylists`, {userId} )
+    .catch((res) => res.response.data.msg)
+
+}
+
 export const addSongPlaylistFetch = async(data) => {
     return await axios
     .post(`${API_URL}/playlist/:id/songs`, data
     .catch((res) => res.response.data.msg))
 }
 
-export const createplaylistFetch = async(data, userId) => {
+export const createplaylistFetch = async(userId) => {
     return await axios
-    .post(`${API_URL}/playlist/add`, { ...data, user: userId })
-    .then((res) => {
-        return res.data;
-    })
+    .post(`${API_URL}/playlist/add`, {userId} )
     .catch((res) => res.response.data.msg);
 }

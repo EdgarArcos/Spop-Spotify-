@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import fulllogo from "../../assets/testimg/fulllogo.png";
 import likedsongs from "../../assets/testimg/likedsongs.png";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
@@ -8,36 +8,31 @@ import { Link, useNavigate } from "react-router-dom";
 import { BsFillPlusSquareFill } from "react-icons/bs";
 import { UsersContext } from "../../context/UsersContext";
 import { createplaylistFetch } from "../../api/playlistRequests";
-import axios from "axios";
+import { MusicContext } from "../../context/MusicContext/MusicContext";
+
 
 
 export const SideMenu = () => {
+
+  
   const { user } = useContext(UsersContext);
+  const { musicState, handleAddPlaylist} = useContext(MusicContext);
+  const { playlist } = musicState;
+
   const navigate = useNavigate();
-  const [playlist, setPlaylist] = useState([]);
 
   const handleCreate = async () => {
-    const newPlaylist = {
-      title: "My playlist",
-      img: "https://res.cloudinary.com/dycz1nib9/image/upload/v1683280442/Artist_Songs/createplaylist_ml9at0.png",
-      songs: [],
-      userId: user.id
-    };
-    
-    try {
-      const res = await createplaylistFetch(newPlaylist);
-      console.log(res)
-      if (res.ok) {
-        console.log(res.playlist)
-        setPlaylist([...playlist, res.playlist]);
+      const res = await createplaylistFetch(user.id);
+      if (res.data.ok) {
+        handleAddPlaylist(res.data.playlist)
+        navigate(`/playlist/${res.data.playlist._id}`);
 
-        navigate(`/playlist/${res.playlist._id}`);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  
+  }
+  }
+
+
+
+
   return (
     <div className="flex flex-col h-screen bg-newblack p-4 w-60 fixed">
       <img className="pb-3" src={fulllogo} alt="logo" />
@@ -80,8 +75,8 @@ export const SideMenu = () => {
         <p className="ml-2">Create Playlist</p>
       </div>
       
-      {playlist.map((p) => (
-        <Link key={p._id} to={`/playlist/${p._id}`}>
+      {playlist.length > 0 && playlist.map((p) => (
+        <Link key={p._id} to={p.title === "Liked Songs" ? "/likelibrary" : `/playlist/${p._id}`}>
           <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
             <div>
               <img className="w-7 rounded mr-2" src={p.img} alt="playlist" />
@@ -89,15 +84,11 @@ export const SideMenu = () => {
             <p className="ml-2">{p.title}</p>
           </div>
         </Link>
+        
       ))}
 
       
-      <Link to="/likelibrary" >
-      <div className="flex flex-row p-2 border-solid border-b border-newgray pb-5  hover:bg-newgray rounded-md cursor-pointer">
-        <img className="w-7 rounded mr-2" src={likedsongs} alt="liekdsongs" />
-        <p className="ml-2">Liked Songs</p>
-      </div>
-      </Link>
     </div>
   );
 };
+

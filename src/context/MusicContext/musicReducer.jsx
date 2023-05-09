@@ -6,8 +6,9 @@ const musicReducer = (state, action) => {
     case types.GET_ALL_MUSIC:
       return {
         ...state,
-        likelist: payload.data,
-        photolist: payload.data[payload.randomIndex],
+        playlist: payload
+        // // likelist: payload.data,
+        // photolist: payload.data[payload.randomIndex],
       };
 
     case types.CHANGE_PLAYON:
@@ -26,6 +27,12 @@ const musicReducer = (state, action) => {
         ...state,
         repeat: !state.repeat,
       };
+
+    case types.ADD_PLAYLIST:
+      return {
+        ...state,
+        playlist: [...state.playlist, payload]
+      }
 
     default:
       state;

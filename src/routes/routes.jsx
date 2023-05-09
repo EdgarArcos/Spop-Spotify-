@@ -1,8 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
-import { ContainerAllGenres } from "../components/HomePage";
-import { MainContainerLibrary } from "../components/LibraryPage";
-import { ContainerLikeLibrary } from "../components/LikeLibrary/ContainerLikeLibrary";
-import { SearchResultsContainer } from "../components/SearchPage";
+import { createBrowserRouter } from 'react-router-dom';
+import { ContainerAllGenres } from '../components/HomePage';
+import { MainContainerLibrary } from '../components/LibraryPage';
+import { ContainerLikeLibrary } from '../components/LikeLibrary/ContainerLikeLibrary';
+import { SearchResultsContainer } from '../components/SearchPage';
 import {
   NowPlaying,
   Home,
@@ -10,46 +10,51 @@ import {
   Profile,
   Errorpage,
   Artistprofile,
-} from "../pages";
-import { CreateList } from "../components/CreateList/CreateList";
+} from '../pages';
+import { CreateList } from '../components/CreateList/CreateList';
+import { Admin } from './../components/Admin/Admin';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <ContainerAllGenres />,
       },
       {
-        path: "search",
+        path: 'search',
         element: <SearchResultsContainer />,
       },
       {
-        path: "library",
+        path: 'library',
         element: <MainContainerLibrary />,
       },
       {
-        path: "likelibrary",
+        path: 'likelibrary',
         element: <ContainerLikeLibrary />,
       },
       {
-        path: "nowplaying",
+        path: 'nowplaying',
         element: <NowPlaying />,
       },
       {
-        path: "playlist/:id",
+        path: 'playlist/:id',
         element: <CreateList />,
       },
       {
         path: "profile",
         element: <Profile />,
       },
+      {
+        path: 'admin',
+        element: <Admin />,
+      },
     ],
   },
   {
-    path: "login",
+    path: 'login',
     element: <Login />,
   },
 
@@ -58,7 +63,7 @@ export const router = createBrowserRouter([
     element: <Artistprofile />,
   },
   {
-    path: "*",
+    path: '*',
     element: <Errorpage />,
   },
 ]);
