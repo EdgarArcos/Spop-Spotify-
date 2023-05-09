@@ -12,7 +12,7 @@ export const Home = () => {
   const screenWidth = useScreenWidth();
   const location = useLocation();
   const { musicState, userMusic } = useContext(MusicContext);
-  const { likelist, playOn, indexPlay, random } = musicState;
+  const {  playOn, indexPlay} = musicState;
 
   const [musicToPlay, setMusicToPlay] = useState(null);
   const { user } = useAuth0();
@@ -20,14 +20,14 @@ export const Home = () => {
 
   const randomList = (listArr) => listArr.sort(() => Math.random() - 0.5);
 
-  useEffect(() => {
-    const newList = [...likelist];
-    if (random) {
-      setMusicToPlay(randomList(newList));
-    } else {
-      setMusicToPlay(likelist);
-    }
-  }, [likelist, random]);
+  // useEffect(() => {
+  //   const newList = [...likelist];
+  //   if (random) {
+  //     setMusicToPlay(randomList(newList));
+  //   } else {
+  //     setMusicToPlay(likelist);
+  //   }
+  // }, [likelist, random]);
 
   useEffect(() => {
     async function fetchData() {
