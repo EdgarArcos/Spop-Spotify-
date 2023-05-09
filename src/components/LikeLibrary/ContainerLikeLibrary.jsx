@@ -9,10 +9,11 @@ import { useDragAndDrop } from "../../hooks/useDragAndDrop";
 
 export const ContainerLikeLibrary = () => {
   const { musicState } = useContext(MusicContext);
-  const { likelist, photolist } = musicState;
+  const { playlist } = musicState;
 
-  const { dragStart, dragEnter, drop, dragabbleList } =
-    useDragAndDrop(likelist);
+  const { dragStart, dragEnter, drop, dragabbleList } = useDragAndDrop(
+    playlist[0].songs
+  );
 
   return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">
@@ -20,7 +21,7 @@ export const ContainerLikeLibrary = () => {
         <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-cyan-700 to-zinc-800 smborder-b border-graytext">
           <img
             className="w-full rounded-b-3xl sm:w-52 sm:rounded-2xl sm:m-4 sm:mt-32"
-            src={photolist.thumbnail}
+            src={playlist[0].img}
             alt="cover"
           />
           <h1 className="hidden sm:flex items-center m-4 mt-32 text-white text-5xl font-bold">
