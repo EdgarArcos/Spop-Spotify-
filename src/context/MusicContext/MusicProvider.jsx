@@ -66,7 +66,22 @@ export const MusicProvider = ({ children }) => {
           payload: newPlaylist
         });
       }
-    
+  
+  const handleEdit = (newTitle) => {
+    dispatch({
+      type: "EDIT_PLAYLIST_TITLE",
+      payload: newTitle
+    });
+  }
+  
+  const handleEditImg = (img) => {
+      dispatch({ 
+        type: "EDIT_PLAYLIST_IMG",
+        payload: img });
+    }
+  
+
+  
 
 
   return (
@@ -79,7 +94,9 @@ export const MusicProvider = ({ children }) => {
         handleRandom,
         handleEnd,
         handleAddPlaylist,
-        userMusic
+        userMusic,
+        handleEdit,
+        handleEditImg
       }}
     >
       {children}
