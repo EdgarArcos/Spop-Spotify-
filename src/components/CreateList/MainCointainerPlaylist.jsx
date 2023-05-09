@@ -1,12 +1,16 @@
 import React, { useContext } from 'react'
 import { FaHeart, FaPlay, FaRegHeart } from 'react-icons/fa'
 import { MusicContext } from '../../context/MusicContext/MusicContext';
+import { LikeButton } from '../Reusable/LikeButton';
 
 export const MainCointainerPlaylist = ({playlist}) => {
 
-    
-    // const { musicState } = useContext(MusicContext);
-    // const { playlist } = musicState;
+    const { handlePlayOn, handleIndex } = useContext(MusicContext);
+
+    const handlePlay = (index) => {
+        handleIndex(index);
+        handlePlayOn();
+    };
 
     return (
         <div className="flex flex-col m-5">
@@ -25,7 +29,7 @@ export const MainCointainerPlaylist = ({playlist}) => {
                 (
                 <tbody
                     key={song.id}
-                //     onClick={() => handlePlay(index)}
+                    onClick={() => handlePlay(index)}
                 //     draggable
                 //     onDragStart={onDragStart}
                 //     onDragEnter={onDragEnter}
@@ -65,7 +69,7 @@ export const MainCointainerPlaylist = ({playlist}) => {
                             {song.artist} · {playlist.name}
                         </td>
                         <td className="hidden lg:grid  pt-6 justify-start">
-                            <FaHeart className="text-teal" />
+                            <LikeButton />
                         </td>
                     </tr>
                 </tbody>
