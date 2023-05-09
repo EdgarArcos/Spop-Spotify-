@@ -14,8 +14,8 @@ export function SongProvider({ children }) {
     const getSongs = async (user) => {
         const resultado = await getSongsRequests()
         let songs = []
-        if (user?.email) {
-            resultado.data.map((song) => { if (song.user === user.email) songs.push(song) })
+        if (user?.nickname) {
+            resultado.data.map((song) => { if (song.artist === user.nickname) songs.push(song) })
         }
         return songs
     }
