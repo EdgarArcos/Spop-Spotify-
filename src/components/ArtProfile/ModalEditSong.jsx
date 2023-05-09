@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function ModalEditSong({ isvisible, onClose }) {
     const { getSong, updateSong } = useSongs()
     const { register, handleSubmit } = useForm()
+    const navigate = useNavigate()
     const [song, setSong] = useState({
         title: "",
         description: ""
@@ -20,13 +21,14 @@ export default function ModalEditSong({ isvisible, onClose }) {
     }, [params.id])
     const onSubmit = async (data) => {
         updateSong(song._id, data)
+        navigate(`/artist`)
         onClose()
     }
     if (!isvisible) return null
     return (
         <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
             <div>
-                <div className='pl-6'><button className='text-white text-xl pl-96' onClick={() => { onClose() }}>X</button></div>
+                <div className='pl-6'><button className='text-white text-xl pl-96' onClick={() => { onClose(), navigate("/artist") }}>X</button></div>
                 <form onSubmit={handleSubmit(onSubmit)} className=' bg-red-700'>
                     <div>
                         <label>Title</label>
