@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RiHeart3Fill } from "react-icons/ri";
+import { UsersContext } from "../../context/UsersContext";
+import { handleLikeSong } from "../../api/api-utils";
+import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const LikeButton = ({
   songId,
@@ -7,11 +10,21 @@ export const LikeButton = ({
   activeClass,
   disactiveClass,
 }) => {
+  const { user } = useContext(UsersContext);
+  const { handleLikedSongs, musicState } = useContext(MusicContext);
   const [isLiked, setIsLiked] = useState(false);
 
-  const addSongFavList = (id) => {
-    setIsLiked(!isLiked);
-    console.log(id);
+  useEffect(() => {
+    const checkIsLiked = musicState.playlist[0]?.songs.includes(songId);
+    if (checkIsLiked) setIsLiked(true);
+  }, [musicState.playlist]);
+
+  const addSongFavList = async (id) => {
+    const res = await handleLikeSong({ userId: user.id, songId: id });
+    if (res.data.ok) {
+      handleLikedSongs(res.data.likedSongs);
+      setIsLiked(!isLiked);
+    }
   };
 
   return (

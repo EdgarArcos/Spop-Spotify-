@@ -44,6 +44,12 @@ const musicReducer = (state, action) => {
         playlist: payload,
       };
 
+    case types.HANDLE_LIKELIST:
+      return {
+        ...state,
+        playlist: payload,
+      };
+
     default:
       state;
   }

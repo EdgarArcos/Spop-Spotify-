@@ -7,8 +7,6 @@ import { createplaylistFetch } from "../../api/playlistRequests";
 import { useNavigate } from "react-router-dom";
 
 const initialState = {
-  // likelist: [],
-  // photolist: [],
   playlist: [],
   indexPlay: 0,
   playOn: false,
@@ -84,6 +82,13 @@ export const MusicProvider = ({ children }) => {
     });
   };
 
+  const handleLikedSongs = (likedSongs) => {
+    const newPlayList = musicState.playlist.map((list) => {
+      return list._id === likedSongs._id ? likedSongs : list;
+    });
+    dispatch({ type: types.HANDLE_LIKELIST, payload: newPlayList });
+  };
+
   return (
     <MusicContext.Provider
       value={{
@@ -97,6 +102,7 @@ export const MusicProvider = ({ children }) => {
         userMusic,
         handleEdit,
         handleEditImg,
+        handleLikedSongs,
       }}
     >
       {children}
