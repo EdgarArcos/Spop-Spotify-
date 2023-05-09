@@ -6,33 +6,13 @@ export const ResultsOfSearchSongs = ({ resultsArr }) => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleAdd = async (e) => {
-      setIsLoading(true);
+    const addSongToPlaylist = async (id) => {
+      const res = await addSongPlaylistFetch
   
-      const song = {
-        name: e.target.value,
-        artist: e.target.value
-      }; // Replace with the actual song object
+     
   
-      try {
-        const updatedPlaylist = await addSongToPlaylist(song);
-        console.log(updatedPlaylist);
-        setIsLoading(false);
-      } catch (err) {
-        console.error(err);
-        setIsLoading(false);
-      }
-    };
   
-    const addSongToPlaylist = async (playlistId, song) => {
-      try {
-        const response = await axios.post(`http://localhost:4000/playlist/${playlistId}/songs`, song);
-        return response.data.playlist;
-      } catch (err) {
-        console.error(err);
-        throw new Error('Failed to add song to playlist');
-      }
-    };
+    
     return (
         <div>
             {resultsArr.map(({ _id, artist, name, img }) => (
@@ -52,4 +32,4 @@ export const ResultsOfSearchSongs = ({ resultsArr }) => {
     );
 };
 
-
+}
