@@ -1,4 +1,3 @@
-import React from "react";
 import "react-h5-audio-player/lib/styles.css";
 import "./AudioBar.css";
 import { useContext, useRef, useState, useEffect } from "react";
@@ -24,15 +23,18 @@ export const AudioBar = ({ url, name, artist }) => {
   const [dur, setDur] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
 
-  let audio = useRef("audio_tag");
+  let audioRef = useRef(null);
 
   const handleVolume = (q) => {
     setStateVolum(q);
-    audio.current.volume = q;
+    audioRef.current.volume = q;
   };
 
-  const toggleAudio = () =>
-    audio.current.paused ? audio.current.play() : audio.current.pause();
+  const toggleAudio = () => {
+    audioRef.current.paused
+      ? audioRef.current.play()
+      : audioRef.current.pause();
+  };
 
   const fmtMSS = (s) => {
     return (s - (s %= 60)) / 60 + (9 < s ? ":" : ":0") + ~~s;
@@ -41,15 +43,15 @@ export const AudioBar = ({ url, name, artist }) => {
   const handleProgress = (e) => {
     let compute = (e.target.value * dur) / 100;
     setCurrentTime(compute);
-    audio.current.currentTime = compute;
+    audioRef.current.currentTime = compute;
   };
 
   useEffect(() => {
-    audio.current.volume = statevolum;
+    audioRef.current.volume = statevolum;
     if (playOn) {
       toggleAudio();
     }
-  }, [indexPlay, handlePlayOn]);
+  }, [indexPlay]);
 
   const prevSong = () => {
     if (indexPlay === 0) {
@@ -76,10 +78,15 @@ export const AudioBar = ({ url, name, artist }) => {
     }
   };
 
+  const handlePlayAndPause = () => {
+    toggleAudio();
+    handlePlayOn();
+  };
+
   return (
     <div className="flex flex-col sm:flex-row">
       <audio
-        ref={audio}
+        ref={audioRef}
         onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
         onCanPlay={(e) => setDur(e.target.duration)}
         onEnded={repeatSong}
@@ -111,17 +118,19 @@ export const AudioBar = ({ url, name, artist }) => {
 
         <span
           className="flex flex-row m-2 p-2 justify-center bg-teal rounded-full text-md w-8 h-8 sm:w-12 sm:h-12 sm:items-center"
-          onClick={() => {
-            handlePlayOn();
-            toggleAudio();
-          }}
+          onClick={handlePlayAndPause}
         >
-          <span className={!playOn ? "" : "hidden"}>
+          {audioRef.current?.paused ? (
+            <FaPlay className="ml-1 sm:ml-1" />
+          ) : (
+            <FaPause className="ml-0 sm:ml-1" />
+          )}
+          {/* <span className={!playOn ? "" : "hidden"}>
             <FaPlay className="ml-1 sm:ml-1" />
           </span>
           <span className={!playOn ? "hidden" : ""}>
             <FaPause className="ml-0 sm:ml-1" />
-          </span>
+          </span> */}
         </span>
 
         <span
