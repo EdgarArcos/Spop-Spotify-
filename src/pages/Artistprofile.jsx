@@ -6,13 +6,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export const Artistprofile = () => {
     const [showModal, setShowModal] = useState(false)
-    const [filteredSongs, setFilteredSongs] = useState([])
+    // const [filteredSongs, setFilteredSongs] = useState([])
     const { user } = useAuth0()
-    const { getSongs } = useSongs()
+    const { getSongs, songs, setSongs } = useSongs()
 
     useEffect(() => {
         const getFilteredSongs = async () => {
-            setFilteredSongs(await getSongs(user))
+            setSongs(await getSongs(user))
         }
         getFilteredSongs()
     }, [user, getSongs])
@@ -41,7 +41,7 @@ export const Artistprofile = () => {
                             </thead>
                         </table>
                         <div><ModalSong isVisible={showModal} onClose={() => setShowModal(false)} /></div>
-                        {filteredSongs.length !== 0 && filteredSongs.map((song, index) => (
+                        {songs.length !== 0 && songs.map((song, index) => (
                             <Cardsong song={song} index={index} key={song._id} />
                         )
                         )}
