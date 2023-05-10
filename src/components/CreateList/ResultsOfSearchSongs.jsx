@@ -3,22 +3,17 @@ import { addSongPlaylistFetch } from "../../api/playlistRequests";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const ResultsOfSearchSongs = ({ resultsArr, playlistId }) => {
-
-  const {handleAddSong} = useContext(MusicContext)
-
+  const { handleAddSong } = useContext(MusicContext);
 
   const handleAddToPlaylist = async (songId) => {
+    const res = await addSongPlaylistFetch({
+      songId: songId,
+      playlistId,
+    });
 
-      const res = await addSongPlaylistFetch({
-        songId: songId,
-        playlistId
-      });
-
-      if(res.data.ok) {
-        handleAddSong(res.data.playlist)
-      }
-
-
+    if (res.data.ok) {
+      handleAddSong(res.data.playlist);
+    }
   };
 
   return (
@@ -49,5 +44,3 @@ export const ResultsOfSearchSongs = ({ resultsArr, playlistId }) => {
     </div>
   );
 };
-
-
