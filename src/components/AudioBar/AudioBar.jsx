@@ -48,9 +48,9 @@ export const AudioBar = ({ url, name, artist }) => {
 
   useEffect(() => {
     audioRef.current.volume = statevolum;
-    if (playOn) {
+    // if (playOn) {
       toggleAudio();
-    }
+    // }
   }, [indexPlay]);
 
   const prevSong = () => {
