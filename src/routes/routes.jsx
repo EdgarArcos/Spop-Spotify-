@@ -35,6 +35,14 @@ export const router = createBrowserRouter([
         path: "createplaylist",
         element: <CreateList />,
       },
+      {
+        path: "artist/",
+        element: <Artistprofile />,
+      },
+      {
+        path: "artist/:id",
+        element: <Artistprofile />,
+      },
     ],
   },
   {
@@ -44,14 +52,6 @@ export const router = createBrowserRouter([
   {
     path: "profile",
     element: <Profile />,
-  },
-  {
-    path: "artist/",
-    element: <Artistprofile />,
-  },
-  {
-    path: "artist/:id",
-    element: <Artistprofile />,
   },
   {
     path: "*",

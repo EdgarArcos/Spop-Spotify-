@@ -20,21 +20,24 @@ export const ModalSong = ({ isVisible, onClose }) => {
         onClose()
     }
     if (!isVisible) return null
-
     return (
         <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
-            <div>
+            <div className='text-center py-10'>
                 <div className='pl-6'><button className='text-white text-xl pl-96' onClick={() => { onClose() }}>X</button></div>
-                <form onSubmit={handleSubmit(onSubmit)} className=' bg-red-700'>
+                <form onSubmit={handleSubmit(onSubmit)} className='bg-slate-50 text-black rounded-xl'>
+                    <div className=" pt-4 pb-2">
+                        <label className='text-xl'>Title</label>
+                    </div>
                     <div>
-                        <label>Title</label>
-                        <input type='text' {...register('name', {
+                        <input className="border-2" type='text' {...register('name', {
                             required: true,
                             maxLength: 15
                         })} />
                     </div>
+                    <div className="pt-4 pb-2">
+                        <label className="text-xl">Genre</label>
+                    </div>
                     <div>
-                        <label>Genre</label>
                         <select {...register("genre")}>
                             <option value="PoP">PoP</option>
                             <option value="Rock">Rock</option>
@@ -45,19 +48,26 @@ export const ModalSong = ({ isVisible, onClose }) => {
                             <option value="Electric">Electric</option>
                         </select>
                     </div>
+                    <div className="pt-4 pb-2">
+                        <label className="text-xl">File Song</label>
+                    </div>
                     <div>
-                        <label>File Song</label>
                         <input type='file' {...register('file', {
                             required: false,
                         })} />
                     </div>
+                    <div className="pt-4 pb-2">
+                        <label className="text-xl">File Image</label>
+                    </div>
                     <div>
-                        <label>File Image</label>
                         <input type='file' {...register('image', {
                             required: true,
                         })} />
                     </div>
-                    <input type='submit' value="Save"></input>
+                    <div className='pt-2 pb-4' >
+                        <input className="bg-green-600 px-4 py-2 rounded mt-2 text-white focus:outline-none disabled:bg-green-400 hover:bg-green-500" type='submit' value="Save"></input>
+                    </div>
+
                 </form>
             </div>
         </div>
