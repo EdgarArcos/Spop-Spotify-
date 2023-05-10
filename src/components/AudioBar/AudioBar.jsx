@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 export const AudioBar = ({ url, name, artist }) => {
   const { handlePlayOn, handleIndex, handleRepeat, handleRandom, musicState } =
     useContext(MusicContext);
-  const { indexPlay, likelist, random, repeat, playOn } = musicState;
+  const { indexPlay, currentList, random, repeat, playOn } = musicState;
 
   const [statevolum, setStateVolum] = useState(0.3);
   const [dur, setDur] = useState(0);
@@ -60,7 +60,7 @@ export const AudioBar = ({ url, name, artist }) => {
   };
 
   const nextSong = () => {
-    if (indexPlay === likelist.length - 1) {
+    if (indexPlay === currentList.length - 1) {
       handleIndex(0);
     } else {
       handleIndex(indexPlay + 1);
