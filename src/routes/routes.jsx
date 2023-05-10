@@ -1,38 +1,46 @@
-import { createBrowserRouter } from "react-router-dom";
-import { ContainerAllGenres } from "../components/HomePage";
-import { MainContainerLibrary } from "../components/LibraryPage";
-import { ContainerLikeLibrary } from "../components/LikeLibrary/ContainerLikeLibrary";
-import { SearchResultsContainer } from "../components/SearchPage";
-import { NowPlaying, Home, Login, Profile, Errorpage, Artistprofile } from "../pages";
-import { CreateList } from "../components/CreateList/CreateList";
+import { createBrowserRouter } from 'react-router-dom';
+import { ContainerAllGenres } from '../components/HomePage';
+import { MainContainerLibrary } from '../components/LibraryPage';
+import { ContainerLikeLibrary } from '../components/LikeLibrary/ContainerLikeLibrary';
+import { SearchResultsContainer } from '../components/SearchPage';
+import {
+  NowPlaying,
+  Home,
+  Login,
+  Profile,
+  Errorpage,
+  Artistprofile,
+} from '../pages';
+import { CreateList } from '../components/CreateList/CreateList';
+import { Admin } from './../components/Admin/Admin';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <ContainerAllGenres />,
       },
       {
-        path: "search",
+        path: 'search',
         element: <SearchResultsContainer />,
       },
       {
-        path: "library",
+        path: 'library',
         element: <MainContainerLibrary />,
       },
       {
-        path: "likelibrary",
+        path: 'likelibrary',
         element: <ContainerLikeLibrary />,
       },
       {
-        path: "nowplaying",
+        path: 'nowplaying',
         element: <NowPlaying />,
       },
       {
-        path: "createplaylist",
+        path: 'playlist/:id',
         element: <CreateList />,
       },
       {
@@ -43,18 +51,27 @@ export const router = createBrowserRouter([
         path: "artist/:id",
         element: <Artistprofile />,
       },
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: 'admin',
+        element: <Admin />,
+      },
     ],
   },
   {
-    path: "login",
+    path: 'login',
     element: <Login />,
   },
+
   {
-    path: "profile",
-    element: <Profile />,
+    path: "artprofile",
+    element: <Artistprofile />,
   },
   {
-    path: "*",
+    path: '*',
     element: <Errorpage />,
   },
 ]);

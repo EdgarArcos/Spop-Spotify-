@@ -8,6 +8,7 @@ export const MainContainerLibrary = () => {
   const [playlists, setPlaylists] = useState([]);
   const [likedSongs, setLikedSongs] = useState([]);
 
+
   useEffect(() => {
     makeRequest("playlists").then((data) => setPlaylists(data));
     makeRequest("tracks").then((data) => setLikedSongs(data));

@@ -3,10 +3,12 @@ import { makeRequest } from "../../api/api-utils";
 import { MusicContext } from "./MusicContext";
 import { types } from "./types/types";
 import musicReducer from "./musicReducer";
+import { createplaylistFetch } from "../../api/playlistRequests";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
-  likelist: [],
-  photolist: [],
+  playlist: [],
+  currentList: [],
   indexPlay: 0,
   playOn: false,
   repeat: false,
@@ -16,12 +18,21 @@ const initialState = {
 export const MusicProvider = ({ children }) => {
   const [musicState, dispatch] = useReducer(musicReducer, initialState);
 
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * 20);
-    makeRequest("tracks").then((data) =>
-      dispatch({ type: types.GET_ALL_MUSIC, payload: { data, randomIndex } })
-    );
-  }, []);
+  const userMusic = (playlist) => {
+    dispatch({ type: types.GET_ALL_MUSIC, payload: playlist });
+  };
+
+  const changeCurrentList = (songsArray) => {
+    dispatch({ type: types.CHANGE_CURRENTLIST, payload: songsArray});
+
+  }
+
+  // useEffect(() => {
+  //   const randomIndex = Math.floor(Math.random() * 20);
+  //   makeRequest("tracks").then((data) =>
+  //     dispatch({ type: types.GET_ALL_MUSIC, payload: { data, randomIndex } })
+  //   );
+  // }, []);
 
   const handlePlayOn = () => {
     dispatch({ type: types.CHANGE_PLAYON });
@@ -31,16 +42,13 @@ export const MusicProvider = ({ children }) => {
     dispatch({ type: types.HANDLE_INDEX, payload: index });
   };
 
-
-
-  const handleRepeat = () =>
-    dispatch({ type: types.HANDLE_REPEAT});
+  const handleRepeat = () => dispatch({ type: types.HANDLE_REPEAT });
 
   const handleRandom = () => dispatch({ type: types.HANDLE_RANDOM });
 
   const handleEnd = () => {
     if (state.random) {
-      return handleIndex((Math.random() * state.likelist.length));
+      return handleIndex(Math.random() * state.likelist.length);
     } else {
       if (state.repeat) {
         nextSong();
@@ -52,6 +60,48 @@ export const MusicProvider = ({ children }) => {
     }
   };
 
+  const handleAddPlaylist = (newPlaylist) => {
+    dispatch({
+      type: "ADD_PLAYLIST",
+      payload: newPlaylist,
+    });
+  };
+
+  const handleEdit = (newTitle, playlistId) => {
+    const newPlaylist = musicState.playlist.map((list) => {
+      return list._id === playlistId ? { ...list, title: newTitle } : list;
+    });
+    dispatch({
+      type: "EDIT_PLAYLIST_TITLE",
+      payload: newPlaylist,
+    });
+  };
+
+  const handleEditImg = (newImg, playlistId) => {
+    const newPlaylist = musicState.playlist.map((list) => {
+      return list._id === playlistId ? { ...list, img: newImg } : list;
+    });
+    console.log(newPlaylist);
+    dispatch({
+      type: "EDIT_PLAYLIST_IMG",
+      payload: newPlaylist,
+    });
+  };
+
+  const handleLikedSongs = (likedSongs) => {
+    const newPlayList = musicState.playlist.map((list) => {
+      return list._id === likedSongs._id ? likedSongs : list;
+    });
+    dispatch({ type: types.HANDLE_LIKELIST, payload: newPlayList });
+  };
+
+  const handleAddSong = (playlistSongs) => {
+    const playlistArr = musicState.playlist.map((list) => {
+      return list._id === playlistSongs._id ? playlistSongs : list;
+    });
+    dispatch({ type: types.HANDLE_PLAYLIST, payload: playlistArr});
+  }
+
   return (
     <MusicContext.Provider
       value={{
@@ -61,6 +111,13 @@ export const MusicProvider = ({ children }) => {
         handleRepeat,
         handleRandom,
         handleEnd,
+        handleAddPlaylist,
+        userMusic,
+        handleEdit,
+        handleEditImg,
+        handleLikedSongs,
+        handleAddSong,
+        changeCurrentList
       }}
     >
       {children}

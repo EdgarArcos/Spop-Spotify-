@@ -28,20 +28,20 @@ export const UserInput = () => {
   };
 
   return (
-    <label className="flex flex-col w-full text-xs realtive border-b">
+    <label className="flex flex-col w-10/12 text-xs relative border-b lg:w-5/12 xl:w-[45%]">
       Username
       <input
         type="text"
         value={currentUsername}
         onChange={(e) => setCurrentUsername(e.target.value)}
-        className="text-2xl bg-transparent border-b"
+        className="text-2xl bg-transparent"
         ref={inputRef}
         disabled={!isEditing}
         onBlur={saveInputChanges}
         onKeyDown={(e) => e.key === "Enter" && saveInputChanges()}
       />
       <FiEdit2
-        className="absolute right-6 cursor-pointer sm:right-[12rem] md:right-[18rem] lg:right-[25rem] xl:right-[30rem]"
+        className="absolute right-0 cursor-pointer hover:text-teal"
         onClick={startEdit}
       />
     </label>
