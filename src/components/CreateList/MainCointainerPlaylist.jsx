@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { FaHeart, FaPlay, FaRegHeart } from 'react-icons/fa'
 import { MusicContext } from '../../context/MusicContext/MusicContext';
 import { LikeButton } from '../Reusable/LikeButton';
+import { AiOutlineClose } from "react-icons/ai";
 
 export const MainCointainerPlaylist = ({playlist}) => {
 
@@ -72,6 +73,9 @@ export const MainCointainerPlaylist = ({playlist}) => {
                         </td>
                         <td className="hidden lg:grid  pt-6 justify-start">
                             <LikeButton />
+                        </td>
+                        <td className="hidden lg:grid  pt-6 justify-start">
+                            <AiOutlineClose />
                         </td>
                     </tr>
                 </tbody>

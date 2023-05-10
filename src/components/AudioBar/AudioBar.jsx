@@ -49,7 +49,7 @@ export const AudioBar = ({ url, name, artist }) => {
     if (playOn) {
       toggleAudio();
     }
-  }, [indexPlay, playOn]);
+  }, [indexPlay, handlePlayOn]);
 
   const prevSong = () => {
     if (indexPlay === 0) {
@@ -113,7 +113,7 @@ export const AudioBar = ({ url, name, artist }) => {
           className="flex flex-row m-2 p-2 justify-center bg-teal rounded-full text-md w-8 h-8 sm:w-12 sm:h-12 sm:items-center"
           onClick={() => {
             handlePlayOn();
-            // toggleAudio();
+            toggleAudio();
           }}
         >
           <span className={!playOn ? "" : "hidden"}>
