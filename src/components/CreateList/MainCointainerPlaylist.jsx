@@ -5,9 +5,11 @@ import { LikeButton } from '../Reusable/LikeButton';
 
 export const MainCointainerPlaylist = ({playlist}) => {
 
-    const { handlePlayOn, handleIndex } = useContext(MusicContext);
+    const { handlePlayOn, handleIndex, changeCurrentList } = useContext(MusicContext);
+
 
     const handlePlay = (index) => {
+        changeCurrentList(playlist.songs)
         handleIndex(index);
         handlePlayOn();
     };
@@ -28,7 +30,7 @@ export const MainCointainerPlaylist = ({playlist}) => {
                 {playlist.songs.map((song, index) => 
                 (
                 <tbody
-                    key={song.id}
+                    key={song._id}
                     onClick={() => handlePlay(index)}
                 //     draggable
                 //     onDragStart={onDragStart}

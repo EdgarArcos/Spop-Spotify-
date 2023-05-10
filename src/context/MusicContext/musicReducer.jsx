@@ -55,6 +55,12 @@ const musicReducer = (state, action) => {
           ...state,
           playlist: payload,
         };
+
+      case types.CHANGE_CURRENTLIST:
+        return {
+          ...state,
+          currentList: payload
+        }
   
 
     default:

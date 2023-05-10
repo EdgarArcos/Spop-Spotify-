@@ -55,19 +55,6 @@ export const CreateList = () => {
           </React.Fragment>
         )
         )}
-        
-        {/* <div className="bg-newblack sm:bg-gradient-to-b from-zinc-900 to-newblack pt-2">
-          <div className="flex flex-col m-5">
-            <table className="w-full mt-4">
-              <thead>
-                <tr className="hidden sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4  text-graytext text-lg border-b  border-graytext mb-8 ">
-                  <th>#</th>
-                  <th>Title</th>
-                  <th className="hidden md:grid">Artist</th>
-                  <th className="hidden lg:grid"></th>
-                </tr>
-              </thead>
-            </table> */}
             <div>
               <p className="text-xl font-semibold">
                 Let's find something for your list
@@ -98,7 +85,5 @@ export const CreateList = () => {
             
           </div>
         </div>
-    //   </div>
-    // </div>
   );
 };

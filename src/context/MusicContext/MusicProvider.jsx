@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const initialState = {
   playlist: [],
+  currentList: [],
   indexPlay: 0,
   playOn: false,
   repeat: false,
@@ -20,6 +21,11 @@ export const MusicProvider = ({ children }) => {
   const userMusic = (playlist) => {
     dispatch({ type: types.GET_ALL_MUSIC, payload: playlist });
   };
+
+  const changeCurrentList = (songsArray) => {
+    dispatch({ type: types.CHANGE_CURRENTLIST, payload: songsArray});
+
+  }
 
   // useEffect(() => {
   //   const randomIndex = Math.floor(Math.random() * 20);
@@ -110,7 +116,8 @@ export const MusicProvider = ({ children }) => {
         handleEdit,
         handleEditImg,
         handleLikedSongs,
-        handleAddSong
+        handleAddSong,
+        changeCurrentList
       }}
     >
       {children}
