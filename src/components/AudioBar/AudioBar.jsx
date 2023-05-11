@@ -15,8 +15,15 @@ import { AiOutlineExpandAlt } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 export const AudioBar = ({ url, name, artist }) => {
-  const { handlePlayOn, handleIndex, handleRepeat, handleRandom, musicState } =
-    useContext(MusicContext);
+  const {
+    activatePlayOn,
+    disablePlayOn,
+    handlePlayOn,
+    handleIndex,
+    handleRepeat,
+    handleRandom,
+    musicState,
+  } = useContext(MusicContext);
   const { indexPlay, currentList, random, repeat, playOn } = musicState;
 
   const [statevolum, setStateVolum] = useState(0.3);
@@ -62,7 +69,7 @@ export const AudioBar = ({ url, name, artist }) => {
 
   const nextSong = () => {
     if (indexPlay === currentList.length - 1) {
-      handleIndex(0);
+      currentList.length > 0 && handleIndex(0);
     } else {
       handleIndex(indexPlay + 1);
     }
@@ -77,9 +84,14 @@ export const AudioBar = ({ url, name, artist }) => {
     }
   };
 
-  const handlePlayAndPause = () => {
-    toggleAudio();
-    handlePlayOn();
+  const handlePlay = () => {
+    activatePlayOn();
+    audioRef.current.play();
+  };
+
+  const handlePause = () => {
+    disablePlayOn();
+    audioRef.current.pause();
   };
 
   return (
@@ -115,14 +127,11 @@ export const AudioBar = ({ url, name, artist }) => {
           <FaStepBackward />
         </span>
 
-        <span
-          className="flex flex-row m-2 p-2 justify-center bg-teal rounded-full text-md w-8 h-8 sm:w-12 sm:h-12 sm:items-center"
-          onClick={handlePlayAndPause}
-        >
+        <span className="flex flex-row m-2 p-2 justify-center bg-teal rounded-full text-md w-8 h-8 sm:w-12 sm:h-12 sm:items-center">
           {audioRef.current?.paused ? (
-            <FaPlay className="ml-1 sm:ml-1" />
+            <FaPlay className="ml-1 sm:ml-1" onClick={handlePlay} />
           ) : (
-            <FaPause className="ml-0 sm:ml-1" />
+            <FaPause className="ml-0 sm:ml-1" onClick={handlePause} />
           )}
           {/* <span className={!playOn ? "" : "hidden"}>
             <FaPlay className="ml-1 sm:ml-1" />

@@ -5,13 +5,19 @@ import { LikeButton } from "../Reusable/LikeButton";
 import { AiOutlineClose } from "react-icons/ai";
 
 export const MainCointainerPlaylist = ({ playlist }) => {
-  const { handlePlayOn, handleIndex, changeCurrentList } =
-    useContext(MusicContext);
+  const {
+    activatePlayOn,
+    disablePlayOn,
+    handleIndex,
+    changeCurrentList,
+    musicState,
+  } = useContext(MusicContext);
+  const { playOn } = musicState;
 
   const handlePlay = (index) => {
     changeCurrentList(playlist.songs);
     handleIndex(index);
-    handlePlayOn();
+    return !playOn ? activatePlayOn() : disablePlayOn();
   };
 
   return (
