@@ -12,6 +12,12 @@ const musicReducer = (state, action) => {
     case types.CHANGE_PLAYON:
       return { ...state, playOn: !state.playOn };
 
+    case types.PLAY_ACTIVE:
+      return { ...state, playOn: true };
+
+    case types.PLAY_DISABLED:
+      return { ...state, playOn: false };
+
     case types.HANDLE_INDEX:
       return { ...state, indexPlay: payload };
 
@@ -50,11 +56,11 @@ const musicReducer = (state, action) => {
         playlist: payload,
       };
 
-      case types.HANDLE_PLAYLIST:
-        return {
-          ...state,
-          playlist: payload,
-        };
+    case types.HANDLE_PLAYLIST:
+      return {
+        ...state,
+        playlist: payload,
+      };
 
       case types.CHANGE_CURRENTLIST:
         return {

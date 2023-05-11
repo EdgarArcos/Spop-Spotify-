@@ -5,7 +5,7 @@ import { MessageNotFound } from "./MessageNotFound";
 import { ResultsOfSearch } from "./ResultsOfSearch";
 import { SearchInputContainer } from "./SearchInputContainer";
 
-export const SearchResultsContainer = () => {
+const SearchResultsContainer = () => {
   const [allData, setAllData] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchResults, setSearchResults] = useState([]);
@@ -37,3 +37,5 @@ export const SearchResultsContainer = () => {
     </div>
   );
 };
+
+export default SearchResultsContainer;

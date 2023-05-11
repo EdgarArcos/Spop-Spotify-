@@ -8,7 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { auth0loginRequest } from "../api/userRequests";
 import { UsersContext } from "../context/UsersContext";
 
-export const Home = () => {
+const Home = () => {
   const screenWidth = useScreenWidth();
   const location = useLocation();
   const { musicState, userMusic } = useContext(MusicContext);
@@ -56,13 +56,18 @@ export const Home = () => {
         <SideMenu />
       )}
       <Outlet />
-      <div className="fixed w-11/12 ml-4 bottom-[5rem] flex flex-row justify-evenly rounded-md bg-newgray text-white sm:bottom-3 sm:p-6 sm:h-24 sm:w-11/12 sm:items-center sm:justify-center sm:ml-14">
-        <AudioBar
-          url={musicToPlay[indexPlay]?.url}
-          name={musicToPlay[indexPlay]?.name}
-          artist={musicToPlay[indexPlay]?.artist}
-        />
-      </div>
+      {musicToPlay.length > 0 && (
+        <div className="fixed w-11/12 ml-4 bottom-[5rem] flex flex-row justify-evenly rounded-md bg-newgray text-white sm:bottom-3 sm:p-6 sm:h-24 sm:w-11/12 sm:items-center sm:justify-center sm:ml-14">
+          <AudioBar
+            url={musicToPlay[indexPlay]?.url}
+            name={musicToPlay[indexPlay]?.name}
+            artist={musicToPlay[indexPlay]?.artist}
+            id={musicToPlay[indexPlay]?._id}
+          />
+        </div>
+      )}
     </div>
   );
 };
+
+export default Home;

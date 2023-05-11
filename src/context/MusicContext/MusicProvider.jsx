@@ -23,9 +23,8 @@ export const MusicProvider = ({ children }) => {
   };
 
   const changeCurrentList = (songsArray) => {
-    dispatch({ type: types.CHANGE_CURRENTLIST, payload: songsArray});
-
-  }
+    dispatch({ type: types.CHANGE_CURRENTLIST, payload: songsArray });
+  };
 
   // useEffect(() => {
   //   const randomIndex = Math.floor(Math.random() * 20);
@@ -34,8 +33,12 @@ export const MusicProvider = ({ children }) => {
   //   );
   // }, []);
 
-  const handlePlayOn = () => {
-    dispatch({ type: types.CHANGE_PLAYON });
+  const activatePlayOn = () => {
+    dispatch({ type: types.PLAY_ACTIVE });
+  };
+
+  const disablePlayOn = () => {
+    dispatch({ type: types.PLAY_DISABLED });
   };
 
   const handleIndex = (index) => {
@@ -46,19 +49,19 @@ export const MusicProvider = ({ children }) => {
 
   const handleRandom = () => dispatch({ type: types.HANDLE_RANDOM });
 
-  const handleEnd = () => {
-    if (state.random) {
-      return handleIndex(Math.random() * state.likelist.length);
-    } else {
-      if (state.repeat) {
-        nextSong();
-      } else if (state.indexPlay === state.likelist.length - 1) {
-        return;
-      } else {
-        nextSong();
-      }
-    }
-  };
+  // const handleEnd = () => {
+  //   if (musicState.random) {
+  //     return handleIndex(Math.random() * musicState.currentList.length);
+  //   } else {
+  //     if (state.repeat) {
+  //       nextSong();
+  //     } else if (state.indexPlay === state.currentList.length - 1) {
+  //       return;
+  //     } else {
+  //       nextSong();
+  //     }
+  //   }
+  // };
 
   const handleAddPlaylist = (newPlaylist) => {
     dispatch({
@@ -120,11 +123,9 @@ export const MusicProvider = ({ children }) => {
     <MusicContext.Provider
       value={{
         musicState,
-        handlePlayOn,
         handleIndex,
         handleRepeat,
         handleRandom,
-        handleEnd,
         handleAddPlaylist,
         userMusic,
         handleEdit,
@@ -133,7 +134,9 @@ export const MusicProvider = ({ children }) => {
         handleAddSong,
         changeCurrentList,
         handleDeleteSong,
-        handleDeletePlaylist
+        handleDeletePlaylist,
+        activatePlayOn,
+        disablePlayOn,
       }}
     >
       {children}

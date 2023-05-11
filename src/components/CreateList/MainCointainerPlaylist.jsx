@@ -9,8 +9,14 @@ import { SongOptionModal } from "./SongOptionModal";
 export const MainCointainerPlaylist = ({ playlist }) => {
 
 
-  const { handlePlayOn, handleIndex, changeCurrentList, handleDeleteSong } =
-    useContext(MusicContext);
+  const {
+    activatePlayOn,
+    disablePlayOn,
+    handleIndex,
+    changeCurrentList,
+    musicState
+  } = useContext(MusicContext);
+  const { playOn } = musicState;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -21,20 +27,9 @@ export const MainCointainerPlaylist = ({ playlist }) => {
   const handlePlay = (index) => {
     changeCurrentList(playlist.songs);
     handleIndex(index);
-    handlePlayOn();
+    return !playOn ? activatePlayOn() : disablePlayOn();
   };
 
-  // const handleDelete = async (_id) => {
-  //     const response = await deleteSongFetch({
-  //       songId: _id,
-  //       playlistId: playlist._id});
-  //     console.log(response.data)
-  //     if (response.data.ok) {
-  //       handleDeleteSong(response.data.playlist);
-  //     } else {
-  //       console.log(response.message);
-  //     }
-  // };
 
   return (
     <div className="flex flex-col m-5">

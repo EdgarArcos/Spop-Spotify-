@@ -9,13 +9,15 @@ export const EachLikeSong = ({
   onDragEnter,
   onDragEnd,
 }) => {
-  const { handlePlayOn, handleIndex } = useContext(MusicContext);
+  const { handlePlayOn, handleIndex, activatePlayOn } =
+    useContext(MusicContext);
 
   const { id, thumbnail, name, artist } = song;
 
   const handlePlay = (index) => {
     handleIndex(index);
-    handlePlayOn();
+    activatePlayOn();
+    // handlePlayOn();
   };
 
   return (

@@ -3,7 +3,7 @@ import { ContainerLists } from "../components/Profile/ContainerLists";
 import { HeaderProfile } from "../components/Profile/HeaderProfile";
 import { EditUserInfo } from "../components/Profile/EditUserInfo";
 
-export const Profile = () => {
+const Profile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleEditUserInfo = () => {
@@ -18,3 +18,5 @@ export const Profile = () => {
     </div>
   );
 };
+
+export default Profile;

@@ -113,7 +113,7 @@ export const Admin = () => {
                     </td>
                     <td className='m-4 border border-2 border-orange w-40 bg-darkOrange'>
                       <button
-                        className='my-2 p-1 ml-4 text-1xl bg-cancel hover:opacity-60 transition duration-500 rounded'
+                        className='my-2 p-1 text-1xl bg-cancel hover:opacity-60 transition duration-500 rounded'
                         onClick={() => handleDelete(_id)}
                       >
                         <FiTrash2 />
