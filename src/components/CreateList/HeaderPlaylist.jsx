@@ -2,11 +2,13 @@ import React, { useContext, useRef, useState } from "react";
 import { FiEdit2 } from "react-icons/fi";
 import { editImgFetch, editTitleFetch } from "../../api/playlistRequests";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
-import { useParams } from "react-router-dom";
+import { MyMenuModal } from "../Reusable/MyMenuModal";
+import { PlayButtonLibrary } from "../LikeLibrary/PlayButtonLibrary";
 
 export const HeaderPlaylist = ({ playlist }) => {
   const { musicState, handleEditImg, handleEdit } = useContext(MusicContext);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentTitle, setCurrentTitle] = useState(playlist.title);
   const [isEditing, setIsEditing] = useState(false);
   const inputRef = useRef();
@@ -37,6 +39,9 @@ export const HeaderPlaylist = ({ playlist }) => {
     if (res.data.ok) handleEditImg(res.data.img, playlist._id);
   };
 
+  const handleOnClose = () => setIsModalOpen(false)
+
+
   return (
     <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-zinc-500 to-zinc-900 smborder-b border-graytext">
       <div>
@@ -48,7 +53,15 @@ export const HeaderPlaylist = ({ playlist }) => {
       />
       <input type="file" className="hidden" onChange={(e) => editImage(e, playlist.id)} />
       </label>
+      <div className="flex flex-row">
+            <PlayButtonLibrary />
+            <div className="hidden sm:flex m-4 items-center">
+            <button onClick={() => setIsModalOpen(true)} className="mb-4 text-4xl">...</button>
+            </div>
+          </div>
+      
       </div>
+      <MyMenuModal onClose={handleOnClose} visible={isModalOpen} playlist={playlist}/>
 
       <label className="w-10/12 text-xs relative lg:w-5/12 xl:w-[45%]">
         {isEditing ? (
@@ -80,8 +93,3 @@ export const HeaderPlaylist = ({ playlist }) => {
   );
 };
 
-{
-  /* <h1 className="hidden sm:flex items-center m-4 mt-32 text-white text-7xl font-bold">
-          {playlist.title}
-          </h1> */
-}

@@ -42,3 +42,16 @@ export const editImgFetch = async (playlistData) => {
     .post(`${API_URL}/playlist/editimg`, playlistData)
     .catch((res) => res.response.data.msg);
 };
+
+export const deleteSongFetch = async (data) => {
+  return await axios
+    .delete(`${API_URL}/playlist/deletesong`, {data})
+    .catch((err) => err.response.data);
+};
+
+export const deletePlaylistFetch = async (playlistId) => {
+  
+  return await axios
+    .post(`${API_URL}/playlist/deleteplaylist`, {playlistId})
+    .catch((err) => err.response.data);
+};

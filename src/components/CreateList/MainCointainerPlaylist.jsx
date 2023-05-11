@@ -1,24 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaHeart, FaPlay, FaRegHeart } from "react-icons/fa";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 import { LikeButton } from "../Reusable/LikeButton";
 import { AiOutlineClose } from "react-icons/ai";
+import { deleteSongFetch } from "../../api/playlistRequests";
+import { SongOptionModal } from "./SongOptionModal";
 
 export const MainCointainerPlaylist = ({ playlist }) => {
+
+
   const {
     activatePlayOn,
     disablePlayOn,
     handleIndex,
     changeCurrentList,
-    musicState,
+    musicState
   } = useContext(MusicContext);
   const { playOn } = musicState;
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+    const handleOnClose = () => setIsModalOpen(false)
+
 
   const handlePlay = (index) => {
     changeCurrentList(playlist.songs);
     handleIndex(index);
     return !playOn ? activatePlayOn() : disablePlayOn();
   };
+
 
   return (
     <div className="flex flex-col m-5">
@@ -28,9 +39,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
             <th>#</th>
             <th>Title</th>
             <th className="hidden md:grid">Artist</th>
-            <th className="hidden lg:grid">
-              <FaRegHeart />
-            </th>
+            
           </tr>
         </thead>
         {playlist.songs.map((song, index) => (
@@ -77,15 +86,18 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                 {song.artist} · {playlist.name}
               </td>
               <td className="hidden lg:grid  pt-6 justify-start">
-                <LikeButton />
+              <button onClick={() => setIsModalOpen(song._id)} className="mb-4 text-4xl">...</button>
+              <SongOptionModal onClose={handleOnClose} visible={isModalOpen} playlist={playlist} song={song} />
+              
               </td>
-              <td className="hidden lg:grid  pt-6 justify-start">
-                <AiOutlineClose />
-              </td>
+              
             </tr>
+            
+            
           </tbody>
         ))}
       </table>
+      
     </div>
   );
 };

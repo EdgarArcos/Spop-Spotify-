@@ -102,8 +102,22 @@ export const MusicProvider = ({ children }) => {
     const playlistArr = musicState.playlist.map((list) => {
       return list._id === playlistSongs._id ? playlistSongs : list;
     });
-    dispatch({ type: types.HANDLE_PLAYLIST, payload: playlistArr });
-  };
+    dispatch({ type: types.HANDLE_PLAYLIST, payload: playlistArr});
+  }
+
+  const handleDeleteSong = (playlistSongs) => {
+    const playlistArr = musicState.playlist.map((list) => {
+      return list._id === playlistSongs._id ? playlistSongs : list;
+    });
+    dispatch({ type: types.DELETE_SONG, payload: playlistArr });
+  }
+
+  const handleDeletePlaylist = (playlistId) => {
+    const newResult = musicState.playlist.filter((list) => {
+        return list._id !== playlistId;
+      });
+    dispatch({ type: types.DELETE_PLAYLIST, payload: newResult });
+  }
 
   return (
     <MusicContext.Provider
@@ -119,6 +133,8 @@ export const MusicProvider = ({ children }) => {
         handleLikedSongs,
         handleAddSong,
         changeCurrentList,
+        handleDeleteSong,
+        handleDeletePlaylist,
         activatePlayOn,
         disablePlayOn,
       }}
