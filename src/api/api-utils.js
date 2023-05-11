@@ -17,6 +17,12 @@ export const getMusicRequest = async (endPoint) => {
     .catch((res) => res.response.data.msg);
 };
 
+export const getSongById = async (songId) => {
+  return await axios
+    .get(`${API_URL}/music/songById/${songId}`)
+    .catch((res) => res.response.data.msg);
+};
+
 export const handleLikeSong = async (likeInfo) => {
   return await axios
     .post(`${API_URL}/music/handlelikesong`, likeInfo)
