@@ -8,7 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { auth0loginRequest } from "../api/userRequests";
 import { UsersContext } from "../context/UsersContext";
 
-export const Home = () => {
+const Home = () => {
   const screenWidth = useScreenWidth();
   const location = useLocation();
   const { musicState, userMusic } = useContext(MusicContext);
@@ -69,3 +69,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;

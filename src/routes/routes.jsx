@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { ProtectedRoute } from "./ProtectedRoute";
-import { Home, Login, Errorpage } from "../pages";
+import { Login, Errorpage } from "../pages";
 import { Admin } from "./../components/Admin/Admin";
 
+const Home = lazy(() => import("../pages/Home"));
 const Artistprofile = lazy(() => import("../pages/Artistprofile"));
 const Profile = lazy(() => import("../pages/Profile"));
 const SearchResultsContainer = lazy(() =>
@@ -26,7 +27,9 @@ export const router = createBrowserRouter([
     path: "/",
     element: (
       <Suspense fallback={<></>}>
-        <Home />,
+        <ProtectedRoute>
+          <Home />,
+        </ProtectedRoute>
       </Suspense>
     ),
     children: [
