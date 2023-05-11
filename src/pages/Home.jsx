@@ -62,6 +62,7 @@ export const Home = () => {
             url={musicToPlay[indexPlay]?.url}
             name={musicToPlay[indexPlay]?.name}
             artist={musicToPlay[indexPlay]?.artist}
+            id={musicToPlay[indexPlay]?._id}
           />
         </div>
       )}

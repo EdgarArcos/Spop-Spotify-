@@ -13,8 +13,9 @@ import {
 import { TbRepeatOnce } from "react-icons/tb";
 import { AiOutlineExpandAlt } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { LikeButton } from "../Reusable/LikeButton";
 
-export const AudioBar = ({ url, name, artist }) => {
+export const AudioBar = ({ url, name, artist, id }) => {
   const {
     activatePlayOn,
     disablePlayOn,
@@ -155,9 +156,17 @@ export const AudioBar = ({ url, name, artist }) => {
       </div>
 
       <div className="flex justify-center items-center ml-5">
-        <div>
-          <span className="block text-md font-semibold">{name}</span>
-          <span className="hidden sm:block text-sm">{artist}</span>
+        <div className="flex ">
+          <div>
+            <span className="block text-md font-semibold">{name}</span>
+            <span className="hidden sm:block text-sm">{artist}</span>
+          </div>
+          <LikeButton
+            songId={id}
+            className=""
+            activeClass="text-teal"
+            disactiveClass="text-white"
+          />
         </div>
         <input
           onChange={handleProgress}
