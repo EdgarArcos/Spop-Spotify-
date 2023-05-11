@@ -2,7 +2,7 @@ import { ContainerEachGenre } from "./ContainerEachGenre";
 import { getMusicRequest } from "../../api/api-utils";
 import { useQuery } from "@tanstack/react-query";
 
-export const ContainerAllGenres = () => {
+const ContainerAllGenres = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["genres"],
     queryFn: () => getMusicRequest("genres"),
@@ -20,3 +20,5 @@ export const ContainerAllGenres = () => {
     </div>
   );
 };
+
+export default ContainerAllGenres;
