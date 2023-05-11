@@ -4,9 +4,8 @@ import Cardsong from "../components/ArtProfile/Cardsongs";
 import { useSongs } from "../context/SongContext/SongContext";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export const Artistprofile = () => {
+const Artistprofile = () => {
     const [showModal, setShowModal] = useState(false)
-    // const [filteredSongs, setFilteredSongs] = useState([])
     const { user } = useAuth0()
     const { getSongs, songs, setSongs } = useSongs()
 
@@ -51,3 +50,5 @@ export const Artistprofile = () => {
         </div>
     )
 }
+
+export default Artistprofile;

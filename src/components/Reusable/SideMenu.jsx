@@ -14,20 +14,20 @@ import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const SideMenu = () => {
 
-  
+
   const { user } = useContext(UsersContext);
-  const { musicState, handleAddPlaylist} = useContext(MusicContext);
+  const { musicState, handleAddPlaylist } = useContext(MusicContext);
   const { playlist } = musicState;
 
   const navigate = useNavigate();
 
   const handleCreate = async () => {
-      const res = await createplaylistFetch(user.id);
-      if (res.data.ok) {
-        handleAddPlaylist(res.data.playlist)
-        navigate(`/playlist/${res.data.playlist._id}`);
+    const res = await createplaylistFetch(user.id);
+    if (res.data.ok) {
+      handleAddPlaylist(res.data.playlist)
+      navigate(`/playlist/${res.data.playlist._id}`);
 
-  }
+    }
   }
 
 
@@ -64,6 +64,11 @@ export const SideMenu = () => {
         <BiLibrary className="text-xl" />
         <p className="pl-2 text-md">Your Library</p>
       </Link>
+      <Link
+        to="/artist"
+      >
+        <p>Artista</p>
+      </Link>
       <div className="flex flex-row p-2">
         <p className="text-graytext py-2">PLAYLIST</p>
       </div>
@@ -74,7 +79,7 @@ export const SideMenu = () => {
         </div>
         <p className="ml-2">Create Playlist</p>
       </div>
-      
+
       {playlist.length > 0 && playlist.map((p) => (
         <Link key={p._id} to={p.title === "Liked Songs" ? "/likelibrary" : `/playlist/${p._id}`}>
           <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
@@ -84,10 +89,10 @@ export const SideMenu = () => {
             <p className="ml-2">{p.title}</p>
           </div>
         </Link>
-        
+
       ))}
 
-      
+
     </div>
   );
 };

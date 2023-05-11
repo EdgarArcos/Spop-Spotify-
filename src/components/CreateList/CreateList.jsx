@@ -8,7 +8,7 @@ import { HeaderPlaylist } from "./HeaderPlaylist";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 import { MainCointainerPlaylist } from "./MainCointainerPlaylist";
 
-export const CreateList = () => {
+const CreateList = () => {
   const { id } = useParams();
   const { musicState } = useContext(MusicContext);
 
@@ -86,3 +86,5 @@ export const CreateList = () => {
     </div>
   );
 };
+
+export default CreateList;

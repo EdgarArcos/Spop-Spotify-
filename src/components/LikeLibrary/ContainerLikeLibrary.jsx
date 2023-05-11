@@ -7,7 +7,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 import { useDragAndDrop } from "../../hooks/useDragAndDrop";
 
-export const ContainerLikeLibrary = () => {
+const ContainerLikeLibrary = () => {
   const { musicState } = useContext(MusicContext);
   const { playlist } = musicState;
 
@@ -65,3 +65,5 @@ export const ContainerLikeLibrary = () => {
     </div>
   );
 };
+
+export default ContainerLikeLibrary;

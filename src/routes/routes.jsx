@@ -1,23 +1,29 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { Suspense, lazy } from "react";
 import { ContainerAllGenres } from '../components/HomePage';
-import { MainContainerLibrary } from '../components/LibraryPage';
-import { ContainerLikeLibrary } from '../components/LikeLibrary/ContainerLikeLibrary';
-import { SearchResultsContainer } from '../components/SearchPage';
+import { ProtectedRoute } from "./ProtectedRoute";
 import {
-  NowPlaying,
   Home,
   Login,
-  Profile,
   Errorpage,
-  Artistprofile,
 } from '../pages';
-import { CreateList } from '../components/CreateList/CreateList';
 import { Admin } from './../components/Admin/Admin';
+
+const Artistprofile = lazy(() => import("../pages/Artistprofile"));
+const Profile = lazy(() => import("../pages/Profile"));
+const SearchResultsContainer = lazy(() => import("../components/SearchPage/SearchResultsContainer"));
+const MainContainerLibrary = lazy(() => import("../components/LibraryPage/MainContainerLibrary"));
+const ContainerLikeLibrary = lazy(() => import("../components/LikeLibrary/ContainerLikeLibrary"));
+const NowPlaying = lazy(() => import("../pages/NowPlaying"));
+const CreateList = lazy(() => import("../components/CreateList/CreateList"));
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: (<Suspense fallback={<></>}>
+      <Home />,
+    </Suspense>
+    ),
     children: [
       {
         path: '/',
@@ -25,35 +31,85 @@ export const router = createBrowserRouter([
       },
       {
         path: 'search',
-        element: <SearchResultsContainer />,
+        element:
+          (<Suspense fallback={<></>}>
+            <ProtectedRoute>
+              <SearchResultsContainer />
+            </ProtectedRoute>
+          </Suspense>
+          ),
       },
       {
         path: 'library',
-        element: <MainContainerLibrary />,
+        element:
+          (<Suspense fallback={<></>}>
+            <ProtectedRoute>
+              <MainContainerLibrary />
+            </ProtectedRoute>
+          </Suspense>
+          ),
       },
       {
         path: 'likelibrary',
-        element: <ContainerLikeLibrary />,
+        element:
+          (<Suspense fallback={<></>}>
+            <ProtectedRoute>
+              <ContainerLikeLibrary />
+            </ProtectedRoute>
+          </Suspense>
+          ),
       },
       {
         path: 'nowplaying',
-        element: <NowPlaying />,
+        element:
+          (<Suspense fallback={<></>}>
+            <ProtectedRoute>
+              <NowPlaying />
+            </ProtectedRoute>
+          </Suspense>
+          ),
       },
       {
         path: 'playlist/:id',
-        element: <CreateList />,
+        element:
+          (<Suspense fallback={<></>}>
+            <ProtectedRoute>
+              <CreateList />
+            </ProtectedRoute>
+          </Suspense>
+          ),
       },
       {
-        path: "artist/",
-        element: <Artistprofile />,
+        path: "artist",
+        element:
+          (<Suspense fallback={<></>}>
+            {/* Cambiar protectedRoute por autentificacion de rol ya que solo pueden entrar artistas */}
+            <ProtectedRoute>
+              <Artistprofile />
+            </ProtectedRoute>
+          </Suspense>
+          ),
       },
       {
         path: "artist/:id",
-        element: <Artistprofile />,
+        element:
+          (<Suspense fallback={<></>}>
+            {/* Cambiar protectedRoute por autentificacion de rol ya que solo pueden entrar artistas */}
+            <ProtectedRoute>
+              <Artistprofile />
+            </ProtectedRoute>
+          </Suspense>
+          ),
       },
       {
         path: "profile",
-        element: <Profile />,
+        element:
+          (<Suspense fallback={<></>}>
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          </Suspense>
+          ),
       },
       {
         path: 'admin',
@@ -64,11 +120,6 @@ export const router = createBrowserRouter([
   {
     path: 'login',
     element: <Login />,
-  },
-
-  {
-    path: "artprofile",
-    element: <Artistprofile />,
   },
   {
     path: '*',
