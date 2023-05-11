@@ -29,7 +29,7 @@ export default function Cardsongs({ song, index }) {
         ))
     }
     return (
-        <tbody onClick={() => handlePlay(index)}>
+        <tbody>
             <tr className="group/item flex hover:bg-newgray rounded-md cursor-pointer sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4  gap-4 sm:justify-center m-3">
                 <td className="hidden sm:flex justify-center pt-12">
                     <p className="visible group-hover/item:invisible">{index + 1}</p>
@@ -39,7 +39,7 @@ export default function Cardsongs({ song, index }) {
                     <div className="flex sm:hidden">
                         <img
                             className="rounded-2xl w-20 max-w-none"
-                            src={song.image.url}
+                            src={song.img}
                             alt={song.name}
                         />
                         <div className="flex-row ml-3 items-center">
@@ -50,7 +50,7 @@ export default function Cardsongs({ song, index }) {
                     <div className="pt-5">
                         <img
                             className="hidden sm:grid sm:col-span-1 rounded-2xl w-20"
-                            src={song.image.url}
+                            src={song.img}
                             alt={song.name}
                         />
                     </div>

@@ -41,7 +41,7 @@ export function SongProvider({ children }) {
 
 
     return (
-        <songContext.Provider value={{ setSongs, getSongs, createSong, deleteSong, getSong, updateSong }}>
+        <songContext.Provider value={{ setSongs, songs, getSongs, createSong, deleteSong, getSong, updateSong }}>
             {children}
         </songContext.Provider>
     )
