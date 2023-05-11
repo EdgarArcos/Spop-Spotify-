@@ -43,7 +43,7 @@ export const HeaderPlaylist = ({ playlist }) => {
 
 
   return (
-    <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-zinc-500 to-zinc-900 smborder-b border-graytext">
+    <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-zinc-500 to-zinc-900  border-graytext">
       <div>
       <label className="cursor-pointer text-[0.6rem] flex flex-col items-center justify-center hover:text-teal">
       <img
@@ -61,7 +61,7 @@ export const HeaderPlaylist = ({ playlist }) => {
           </div>
       
       </div>
-      <MyMenuModal onClose={handleOnClose} visible={isModalOpen} playlist={playlist}/>
+      
 
       <label className="w-10/12 text-xs relative lg:w-5/12 xl:w-[45%]">
         {isEditing ? (
@@ -89,6 +89,7 @@ export const HeaderPlaylist = ({ playlist }) => {
           />
         )}
       </label>
+      <MyMenuModal onClose={handleOnClose} visible={isModalOpen} playlist={playlist}/>
     </div>
   );
 };

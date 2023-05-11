@@ -35,7 +35,6 @@ export const SongOptionModal = ({playlist, song, visible, onClose,}) => {
         const response = await deleteSongFetch({
             songId: _id,
             playlistId: playlist._id});
-        console.log(response.data)
         if (response.data.ok) {
             handleDeleteSong(response.data.playlist);
         } else {
@@ -45,9 +44,9 @@ export const SongOptionModal = ({playlist, song, visible, onClose,}) => {
     
     return (
     <div onClick={handleClose} className="fixed bg-black bg-opacity-30 flex justify-center items-center">
-        <ul className="bg-gradient-to-b from-zinc-700 to-zinc-900 smborder-b border-graytext p-6 ">
-            <li onClick={() => addSongFavList(song._id)}className="pb-2">Add to liked Songs</li>
-            <li onClick={() => handleDelete(song._id)}>Delete Song</li>
+        <ul className="bg-gradient-to-b from-zinc-700 to-zinc-900 smborder-b border-newblack border-2  p-6 ">
+            <li onClick={() => addSongFavList(song._id)} className="p-2  hover:bg-newgray rounded-md cursor-pointer">Add to liked Songs</li>
+            <li onClick={() => handleDelete(song._id)} className="p-2 hover:bg-newgray rounded-md cursor-pointer">Delete Song</li>
         </ul>
     </div>
     )
