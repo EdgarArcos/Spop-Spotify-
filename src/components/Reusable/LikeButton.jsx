@@ -16,8 +16,8 @@ export const LikeButton = ({
 
   useEffect(() => {
     const checkIsLiked = musicState.playlist[0]?.songs.includes(songId);
-    if (checkIsLiked) setIsLiked(true);
-  }, [musicState.playlist]);
+    checkIsLiked ? setIsLiked(true) : setIsLiked(false);
+  }, [musicState.playlist[0], songId]);
 
   const addSongFavList = async (id) => {
     const res = await handleLikeSong({ userId: user.id, songId: id });
