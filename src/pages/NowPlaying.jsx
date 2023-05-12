@@ -4,13 +4,12 @@ import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const NowPlaying = () => {
-
   const { musicState } = useContext(MusicContext);
   const { currentList, indexPlay } = musicState;
 
   return (
     <div className="h-screen flex flex-col sm:pl-[45%] ">
-      <Link to="/likelibrary">
+      <Link to={-1}>
         <FaArrowLeft className="flex text-xl mt-6 cursor-pointer" />
       </Link>
 

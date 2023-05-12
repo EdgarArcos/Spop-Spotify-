@@ -97,7 +97,6 @@ export const AudioBar = ({ url, name, artist, id }) => {
 
   return (
     <div className="grid grid-cols-4 gap-2 grid-flow-row-dense">
-      
       <audio
         ref={audioRef}
         onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
@@ -110,38 +109,35 @@ export const AudioBar = ({ url, name, artist, id }) => {
 
       <div className="grid col-span-1">
         <div className="flex flex-row">
-        <div >
+          <div>
             <span className="block text-md font-semibold">{name}</span>
             <span className="hidden sm:block text-sm">{artist}</span>
-        </div>
+          </div>
 
-        <div className="flex flex-col">
-        
-          <LikeButton
-            songId={id}
-            className="mx-6"
-            activeClass="text-teal"
-            disactiveClass="text-white"
-          />
-          <div className="text-white text-3xl m-3 cursor-pointer hover:text-cyan-800">
-          <Link to="/nowplaying">
-            <AiOutlineExpandAlt />
-          </Link>
+          <div className="flex flex-col">
+            <LikeButton
+              songId={id}
+              className="mx-6 cursor-pointer"
+              activeClass="text-teal"
+              disactiveClass="text-white"
+            />
+            <div className="text-white text-3xl m-3 cursor-pointer hover:text-cyan-800">
+              <Link to="/nowplaying">
+                <AiOutlineExpandAlt />
+              </Link>
+            </div>
+          </div>
         </div>
-        </div>
-        </div>
-          
-        
       </div>
 
-    
       <div className="grid col-span-2">
-        <div className="flex flex-col text-teal   cursor-pointer hover:text-cyan-800">
-        
+        <div className="flex flex-col text-teal cursor-pointer hover:text-cyan-800">
           <div className="flex flex-row justify-center items-center">
-
             <div className="text-teal text-xl mx-2 cursor-pointer">
-              <FaRandom  onClick={handleRandom} className={!random ? "text-teal" : "text-cyan-800"}/>
+              <FaRandom
+                onClick={handleRandom}
+                className={!random ? "text-teal" : "text-cyan-800"}
+              />
             </div>
 
             <span
@@ -154,10 +150,10 @@ export const AudioBar = ({ url, name, artist, id }) => {
             <span className="justify-center mx-2 text-white bg-teal rounded-full text-md w-10 h-10 content-center flex items-center">
               {audioRef.current?.paused ? (
                 <FaPlay className="" onClick={handlePlay} />
-                  ) : (
+              ) : (
                 <FaPause className="" onClick={handlePause} />
               )}
-                {/* <span className={!playOn ? "" : "hidden"}>
+              {/* <span className={!playOn ? "" : "hidden"}>
                 <FaPlay className="ml-1 sm:ml-1" />
                 </span>
                 <span className={!playOn ? "hidden" : ""}>
@@ -173,14 +169,17 @@ export const AudioBar = ({ url, name, artist, id }) => {
             </span>
 
             <div className="text-teal mx-2 text-2xl cursor-pointer">
-              <TbRepeatOnce onClick={handleRepeat} className={!repeat ? "text-teal" : "text-cyan-800"} />
+              <TbRepeatOnce
+                onClick={handleRepeat}
+                className={!repeat ? "text-teal" : "text-cyan-800"}
+              />
             </div>
-        
           </div>
 
-
           <div className="flex flex-row mb-5">
-          <span className=" text-white w-9 mt-2.5 mb-2.5">{fmtMSS(currentTime)}</span>
+            <span className=" text-white w-9 mt-2.5 mb-2.5">
+              {fmtMSS(currentTime)}
+            </span>
             <input
               onChange={handleProgress}
               value={dur ? (currentTime * 100) / dur : 0}
@@ -189,12 +188,9 @@ export const AudioBar = ({ url, name, artist, id }) => {
               id="prgbar"
             />
             <span className=" text-white w-9 mt-2.5 mb-2.5">{fmtMSS(dur)}</span>
-
           </div>
-          
         </div>
       </div>
-
 
       <div className="hidden sm:grid col-span-1 relative content-center overflow-hidden w-30 transition-all delay-500">
         <div className="flex flex-row absolute inset-y-0 right-0">
