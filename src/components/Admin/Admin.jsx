@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { GoSearch } from 'react-icons/go';
 import { FiTrash2 } from 'react-icons/fi';
 import { deleteUser, searchUser, updateUserRole } from '../../api/admin';
+import { IoArrowBackOutline } from "react-icons/io5";
+import { RiLogoutCircleLine } from "react-icons/ri";
+import { useAuth0 } from "@auth0/auth0-react";
 
-export const Admin = () => {
+const Admin = () => {
   const [inputValue, setInputValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
-
+  const { logout } = useAuth0();
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this user?')) {
       const res = await deleteUser(id);
@@ -39,6 +42,13 @@ export const Admin = () => {
       <h2 className='font-bold text-left text-5xl pl-60 pt-10 pb-1'>
         Administrator
       </h2>
+      <div className="flex items-center justify-between p-3 min-[640px]:justify-end">
+        <IoArrowBackOutline className="text-2xl cursor-pointer min-[640px]:hidden" />
+        <RiLogoutCircleLine
+          className="text-xl ml-5 hover:text-teal cursor-pointer lg:text-2xl"
+          onClick={logout}
+        />
+      </div>
       <hr className='border-solid border border-teal pt-1' />
       <div className='flex-col'>
         <div className='flex'>
@@ -128,3 +138,5 @@ export const Admin = () => {
     </>
   );
 };
+
+export default Admin

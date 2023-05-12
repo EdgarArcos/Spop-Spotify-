@@ -30,12 +30,12 @@ export const MyMenuModal = ({ visible, onClose, playlist }) => {
 
 return (
     <div onClick={handleClose} className="fixed ml-16 mt-52 bg-black bg-opacity-30 flex justify-center items-center">
-        <ul className="bg-gradient-to-b from-zinc-700 to-zinc-900 smborder-b border-graytext p-6 ">
-            <li className="pb-2">Go premium</li>
-            <li className="pb-2" onClick={deletePlaylist}>Delete playlist</li>
-            <li className="pb-2">Go to your profile</li>
-            <li className="pb-2">Go home</li>
-            <li>Share</li>
+        <ul className="bg-gradient-to-b from-zinc-700 to-zinc-900 smborder-b border-newblack border-2  p-6 ">
+            <li className="p-2  hover:bg-newgray rounded-md cursor-pointer">Go premium</li>
+            <li className="p-2  hover:bg-newgray rounded-md cursor-pointer" onClick={deletePlaylist}>Delete playlist</li>
+            <li className="p-2  hover:bg-newgray rounded-md cursor-pointer">Go to your profile</li>
+            <li className="p-2  hover:bg-newgray rounded-md cursor-pointer">Go home</li>
+            <li className="p-2 hover:bg-newgray rounded-md cursor-pointer">Share</li>
             
 
         </ul>
