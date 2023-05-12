@@ -112,7 +112,6 @@ export const router = createBrowserRouter([
         path: "artist",
         element: (
           <Suspense fallback={<></>}>
-            {/* Cambiar protectedRoute por autentificacion de rol ya que solo pueden entrar artistas */}
             <ProtectedArtist>
               <ProtectedAdminRoute>
                 <Artistprofile />
