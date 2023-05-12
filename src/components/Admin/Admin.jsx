@@ -72,19 +72,19 @@ const Admin = () => {
           <table className=' items-center'>
             <thead>
               <tr>
-                <th className='h-12 w-40 border border-2 border-teal bg-graytext'>
+                <th className='h-12 w-40  border-2 border-teal bg-graytext'>
                   User ID
                 </th>
-                <th className='h-12 w-40 border border-2 border-teal bg-graytext'>
+                <th className='h-12 w-40  border-2 border-teal bg-graytext'>
                   Name
                 </th>
-                <th className='h-12 w-40 border border-2 border-teal bg-graytext'>
+                <th className='h-12 w-40 border-2 border-teal bg-graytext'>
                   Email
                 </th>
-                <th className='h-12 w-40 border border-2 border-teal bg-graytext'>
+                <th className='h-12 w-40  border-2 border-teal bg-graytext'>
                   Edit Role
                 </th>
-                <th className='h-12 w-40 border border-2 border-teal bg-graytext'>
+                <th className='h-12 w-40 border-2 border-teal bg-graytext'>
                   Action
                 </th>
               </tr>
@@ -93,22 +93,22 @@ const Admin = () => {
               searchResult.map(({ _id, name, email, role }) => (
                 <tbody key={_id}>
                   <tr className='text-center'>
-                    <td className='border border-2 border-teal w-40 bg-cyan-900'>
+                    <td className=' border-2 border-teal w-40 bg-cyan-900'>
                       <div className='w-40 px-2 overflow-x-auto hide-scrollbar'>
                         {_id}
                       </div>
                     </td>
-                    <td className='border border-2  border-teal w-40 bg-cyan-900'>
+                    <td className=' border-2  border-teal w-40 bg-cyan-900'>
                       <div className='w-40 px-2 overflow-x-auto hide-scrollbar'>
                         {name}
                       </div>
                     </td>
-                    <td className='border border-2  border-teal w-40 bg-cyan-900'>
+                    <td className='border-2  border-teal w-40 bg-cyan-900'>
                       <div className='w-40 px-2 overflow-x-auto hide-scrollbar'>
                         {email}
                       </div>
                     </td>
-                    <td className='border border-2  border-teal w-40 bg-cyan-900'>
+                    <td className='border-2  border-teal w-40 bg-cyan-900'>
                       <div className='w-40 px-1ççç overflow-x-auto hide-scrollbar'>
                         <select
                           name='role'
@@ -121,7 +121,7 @@ const Admin = () => {
                         </select>
                       </div>
                     </td>
-                    <td className='m-4 border border-2  border-teal w-40 bg-cyan-900'>
+                    <td className='m-4 border-2  border-teal w-40 bg-cyan-900'>
                       <button
                         className='my-2 p-1 text-1xl bg-cancel hover:opacity-60 transition duration-500 rounded'
                         onClick={() => handleDelete(_id)}

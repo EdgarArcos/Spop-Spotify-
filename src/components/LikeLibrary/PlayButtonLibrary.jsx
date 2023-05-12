@@ -4,7 +4,7 @@ import { MusicContext } from "../../context/MusicContext/MusicContext";
 
 export const PlayButtonLibrary = () => {
   const {
-    // handlePlayOn,
+    handlePlay,
     handleIndex,
     musicState,
     activatePlayOn,
@@ -14,8 +14,12 @@ export const PlayButtonLibrary = () => {
 
   const handleIndexPlay = () => {
     handleIndex(0);
-    return !playOn ? activatePlayOn() : disablePlayOn();
-    // handlePlayOn();
+    if (!playOn) {
+      activatePlayOn();
+    } else {
+      disablePlayOn();
+    }
+    handlePlay();
   };
 
   return (

@@ -8,8 +8,11 @@ import { MusicContext } from "../../context/MusicContext/MusicContext";
 import { useDragAndDrop } from "../../hooks/useDragAndDrop";
 
 const ContainerLikeLibrary = () => {
-  const { musicState, changeCurrentList } = useContext(MusicContext);
+  const { musicState, changeCurrentList, handleIndex, activatePlayOn  } = useContext(MusicContext);
+  
   const { playlist } = musicState;
+
+
 
   const { dragStart, dragEnter, drop, dragabbleList, setDragabbleList } =
     useDragAndDrop(playlist[0].songs);
