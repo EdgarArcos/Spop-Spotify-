@@ -8,6 +8,7 @@ const ContainerAllGenres = () => {
     queryKey: ["genres"],
     queryFn: () => getMusicRequest("genres"),
   });
+
   useEffect(() => {
     refetch();
   }, []);

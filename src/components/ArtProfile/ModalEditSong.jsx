@@ -7,8 +7,8 @@ export default function ModalEditSong({ isvisible, onClose }) {
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
     const [song, setSong] = useState({
-        title: "",
-        description: ""
+        name: "",
+        genre: ""
     })
     const params = useParams()
     useEffect(() => {
@@ -45,13 +45,19 @@ export default function ModalEditSong({ isvisible, onClose }) {
                         </div>
                         <div>
                             <select {...register("genre")}>
-                                <option value="PoP">PoP</option>
-                                <option value="Rock">Rock</option>
-                                <option value="Soul">Soul</option>
-                                <option value="Funk">Funk</option>
-                                <option value="Folk">Folk</option>
-                                <option value="Indie">Indie</option>
-                                <option value="Electric">Electric</option>
+                                <option value="pop">PoP</option>
+                                <option value="blues">Blues</option>
+                                <option value="metal">Metal</option>
+                                <option value="classical">Classical</option>
+                                <option value="Country">Country</option>
+                                <option value="grunge">Grunge</option>
+                                <option value="jazz">Jazz</option>
+                                <option value="rock">Rock</option>
+                                <option value="soul">Soul</option>
+                                <option value="funk">Funk</option>
+                                <option value="folk">Folk</option>
+                                <option value="indie">Indie</option>
+                                <option value="electronic">Electronic</option>
                             </select>
                         </div>
                         <div className=" pt-2">
