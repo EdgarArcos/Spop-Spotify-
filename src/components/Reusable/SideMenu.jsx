@@ -10,11 +10,7 @@ import { UsersContext } from "../../context/UsersContext";
 import { createplaylistFetch } from "../../api/playlistRequests";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 
-
-
 export const SideMenu = () => {
-
-
   const { user } = useContext(UsersContext);
   const { musicState, handleAddPlaylist } = useContext(MusicContext);
   const { playlist } = musicState;
@@ -22,16 +18,12 @@ export const SideMenu = () => {
   const navigate = useNavigate();
 
   const handleCreate = async () => {
-    const res = await createplaylistFetch(user.id);
+    const res = await createplaylistFetch(user._id);
     if (res.data.ok) {
-      handleAddPlaylist(res.data.playlist)
+      handleAddPlaylist(res.data.playlist);
       navigate(`/playlist/${res.data.playlist._id}`);
-
     }
-  }
-
-
-
+  };
 
   return (
     <div className="flex flex-col h-screen bg-newblack p-4 w-60 fixed">
@@ -64,36 +56,43 @@ export const SideMenu = () => {
         <BiLibrary className="text-xl" />
         <p className="pl-2 text-md">Your Library</p>
       </Link>
-      <Link
-        to="/artist"
-      >
+      <Link to="/artist">
         <p>Artista</p>
       </Link>
       <div className="flex flex-row p-2">
         <p className="text-graytext py-2">PLAYLIST</p>
       </div>
 
-      <div onClick={handleCreate} className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
+      <div
+        onClick={handleCreate}
+        className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer"
+      >
         <div>
           <BsFillPlusSquareFill className="text-2xl mr-3" />
         </div>
         <p className="ml-2">Create Playlist</p>
       </div>
 
-      {playlist.length > 0 && playlist.map((p) => (
-        <Link key={p._id} to={p.title === "Liked Songs" ? "/likelibrary" : `/playlist/${p._id}`}>
-          <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
-            <div>
-              <img className="w-7 h-7 rounded mr-2" src={p.img} alt="playlist" />
+      {playlist.length > 0 &&
+        playlist.map((p) => (
+          <Link
+            key={p._id}
+            to={
+              p.title === "Liked Songs" ? "/likelibrary" : `/playlist/${p._id}`
+            }
+          >
+            <div className="flex flex-row p-2  hover:bg-newgray rounded-md cursor-pointer">
+              <div>
+                <img
+                  className="w-7 h-7 rounded mr-2"
+                  src={p.img}
+                  alt="playlist"
+                />
+              </div>
+              <p className="ml-2">{p.title}</p>
             </div>
-            <p className="ml-2">{p.title}</p>
-          </div>
-        </Link>
-
-      ))}
-
-
+          </Link>
+        ))}
     </div>
   );
 };
-
