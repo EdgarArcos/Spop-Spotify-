@@ -50,7 +50,7 @@ export const LikeButton = ({
   };
 
   const addSongFavList = async (id) => {
-    const res = await handleLikeSong({ userId: user.id, songId: id });
+    const res = await handleLikeSong({ userId: user._id, songId: id });
     if (res.data.ok) {
       await handleLikedSongs(res.data.likedSongs);
       setIsLiked(!isLiked);
