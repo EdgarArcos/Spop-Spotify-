@@ -7,29 +7,24 @@ import { deleteSongFetch } from "../../api/playlistRequests";
 import { SongOptionModal } from "./SongOptionModal";
 
 export const MainCointainerPlaylist = ({ playlist }) => {
-
-
   const {
     activatePlayOn,
     disablePlayOn,
     handleIndex,
     changeCurrentList,
-    musicState
+    musicState,
   } = useContext(MusicContext);
   const { playOn } = musicState;
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-
-    const handleOnClose = () => setIsModalOpen(false)
-
+  const handleOnClose = () => setIsModalOpen(false);
 
   const handlePlay = (index) => {
     changeCurrentList(playlist.songs);
     handleIndex(index);
     return !playOn ? activatePlayOn() : disablePlayOn();
   };
-
 
   return (
     <div className="flex flex-col m-5">
@@ -39,7 +34,6 @@ export const MainCointainerPlaylist = ({ playlist }) => {
             <th>#</th>
             <th>Title</th>
             <th className="hidden md:grid">Artist</th>
-            
           </tr>
         </thead>
         {playlist.songs.map((song, index) => (
@@ -85,19 +79,24 @@ export const MainCointainerPlaylist = ({ playlist }) => {
               <td className="hidden md:grid  pt-6 justify-start pl-14 font-bold text-graytext">
                 {song.artist} · {playlist.name}
               </td>
-              <td className="hidden lg:grid  pt-6 justify-start">
-              <button onClick={() => setIsModalOpen(song._id)} className="mb-4 text-4xl">...</button>
-              <SongOptionModal onClose={handleOnClose} visible={isModalOpen} playlist={playlist} song={song} />
-              
+              <td className="hidden relative lg:grid pt-6 justify-start">
+                <button
+                  onClick={() => setIsModalOpen(song._id)}
+                  className="mb-4 text-4xl"
+                >
+                  ...
+                </button>
+                <SongOptionModal
+                  onClose={handleOnClose}
+                  visible={isModalOpen}
+                  playlist={playlist}
+                  song={song}
+                />
               </td>
-              
             </tr>
-            
-            
           </tbody>
         ))}
       </table>
-      
     </div>
   );
 };
