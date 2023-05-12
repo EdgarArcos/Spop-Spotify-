@@ -18,4 +18,5 @@ export const editUsernameFetch = async (userData) => {
   return await axios
     .post(`${API_URL}/users/username`, userData)
     .catch((res) => res.response.data.msg);
+
 };
