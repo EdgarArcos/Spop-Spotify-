@@ -37,7 +37,7 @@ export default function ModalEditSong({ isvisible, onClose }) {
                         <div>
                             <input className="border-2" type='text' {...register('name', {
                                 required: true,
-                                maxLength: 15,
+                                maxLength: 30,
                             })} />
                         </div>
                         <div className="pt-4 pb-2">
