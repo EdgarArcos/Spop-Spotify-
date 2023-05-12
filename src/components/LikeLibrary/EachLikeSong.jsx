@@ -1,6 +1,7 @@
 import { FaPlay, FaHeart } from "react-icons/fa";
 import { useContext } from "react";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
+import { LikeButton } from "../Reusable/LikeButton";
 
 export const EachLikeSong = ({
   song,
@@ -11,7 +12,7 @@ export const EachLikeSong = ({
 }) => {
   const { handleIndex, activatePlayOn } = useContext(MusicContext);
 
-  const { id, img, name, artist } = song;
+  const { _id, img, name, artist } = song;
 
   const handlePlay = (index) => {
     handleIndex(index);
@@ -20,7 +21,7 @@ export const EachLikeSong = ({
 
   return (
     <tbody
-      key={id}
+      key={_id}
       onClick={() => handlePlay(index)}
       draggable
       onDragStart={onDragStart}
@@ -54,7 +55,12 @@ export const EachLikeSong = ({
           Playlist · {artist}
         </td>
         <td className="hidden lg:grid  pt-6 justify-start">
-          <FaHeart className="text-teal" />
+          <LikeButton
+            songId={_id}
+            className="text-2xl cursor-pointer z-1"
+            activeClass="text-teal"
+            disactiveClass="text-white"
+          />
         </td>
       </tr>
     </tbody>

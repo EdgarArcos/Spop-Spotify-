@@ -23,5 +23,5 @@ export const useDragAndDrop = (playlist) => {
     setDragabbleList(copyListItems);
   };
 
-  return { dragStart, dragEnter, drop, dragabbleList };
+  return { dragStart, dragEnter, drop, dragabbleList, setDragabbleList };
 };

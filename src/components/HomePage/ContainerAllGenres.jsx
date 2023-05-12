@@ -8,7 +8,7 @@ const ContainerAllGenres = () => {
     queryFn: () => getMusicRequest("genres"),
   });
   return (
-    <div className="pb-4 w-screen min-h-screen pt-10 sm:pl-[16rem]">
+    <div className="pb-24 w-screen min-h-screen pt-10 sm:pl-[16rem]">
       {error && <p>An error has occurred: {error.message}</p>}
       {isLoading ? (
         <p>Is Loading...</p>

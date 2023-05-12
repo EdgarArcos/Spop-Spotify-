@@ -163,7 +163,7 @@ export const AudioBar = ({ url, name, artist, id }) => {
           </div>
           <LikeButton
             songId={id}
-            className=""
+            className="text-2xl cursor-pointer"
             activeClass="text-teal"
             disactiveClass="text-white"
           />
