@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import React from "react";
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from "./PlayButtonLibrary";
@@ -8,15 +8,21 @@ import { MusicContext } from "../../context/MusicContext/MusicContext";
 import { useDragAndDrop } from "../../hooks/useDragAndDrop";
 
 const ContainerLikeLibrary = () => {
-  const { musicState } = useContext(MusicContext);
+  const { musicState, changeCurrentList } = useContext(MusicContext);
   const { playlist } = musicState;
 
-  const { dragStart, dragEnter, drop, dragabbleList } = useDragAndDrop(
-    playlist[0].songs
-  );
+  const { dragStart, dragEnter, drop, dragabbleList, setDragabbleList } =
+    useDragAndDrop(playlist[0].songs);
+  useEffect(() => {
+    changeCurrentList(playlist[0].songs);
+  }, [dragabbleList]);
+
+  useEffect(() => {
+    setDragabbleList(playlist[0].songs);
+  }, [playlist[0]]);
 
   return (
-    <div className="min-h-screen h-full w-full text-white flex flex-col">
+    <div className="min-h-screen h-full w-full text-white flex flex-col pb-24">
       <div className=" bg-newblack sm:pl-60">
         <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-cyan-700 to-zinc-800 smborder-b border-graytext">
           <img
@@ -36,7 +42,7 @@ const ContainerLikeLibrary = () => {
             </div>
           </div>
           <div className="flex flex-col m-5">
-            <table className="w-full">
+            <table className="w-full" key="headerLiked">
               <thead>
                 <tr className="hidden sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4  text-graytext text-lg border-b  border-graytext mb-8 ">
                   <th>#</th>

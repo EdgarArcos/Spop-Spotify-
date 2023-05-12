@@ -1,26 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { ProtectedRoute } from "./ProtectedRoute";
+import { ProtectedAdmin } from "./ProtectedAdmin";
+import { ProtectedAdminRoute } from "./ProtectedAdminRoute";
+import { ProtectedArtist } from "./ProtectedArtist";
 import { Login, Errorpage } from "../pages";
-import { Admin } from "./../components/Admin/Admin";
 
 const Home = lazy(() => import("../pages/Home"));
 const Artistprofile = lazy(() => import("../pages/Artistprofile"));
 const Profile = lazy(() => import("../pages/Profile"));
-const SearchResultsContainer = lazy(() =>
-  import("../components/SearchPage/SearchResultsContainer")
-);
-const MainContainerLibrary = lazy(() =>
-  import("../components/LibraryPage/MainContainerLibrary")
-);
-const ContainerLikeLibrary = lazy(() =>
-  import("../components/LikeLibrary/ContainerLikeLibrary")
-);
+const SearchResultsContainer = lazy(() => import("../components/SearchPage/SearchResultsContainer"));
+const MainContainerLibrary = lazy(() => import("../components/LibraryPage/MainContainerLibrary"));
+const ContainerLikeLibrary = lazy(() => import("../components/LikeLibrary/ContainerLikeLibrary"));
 const NowPlaying = lazy(() => import("../pages/NowPlaying"));
 const CreateList = lazy(() => import("../components/CreateList/CreateList"));
-const ContainerAllGenres = lazy(() =>
-  import("../components/HomePage/ContainerAllGenres")
-);
+const ContainerAllGenres = lazy(() => import("../components/HomePage/ContainerAllGenres"));
+const Admin = lazy(() => import("./../components/Admin/Admin"));
+
 
 export const router = createBrowserRouter([
   {
@@ -38,8 +34,11 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<></>}>
             <ProtectedRoute>
-              <ContainerAllGenres />
+              <ProtectedAdminRoute>
+                <ContainerAllGenres />
+              </ProtectedAdminRoute>
             </ProtectedRoute>
+
           </Suspense>
         ),
       },
@@ -48,7 +47,9 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<></>}>
             <ProtectedRoute>
-              <SearchResultsContainer />
+              <ProtectedAdminRoute>
+                <SearchResultsContainer />
+              </ProtectedAdminRoute>
             </ProtectedRoute>
           </Suspense>
         ),
@@ -58,7 +59,9 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<></>}>
             <ProtectedRoute>
-              <MainContainerLibrary />
+              <ProtectedAdminRoute>
+                <MainContainerLibrary />
+              </ProtectedAdminRoute>
             </ProtectedRoute>
           </Suspense>
         ),
@@ -68,7 +71,9 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<></>}>
             <ProtectedRoute>
-              <ContainerLikeLibrary />
+              <ProtectedAdminRoute>
+                <ContainerLikeLibrary />
+              </ProtectedAdminRoute>
             </ProtectedRoute>
           </Suspense>
         ),
@@ -78,7 +83,9 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<></>}>
             <ProtectedRoute>
-              <NowPlaying />
+              <ProtectedAdminRoute>
+                <NowPlaying />
+              </ProtectedAdminRoute>
             </ProtectedRoute>
           </Suspense>
         ),
@@ -88,7 +95,9 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<></>}>
             <ProtectedRoute>
-              <CreateList />
+              <ProtectedAdminRoute>
+                <CreateList />
+              </ProtectedAdminRoute>
             </ProtectedRoute>
           </Suspense>
         ),
@@ -98,9 +107,11 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<></>}>
             {/* Cambiar protectedRoute por autentificacion de rol ya que solo pueden entrar artistas */}
-            <ProtectedRoute>
-              <Artistprofile />
-            </ProtectedRoute>
+            <ProtectedArtist>
+              <ProtectedAdminRoute>
+                <Artistprofile />
+              </ProtectedAdminRoute>
+            </ProtectedArtist>
           </Suspense>
         ),
       },
@@ -110,7 +121,9 @@ export const router = createBrowserRouter([
           <Suspense fallback={<></>}>
             {/* Cambiar protectedRoute por autentificacion de rol ya que solo pueden entrar artistas */}
             <ProtectedRoute>
-              <Artistprofile />
+              <ProtectedAdminRoute>
+                <Artistprofile />
+              </ProtectedAdminRoute>
             </ProtectedRoute>
           </Suspense>
         ),
@@ -120,14 +133,12 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<></>}>
             <ProtectedRoute>
-              <Profile />
+              <ProtectedAdminRoute>
+                <Profile />
+              </ProtectedAdminRoute>
             </ProtectedRoute>
           </Suspense>
         ),
-      },
-      {
-        path: "admin",
-        element: <Admin />,
       },
     ],
   },
@@ -138,5 +149,14 @@ export const router = createBrowserRouter([
   {
     path: "*",
     element: <Errorpage />,
+  },
+  {
+    path: "admin",
+    element:
+      <Suspense fallback={<></>}>
+        <ProtectedAdmin>
+          <Admin />
+        </ProtectedAdmin>
+      </Suspense>
   },
 ]);
