@@ -28,7 +28,7 @@ const Artistprofile = () => {
                     <h1 className="hidden sm:flex items-center m-4 mt-32 text-white text-4xl font-bold">{user?.nickname}</h1>
                 </div>
                 <div className="bg-newblack sm:bg-gradient-to-b from-zinc-800 to-newblack pt-2">
-                    <div className=' flex flex-row pl-3'><button className="  bg-indigo-600 text-sm px-2 py-1 rounded-md hover:bg-indigo-500 my-5" onClick={() => setShowModal(true)}>New Song +</button></div>
+                    <div className=' flex flex-row pl-3'><button className="  bg-teal text-sm px-2 py-1 rounded-md hover:bg-cyan-800 my-5" onClick={() => setShowModal(true)}>New Song +</button></div>
                     <div className="flex flex-col m-5">
                         <table className="w-full">
                             <thead>

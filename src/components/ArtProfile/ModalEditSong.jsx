@@ -61,7 +61,7 @@ export default function ModalEditSong({ isvisible, onClose }) {
                             </select>
                         </div>
                         <div className=" pt-2">
-                            <input className="bg-green-600 px-4 py-2 rounded mt-2 text-white focus:outline-none disabled:bg-green-400 hover:bg-green-500" type='submit' value="Save"></input>
+                            <input className="bg-teal px-4 py-2 rounded mt-2 text-white focus:outline-none disabled:bg-teal hover:bg-cyan-800" type='submit' value="Save"></input>
                         </div>
                     </div>
                 </form>
