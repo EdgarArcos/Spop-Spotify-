@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import React from "react";
 import { EachLikeSong } from "./EachLikeSong";
 import { PlayButtonLibrary } from "./PlayButtonLibrary";
@@ -8,12 +8,15 @@ import { MusicContext } from "../../context/MusicContext/MusicContext";
 import { useDragAndDrop } from "../../hooks/useDragAndDrop";
 
 const ContainerLikeLibrary = () => {
-  const { musicState } = useContext(MusicContext);
-  const { playlist } = musicState;
+  const { musicState, changeCurrentList } = useContext(MusicContext);
+  const { playlist, currentList } = musicState;
 
-  const { dragStart, dragEnter, drop, dragabbleList } = useDragAndDrop(
-    playlist[0].songs
-  );
+  useEffect(() => {
+    changeCurrentList(playlist[0].songs);
+  }, []);
+
+  const { dragStart, dragEnter, drop, dragabbleList } =
+    useDragAndDrop(currentList);
 
   return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">

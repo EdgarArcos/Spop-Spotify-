@@ -9,15 +9,13 @@ export const EachLikeSong = ({
   onDragEnter,
   onDragEnd,
 }) => {
-  const { handlePlayOn, handleIndex, activatePlayOn } =
-    useContext(MusicContext);
+  const { handleIndex, activatePlayOn } = useContext(MusicContext);
 
-  const { id, thumbnail, name, artist } = song;
+  const { id, img, name, artist } = song;
 
   const handlePlay = (index) => {
     handleIndex(index);
     activatePlayOn();
-    // handlePlayOn();
   };
 
   return (
@@ -39,11 +37,7 @@ export const EachLikeSong = ({
         </td>
         <td className="flex sm:grid sm:grid-cols-2">
           <div className="flex sm:hidden">
-            <img
-              className="rounded-2xl w-20 max-w-none"
-              src={thumbnail}
-              alt={name}
-            />
+            <img className="rounded-2xl w-20 max-w-none" src={img} alt={name} />
             <div className="flex-row ml-3 items-center">
               <p className="font-bold">{name}</p>
               <p className="text-graytext font-bold">Playlist · {artist} </p>
@@ -51,7 +45,7 @@ export const EachLikeSong = ({
           </div>
           <img
             className="hidden sm:grid sm:col-span-1 rounded-2xl w-20 max-w-none"
-            src={thumbnail}
+            src={img}
             alt={name}
           />
           <p className="hidden sm:grid sm:col-span-1">{name}</p>
