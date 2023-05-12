@@ -9,14 +9,21 @@ import { Login, Errorpage } from "../pages";
 const Home = lazy(() => import("../pages/Home"));
 const Artistprofile = lazy(() => import("../pages/Artistprofile"));
 const Profile = lazy(() => import("../pages/Profile"));
-const SearchResultsContainer = lazy(() => import("../components/SearchPage/SearchResultsContainer"));
-const MainContainerLibrary = lazy(() => import("../components/LibraryPage/MainContainerLibrary"));
-const ContainerLikeLibrary = lazy(() => import("../components/LikeLibrary/ContainerLikeLibrary"));
+const SearchResultsContainer = lazy(() =>
+  import("../components/SearchPage/SearchResultsContainer")
+);
+const MainContainerLibrary = lazy(() =>
+  import("../components/LibraryPage/MainContainerLibrary")
+);
+const ContainerLikeLibrary = lazy(() =>
+  import("../components/LikeLibrary/ContainerLikeLibrary")
+);
 const NowPlaying = lazy(() => import("../pages/NowPlaying"));
 const CreateList = lazy(() => import("../components/CreateList/CreateList"));
-const ContainerAllGenres = lazy(() => import("../components/HomePage/ContainerAllGenres"));
+const ContainerAllGenres = lazy(() =>
+  import("../components/HomePage/ContainerAllGenres")
+);
 const Admin = lazy(() => import("./../components/Admin/Admin"));
-
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +45,6 @@ export const router = createBrowserRouter([
                 <ContainerAllGenres />
               </ProtectedAdminRoute>
             </ProtectedRoute>
-
           </Suspense>
         ),
       },
@@ -152,11 +158,12 @@ export const router = createBrowserRouter([
   },
   {
     path: "admin",
-    element:
+    element: (
       <Suspense fallback={<></>}>
         <ProtectedAdmin>
           <Admin />
         </ProtectedAdmin>
       </Suspense>
+    ),
   },
 ]);
