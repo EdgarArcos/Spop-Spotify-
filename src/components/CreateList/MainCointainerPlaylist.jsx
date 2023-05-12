@@ -5,8 +5,10 @@ import { LikeButton } from "../Reusable/LikeButton";
 import { AiOutlineClose } from "react-icons/ai";
 import { deleteSongFetch } from "../../api/playlistRequests";
 import { SongOptionModal } from "./SongOptionModal";
+import { useScreenWidth } from "../../hooks/useScreenWidth";
 
 export const MainCointainerPlaylist = ({ playlist }) => {
+  const screenWidth = useScreenWidth();
   const {
     activatePlayOn,
     disablePlayOn,
@@ -27,7 +29,52 @@ export const MainCointainerPlaylist = ({ playlist }) => {
   };
 
   return (
-    <div className="flex flex-col m-5">
+    <div>
+      {screenWidth < 640 ? (
+        <div className="grid grid-flow-row3 grid-flow-row-dense grid-gap-2">
+        
+          
+          {playlist.songs.map((song, index) => (
+            <div
+              key={song._id}
+              onClick={() => handlePlay(index)}
+              className="flex flex-row place-content-between"
+            >
+                  <div className="grid col-span-1 m-2">
+                    <img
+                      className="rounded-2xl h-20 w-20 max-w-none"
+                      src={song.img}
+                      alt={song.name}
+                    />
+                    </div>
+                    <div className="grid col-span-1 justify-items-start ">
+                      <p className="flex font-bold">{song.name}</p>
+                      <p className="text-graytext font-bold">
+                        {song.artist}
+                      </p>
+                    </div>
+                  
+                 
+                <div className="grid col-span-1 relative">
+                  <button
+                    onClick={() => setIsModalOpen(song._id)}
+                    className="mb-4 text-4xl"
+                  >
+                    ...
+                  </button>
+                  <SongOptionModal
+                    onClose={handleOnClose}
+                    visible={isModalOpen}
+                    playlist={playlist}
+                    song={song}
+                  />
+                </div>
+              
+            </div>
+          ))}
+      </div>
+      ) : (
+        <div className="flex flex-col m-5">
       <table className="w-full">
         <thead>
           <tr className="hidden sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4  text-graytext text-lg border-b  border-graytext mb-8 ">
@@ -97,6 +144,9 @@ export const MainCointainerPlaylist = ({ playlist }) => {
           </tbody>
         ))}
       </table>
+    </div>
+      )}
+    
     </div>
   );
 };
