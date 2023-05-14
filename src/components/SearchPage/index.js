@@ -1,4 +1,10 @@
+export * from "./ContainerGenres";
+export { default as ContainerResultsByGenre } from "./ContainerResultsByGenre";
 export * from "./MessageNotFound";
+export * from "./PlaylistResultsCard";
 export * from "./ResultsOfSearch";
 export * from "./SearchInputContainer";
-export * from "./SearchResultsContainer";
+export { default as SearchResultsContainer } from "./SearchResultsContainer";
+export * from "./TitleResults";
+export * from "./UserCard";
+export * from "./index";

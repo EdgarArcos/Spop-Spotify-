@@ -1,4 +1,3 @@
-
 import { SongCard } from "../Reusable";
 import { AiFillFire } from "react-icons/ai";
 import { getMusicRequest } from "../../api/api-utils";
@@ -9,7 +8,7 @@ export const ContainerEachGenre = ({ genre }) => {
     queryKey: [genre],
     queryFn: () => getMusicRequest(genre),
   });
-  
+
   return (
     <>
       {error && <p>An error has occurred: {error.message}</p>}
@@ -20,14 +19,8 @@ export const ContainerEachGenre = ({ genre }) => {
             {genre.toUpperCase()}
           </h2>
           <div className="px-4 pt-2 flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
-            {data.data.songs.map(({ _id, name, url, img }) => (
-              <SongCard
-                id={_id}
-                name={name}
-                urlSong={url}
-                img={img}
-                key={_id}
-              />
+            {data.data.songs.map((song) => (
+              <SongCard key={song._id} song={song} />
             ))}
           </div>
         </section>

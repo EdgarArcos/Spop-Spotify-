@@ -5,6 +5,7 @@ import { ProtectedAdmin } from "./ProtectedAdmin";
 import { ProtectedAdminRoute } from "./ProtectedAdminRoute";
 import { ProtectedArtist } from "./ProtectedArtist";
 import { Login, Errorpage } from "../pages";
+import PlaylistAnotherUser from "../components/PlaylistAnotherUser/PlaylistAnotherUser";
 
 const Home = lazy(() => import("../pages/Home"));
 const Artistprofile = lazy(() => import("../pages/Artistprofile"));
@@ -24,6 +25,9 @@ const ContainerAllGenres = lazy(() =>
   import("../components/HomePage/ContainerAllGenres")
 );
 const Admin = lazy(() => import("./../components/Admin/Admin"));
+const ContainerResultsByGenre = lazy(() =>
+  import("./../components/SearchPage/ContainerResultsByGenre")
+);
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +59,30 @@ export const router = createBrowserRouter([
             <ProtectedRoute>
               <ProtectedAdminRoute>
                 <SearchResultsContainer />
+              </ProtectedAdminRoute>
+            </ProtectedRoute>
+          </Suspense>
+        ),
+      },
+      {
+        path: "/search/playlist/:playlistId",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedRoute>
+              <ProtectedAdminRoute>
+                <PlaylistAnotherUser />
+              </ProtectedAdminRoute>
+            </ProtectedRoute>
+          </Suspense>
+        ),
+      },
+      {
+        path: "/search/:genre",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedRoute>
+              <ProtectedAdminRoute>
+                <ContainerResultsByGenre />
               </ProtectedAdminRoute>
             </ProtectedRoute>
           </Suspense>

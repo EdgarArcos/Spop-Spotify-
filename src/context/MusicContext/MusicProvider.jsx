@@ -1,5 +1,4 @@
 import { useEffect, useReducer } from "react";
-import { makeRequest } from "../../api/api-utils";
 import { MusicContext } from "./MusicContext";
 import { types } from "./types/types";
 import musicReducer from "./musicReducer";
@@ -25,13 +24,6 @@ export const MusicProvider = ({ children }) => {
   const changeCurrentList = (songsArray) => {
     dispatch({ type: types.CHANGE_CURRENTLIST, payload: songsArray });
   };
-
-  // useEffect(() => {
-  //   const randomIndex = Math.floor(Math.random() * 20);
-  //   makeRequest("tracks").then((data) =>
-  //     dispatch({ type: types.GET_ALL_MUSIC, payload: { data, randomIndex } })
-  //   );
-  // }, []);
 
   const activatePlayOn = () => {
     dispatch({ type: types.PLAY_ACTIVE });
@@ -102,22 +94,22 @@ export const MusicProvider = ({ children }) => {
     const playlistArr = musicState.playlist.map((list) => {
       return list._id === playlistSongs._id ? playlistSongs : list;
     });
-    dispatch({ type: types.HANDLE_PLAYLIST, payload: playlistArr});
-  }
+    dispatch({ type: types.HANDLE_PLAYLIST, payload: playlistArr });
+  };
 
   const handleDeleteSong = (playlistSongs) => {
     const playlistArr = musicState.playlist.map((list) => {
       return list._id === playlistSongs._id ? playlistSongs : list;
     });
     dispatch({ type: types.DELETE_SONG, payload: playlistArr });
-  }
+  };
 
   const handleDeletePlaylist = (playlistId) => {
     const newResult = musicState.playlist.filter((list) => {
-        return list._id !== playlistId;
-      });
+      return list._id !== playlistId;
+    });
     dispatch({ type: types.DELETE_PLAYLIST, payload: newResult });
-  }
+  };
 
   return (
     <MusicContext.Provider

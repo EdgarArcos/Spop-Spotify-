@@ -2,24 +2,21 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
-export const makeRequest = async (endPoint) => {
-  try {
-    const { data } = await axios.get(`http://localhost:3000/${endPoint}`);
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+export const searchRequest = async (query) => {
+  return await axios
+    .get(`${API_URL}/search/${query}`)
+    .catch((res) => res.response.data.msg);
+};
+
+export const searchPlaylistById = async (playlistId) => {
+  return await axios
+    .get(`${API_URL}/search/playlist/${playlistId}`)
+    .catch((res) => res.response.data.msg);
 };
 
 export const getMusicRequest = async (endPoint) => {
   return await axios
     .get(`${API_URL}/music/${endPoint}`)
-    .catch((res) => res.response.data.msg);
-};
-
-export const getSongById = async (songId) => {
-  return await axios
-    .get(`${API_URL}/music/songById/${songId}`)
     .catch((res) => res.response.data.msg);
 };
 

@@ -1,7 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { makeRequest } from "../../api/api-utils";
 import { PlaylistCard } from "./PlaylistCard";
-import likedsongsbig from "../../assets/testimg/likedsongsbig.png";
 import { Link } from "react-router-dom";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 

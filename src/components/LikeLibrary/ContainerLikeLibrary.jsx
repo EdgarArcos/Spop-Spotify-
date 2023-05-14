@@ -42,8 +42,8 @@ const ContainerLikeLibrary = () => {
             </div>
           </div>
           <div className="flex flex-col m-5">
-            <table className="w-full" key="headerLiked">
-              <thead>
+            <table className="w-full">
+              <thead key="headerLiked">
                 <tr className="hidden sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4  text-graytext text-lg border-b  border-graytext mb-8 ">
                   <th>#</th>
                   <th>Title</th>
