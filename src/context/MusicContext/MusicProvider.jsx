@@ -2,8 +2,8 @@ import { useEffect, useReducer } from "react";
 import { MusicContext } from "./MusicContext";
 import { types } from "./types/types";
 import musicReducer from "./musicReducer";
-import { createplaylistFetch } from "../../api/playlistRequests";
-import { useNavigate } from "react-router-dom";
+
+
 
 const initialState = {
   playlist: [],
@@ -12,6 +12,7 @@ const initialState = {
   playOn: false,
   repeat: false,
   random: false,
+
 };
 
 export const MusicProvider = ({ children }) => {
@@ -24,6 +25,8 @@ export const MusicProvider = ({ children }) => {
   const changeCurrentList = (songsArray) => {
     dispatch({ type: types.CHANGE_CURRENTLIST, payload: songsArray });
   };
+
+
 
   const activatePlayOn = () => {
     dispatch({ type: types.PLAY_ACTIVE });
@@ -41,19 +44,19 @@ export const MusicProvider = ({ children }) => {
 
   const handleRandom = () => dispatch({ type: types.HANDLE_RANDOM });
 
-  // const handleEnd = () => {
-  //   if (musicState.random) {
-  //     return handleIndex(Math.random() * musicState.currentList.length);
-  //   } else {
-  //     if (state.repeat) {
-  //       nextSong();
-  //     } else if (state.indexPlay === state.currentList.length - 1) {
-  //       return;
-  //     } else {
-  //       nextSong();
-  //     }
-  //   }
-  // };
+  const handleEnd = () => {
+    if (musicState.random) {
+      return handleIndex(Math.random() * musicState.currentList.length);
+    } else {
+      if (state.repeat) {
+        nextSong();
+      } else if (state.indexPlay === state.currentList.length - 1) {
+        return;
+      } else {
+        nextSong();
+      }
+    }
+  };
 
   const handleAddPlaylist = (newPlaylist) => {
     dispatch({
@@ -129,6 +132,7 @@ export const MusicProvider = ({ children }) => {
         handleDeletePlaylist,
         activatePlayOn,
         disablePlayOn,
+        handleEnd
       }}
     >
       {children}
