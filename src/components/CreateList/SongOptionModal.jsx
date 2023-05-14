@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { deleteSongFetch } from "../../api/playlistRequests";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 import { UsersContext } from "../../context/UsersContext";
+import { LikeButton } from "../Reusable/LikeButton";
+import { FiTrash2 } from "react-icons/fi";
 
 export const SongOptionModal = ({ playlist, song, visible, onClose }) => {
   const { user } = useContext(UsersContext);
@@ -14,14 +16,7 @@ export const SongOptionModal = ({ playlist, song, visible, onClose }) => {
     if (checkIsLiked) setIsLiked(true);
   }, [musicState.playlist]);
 
-  const addSongFavList = async (_id) => {
-    const res = await handleLikedSongs({ userId: user.id, songId: _id });
-    console.log(res);
-    if (res.data.ok) {
-      handleLikedSongs(res.data.likedSongs);
-      setIsLiked(!isLiked);
-    }
-  };
+
 
   const handleClose = () => {
     onClose();
@@ -44,20 +39,24 @@ export const SongOptionModal = ({ playlist, song, visible, onClose }) => {
   return (
     <div
       onClick={handleClose}
-      className="absolute top-0 z-10 bg-black bg-opacity-30 flex justify-center items-center"
+      className="fixed inset-0 top-0 sm:absolute sm:top-0 z-10 bg-black bg-opacity-30 flex justify-center items-center"
     >
-      <ul className="bg-gradient-to-b from-zinc-700 to-zinc-900 smborder-b border-newblack border-2  p-6 ">
+      <ul className="bg-gradient-to-b from-zinc-700 to-zinc-900 smborder-b border-newblack border-2  p-2 ">
         <li
-          onClick={() => addSongFavList(song._id)}
           className="p-2  hover:bg-newgray rounded-md cursor-pointer"
         >
-          Add to liked Songs
+          <LikeButton
+                songId={song._id}
+                className="mx-6 cursor-pointer"
+                activeClass="text-teal"
+                disactiveClass="text-white"
+              />
         </li>
         <li
           onClick={() => handleDelete(song._id)}
-          className="p-2 hover:bg-newgray rounded-md cursor-pointer"
+          className="p-2 hover:bg-newgray rounded-md cursor-pointer flex justify-center"
         >
-          Delete Song
+          <FiTrash2 />
         </li>
       </ul>
     </div>

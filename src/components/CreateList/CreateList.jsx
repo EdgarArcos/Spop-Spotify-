@@ -12,7 +12,7 @@ import { useScreenWidth } from "../../hooks/useScreenWidth";
 const CreateList = () => {
   const { id } = useParams();
   const { musicState } = useContext(MusicContext);
-  const screenWidth = useScreenWidth();
+
   
 
   const [songs, setSongs] = useState([]);
@@ -56,7 +56,7 @@ const CreateList = () => {
             )
         )}
         <div>
-          <p className="flex m-2 text-md font-semibold justify-center sm:text-xl ">
+          <p className="flex m-2 text-md font-semibold justify-center sm:justify-start sm:text-xl ">
             Let's find something for your list
           </p>
           <label className="flex relative mt-4 md:w-11/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12">
