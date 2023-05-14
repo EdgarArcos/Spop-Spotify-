@@ -4,9 +4,11 @@ import { editImgFetch, editTitleFetch } from "../../api/playlistRequests";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
 import { MyMenuModal } from "../Reusable/MyMenuModal";
 import { PlayButtonLibrary } from "../LikeLibrary/PlayButtonLibrary";
+import { useScreenWidth } from "../../hooks/useScreenWidth";
 
 export const HeaderPlaylist = ({ playlist }) => {
   const { musicState, handleEditImg, handleEdit } = useContext(MusicContext);
+  const screenWidth = useScreenWidth();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentTitle, setCurrentTitle] = useState(playlist.title);
@@ -43,11 +45,34 @@ export const HeaderPlaylist = ({ playlist }) => {
 
 
   return (
-    <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-zinc-500 to-zinc-900  border-graytext">
+    <div>
+      {screenWidth < 640 ? (
+        <div className=" text-white flex flex-col">
+        <div className="bg-newblack">
+        <div className="flex justify-center">
+        <img
+          className="w-full rounded-b-3xl"
+          src={playlist.img}
+          alt="cover"
+        />
+        </div>
+        <div className="flex flex-row">
+              <PlayButtonLibrary />
+              <div className="flex m-4 items-center">
+              <button onClick={() => setIsModalOpen(true)} className="mb-4 text-4xl">...</button>
+              </div>
+            </div>
+        
+        </div>
+        
+        <MyMenuModal onClose={handleOnClose} visible={isModalOpen} playlist={playlist}/>
+      </div>
+      ) : (
+        <div className="justify-start bg-gradient-to-b from-zinc-500 to-zinc-900  border-graytext">
       <div>
       <label className="cursor-pointer text-[0.6rem] flex flex-col items-center justify-center hover:text-teal">
       <img
-        className="w-full rounded-b-3xl sm:w-52 h-52 sm:rounded-2xl sm:m-4 sm:mt-32"
+        className="w-52 h-52 rounded-2xl m-4 mt-32"
         src={playlist.img}
         alt="cover"
       />
@@ -55,7 +80,7 @@ export const HeaderPlaylist = ({ playlist }) => {
       </label>
       <div className="flex flex-row">
             <PlayButtonLibrary />
-            <div className="hidden sm:flex m-4 items-center">
+            <div className="flex m-4 items-center">
             <button onClick={() => setIsModalOpen(true)} className="mb-4 text-4xl">...</button>
             </div>
           </div>
@@ -69,14 +94,14 @@ export const HeaderPlaylist = ({ playlist }) => {
             type="text"
             value={currentTitle}
             onChange={(e) => setCurrentTitle(e.target.value)}
-            className="sm:flex-row items-center w-1/2 m-4 mt-48 text-white text-7xl font-bold bg-transparent"
+            className="flex-row items-center w-1/2 m-4 mt-48 text-white text-7xl font-bold bg-transparent"
             ref={inputRef}
             onBlur={saveInputChanges}
             onKeyDown={(e) => e.key === "Enter" && saveInputChanges()}
           />
         ) : (
           <div
-            className="sm:flex items-center m-4 mt-48 text-white text-7xl font-bold bg-transparent cursor-pointer"
+            className="flex items-center m-4 mt-48 text-white text-7xl font-bold bg-transparent cursor-pointer"
             onClick={startEdit}
           >
             {currentTitle || "Click to add a title"}
@@ -84,12 +109,15 @@ export const HeaderPlaylist = ({ playlist }) => {
         )}
         {isEditing && (
           <FiEdit2
-            className=" sm:cursor-pointer text-teal text-lg"
+            className="cursor-pointer text-teal text-lg"
             onClick={startEdit}
           />
         )}
       </label>
       <MyMenuModal onClose={handleOnClose} visible={isModalOpen} playlist={playlist}/>
+    </div>
+      )}
+    
     </div>
   );
 };

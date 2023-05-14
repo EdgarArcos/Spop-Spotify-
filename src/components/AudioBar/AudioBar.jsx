@@ -12,8 +12,10 @@ import {
 } from "react-icons/fa";
 import { TbRepeatOnce } from "react-icons/tb";
 import { AiOutlineExpandAlt } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { LikeButton } from "../Reusable/LikeButton";
+import { useScreenWidth } from "../../hooks/useScreenWidth";
+import { AudioBarMobile } from "./AudioBarMobile";
 
 export const AudioBar = ({ url, name, artist, id }) => {
   const {
@@ -26,6 +28,8 @@ export const AudioBar = ({ url, name, artist, id }) => {
     musicState,
   } = useContext(MusicContext);
   const { indexPlay, currentList, random, repeat, playOn } = musicState;
+  const screenWidth = useScreenWidth();
+  const location = useLocation();
 
   const [statevolum, setStateVolum] = useState(0.3);
   const [dur, setDur] = useState(0);
@@ -96,7 +100,93 @@ export const AudioBar = ({ url, name, artist, id }) => {
   };
 
   return (
-    <div className="grid grid-cols-4 gap-2 grid-flow-row-dense">
+    <div>
+      {screenWidth < 640 ? (
+        <div className="grid grid-cols-3 gap-2 grid-flow-row-dense">
+        <audio
+          ref={audioRef}
+          onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
+          onCanPlay={(e) => setDur(e.target.duration)}
+          onEnded={repeatSong}
+          type="audio/mpeg"
+          preload="true"
+          src={url}
+        />
+    
+        <div className="grid col-span-2">
+          <div className="flex flex-row">
+            <div>
+              <span className="block text-md font-semibold">{name}</span>
+              <span className="hidden sm:block text-sm">{artist}</span>
+            </div>
+    
+            <div className="flex flex-col">
+              <LikeButton
+                songId={id}
+                className="mx-6 cursor-pointer"
+                activeClass="text-teal"
+                disactiveClass="text-white"
+              />
+              <div className="text-white text-3xl m-3 cursor-pointer hover:text-cyan-800">
+                <Link to="/nowplaying">
+                  <AiOutlineExpandAlt />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div className="grid col-span-1">
+          <div className="flex flex-col text-teal cursor-pointer hover:text-cyan-800">
+            <div className="flex flex-row justify-center items-center">
+            <span
+              className="text-md text-teal cursor-pointer hover:text-cyan-800"
+              onClick={prevSong}
+            >
+              <FaStepBackward />
+            </span>
+    
+              <span className="justify-center mx-2 text-white bg-teal rounded-full text-md w-10 h-10 content-center flex items-center">
+                {audioRef.current?.paused ? (
+                  <FaPlay className="" onClick={handlePlay} />
+                ) : (
+                  <FaPause className="" onClick={handlePause} />
+                )}
+                {/* <span className={!playOn ? "" : "hidden"}>
+                  <FaPlay className="ml-1 sm:ml-1" />
+                  </span>
+                  <span className={!playOn ? "hidden" : ""}>
+                  <FaPause className="ml-0 sm:ml-1" />
+                  </span> */}
+              </span>
+              <span
+              className="text-md cursor-pointer text-teal hover:text-cyan-800"
+              onClick={nextSong}
+            >
+              <FaStepForward />
+            </span>
+    
+            </div>
+    
+            <div className="flex flex-row mb-5">
+              <span className=" text-white w-9 mt-2.5 mb-2.5">
+                {fmtMSS(currentTime)}
+              </span>
+              <input
+                onChange={handleProgress}
+                value={dur ? (currentTime * 100) / dur : 0}
+                type="range"
+                name="progresBar"
+                id="prgbar"
+              />
+              
+            </div>
+          </div>
+        </div>
+    
+      </div>
+      ) : (
+        <div className="grid grid-cols-4 gap-2 grid-flow-row-dense">
       <audio
         ref={audioRef}
         onTimeUpdate={(e) => setCurrentTime(e.target.currentTime)}
@@ -207,6 +297,10 @@ export const AudioBar = ({ url, name, artist, id }) => {
           />
         </div>
       </div>
+    </div>
+      )}
+
+    
     </div>
   );
 };
