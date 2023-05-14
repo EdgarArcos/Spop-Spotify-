@@ -68,7 +68,7 @@ export const HeaderPlaylist = ({ playlist }) => {
         <MyMenuModal onClose={handleOnClose} visible={isModalOpen} playlist={playlist}/>
       </div>
       ) : (
-        <div className="justify-start bg-gradient-to-b from-zinc-500 to-zinc-900  border-graytext">
+        <div className="flex justify-start bg-gradient-to-b from-zinc-500 to-zinc-900  border-graytext">
       <div>
       <label className="cursor-pointer text-[0.6rem] flex flex-col items-center justify-center hover:text-teal">
       <img
