@@ -1,23 +1,35 @@
-import { useContext, useEffect } from "react";
-import React from "react";
-import { EachLikeSong } from "./EachLikeSong";
-import { PlayButtonLibrary } from "./PlayButtonLibrary";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useContext, useEffect } from 'react';
+import React from 'react';
+import { EachLikeSong } from './EachLikeSong';
+import { PlayButtonLibrary } from './PlayButtonLibrary';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
-import { MusicContext } from "../../context/MusicContext/MusicContext";
-import { useDragAndDrop } from "../../hooks/useDragAndDrop";
+import { MusicContext } from '../../context/MusicContext/MusicContext';
+import { useDragAndDrop } from '../../hooks/useDragAndDrop';
+import { saveChangesDragAndDrop } from '../../api/api-utils';
 
 const ContainerLikeLibrary = () => {
-  const { musicState, changeCurrentList, handleIndex, activatePlayOn  } = useContext(MusicContext);
-  
+  const { musicState, changeCurrentList, handleLikedSongs } =
+    useContext(MusicContext);
+
   const { playlist } = musicState;
-
-
 
   const { dragStart, dragEnter, drop, dragabbleList, setDragabbleList } =
     useDragAndDrop(playlist[0].songs);
+
+  const saveChangesLikedSongs = async () => {
+    const songIdArr = dragabbleList.map((song) => song._id);
+    const res = await saveChangesDragAndDrop({
+      newOrderList: songIdArr,
+      playlistId: playlist[0]._id,
+    });
+    if (res.data?.ok) {
+      changeCurrentList(dragabbleList);
+      handleLikedSongs({ ...playlist[0], songs: dragabbleList });
+    }
+  };
   useEffect(() => {
-    changeCurrentList(playlist[0].songs);
+    saveChangesLikedSongs();
   }, [dragabbleList]);
 
   useEffect(() => {
@@ -40,12 +52,9 @@ const ContainerLikeLibrary = () => {
         <div className="bg-newblack sm:bg-gradient-to-b from-zinc-800 to-newblack pt-2">
           <div className="flex flex-row">
             <PlayButtonLibrary />
-            <div className="hidden sm:flex m-4 items-center">
-              <FaHeart className="text-2xl text-teal" />
-            </div>
           </div>
           <div className="flex flex-col m-5">
-            <table className="w-full">
+            <table className="w-full" key="header_table">
               <thead key="headerLiked">
                 <tr className="hidden sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4  text-graytext text-lg border-b  border-graytext mb-8 ">
                   <th>#</th>
