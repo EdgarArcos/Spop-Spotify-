@@ -8,12 +8,6 @@ export const searchRequest = async (query) => {
     .catch((res) => res.response.data.msg);
 };
 
-export const searchPlaylistById = async (playlistId) => {
-  return await axios
-    .get(`${API_URL}/search/playlist/${playlistId}`)
-    .catch((res) => res.response.data.msg);
-};
-
 export const getMusicRequest = async (endPoint) => {
   return await axios
     .get(`${API_URL}/music/${endPoint}`)
@@ -23,5 +17,11 @@ export const getMusicRequest = async (endPoint) => {
 export const handleLikeSong = async (likeInfo) => {
   return await axios
     .post(`${API_URL}/music/handlelikesong`, likeInfo)
+    .catch((res) => res.response.data.msg);
+};
+
+export const getInfoAnotherUser = async (userId) => {
+  return await axios
+    .get(`${API_URL}/search/user/${userId}`)
     .catch((res) => res.response.data.msg);
 };

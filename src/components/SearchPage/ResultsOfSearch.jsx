@@ -14,7 +14,7 @@ export const ResultsOfSearch = ({
       {playlistResults.length > 0 && (
         <section className="w-full pb-4">
           <TitleResults text="Playlists" />
-          <div className="px-4 pt-2 flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
+          <div className="px-4 pt-2 h-[15rem] flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
             {playlistResults.map((playlist) => (
               <PlaylistResultsCard playlist={playlist} />
             ))}
@@ -24,9 +24,9 @@ export const ResultsOfSearch = ({
       {songResults.length > 0 && (
         <section className="w-full pb-4">
           <TitleResults text="Songs" />
-          <div className="px-4 pt-2 flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
+          <div className="px-4 pt-2 h-[15rem] flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
             {songResults.map((song) => (
-              <SongCard song={song} />
+              <SongCard key={song._id} song={song} />
             ))}
           </div>
         </section>
@@ -34,7 +34,7 @@ export const ResultsOfSearch = ({
       {userResults.length > 0 && (
         <section className="w-full pb-4">
           <TitleResults text="Profiles" />
-          <div className="px-4 pt-2 flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
+          <div className="px-4 pt-2 h-[15rem] flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
             {userResults.map((user) => (
               <UserCard key={user._id} user={user} />
             ))}

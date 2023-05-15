@@ -22,7 +22,7 @@ export const UserInput = () => {
     setIsEditing(false);
     const res = await editUsernameFetch({
       newName: currentUsername,
-      userId: user.id,
+      userId: user._id,
     });
     if (res.data.ok) editUsername(currentUsername);
   };

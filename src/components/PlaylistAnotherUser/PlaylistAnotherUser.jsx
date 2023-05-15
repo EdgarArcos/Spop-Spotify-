@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { searchPlaylistById } from "../../api/api-utils";
+import { searchPlaylistById } from "../../api/playlistRequests";
 import { PlayButtonLibrary } from "../LikeLibrary/PlayButtonLibrary";
 import { FaRegHeart } from "react-icons/fa";
 import { useContext, useEffect } from "react";
@@ -19,6 +19,7 @@ const PlaylistAnotherUser = () => {
   useEffect(() => {
     !isLoading && changeCurrentList(data.data.playlist.songs);
   }, [data]);
+  console.log(data);
 
   return (
     <div className="sm:pl-60 w-full flex flex-col pb-24">

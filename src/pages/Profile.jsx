@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ContainerLists } from "../components/Profile/ContainerLists";
 import { HeaderProfile } from "../components/Profile/HeaderProfile";
 import { EditUserInfo } from "../components/Profile/EditUserInfo";
+import { MusicContext } from "../context/MusicContext/MusicContext";
 
 const Profile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { musicState } = useContext(MusicContext);
 
   const handleEditUserInfo = () => {
     setIsModalOpen(!isModalOpen);
@@ -13,7 +16,7 @@ const Profile = () => {
   return (
     <div className="sm:pl-[16rem]">
       <HeaderProfile handleEditUserInfo={handleEditUserInfo} />
-      <ContainerLists />
+      <ContainerLists lists={musicState.playlist} />
       {isModalOpen && <EditUserInfo handleEditUserInfo={handleEditUserInfo} />}
     </div>
   );
