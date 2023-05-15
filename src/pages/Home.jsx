@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
-import { AudioBar } from "../components/AudioBar/AudioBar";
-import { NavBarMov, SideMenu } from "../components/Reusable";
-import { MusicContext } from "../context/MusicContext/MusicContext";
-import { useScreenWidth } from "../hooks/useScreenWidth";
-import { useAuth0 } from "@auth0/auth0-react";
-import { auth0loginRequest } from "../api/userRequests";
-import { UsersContext } from "../context/UsersContext";
+import { useContext, useEffect, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import { AudioBar } from '../components/AudioBar/AudioBar';
+import { NavBarMov, SideMenu } from '../components/Reusable';
+import { MusicContext } from '../context/MusicContext/MusicContext';
+import { useScreenWidth } from '../hooks/useScreenWidth';
+import { useAuth0 } from '@auth0/auth0-react';
+import { auth0loginRequest } from '../api/userRequests';
+import { UsersContext } from '../context/UsersContext';
 
 const Home = () => {
   const screenWidth = useScreenWidth();
@@ -19,14 +19,11 @@ const Home = () => {
     // random ? randomList([...currentList]) : currentList
     currentList
   );
-  console.log(currentList)
-  console.log(musicToPlay)
+
   const { user } = useAuth0();
   const { auth0Login } = useContext(UsersContext);
 
-
   useEffect(() => {
-    
     const newList = [...currentList];
     if (random) {
       setMusicToPlay(randomList(newList));
@@ -34,7 +31,6 @@ const Home = () => {
       setMusicToPlay(currentList);
     }
   }, [currentList, musicState, random]);
-
 
   useEffect(() => {
     async function fetchData() {
@@ -45,7 +41,7 @@ const Home = () => {
           auth0Login(response.data.user);
           userMusic(response.data.playlist);
         } else {
-          console.log("Error");
+          console.log('Error');
         }
       }
     }

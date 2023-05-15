@@ -27,16 +27,9 @@ export const HeaderProfile = ({ handleEditUserInfo }) => {
       <div className="flex">
         <ImgProfile />
         <div className="flex flex-col justify-evenly lg:pl-2">
-          <div>
-            <h2 className="text-lg md:text-2xl lg:text-5xl xl:text-6xl">
-              {user && user.name}
-            </h2>
-            <h3 className="flex text-xs lg:text-sm">
-              <span className="pr-1 font-medium">21</span> followers{" "}
-              <span className="px-2 font-bold">·</span>
-              <span className="pr-1 font-medium">21</span>following
-            </h3>
-          </div>
+          <h2 className="text-lg md:text-2xl lg:text-5xl xl:text-6xl">
+            {user && user.name}
+          </h2>
 
           <button
             className="border rounded-full w-14 text-xs py-1 lg:text-sm hover:text-teal hover:border-teal"

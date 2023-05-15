@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { SongCard } from "../Reusable";
-import { UserCard } from "./UserCard";
-import { TitleResults } from "./TitleResults";
-import { PlaylistResultsCard } from "./PlaylistResultsCard";
+import { useState } from 'react';
+import { SongCard } from '../Reusable';
+import { UserCard } from './UserCard';
+import { TitleResults } from './TitleResults';
+import { PlaylistResultsCard } from './PlaylistResultsCard';
 
 export const ResultsOfSearch = ({
   userResults,
@@ -16,7 +16,7 @@ export const ResultsOfSearch = ({
           <TitleResults text="Playlists" />
           <div className="px-4 pt-2 h-[15rem] flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
             {playlistResults.map((playlist) => (
-              <PlaylistResultsCard playlist={playlist} />
+              <PlaylistResultsCard key={playlist._id} playlist={playlist} />
             ))}
           </div>
         </section>

@@ -3,8 +3,6 @@ import { MusicContext } from "./MusicContext";
 import { types } from "./types/types";
 import musicReducer from "./musicReducer";
 
-
-
 const initialState = {
   playlist: [],
   currentList: [],
@@ -12,7 +10,6 @@ const initialState = {
   playOn: false,
   repeat: false,
   random: false,
-
 };
 
 export const MusicProvider = ({ children }) => {
@@ -25,8 +22,6 @@ export const MusicProvider = ({ children }) => {
   const changeCurrentList = (songsArray) => {
     dispatch({ type: types.CHANGE_CURRENTLIST, payload: songsArray });
   };
-
-
 
   const activatePlayOn = () => {
     dispatch({ type: types.PLAY_ACTIVE });
@@ -132,7 +127,7 @@ export const MusicProvider = ({ children }) => {
         handleDeletePlaylist,
         activatePlayOn,
         disablePlayOn,
-        handleEnd
+        handleEnd,
       }}
     >
       {children}
