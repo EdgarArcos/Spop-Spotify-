@@ -1,6 +1,5 @@
 import { useState, createContext, useContext } from 'react'
 import { getSongsRequests, createSongRequest, deleteSongRequest, getSongRequest, updateSongRequest } from "../../api/apiSongs";
-
 export const songContext = createContext()
 
 export const useSongs = () => {
@@ -13,8 +12,8 @@ export function SongProvider({ children }) {
     const getSongs = async (user) => {
         const resultado = await getSongsRequests()
         let newsongs = []
-        if (user?.nickname) {
-            resultado.data.map((song) => { if (song.artist === user.nickname) newsongs.push(song) })
+        if (user?.name) {
+            resultado.data.map((song) => { if (song.artist === user.name) newsongs.push(song) })
         }
         return newsongs
     }

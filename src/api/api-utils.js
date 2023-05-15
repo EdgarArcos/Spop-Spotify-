@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -23,5 +23,11 @@ export const handleLikeSong = async (likeInfo) => {
 export const getInfoAnotherUser = async (userId) => {
   return await axios
     .get(`${API_URL}/search/user/${userId}`)
+    .catch((res) => res.response.data.msg);
+};
+
+export const saveChangesDragAndDrop = async (dataChanges) => {
+  return await axios
+    .post(`${API_URL}/music/dragAndDrop`, dataChanges)
     .catch((res) => res.response.data.msg);
 };

@@ -1,9 +1,7 @@
-import { useEffect, useReducer } from "react";
-import { MusicContext } from "./MusicContext";
-import { types } from "./types/types";
-import musicReducer from "./musicReducer";
-
-
+import { useEffect, useReducer } from 'react';
+import { MusicContext } from './MusicContext';
+import { types } from './types/types';
+import musicReducer from './musicReducer';
 
 const initialState = {
   playlist: [],
@@ -12,7 +10,6 @@ const initialState = {
   playOn: false,
   repeat: false,
   random: false,
-
 };
 
 export const MusicProvider = ({ children }) => {
@@ -25,8 +22,6 @@ export const MusicProvider = ({ children }) => {
   const changeCurrentList = (songsArray) => {
     dispatch({ type: types.CHANGE_CURRENTLIST, payload: songsArray });
   };
-
-
 
   const activatePlayOn = () => {
     dispatch({ type: types.PLAY_ACTIVE });
@@ -60,7 +55,7 @@ export const MusicProvider = ({ children }) => {
 
   const handleAddPlaylist = (newPlaylist) => {
     dispatch({
-      type: "ADD_PLAYLIST",
+      type: 'ADD_PLAYLIST',
       payload: newPlaylist,
     });
   };
@@ -70,7 +65,7 @@ export const MusicProvider = ({ children }) => {
       return list._id === playlistId ? { ...list, title: newTitle } : list;
     });
     dispatch({
-      type: "EDIT_PLAYLIST_TITLE",
+      type: 'EDIT_PLAYLIST_TITLE',
       payload: newPlaylist,
     });
   };
@@ -81,7 +76,7 @@ export const MusicProvider = ({ children }) => {
     });
     console.log(newPlaylist);
     dispatch({
-      type: "EDIT_PLAYLIST_IMG",
+      type: 'EDIT_PLAYLIST_IMG',
       payload: newPlaylist,
     });
   };
@@ -132,7 +127,7 @@ export const MusicProvider = ({ children }) => {
         handleDeletePlaylist,
         activatePlayOn,
         disablePlayOn,
-        handleEnd
+        handleEnd,
       }}
     >
       {children}
