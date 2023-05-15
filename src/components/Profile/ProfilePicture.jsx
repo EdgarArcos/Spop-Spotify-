@@ -9,7 +9,7 @@ export const ProfilePicture = () => {
   const handleEditImage = (e) => {
     const data = new FormData();
     data.append("file", e.target.files[0]);
-    data.append("userId", user && user.id);
+    data.append("userId", user._id);
     editImgFetch(data)
       .then((response) => {
         editImg(response.data.img);

@@ -9,8 +9,8 @@ export const UsersProvider = ({ children }) => {
     setUser(user);
   };
 
-  const editImg = (url) => {
-    setUser({ ...user, img: url });
+  const editImg = (imgUploaded) => {
+    setUser({ ...user, img: imgUploaded });
   };
 
   const editUsername = (newName) => {
