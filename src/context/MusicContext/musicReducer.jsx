@@ -13,20 +13,6 @@ const musicReducer = (state, action) => {
       return { ...state, playOn: !state.playOn };
 
 
-
-    case types.PLAY_TRACK:
-      return {
-        ...state,
-        playOn: true,
-        currentTrack: payload
-      };
-    
-    case types.PAUSE_TRACK:
-      return {
-        ...state,
-        playOn: false,
-      };
-
     case types.PLAY_ACTIVE:
       return { ...state, playOn: true };
 
