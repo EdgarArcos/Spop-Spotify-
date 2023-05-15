@@ -4,16 +4,21 @@ import { UsersContext } from "../../context/UsersContext";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ImgProfile } from "./ImgProfile";
+import { useNavigate } from "react-router-dom";
 
 export const HeaderProfile = ({ handleEditUserInfo }) => {
   const { user } = useContext(UsersContext);
+  const navigate = useNavigate();
 
   const { logout } = useAuth0();
 
   return (
     <section className="flex flex-col">
       <div className="flex items-center justify-between p-3 min-[640px]:justify-end">
-        <IoArrowBackOutline className="text-2xl cursor-pointer min-[640px]:hidden" />
+        <IoArrowBackOutline
+          className="text-2xl cursor-pointer min-[640px]:hidden"
+          onClick={() => navigate(-1)}
+        />
         <RiLogoutCircleLine
           className="text-xl ml-5 hover:text-teal cursor-pointer lg:text-2xl"
           onClick={logout}
