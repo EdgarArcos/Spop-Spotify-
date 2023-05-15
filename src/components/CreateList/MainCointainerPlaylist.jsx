@@ -53,8 +53,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                         {song.artist}
                       </p>
                     </div>
-                  
-                 
+
                 <div className="grid col-span-1 relative">
                   <button
                     onClick={() => setIsModalOpen(song._id)}
