@@ -19,10 +19,14 @@ const Home = () => {
     // random ? randomList([...currentList]) : currentList
     currentList
   );
+  console.log(currentList)
+  console.log(musicToPlay)
   const { user } = useAuth0();
   const { auth0Login } = useContext(UsersContext);
 
+
   useEffect(() => {
+    
     const newList = [...currentList];
     if (random) {
       setMusicToPlay(randomList(newList));
@@ -30,6 +34,7 @@ const Home = () => {
       setMusicToPlay(currentList);
     }
   }, [currentList, musicState, random]);
+
 
   useEffect(() => {
     async function fetchData() {

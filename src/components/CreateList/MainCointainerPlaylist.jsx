@@ -8,6 +8,8 @@ import { SongOptionModal } from "./SongOptionModal";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
 
 export const MainCointainerPlaylist = ({ playlist }) => {
+
+  
   const screenWidth = useScreenWidth();
   const {
     activatePlayOn,
