@@ -19,8 +19,7 @@ const Home = () => {
     // random ? randomList([...currentList]) : currentList
     currentList
   );
-  console.log(currentList)
-  console.log(musicToPlay)
+
   const { user } = useAuth0();
   const { auth0Login } = useContext(UsersContext);
 
@@ -62,7 +61,7 @@ const Home = () => {
       )}
       <Outlet />
       {musicToPlay.length > 0 && (
-        <div className="pt-4 grid fixed w-screen bottom-[5rem] bg-newgray text-white sm:bottom-0 sm:p-6 sm:h-24 sm:w-screen">
+        <div className="pt-4 px-6 grid h-24 fixed w-screen bottom-[5rem] bg-newgray text-white sm:bottom-0 sm:p-6 sm:h-24 sm:w-screen">
           <AudioBar
             url={musicToPlay[indexPlay]?.url}
             name={musicToPlay[indexPlay]?.name}

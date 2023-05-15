@@ -7,7 +7,7 @@ import { PlayButtonLibrary } from "../LikeLibrary/PlayButtonLibrary";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
 
 export const HeaderPlaylist = ({ playlist }) => {
-  console.log(playlist)
+  
   const { musicState, handleEditImg, handleEdit } = useContext(MusicContext);
   const screenWidth = useScreenWidth();
 
@@ -50,12 +50,16 @@ export const HeaderPlaylist = ({ playlist }) => {
       {screenWidth < 640 ? (
         <div className=" text-white flex flex-col">
         <div className="bg-newblack">
-        <div className="flex justify-center">
+        <div>
+        <label className="cursor-pointer text-[0.6rem] flex flex-col items-center justify-center hover:text-teal">
         <img
           className="w-full rounded-b-3xl"
           src={playlist.img}
           alt="cover"
         />
+        <input type="file" className="hidden" onChange={(e) => editImage(e, playlist.id)} />
+        </label>
+        
         </div>
         <div className="flex flex-row">
               <PlayButtonLibrary playlist={playlist}/>
