@@ -9,6 +9,7 @@ import { BsFillPlusSquareFill } from "react-icons/bs";
 import { UsersContext } from "../../context/UsersContext";
 import { createplaylistFetch } from "../../api/playlistRequests";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
+import { MdOutlineLibraryMusic } from "react-icons/md"
 
 export const SideMenu = () => {
   const { user } = useContext(UsersContext);
@@ -56,8 +57,10 @@ export const SideMenu = () => {
         <BiLibrary className="text-xl" />
         <p className="pl-2 text-md">Your Library</p>
       </Link>
-      <Link to="/artist">
-        <p>Artista</p>
+      <Link to="/artist"  className="flex flex-row pl-2 p-1 hover:bg-newgray rounded-md cursor-pointer">
+
+      <MdOutlineLibraryMusic className="text-xl" />
+        <p className="pl-2 text-md">Add song</p>
       </Link>
       <div className="flex flex-row p-2">
         <p className="text-graytext py-2">PLAYLIST</p>
