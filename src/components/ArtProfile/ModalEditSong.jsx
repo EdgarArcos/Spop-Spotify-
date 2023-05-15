@@ -28,9 +28,9 @@ export default function ModalEditSong({ isvisible, onClose }) {
     return (
         <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
             <div>
-                <div className='pl-6'><button className='text-white text-xl pl-96' onClick={() => { onClose(), navigate("/artist") }}>X</button></div>
+                <div className='pl-6'><button className='text-white text-xl pl-80 ' onClick={() => { onClose(), navigate("/artist") }}>X</button></div>
                 <form onSubmit={handleSubmit(onSubmit)} className=" bg-slate-50 text-black rounded-xl">
-                    <div className=" text-center py-10">
+                    <div className=" text-center py-10 px-20">
                         <div className="pb-2">
                             <label className="text-xl">Title</label>
                         </div>
