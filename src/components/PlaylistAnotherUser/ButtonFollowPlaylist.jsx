@@ -21,6 +21,7 @@ export const ButtonFollowPlaylist = ({ playlistId }) => {
     const res = await followPlaylist({ userId: user._id, playlistId });
     if (res.data.ok) {
       editFollowedPlaylists(res.data.followedPlaylists);
+      setIsFollowed(!isFollowed);
     }
   };
 
@@ -29,7 +30,7 @@ export const ButtonFollowPlaylist = ({ playlistId }) => {
       className="border border-teal w-24 text-sm text-teal rounded-full p-2"
       onClick={handleFollowPlaylist}
     >
-      {isFollowed ? 'Followed' : 'Follow'}
+      {isFollowed ? 'Following' : 'Follow'}
     </button>
   );
 };
