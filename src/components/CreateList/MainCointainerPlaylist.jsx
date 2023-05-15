@@ -33,7 +33,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
   return (
     <div>
       {screenWidth < 640 ? (
-        <div className="grid grid-flow-row3 grid-flow-row-dense grid-gap-2">
+        <div className="grid grid-col-3 grid-flow-row-dense gap-2">
         
           
           {playlist.songs.map((song, index) => (
@@ -44,13 +44,13 @@ export const MainCointainerPlaylist = ({ playlist }) => {
             >
                   <div className="grid col-span-1 m-2">
                     <img
-                      className="rounded-2xl h-20 w-20 max-w-none"
+                      className="rounded-2xl ml-3 h-20 w-20 max-w-none"
                       src={song.img}
                       alt={song.name}
                     />
                     </div>
                     <div className="grid col-span-1 justify-items-start ">
-                      <p className="flex font-bold">{song.name}</p>
+                      <p className="font-bold">{song.name}</p>
                       <p className="text-graytext font-bold">
                         {song.artist}
                       </p>
@@ -59,7 +59,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                 <div className="grid col-span-1 relative">
                   <button
                     onClick={() => setIsModalOpen(song._id)}
-                    className="mb-4 text-4xl"
+                    className="m-7 text-4xl"
                   >
                     ...
                   </button>
