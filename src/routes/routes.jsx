@@ -10,6 +10,9 @@ import PlaylistAnotherUser from "../components/PlaylistAnotherUser/PlaylistAnoth
 const Home = lazy(() => import("../pages/Home"));
 const Artistprofile = lazy(() => import("../pages/Artistprofile"));
 const Profile = lazy(() => import("../pages/Profile"));
+const ProfileAnotherUser = lazy(() =>
+  import("../components/Profile/ProfileAnotherUser")
+);
 const SearchResultsContainer = lazy(() =>
   import("../components/SearchPage/SearchResultsContainer")
 );
@@ -168,6 +171,18 @@ export const router = createBrowserRouter([
             <ProtectedRoute>
               <ProtectedAdminRoute>
                 <Profile />
+              </ProtectedAdminRoute>
+            </ProtectedRoute>
+          </Suspense>
+        ),
+      },
+      {
+        path: "profile/:userId",
+        element: (
+          <Suspense fallback={<></>}>
+            <ProtectedRoute>
+              <ProtectedAdminRoute>
+                <ProfileAnotherUser />
               </ProtectedAdminRoute>
             </ProtectedRoute>
           </Suspense>

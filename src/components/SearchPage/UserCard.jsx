@@ -1,8 +1,13 @@
 import { BiUser } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 export const UserCard = ({ user }) => {
+  const navigate = useNavigate();
   return (
-    <div className="w-36 h-48 flex flex-col items-start pt-3 shadow-md shadow-newgray rounded-lg cursor-pointer">
+    <div
+      className="w-36 h-48 flex flex-col items-start pt-3 shadow-md shadow-newgray rounded-lg cursor-pointer"
+      onClick={() => navigate(`/profile/${user._id}`)}
+    >
       <div className="bg-gray-200 flex items-center self-center justify-center rounded-full w-28 h-28 overflow-hidden">
         {user.img.secure_url ? (
           <img

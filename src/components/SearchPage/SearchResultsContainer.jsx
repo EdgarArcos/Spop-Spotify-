@@ -12,6 +12,7 @@ const SearchResultsContainer = () => {
   const [userResults, setUserResults] = useState([]);
   const [songResults, setSongResults] = useState([]);
   const [playlistResults, setPlaylistResults] = useState([]);
+
   const query = searchParams.get("q") ?? "";
 
   const { isLoading, error, data } = useQuery({
