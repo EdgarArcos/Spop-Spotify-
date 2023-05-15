@@ -1,4 +1,4 @@
-import "react-h5-audio-player/lib/styles.css";
+
 import "./AudioBar.css";
 import { useContext, useRef, useState, useEffect } from "react";
 import { MusicContext } from "../../context/MusicContext/MusicContext";
@@ -15,7 +15,7 @@ import { AiOutlineExpandAlt } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
 import { LikeButton } from "../Reusable/LikeButton";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
-import { AudioBarMobile } from "./AudioBarMobile";
+
 
 export const AudioBar = ({ url, name, artist, id }) => {
   const {

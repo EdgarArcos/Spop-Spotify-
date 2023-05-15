@@ -7,6 +7,7 @@ import { PlayButtonLibrary } from "../LikeLibrary/PlayButtonLibrary";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
 
 export const HeaderPlaylist = ({ playlist }) => {
+  console.log(playlist)
   const { musicState, handleEditImg, handleEdit } = useContext(MusicContext);
   const screenWidth = useScreenWidth();
 
@@ -57,7 +58,7 @@ export const HeaderPlaylist = ({ playlist }) => {
         />
         </div>
         <div className="flex flex-row">
-              <PlayButtonLibrary />
+              <PlayButtonLibrary playlist={playlist}/>
               <div className="flex m-4 items-center">
               <button onClick={() => setIsModalOpen(true)} className="mb-4 text-4xl">...</button>
               </div>
@@ -79,7 +80,7 @@ export const HeaderPlaylist = ({ playlist }) => {
       <input type="file" className="hidden" onChange={(e) => editImage(e, playlist.id)} />
       </label>
       <div className="flex flex-row">
-            <PlayButtonLibrary />
+            <PlayButtonLibrary playlist={playlist}/>
             <div className="flex m-4 items-center">
             <button onClick={() => setIsModalOpen(true)} className="mb-4 text-4xl">...</button>
             </div>
