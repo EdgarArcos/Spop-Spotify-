@@ -5,7 +5,7 @@ export const ContainerGenres = ({ genresArr }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="grid grid-cols-2 place-items-center gap-y-7 p-5 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+    <div className="grid grid-cols-2 place-items-center gap-y-7 p-5 pb-24 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
       {genresArr &&
         genresArr.map(({ name }) => (
           <div
