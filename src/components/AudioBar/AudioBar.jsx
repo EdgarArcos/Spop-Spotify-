@@ -172,11 +172,11 @@ export const AudioBar = ({ url, name, artist, id }) => {
           <div className="grid col-span-1">
             <div className="flex flex-row">
               <div className="flex flex-col">
-                <span className="text-base">{name}</span>
-                <span className="text-xs">{artist}</span>
+                <span className="text-xs">{name}</span>
+                <span className="text-[0.6rem]">{artist}</span>
               </div>
 
-              <div className="flex flex-col items-center px-2">
+              <div className="flex flex-col items-center px-2 pt-1">
                 <LikeButton
                   songId={id}
                   className="cursor-pointer"
@@ -215,12 +215,6 @@ export const AudioBar = ({ url, name, artist, id }) => {
                   ) : (
                     <FaPause className="" onClick={handlePause} />
                   )}
-                  {/* <span className={!playOn ? "" : "hidden"}>
-                <FaPlay className="ml-1 sm:ml-1" />
-                </span>
-                <span className={!playOn ? "hidden" : ""}>
-                <FaPause className="ml-0 sm:ml-1" />
-                </span> */}
                 </span>
 
                 <span
