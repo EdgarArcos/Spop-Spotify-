@@ -38,14 +38,13 @@ const Home = () => {
         const { name, email } = user;
         const response = await auth0loginRequest({ name, email });
         if (response && response.data.user) {
-          auth0Login(response.data.user);
-          userMusic(response.data.playlist);
+          await auth0Login(response.data.user);
+          await userMusic(response.data.playlist);
         } else {
           console.log('Error');
         }
       }
     }
-
     fetchData();
   }, [user]);
 
