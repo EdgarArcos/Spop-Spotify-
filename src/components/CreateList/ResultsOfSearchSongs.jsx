@@ -19,9 +19,9 @@ export const ResultsOfSearchSongs = ({ resultsArr, playlistId }) => {
   };
 
   return (
-    <div>
+    <div  >
       {resultsArr.map(({ _id, artist, name, img }) => (
-        <div>
+        <div key={_id}>
            {screenWidth < 640 ? (
            <div
            key={_id}

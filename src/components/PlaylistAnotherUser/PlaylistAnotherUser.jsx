@@ -7,10 +7,12 @@ import { useContext, useEffect } from 'react';
 import { MusicContext } from '../../context/MusicContext/MusicContext';
 import { EachSongAnotherUser } from './EachSongAnotherUser';
 import { ButtonFollowPlaylist } from './ButtonFollowPlaylist';
+import { useScreenWidth } from '../../hooks/useScreenWidth';
 
 const PlaylistAnotherUser = () => {
   const { changeCurrentList } = useContext(MusicContext);
   const { playlistId } = useParams();
+  const screenWidth = useScreenWidth();
 
   const { isLoading, error, data } = useQuery({
     queryKey: [playlistId],
@@ -22,10 +24,34 @@ const PlaylistAnotherUser = () => {
   }, [data]);
 
   return (
+  
     <div className="sm:pl-60 w-full flex flex-col pb-24">
       {error && <p>An error has occurred: {error.message}</p>}
       {!isLoading && (
         <>
+          <div>
+      {screenWidth < 640 ? (
+        <div className=" text-white flex flex-col">
+        <div className="bg-newblack">
+        <div>       
+        <img
+          className="w-full h-80 rounded-b-3xl"
+          src={data.data.playlist.img}
+          alt="cover"
+        />    
+        
+        </div>
+        <div className="flex flex-row">
+              <PlayButtonLibrary playlist={data.data.playlist}/>
+              <ButtonFollowPlaylist playlistId={data.data.playlist._id} />
+            </div>
+            {data.data.playlist.songs.map((song, index) => (
+                <EachSongAnotherUser key={song._id} song={song} index={index} />
+              ))}
+          </div>
+        </div>
+      ) : (
+        <div>
           <header className="flex flex-col justify-center sm:justify-start sm:bg-gradient-to-b from-zinc-500 to-zinc-900  border-graytext">
             <div className="text-[0.6rem] flex items-center justify-start sm:p-4 sm:pt-28">
               <img
@@ -63,9 +89,13 @@ const PlaylistAnotherUser = () => {
               ))}
             </table>
           </div>
+          </div>
+           )}
+           </div>
         </>
-      )}
-    </div>
+     
+  )}
+  </div>
   );
 };
 

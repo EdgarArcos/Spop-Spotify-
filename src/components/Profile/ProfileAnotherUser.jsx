@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { getInfoAnotherUser } from "../../api/api-utils";
 import { ContainerLists } from "./ContainerLists";
+import {BiUser} from "react-icons/bi"
 
 const ProfileAnotherUser = () => {
   const { userId } = useParams();
