@@ -45,7 +45,7 @@ export const EachSongAnotherUser = ({ song, index, setIsPlaying }) => {
             </td>
             <td className="grid grid-cols-2">
               <img
-                className="grid col-span-1 rounded-2xl w-20 max-w-none"
+                className="grid col-span-1 rounded-2xl w-20 h-20 max-w-none"
                 src={img}
                 alt={name}
               />
