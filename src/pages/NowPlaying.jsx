@@ -24,7 +24,7 @@ const NowPlaying = () => {
   return (
     <div className='h-screen flex flex-col'>
       <Link to={-1}>
-        <FaArrowLeft className='m-10 flex text-xl mt-16 m:ml-[25%] cursor-pointer' />
+        <FaArrowLeft className='m-10 text-xl mt-16 sm:mt-10 sm:ml-[25%] cursor-pointer' />
       </Link>
       <div className='flex flex-col items-center justify-center sm:h-[60%] sm:w-[100rem]'>
         <p className='text-xl font-bold'>{currentList[indexPlay]?.name}</p>
@@ -60,7 +60,7 @@ const NowPlaying = () => {
           <img
             src={currentList[indexPlay]?.img}
             alt='Album cover'
-            className='w-full sm:w-[120%] sm:h-[120%] rounded'
+            className='w-60 sm:w-[120%] sm:h-[120%] rounded'
           />
         </div>
       </div>
