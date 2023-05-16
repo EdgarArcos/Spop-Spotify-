@@ -82,18 +82,8 @@ export const MainCointainerPlaylist = ({ playlist }) => {
               </tr>
             </thead>
             {playlist.songs.map((song, index) => (
-              <tbody
-                key={song._id}
-                onClick={() => handlePlay(index)}
-                //     draggable
-                //     onDragStart={onDragStart}
-                //     onDragEnter={onDragEnter}
-                //     onDragEnd={onDragEnd}
-              >
-                <tr
-                  // onDragOver={(e) => e.preventDefault()}
-                  className="group/item flex hover:bg-newgray rounded-md cursor-pointer sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-4 sm:justify-center m-3"
-                >
+              <tbody key={song._id} onClick={() => handlePlay(index)}>
+                <tr className="group/item flex hover:bg-newgray rounded-md cursor-pointer sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-4 sm:justify-center m-3">
                   <td className="hidden sm:flex justify-center pt-6">
                     <p className="visible group-hover/item:invisible">
                       {index + 1}
@@ -127,7 +117,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                   <td className="hidden relative lg:grid pt-6 justify-start">
                     <button
                       onClick={() => setIsModalOpen(song._id)}
-                      className="mb-4 text-4xl"
+                      className="z-60 mb-4 text-4xl"
                     >
                       ...
                     </button>
