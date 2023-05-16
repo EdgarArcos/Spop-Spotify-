@@ -20,7 +20,7 @@ const Artistprofile = () => {
             <div className=" bg-newblack sm:pl-60">
                 <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-cyan-700 to-zinc-800 smborder-b border-graytext">
                     <img
-                        className="w-full rounded-b-3xl sm:w-52 sm:rounded-2xl sm:m-4 sm:mt-32"
+                        className="w-full w-52 h-52 rounded-b-3xl sm:w-52 sm:rounded-2xl sm:m-4 sm:mt-32"
                         src={user?.img.secure_url}
                         alt="UserImage"
                     />

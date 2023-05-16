@@ -31,24 +31,28 @@ export const MainCointainerPlaylist = ({ playlist }) => {
   return (
     <div>
       {screenWidth < 640 ? (
-        <div className="grid grid-col-3 grid-flow-row-dense gap-2">
+        <div className="flex flex-col">
+        
+          
           {playlist.songs.map((song, index) => (
             <div
               key={song._id}
               onClick={() => handlePlay(index)}
               className="flex flex-row place-content-between"
             >
-              <div className="grid col-span-1 m-2">
-                <img
-                  className="rounded-2xl ml-3 h-20 w-20 max-w-none"
-                  src={song.img}
-                  alt={song.name}
-                />
-              </div>
-              <div className="grid col-span-1 justify-items-start ">
-                <p className="font-bold">{song.name}</p>
-                <p className="text-graytext font-bold">{song.artist}</p>
-              </div>
+                  <div className="m-2">
+                    <img
+                      className="rounded-2xl ml-4 m-2 h-20 w-20"
+                      src={song.img}
+                      alt={song.name}
+                    />
+                    </div>
+                    <div className="flex flex-col m-6 justify-start">
+                      <p className="font-bold">{song.name}</p>
+                      <p className="text-graytext font-bold">
+                        {song.artist}
+                      </p>
+                    </div>
 
               <div className="grid col-span-1 relative">
                 <button
@@ -78,18 +82,8 @@ export const MainCointainerPlaylist = ({ playlist }) => {
               </tr>
             </thead>
             {playlist.songs.map((song, index) => (
-              <tbody
-                key={song._id}
-                onClick={() => handlePlay(index)}
-                //     draggable
-                //     onDragStart={onDragStart}
-                //     onDragEnter={onDragEnter}
-                //     onDragEnd={onDragEnd}
-              >
-                <tr
-                  // onDragOver={(e) => e.preventDefault()}
-                  className="group/item flex hover:bg-newgray rounded-md cursor-pointer sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-4 sm:justify-center m-3"
-                >
+              <tbody key={song._id} onClick={() => handlePlay(index)}>
+                <tr className="group/item flex hover:bg-newgray rounded-md cursor-pointer sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-4 sm:justify-center m-3">
                   <td className="hidden sm:flex justify-center pt-6">
                     <p className="visible group-hover/item:invisible">
                       {index + 1}
@@ -123,7 +117,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                   <td className="hidden relative lg:grid pt-6 justify-start">
                     <button
                       onClick={() => setIsModalOpen(song._id)}
-                      className="mb-4 text-4xl"
+                      className="z-60 mb-4 text-4xl"
                     >
                       ...
                     </button>
