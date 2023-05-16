@@ -74,7 +74,6 @@ export const MusicProvider = ({ children }) => {
     const newPlaylist = musicState.playlist.map((list) => {
       return list._id === playlistId ? { ...list, img: newImg } : list;
     });
-    console.log(newPlaylist);
     dispatch({
       type: 'EDIT_PLAYLIST_IMG',
       payload: newPlaylist,

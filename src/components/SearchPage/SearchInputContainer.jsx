@@ -1,4 +1,4 @@
-import { BiSearch } from "react-icons/bi";
+import { BiSearch } from 'react-icons/bi';
 
 export const SearchInputContainer = ({ setSearchParams, query }) => {
   const handleSearch = ({ target }) => {
