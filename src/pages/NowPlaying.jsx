@@ -24,9 +24,9 @@ const NowPlaying = () => {
   return (
     <div className='h-screen flex flex-col'>
       <Link to={-1}>
-        <FaArrowLeft className='flex text-xl mt-10 ml-[25%] cursor-pointer' />
+        <FaArrowLeft className='m-10 flex text-xl mt-16 m:ml-[25%] cursor-pointer' />
       </Link>
-      <div className='flex flex-col items-center justify-center h-[60%] w-[100rem]'>
+      <div className='flex flex-col items-center justify-center sm:h-[60%] sm:w-[100rem]'>
         <p className='text-xl font-bold'>{currentList[indexPlay]?.name}</p>
         <p className='text-gray-400 mt-2'>{currentList[indexPlay]?.artist}</p>
         <div>
@@ -38,8 +38,8 @@ const NowPlaying = () => {
               ...
             </button>
             {isModalOpen && (
-              <ul>
-                <li>Add to...</li>
+              <ul className="absolute bg-gradient-to-b from-zinc-700 to-zinc-900 smborder-b border-newblack border-2  p-6 ">
+                <li className="p-2  hover:bg-newgray rounded-md cursor-pointer">Add to...</li>
                 {playlist.length > 1 &&
                   playlist.map((playlist) => {
                     return (
@@ -47,9 +47,10 @@ const NowPlaying = () => {
                         <li
                           key={playlist._id}
                           onClick={() => addSongToPlaylist(playlist._id)}
+                          className="p-2"
                         >
                           {playlist.title}
-                        </li>
+                        </li >
                       )
                     );
                   })}
@@ -59,7 +60,7 @@ const NowPlaying = () => {
           <img
             src={currentList[indexPlay]?.img}
             alt='Album cover'
-            className='w-[15rem] h-[15rem] sm:w-[120%] sm:h-[120%] rounded'
+            className='w-full sm:w-[120%] sm:h-[120%] rounded'
           />
         </div>
       </div>
