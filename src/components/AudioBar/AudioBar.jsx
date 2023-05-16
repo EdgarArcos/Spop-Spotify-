@@ -171,19 +171,19 @@ export const AudioBar = ({ url, name, artist, id }) => {
 
           <div className="grid col-span-1">
             <div className="flex flex-row">
-              <div>
-                <span className="block text-md font-semibold">{name}</span>
-                <span className="hidden sm:block text-sm">{artist}</span>
+              <div className="flex flex-col">
+                <span className="text-base">{name}</span>
+                <span className="text-xs">{artist}</span>
               </div>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col items-center px-2">
                 <LikeButton
                   songId={id}
-                  className="mx-6 cursor-pointer"
+                  className="cursor-pointer"
                   activeClass="text-teal"
                   disactiveClass="text-white"
                 />
-                <div className="text-white text-3xl m-3 cursor-pointer hover:text-cyan-800">
+                <div className="text-white text-2xl cursor-pointer hover:text-cyan-800">
                   <Link to="/nowplaying">
                     <AiOutlineExpandAlt />
                   </Link>
@@ -256,23 +256,8 @@ export const AudioBar = ({ url, name, artist, id }) => {
             </div>
           </div>
 
-          {/* <div className="hidden sm:grid col-span-1 relative content-center overflow-hidden w-30 transition-all delay-500">
-            <div className="flex flex-row absolute inset-y-0 right-0">
-              <span className="my-5 mr- w-2.5">
-                <FaVolumeDown />
-              </span>
-              <input
-                value={Math.round(statevolum * 100)}
-                type="range"
-                name="volBar"
-                id="volBar"
-                className="m-6 w-24 h-2 bg-white rounded-full outline-none"
-                onChange={(e) => handleVolume(e.target.value / 100)}
-              />
-            </div>
-          </div> */}
           <div className="hidden sm:grid col-span-1 content-start transition-all delay-500">
-            <div class="flex items-center justify-end pt-2">
+            <div className="flex items-center justify-end pt-2">
               <FaVolumeDown />
               <input
                 type="range"

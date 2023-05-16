@@ -57,7 +57,7 @@ const Home = () => {
       )}
       <Outlet />
       {musicToPlay.length > 0 && (
-        <div className="pt-2 px-3 grid h-[3.1rem] fixed w-screen bottom-[2.9rem] bg-newgray text-white sm:bottom-0 sm:p-6 sm:h-24 sm:w-screen">
+        <div className="pt-2 px-3 grid h-[3.1rem] fixed w-screen bottom-[2.9rem] bg-newgray text-white sm:bottom-0 sm:p-3 sm:h-20 sm:w-screen">
           <AudioBar
             url={musicToPlay[indexPlay]?.url}
             name={musicToPlay[indexPlay]?.name}
