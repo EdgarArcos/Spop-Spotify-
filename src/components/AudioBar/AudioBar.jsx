@@ -176,10 +176,10 @@ export const AudioBar = ({ url, name, artist, id }) => {
                 <span className="text-[0.6rem]">{artist}</span>
               </div>
 
-              <div className="flex flex-col items-center px-2 pt-1">
+              <div className="flex flex-col items-center px-2 md:flex-row md:items-start">
                 <LikeButton
                   songId={id}
-                  className="cursor-pointer"
+                  className="cursor-pointer md:text-xl"
                   activeClass="text-teal"
                   disactiveClass="text-white"
                 />
@@ -195,7 +195,7 @@ export const AudioBar = ({ url, name, artist, id }) => {
           <div className="grid col-span-2">
             <div className="flex flex-col text-teal cursor-pointer hover:text-cyan-800">
               <div className="flex flex-row justify-center items-center">
-                <div className="text-teal text-xl mx-2 cursor-pointer">
+                <div className="text-teal text-base mx-2 cursor-pointer">
                   <FaRandom
                     onClick={handleRandom}
                     className={!random ? 'text-teal' : 'text-cyan-800'}
@@ -203,13 +203,13 @@ export const AudioBar = ({ url, name, artist, id }) => {
                 </div>
 
                 <span
-                  className="text-md mx-2 sm:text-xl text-teal cursor-pointer hover:text-cyan-800"
+                  className="text-md mx-2 sm:text-base text-teal cursor-pointer hover:text-cyan-800"
                   onClick={prevSong}
                 >
                   <FaStepBackward />
                 </span>
 
-                <span className="justify-center mx-2 text-white bg-teal rounded-full text-md w-10 h-10 content-center flex items-center">
+                <span className="justify-center text-newgray bg-teal rounded-full text-md w-9 h-9 content-center flex items-center">
                   {audioRef.current?.paused ? (
                     <FaPlay className="" onClick={handlePlay} />
                   ) : (
@@ -218,13 +218,13 @@ export const AudioBar = ({ url, name, artist, id }) => {
                 </span>
 
                 <span
-                  className="text-md mx-2 sm:text-xl cursor-pointer text-teal hover:text-cyan-800"
+                  className="text-md mx-2 sm:text-base cursor-pointer text-teal hover:text-cyan-800"
                   onClick={nextSong}
                 >
                   <FaStepForward />
                 </span>
 
-                <div className="text-teal mx-2 text-2xl cursor-pointer">
+                <div className="text-teal px-2 text-xl cursor-pointer">
                   <TbRepeatOnce
                     onClick={handleRepeat}
                     className={!repeat ? 'text-teal' : 'text-cyan-800'}
@@ -232,8 +232,8 @@ export const AudioBar = ({ url, name, artist, id }) => {
                 </div>
               </div>
 
-              <div className="flex flex-row items-center mb-5">
-                <span className=" text-white text-sm w-9 mt-2.5 mb-2.5">
+              <div className="flex flex-row items-center pt-1">
+                <span className=" text-white text-[0.8rem] w-9 mt-1 mb-1">
                   {fmtMSS(currentTime)}
                 </span>
                 <input
@@ -243,7 +243,7 @@ export const AudioBar = ({ url, name, artist, id }) => {
                   name="progresBar"
                   id="prgbar"
                 />
-                <span className=" text-white text-sm w-9 mt-2.5 mb-2.5">
+                <span className=" text-white text-[0.8rem] w-9 mt-1 mb-1">
                   {fmtMSS(dur)}
                 </span>
               </div>
@@ -257,7 +257,7 @@ export const AudioBar = ({ url, name, artist, id }) => {
                 type="range"
                 name="volBar"
                 id="volBar"
-                className="w-[10rem]"
+                className="w-[7.5rem]"
                 onChange={(e) => handleVolume(e.target.value / 100)}
                 value={Math.round(statevolum * 100)}
               />
