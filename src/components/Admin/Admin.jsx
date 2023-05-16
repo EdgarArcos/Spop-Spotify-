@@ -42,7 +42,7 @@ const Admin = () => {
 
   return (
     <>
-      <h2 className='flex justify-center text-3xl font-bold text-left sm:text-5xl sm:pl-60 pt-10 pb-1'>
+      <h2 className='flex justify-center text-3xl font-bold text-left sm:text-5xl pt-10 pb-1'>
         Administrator
       </h2>
       <div className="flex items-center justify-between p-3 min-[640px]:justify-end">
@@ -54,9 +54,9 @@ const Admin = () => {
       </div>
       <hr className='border-solid border border-teal pt-1' />
       <div className='flex-col'>
-        <div className='flex'>
+        <div className='flex justify-center'>
           <input
-            className='m-4 ml-12 sm:mt-5 sm:ml-60 py-1 pr-0 pl-1 w-64 text-black focus:outline-none focus:ring-2 focus:ring-teal focus:border-transparent'
+            className='m-4 sm:mt-5  py-1 pr-0 pl-1 w-64 text-black focus:outline-none focus:ring-2 focus:ring-teal focus:border-transparent'
             type='search'
             name='filter'
             value={inputValue}
@@ -135,11 +135,11 @@ const Admin = () => {
 
 
           ) : (
-        <div className='hidden sm:flex justify-center mt-16'>
-          <table className=' items-center'>
+        <div className='flex justify-center mt-16'>
+          <table className='items-center'>
             <thead>
               <tr>
-                <th className='h-12 w-40  border-2 border-teal bg-graytext'>
+                <th className='sm:hidden md:flex md:justify-center md:items-center md:h-12 md:w-40  md:border-2 md:border-teal md:bg-graytext'>
                   User ID
                 </th>
                 <th className='h-12 w-40  border-2 border-teal bg-graytext'>
@@ -160,12 +160,12 @@ const Admin = () => {
               searchResult.map(({ _id, name, email, role }) => (
                 <tbody key={_id}>
                   <tr className='text-center'>
-                    <td className=' border-2 border-teal w-40 bg-cyan-900'>
+                    <td className='sm:hidden md:flex md:items-center md:justify-center md:border-2 md:border-teal md:h-12 md:w-40 md:bg-cyan-900'>
                       <div className='w-40 px-2 overflow-x-auto hide-scrollbar'>
                         {_id}
                       </div>
                     </td>
-                    <td className=' border-2  border-teal w-40 bg-cyan-900'>
+                    <td className='border-2  border-teal w-40 bg-cyan-900'>
                       <div className='w-40 px-2 overflow-x-auto hide-scrollbar'>
                         {name}
                       </div>
