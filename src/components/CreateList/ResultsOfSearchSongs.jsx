@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
-import { addSongPlaylistFetch } from "../../api/playlistRequests";
-import { MusicContext } from "../../context/MusicContext/MusicContext";
-import { useScreenWidth } from "../../hooks/useScreenWidth";
+import { useContext, useState } from 'react';
+import { addSongPlaylistFetch } from '../../api/playlistRequests';
+import { MusicContext } from '../../context/MusicContext/MusicContext';
+import { useScreenWidth } from '../../hooks/useScreenWidth';
 
 export const ResultsOfSearchSongs = ({ resultsArr, playlistId }) => {
   const screenWidth = useScreenWidth();
@@ -59,18 +59,16 @@ export const ResultsOfSearchSongs = ({ resultsArr, playlistId }) => {
           {name}-{artist}
         </p>
 
-        <button
-          onClick={() => handleAddToPlaylist(_id)}
-          className="flex flex-row m-6 p-2 items-center bg-teal w-24 rounded-full justify-center"
-        >
-          Add
-        </button>
-      </div>
-      )}
-       
+              <button
+                onClick={() => handleAddToPlaylist(_id)}
+                className="flex flex-row m-6 p-2 items-center bg-teal w-24 rounded-full justify-center"
+              >
+                Add
+              </button>
+            </div>
+          )}
         </div>
       ))}
     </div>
   );
 };
-

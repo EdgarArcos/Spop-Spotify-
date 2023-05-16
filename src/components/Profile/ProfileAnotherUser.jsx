@@ -11,7 +11,7 @@ const ProfileAnotherUser = () => {
     queryKey: [userId],
     queryFn: () => getInfoAnotherUser(userId),
   });
-  console.log(data);
+
   return (
     <div className="pb-24 w-screen pt-10 sm:pl-[16rem]">
       {error && <p>An error has occurred: {error.message}</p>}

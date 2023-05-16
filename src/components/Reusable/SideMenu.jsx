@@ -24,8 +24,7 @@ export const SideMenu = () => {
       navigate(`/playlist/${res.data.playlist._id}`);
     }
   };
-  console.log(user);
-  console.log(playlist);
+
   return (
     <div className="flex flex-col h-screen bg-newblack p-4 w-60 fixed">
       <img className="pb-3" src={fulllogo} alt="logo" />
