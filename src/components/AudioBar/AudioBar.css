@@ -37,7 +37,6 @@
 
 input[type='range'] {
   appearance: none;
-  /* width: 350px; */
   height: 3px;
   background: #424242;
   outline: none;
