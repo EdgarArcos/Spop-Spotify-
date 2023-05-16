@@ -50,7 +50,7 @@ export const ResultsOfSearchSongs = ({ resultsArr, playlistId }) => {
               className="grid grid-cols-3 gap-2 w-full hover:bg-newgray rounded-md cursor-pointer m-4"
             >
               <img
-                className="grid items-center rounded-2xl w-20 max-w-none"
+                className="grid items-center rounded-2xl w-20 h-20"
                 src={img}
                 alt={name}
               />
