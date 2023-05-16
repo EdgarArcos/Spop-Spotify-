@@ -13,19 +13,19 @@ Poder seguir artistas y que te notifique si sube contenido, gestion de estaditic
 
 ## Tecnologias y librerias usadas
 
-* MongoDB
-* Nodejs
-* Express
-* Nodemoon
-* Bcrypt
-* Cloudinary
-* Cors
-* Doteenv
-* Express-fileupload
-* Fs-extra
-* Helmet
-* Mogoose
+* Reactjs
+* Tailwind
+* Axios
 * Auth0
+* Cloudinary
+* Json-Server
+* Reactavatareditor
+* ReactDOM
+* ReactHookForm
+* ReactHotToast
+* ReactIcons
+* ReactRouterDOM
+* Uuid
 
 ## Instalar y ejecutar proyecto
 
@@ -37,7 +37,7 @@ Poder seguir artistas y que te notifique si sube contenido, gestion de estaditic
 4. Abir Visual Studio Code
 5. Abrir desde Visual Studio Code el repositorio previamente descargado
 6. Abrir la consola y ejecutar el comando npm i (se instalara todas las librerias anteriormente dichas)
-7. Ejecutar npm start para que arranque el aplicacion
+7. Ejecutar npm run dev para que arranque el aplicacion
 8. Hacer las pruebas que requiera con Postman o ThunderClient
 
 
