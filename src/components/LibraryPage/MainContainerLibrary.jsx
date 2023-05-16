@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
-import { PlaylistCard } from "./PlaylistCard";
-import { Link } from "react-router-dom";
-import { MusicContext } from "../../context/MusicContext/MusicContext";
+import { useContext, useEffect, useState } from 'react';
+import { PlaylistCard } from './PlaylistCard';
+import { Link } from 'react-router-dom';
+import { MusicContext } from '../../context/MusicContext/MusicContext';
 
 const MainContainerLibrary = () => {
   const { musicState } = useContext(MusicContext);
@@ -14,14 +14,10 @@ const MainContainerLibrary = () => {
         {playlist.length > 0 &&
           playlist.map(({ _id, title, img }) => (
             <Link
-              to={title === "Liked Songs" ? "/likelibrary" : `/playlist/${_id}`}
+              key={_id}
+              to={title === 'Liked Songs' ? '/likelibrary' : `/playlist/${_id}`}
             >
-              <PlaylistCard
-                key={_id}
-                srcImg={img}
-                nameList={title}
-                infoList="Playlist"
-              />
+              <PlaylistCard srcImg={img} nameList={title} infoList="Playlist" />
             </Link>
           ))}
       </div>

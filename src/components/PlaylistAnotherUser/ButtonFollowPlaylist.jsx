@@ -27,7 +27,7 @@ export const ButtonFollowPlaylist = ({ playlistId }) => {
 
   return (
     <button
-      className="border border-teal w-24 text-sm text-teal rounded-full p-2"
+      className="border m-4 border-teal w-24 text-sm text-teal rounded-full p-2"
       onClick={handleFollowPlaylist}
     >
       {isFollowed ? 'Following' : 'Follow'}
