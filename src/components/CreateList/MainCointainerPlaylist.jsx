@@ -32,26 +32,22 @@ export const MainCointainerPlaylist = ({ playlist }) => {
     <div>
       {screenWidth < 640 ? (
         <div className="flex flex-col">
-        
-          
           {playlist.songs.map((song, index) => (
-            <div
-              key={song._id}
-              className="flex flex-row place-content-between"
-            >
-                  <div className="m-2" onClick={() => handlePlay(index)}>
-                    <img
-                      className="rounded-2xl ml-4 m-2 h-20 w-20"
-                      src={song.img}
-                      alt={song.name}
-                    />
-                    </div>
-                    <div className="flex flex-col m-6 justify-start" onClick={() => handlePlay(index)}>
-                      <p className="font-bold">{song.name}</p>
-                      <p className="text-graytext font-bold">
-                        {song.artist}
-                      </p>
-                    </div>
+            <div key={song._id} className="flex flex-row place-content-between">
+              <div className="m-2" onClick={() => handlePlay(index)}>
+                <img
+                  className="rounded-2xl ml-4 m-2 h-20 w-20"
+                  src={song.img}
+                  alt={song.name}
+                />
+              </div>
+              <div
+                className="flex flex-col m-6 justify-start"
+                onClick={() => handlePlay(index)}
+              >
+                <p className="font-bold">{song.name}</p>
+                <p className="text-graytext font-bold">{song.artist}</p>
+              </div>
 
               <div className="grid col-span-1 relative">
                 <button
@@ -81,15 +77,21 @@ export const MainCointainerPlaylist = ({ playlist }) => {
               </tr>
             </thead>
             {playlist.songs.map((song, index) => (
-              <tbody key={song._id} >
+              <tbody key={song._id}>
                 <tr className="group/item flex hover:bg-newgray rounded-md cursor-pointer sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-4 sm:justify-center m-3">
-                  <td onClick={() => handlePlay(index)} className="hidden sm:flex justify-center pt-6">
+                  <td
+                    onClick={() => handlePlay(index)}
+                    className="hidden sm:flex justify-center pt-6"
+                  >
                     <p className="visible group-hover/item:invisible">
                       {index + 1}
                     </p>
                     <FaPlay className="invisible group-hover/item:visible flex justify-center" />
                   </td>
-                  <td onClick={() => handlePlay(index)} className="flex sm:grid sm:grid-cols-2">
+                  <td
+                    onClick={() => handlePlay(index)}
+                    className="flex sm:grid sm:grid-cols-2"
+                  >
                     <div className="flex sm:hidden">
                       <img
                         className="rounded-2xl w-20 h-20"
@@ -110,7 +112,10 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                     />
                     <p className="hidden sm:grid sm:col-span-1">{song.name}</p>
                   </td>
-                  <td onClick={() => handlePlay(index)} className="hidden md:grid  pt-6 justify-start pl-14 font-bold text-graytext">
+                  <td
+                    onClick={() => handlePlay(index)}
+                    className="hidden md:grid  pt-6 justify-start pl-14 font-bold text-graytext"
+                  >
                     {song.artist} · {playlist.name}
                   </td>
                   <td className="hidden relative lg:grid pt-6 justify-start">

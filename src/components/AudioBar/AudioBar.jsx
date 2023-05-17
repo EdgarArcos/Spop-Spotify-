@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa';
 import { TbRepeatOnce } from 'react-icons/tb';
 import { AiOutlineExpandAlt } from 'react-icons/ai';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LikeButton } from '../Reusable/LikeButton';
 import { useScreenWidth } from '../../hooks/useScreenWidth';
 
@@ -23,11 +23,9 @@ export const AudioBar = ({ url, name, artist, id }) => {
     handleRepeat,
     handleRandom,
     musicState,
-    changeRequestPlay,
   } = useContext(MusicContext);
   const { indexPlay, currentList, random, repeat } = musicState;
   const screenWidth = useScreenWidth();
-  const location = useLocation();
 
   const [statevolum, setStateVolum] = useState(0.3);
   const [dur, setDur] = useState(0);
@@ -42,7 +40,9 @@ export const AudioBar = ({ url, name, artist, id }) => {
 
   const toggleAudio = () => {
     audioRef.current.paused
-      ? audioRef.current.play()
+      ? setTimeout(function () {
+          audioRef.current.play();
+        }, 150)
       : audioRef.current.pause();
   };
 
@@ -55,11 +55,10 @@ export const AudioBar = ({ url, name, artist, id }) => {
     setCurrentTime(compute);
     audioRef.current.currentTime = compute;
   };
-
   useEffect(() => {
     audioRef.current.volume = statevolum;
     toggleAudio();
-  }, [indexPlay]);
+  }, [indexPlay, currentList]);
 
   const prevSong = () => {
     if (indexPlay === 0) {
@@ -86,14 +85,14 @@ export const AudioBar = ({ url, name, artist, id }) => {
     }
   };
 
-  const handlePlay = () => {
+  const handlePlay = async () => {
     activatePlayOn();
-    audioRef.current.play();
+    toggleAudio();
   };
 
-  const handlePause = () => {
+  const handlePause = async () => {
     disablePlayOn();
-    audioRef.current.pause();
+    toggleAudio();
   };
 
   return (

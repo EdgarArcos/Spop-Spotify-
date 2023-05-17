@@ -1,6 +1,6 @@
-import { UsersContext } from "../../context/UsersContext";
-import { useContext } from "react";
-import { BiUser } from "react-icons/bi";
+import { UsersContext } from '../../context/UsersContext';
+import { useContext } from 'react';
+import { BiUser } from 'react-icons/bi';
 
 export const ImgProfile = () => {
   const { user } = useContext(UsersContext);
@@ -11,7 +11,7 @@ export const ImgProfile = () => {
         <img
           src={user.img.secure_url}
           alt="Profile image"
-          className="object-cover"
+          className="object-cover min-h-full min-w-full"
         />
       ) : (
         <BiUser className="text-teal text-[4rem] md:text-[7rem] lg:text-[8rem]" />

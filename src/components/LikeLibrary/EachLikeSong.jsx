@@ -9,12 +9,15 @@ export const EachLikeSong = ({
   onDragStart,
   onDragEnter,
   onDragEnd,
+  dragabbleList,
 }) => {
-  const { handleIndex, activatePlayOn } = useContext(MusicContext);
+  const { handleIndex, activatePlayOn, changeCurrentList } =
+    useContext(MusicContext);
 
   const { _id, img, name, artist } = song;
 
   const handlePlay = (index) => {
+    changeCurrentList(dragabbleList);
     handleIndex(index);
     activatePlayOn();
   };

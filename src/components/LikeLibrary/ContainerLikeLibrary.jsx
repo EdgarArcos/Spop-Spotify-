@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 import { EachLikeSong } from './EachLikeSong';
 import { PlayButtonLibrary } from './PlayButtonLibrary';
@@ -11,6 +11,8 @@ import { saveChangesDragAndDrop } from '../../api/api-utils';
 const ContainerLikeLibrary = () => {
   const { musicState, changeCurrentList, handleLikedSongs } =
     useContext(MusicContext);
+
+  const [isFirstTime, setIsFirstTime] = useState(true);
 
   const { playlist } = musicState;
 
@@ -29,7 +31,7 @@ const ContainerLikeLibrary = () => {
     }
   };
   useEffect(() => {
-    saveChangesLikedSongs();
+    !isFirstTime ? saveChangesLikedSongs() : setIsFirstTime(false);
   }, [dragabbleList]);
 
   useEffect(() => {
@@ -51,7 +53,7 @@ const ContainerLikeLibrary = () => {
         </div>
         <div className="bg-newblack sm:bg-gradient-to-b from-zinc-800 to-newblack pt-2">
           <div className="flex flex-row">
-            <PlayButtonLibrary />
+            <PlayButtonLibrary playlist={{ songs: dragabbleList }} />
           </div>
           <div className="flex flex-col m-5">
             <table className="w-full">
@@ -77,6 +79,7 @@ const ContainerLikeLibrary = () => {
                     onDragStart={(e) => dragStart(e, index)}
                     onDragEnter={(e) => dragEnter(e, index)}
                     onDragEnd={drop}
+                    dragabbleList={dragabbleList}
                   />
                 ))}
             </table>

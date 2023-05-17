@@ -6,10 +6,10 @@ export const PlayBtnSongCard = ({ song }) => {
   const { activatePlayOn, handleIndex, changeCurrentList } =
     useContext(MusicContext);
 
-  const handlePlaySongCard = () => {
-    changeCurrentList([song]);
-    handleIndex(0);
-    activatePlayOn();
+  const handlePlaySongCard = async () => {
+    await changeCurrentList([song]);
+    await handleIndex(0);
+    await activatePlayOn();
   };
 
   return <BsFillPlayCircleFill onClick={handlePlaySongCard} />;

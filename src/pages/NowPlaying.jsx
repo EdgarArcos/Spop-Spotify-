@@ -39,9 +39,7 @@ const NowPlaying = () => {
             </button>
             {isModalOpen && (
               <ul className="absolute bg-gradient-to-b from-zinc-700 to-zinc-900 smborder-b border-newblack border-2  p-6 ">
-                <li className="p-2  hover:bg-newgray rounded-md cursor-pointer">
-                  Add to...
-                </li>
+                <li className="p-2">Add to...</li>
                 {playlist.length > 1 &&
                   playlist.map((playlist) => {
                     return (
@@ -49,7 +47,7 @@ const NowPlaying = () => {
                         <li
                           key={playlist._id}
                           onClick={() => addSongToPlaylist(playlist._id)}
-                          className="p-2"
+                          className="p-2 cursor-pointer hover:bg-newgray rounded-md"
                         >
                           {playlist.title}
                         </li>
