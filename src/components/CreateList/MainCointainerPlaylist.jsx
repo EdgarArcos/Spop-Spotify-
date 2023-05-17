@@ -37,17 +37,16 @@ export const MainCointainerPlaylist = ({ playlist }) => {
           {playlist.songs.map((song, index) => (
             <div
               key={song._id}
-              onClick={() => handlePlay(index)}
               className="flex flex-row place-content-between"
             >
-                  <div className="m-2">
+                  <div className="m-2" onClick={() => handlePlay(index)}>
                     <img
                       className="rounded-2xl ml-4 m-2 h-20 w-20"
                       src={song.img}
                       alt={song.name}
                     />
                     </div>
-                    <div className="flex flex-col m-6 justify-start">
+                    <div className="flex flex-col m-6 justify-start" onClick={() => handlePlay(index)}>
                       <p className="font-bold">{song.name}</p>
                       <p className="text-graytext font-bold">
                         {song.artist}
