@@ -19,13 +19,13 @@ export const AudioBar = ({ url, name, artist, id }) => {
   const {
     activatePlayOn,
     disablePlayOn,
-    handlePlayOn,
     handleIndex,
     handleRepeat,
     handleRandom,
     musicState,
+    changeRequestPlay,
   } = useContext(MusicContext);
-  const { indexPlay, currentList, random, repeat, playOn } = musicState;
+  const { indexPlay, currentList, random, repeat } = musicState;
   const screenWidth = useScreenWidth();
   const location = useLocation();
 
@@ -58,7 +58,6 @@ export const AudioBar = ({ url, name, artist, id }) => {
 
   useEffect(() => {
     audioRef.current.volume = statevolum;
-
     toggleAudio();
   }, [indexPlay]);
 
@@ -172,8 +171,8 @@ export const AudioBar = ({ url, name, artist, id }) => {
           <div className="grid col-span-1">
             <div className="flex flex-row">
               <div className="flex flex-col">
-                <span className="text-xs">{name}</span>
-                <span className="text-[0.6rem]">{artist}</span>
+                <span className="text-xs md:text-sm">{name}</span>
+                <span className="text-[0.6rem] md:text-[0.7rem]">{artist}</span>
               </div>
 
               <div className="flex flex-col items-center px-2 md:flex-row md:items-start">

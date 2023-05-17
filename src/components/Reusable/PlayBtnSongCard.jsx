@@ -1,6 +1,6 @@
-import { useContext } from "react";
-import { BsFillPlayCircleFill } from "react-icons/bs";
-import { MusicContext } from "../../context/MusicContext/MusicContext";
+import { useContext } from 'react';
+import { BsFillPlayCircleFill } from 'react-icons/bs';
+import { MusicContext } from '../../context/MusicContext/MusicContext';
 
 export const PlayBtnSongCard = ({ song }) => {
   const { activatePlayOn, handleIndex, changeCurrentList } =
