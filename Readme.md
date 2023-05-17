@@ -29,7 +29,7 @@ Poder seguir artistas y que te notifique si sube contenido, gestion de estaditic
 
 ## Instalar y ejecutar proyecto
 
-1. Descargar [Visual Sutido Code](https://code.visualstudio.com)
+1. Descargar [Visual Stuido Code](https://code.visualstudio.com)
 2. Descargar [MongoDB](https://www.mongodb.com/products/compass)
 2. Descargar Repositorio
 3. Descargar [Postman](https://www.postman.com)
