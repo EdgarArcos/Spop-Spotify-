@@ -33,8 +33,8 @@ export const MainCointainerPlaylist = ({ playlist }) => {
       {screenWidth < 640 ? (
         <div className="flex flex-col">
           {playlist.songs.map((song, index) => (
-            <div key={song._id} className="flex flex-row place-content-between">
-              <div className="m-2" onClick={() => handlePlay(index)}>
+            <div key={song._id} className="flex">
+              <div className="flex  m-2" onClick={() => handlePlay(index)}>
                 <img
                   className="rounded-2xl ml-4 m-2 h-20 w-20"
                   src={song.img}
@@ -42,14 +42,14 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                 />
               </div>
               <div
-                className="flex flex-col m-6 justify-start"
+                className="flex flex-col  m-6 justify-start"
                 onClick={() => handlePlay(index)}
               >
                 <p className="font-bold">{song.name}</p>
                 <p className="text-graytext font-bold">{song.artist}</p>
               </div>
 
-              <div className="grid col-span-1 relative">
+              <div className="flex relative items-end">
                 <button
                   onClick={() => setIsModalOpen(song._id)}
                   className="m-7 text-4xl"
@@ -63,6 +63,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                   song={song}
                 />
               </div>
+              
             </div>
           ))}
         </div>
@@ -70,7 +71,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
         <div className="flex flex-col m-5">
           <table className="w-full">
             <thead>
-              <tr className="hidden sm:grid sm: content-center sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4  text-graytext text-lg border-b  border-graytext mb-8 ">
+              <tr className="hidden sm:grid sm:content-center sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4  text-graytext text-lg border-b  border-graytext mb-8 ">
                 <th>#</th>
                 <th>Title</th>
                 <th className="hidden md:grid">Artist</th>

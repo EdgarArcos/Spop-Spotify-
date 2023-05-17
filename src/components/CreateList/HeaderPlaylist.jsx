@@ -51,7 +51,7 @@ export const HeaderPlaylist = ({ playlist }) => {
             <div>
               <label className="cursor-pointer text-[0.6rem] flex flex-col items-center justify-center hover:text-teal">
                 <img
-                  className="w-full rounded-b-3xl"
+                  className="w-full h-80 rounded-b-3xl"
                   src={playlist.img}
                   alt="cover"
                 />
