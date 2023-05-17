@@ -1,15 +1,15 @@
-import { useContext } from "react";
-import { editImgFetch } from "../../api/userRequests";
-import { ImgProfile } from "./ImgProfile";
-import { UsersContext } from "../../context/UsersContext";
+import { useContext } from 'react';
+import { editImgFetch } from '../../api/userRequests';
+import { ImgProfile } from './ImgProfile';
+import { UsersContext } from '../../context/UsersContext';
 
 export const ProfilePicture = () => {
   const { user, editImg } = useContext(UsersContext);
 
   const handleEditImage = (e) => {
     const data = new FormData();
-    data.append("file", e.target.files[0]);
-    data.append("userId", user._id);
+    data.append('file', e.target.files[0]);
+    data.append('userId', user._id);
     editImgFetch(data)
       .then((response) => {
         editImg(response.data.img);
