@@ -70,7 +70,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
         <div className="flex flex-col m-5">
           <table className="w-full">
             <thead>
-              <tr className="hidden sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4  text-graytext text-lg border-b  border-graytext mb-8 ">
+              <tr className="hidden sm:grid sm: content-center sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4  text-graytext text-lg border-b  border-graytext mb-8 ">
                 <th>#</th>
                 <th>Title</th>
                 <th className="hidden md:grid">Artist</th>
@@ -90,7 +90,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                   </td>
                   <td
                     onClick={() => handlePlay(index)}
-                    className="flex sm:grid sm:grid-cols-2"
+                    className="flex sm:grid sm:content-center sm:grid-cols-2"
                   >
                     <div className="flex sm:hidden">
                       <img
@@ -98,19 +98,19 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                         src={song.img}
                         alt={song.name}
                       />
-                      <div className="flex-row ml-3 items-center">
+                      <div className="flex-row justify-center ml-3 items-center">
                         <p className="font-bold">{song.name}</p>
                         <p className="text-graytext font-bold">
-                          {song.artist} · {playlist.name}
+                          {song.artist} 
                         </p>
                       </div>
                     </div>
                     <img
-                      className="hidden sm:grid sm:col-span-1 rounded-2xl w-20 h-20"
+                      className="hidden sm:grid  sm:col-span-1 rounded-2xl w-20 h-20"
                       src={song.img}
                       alt={song.name}
                     />
-                    <p className="hidden sm:grid sm:col-span-1">{song.name}</p>
+                    <p className="hidden sm:grid sm:content-center sm:col-span-1">{song.name}</p>
                   </td>
                   <td
                     onClick={() => handlePlay(index)}
@@ -118,7 +118,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                   >
                     {song.artist} · {playlist.name}
                   </td>
-                  <td className="hidden relative lg:grid pt-6 justify-start">
+                  <td className="hidden relative sm:content-center lg:grid pt-6 justify-start">
                     <button
                       onClick={() => setIsModalOpen(song._id)}
                       className="z-60 mb-4 text-4xl"
