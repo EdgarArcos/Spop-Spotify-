@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:4000';
+const API_URL = import.meta.env.VITE_APP_API_URL;
 
 export const searchUser = async (userData) => {
   return await axios
