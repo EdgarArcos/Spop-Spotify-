@@ -53,10 +53,10 @@ export const MyMenuModal = ({ visible, onClose, playlist }) => {
   return (
     <div>
       {showMenuModal && (
-        <div className="fixed inset-0 top-0  bg-black bg-opacity-30 flex justify-center items-center">
-          <ul className="bg-gradient-to-b from-zinc-700 to-zinc-900 smborder-b border-newblack border-2  p-6 ">
+        <div className="absolute inset-0 z-20 top-0 bg-black bg-opacity-30 flex justify-center items-center">
+          <ul className="bg-gradient-to-b from-zinc-700 to-zinc-900 sm:border-b border-newblack border-2  p-6 ">
             <li
-              className="p-2  hover:bg-newgray rounded-md cursor-pointer"
+              className="p-2 w-[8.5rem] hover:bg-newgray rounded-md cursor-pointer"
               onClick={handleCreate}
             >
               Create Playlist
