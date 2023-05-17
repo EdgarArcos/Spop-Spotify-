@@ -30,43 +30,38 @@ export const MainCointainerPlaylist = ({ playlist }) => {
 
   return (
     <div>
-      {screenWidth < 640 ? (
-        <div className="flex flex-col">
-          {playlist.songs.map((song, index) => (
-            <div key={song._id} className="flex">
-              <div className="flex  m-2" onClick={() => handlePlay(index)}>
-                <img
-                  className="rounded-2xl ml-4 m-2 h-20 w-20"
-                  src={song.img}
-                  alt={song.name}
-                />
-              </div>
-              <div
-                className="flex flex-col  m-6 justify-start"
-                onClick={() => handlePlay(index)}
-              >
-                <p className="font-bold">{song.name}</p>
-                <p className="text-graytext font-bold">{song.artist}</p>
-              </div>
-
-              <div className="flex relative items-end">
-                <button
-                  onClick={() => setIsModalOpen(song._id)}
-                  className="m-7 text-4xl"
-                >
-                  ...
-                </button>
-                <SongOptionModal
-                  onClose={handleOnClose}
-                  visible={isModalOpen}
-                  playlist={playlist}
-                  song={song}
-                />
-              </div>
-              
-            </div>
-          ))}
+  {screenWidth < 640 ? (
+    <div className="grid grid-cols-1 grid-rows-3 gap-4">
+      {playlist.songs.map((song, index) => (
+        <div key={song._id} className="flex flex-row">
+          <div className="grid col-span-1 m-2" onClick={() => handlePlay(index)}>
+            <img
+              className="rounded-2xl ml-4 m-2 h-20 w-20"
+              src={song.img}
+              alt={song.name}
+            />
+          </div>
+          <div className="grid col-span-1 m-6" onClick={() => handlePlay(index)}>
+            <p className="text-start font-bold">{song.name}</p>
+            <p className="text-start text-graytext font-bold">{song.artist}</p>
+          </div>
+          <div className="grid col-span-1 content-end">
+            <SongOptionModal
+              onClose={handleOnClose}
+              visible={isModalOpen === song._id}
+              playlist={playlist}
+              song={song}
+            />
+            <button
+              onClick={() => setIsModalOpen(song._id)}
+              className="m-7 text-4xl"
+            >
+              ...
+            </button>
+          </div>
         </div>
+      ))}
+    </div>
       ) : (
         <div className="flex flex-col m-5">
           <table className="w-full">
