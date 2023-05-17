@@ -9,7 +9,7 @@ const initialState = {
   indexPlay: 0,
   playOn: false,
   repeat: false,
-  random: false,
+  random: false
 };
 
 export const MusicProvider = ({ children }) => {
@@ -56,7 +56,7 @@ export const MusicProvider = ({ children }) => {
   const handleAddPlaylist = (newPlaylist) => {
     dispatch({
       type: 'ADD_PLAYLIST',
-      payload: newPlaylist,
+      payload: newPlaylist
     });
   };
 
@@ -66,7 +66,7 @@ export const MusicProvider = ({ children }) => {
     });
     dispatch({
       type: 'EDIT_PLAYLIST_TITLE',
-      payload: newPlaylist,
+      payload: newPlaylist
     });
   };
 
@@ -76,7 +76,7 @@ export const MusicProvider = ({ children }) => {
     });
     dispatch({
       type: 'EDIT_PLAYLIST_IMG',
-      payload: newPlaylist,
+      payload: newPlaylist
     });
   };
 
@@ -126,7 +126,7 @@ export const MusicProvider = ({ children }) => {
         handleDeletePlaylist,
         activatePlayOn,
         disablePlayOn,
-        handleEnd,
+        handleEnd
       }}
     >
       {children}
