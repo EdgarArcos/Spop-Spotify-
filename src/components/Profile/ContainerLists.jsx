@@ -2,7 +2,11 @@ import { useContext, useState } from 'react';
 import { UsersContext } from '../../context/UsersContext';
 import { ListCard } from './ListCard';
 
-export const ContainerLists = ({ lists, followedLists = [] }) => {
+export const ContainerLists = ({
+  lists,
+  followedLists = [],
+  isAnotherUser = false,
+}) => {
   return (
     <div className="flex flex-col min-[450px]:flex-row ">
       <div className="flex flex-col p-5">
@@ -11,7 +15,11 @@ export const ContainerLists = ({ lists, followedLists = [] }) => {
         </h2>
         {lists.length > 0 &&
           lists.map((list) => (
-            <ListCard key={list._id} list={list} followedList={false} />
+            <ListCard
+              key={list._id}
+              list={list}
+              followedList={isAnotherUser ? true : false}
+            />
           ))}
       </div>
       {followedLists.length > 0 && (
