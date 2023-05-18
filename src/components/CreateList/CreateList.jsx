@@ -72,10 +72,9 @@ const CreateList = () => {
         </div>
 
         <section className="mb-32">
-          {showResults && query === '' && (
+          {showResults && query === '' ? (
             <ResultsOfSearchSongs resultsArr={songs} playlistId={id} />
-          )}
-          {query !== '' && searchResults.length > 0 ? (
+          ) : searchResults.length > 0 ? (
             <ResultsOfSearchSongs resultsArr={searchResults} playlistId={id} />
           ) : (
             <MessageNotFound query={query} />
