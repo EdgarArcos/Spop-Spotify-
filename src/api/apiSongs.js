@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
 export const getSongsRequests = async () =>
-  await axios.get('http://localhost:4000/artist/');
+  await axios.get(`${API_URL}/artist/`);
 export const createSongRequest = async (song) => {
   const form = new FormData();
   for (let key in song) {
