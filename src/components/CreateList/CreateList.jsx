@@ -58,7 +58,7 @@ const CreateList = () => {
           <p className="flex m-2 text-md font-semibold justify-center sm:justify-start sm:text-xl ">
             Let's find something for your list
           </p>
-          <label className="flexrelative mt-4 md:w-11/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12">
+          <label className="flex relative mt-4 md:w-11/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12">
             <BiSearch className="absolute top-5 left-5 text-2xl" />
             <input
               type="text"
@@ -72,13 +72,17 @@ const CreateList = () => {
         </div>
 
         <section className="mb-32">
-          {showResults && query === '' ? (
-            <ResultsOfSearchSongs resultsArr={songs} playlistId={id} />
-          ) : searchResults.length > 0 ? (
-            <ResultsOfSearchSongs resultsArr={searchResults} playlistId={id} />
-          ) : (
-            <MessageNotFound query={query} />
-          )}
+          {showResults &&
+            (query === '' ? (
+              <ResultsOfSearchSongs resultsArr={songs} playlistId={id} />
+            ) : searchResults.length > 0 ? (
+              <ResultsOfSearchSongs
+                resultsArr={searchResults}
+                playlistId={id}
+              />
+            ) : (
+              <MessageNotFound query={query} />
+            ))}
         </section>
       </div>
     </div>
