@@ -11,7 +11,9 @@ export const NavBarMov = ({ currentPage }) => {
           <AiFillHome className={currentPage === '/' ? 'text-teal' : ''} />
         </Link>
         <Link to="/profile">
-          <FaUserCircle />
+          <FaUserCircle
+            className={currentPage === '/profile' ? 'text-teal' : ''}
+          />
         </Link>
         <Link to="/search">
           <BiSearch

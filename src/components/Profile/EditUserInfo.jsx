@@ -1,7 +1,7 @@
-import { useScreenWidth } from "../../hooks/useScreenWidth";
-import { ProfilePicture } from "./ProfilePicture";
-import { UserInput } from "./UserInput";
-import { IoCloseOutline } from "react-icons/io5";
+import { useScreenWidth } from '../../hooks/useScreenWidth';
+import { ProfilePicture } from './ProfilePicture';
+import { UserInput } from './UserInput';
+import { IoCloseOutline } from 'react-icons/io5';
 
 export const EditUserInfo = ({ handleEditUserInfo }) => {
   const screenWidth = useScreenWidth();
@@ -16,7 +16,7 @@ export const EditUserInfo = ({ handleEditUserInfo }) => {
           <IoCloseOutline
             className="text-3xl cursor-pointer"
             onClick={handleEditUserInfo}
-          />{" "}
+          />{' '}
         </span>
         <ProfilePicture />
         <UserInput />

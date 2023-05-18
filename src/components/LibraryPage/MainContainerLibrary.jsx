@@ -1,11 +1,24 @@
 import { useContext, useEffect, useState } from 'react';
 import { PlaylistCard } from './PlaylistCard';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MusicContext } from '../../context/MusicContext/MusicContext';
+import { BsFillPlusSquareFill } from 'react-icons/bs';
+import { createplaylistFetch } from '../../api/playlistRequests';
+import { UsersContext } from '../../context/UsersContext';
 
 const MainContainerLibrary = () => {
-  const { musicState } = useContext(MusicContext);
+  const { user } = useContext(UsersContext);
+  const { musicState , handleAddPlaylist} = useContext(MusicContext);
   const { playlist } = musicState;
+
+  const navigate = useNavigate();
+  const handleCreate = async () => {
+    const res = await createplaylistFetch(user._id);
+    if (res.data.ok) {
+      handleAddPlaylist(res.data.playlist);
+      navigate(`/playlist/${res.data.playlist._id}`);
+    }
+  };
 
   return (
     <div className="pb-4 w-screen pt-10 sm:pl-[16rem]">
@@ -20,7 +33,13 @@ const MainContainerLibrary = () => {
               <PlaylistCard srcImg={img} nameList={title} infoList="Playlist" />
             </Link>
           ))}
+
+          <div className="flex flex-col w-32 h-48 m-4 items-center">
+        <BsFillPlusSquareFill onClick={handleCreate} className="w-12 max-w-none m-2 h-12"/>
+        
       </div>
+      </div>
+      
     </div>
   );
 };

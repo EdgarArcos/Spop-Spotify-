@@ -42,7 +42,7 @@ const CreateList = () => {
   }, [songs, query]);
 
   return (
-    <div className='min-h-screen h-full w-full text-white flex flex-col'>
+    <div className='min-h-screen h-full w-full text-white flex flex-col '>
       <div className=' bg-newblack sm:pl-60'>
         {musicState.playlist.map(
           (playlist) =>
