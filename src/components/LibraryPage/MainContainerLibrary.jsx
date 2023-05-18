@@ -34,8 +34,8 @@ const MainContainerLibrary = () => {
             </Link>
           ))}
 
-          <div className="flex flex-col w-32 h-48 m-4 items-center">
-        <BsFillPlusSquareFill onClick={handleCreate} className="w-12 max-w-none m-2 h-12"/>
+          <div className="flex flex-col w-32 h-48 m-4 justify-center items-center sm:hidden">
+        <BsFillPlusSquareFill onClick={handleCreate} className="w-12 max-w-none mb-14 h-12"/>
         
       </div>
       </div>

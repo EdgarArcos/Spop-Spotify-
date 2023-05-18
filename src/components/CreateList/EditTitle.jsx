@@ -43,17 +43,20 @@ export const EditTitle = ({visible, onClose, playlist}) => {
             type="text"
             value={currentTitle}
             onChange={(e) => setCurrentTitle(e.target.value)}
-            className="flex-row items-center  text-white text-xl font-bold bg-transparent"
+            className="flex-row w-32 items-center  text-white text-xl font-bold bg-transparent"
             ref={inputRef}
             onBlur={saveInputChanges}
             onKeyDown={(e) => e.key === "Enter" && saveInputChanges()}
           />
         ) : (
           <div
-            className="flex justify-center items-center text-white text-xl font-bold bg-transparent cursor-pointer"
+            className="flex  flex-col justify-center items-center text-white text-xl font-bold bg-transparent cursor-pointer"
             onClick={startEdit}
           >
             {currentTitle || "Click to add a title"}
+            <div onClick={handleClose} className="flex m-4 text-xl">
+            <IoCloseOutline />
+            </div>
           </div>
         )}
         {isEditing && (
@@ -65,8 +68,6 @@ export const EditTitle = ({visible, onClose, playlist}) => {
           </div>
         )}
     </label>
-    <div onClick={handleClose} className="flex m-4 text-xl">
-        <IoCloseOutline />
-    </div></div>
+    </div>
   )
 }
