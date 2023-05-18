@@ -111,8 +111,8 @@ export const AudioBar = ({ url, name, artist, id }) => {
 
           <div className="flex items-center justify-between pb-1">
             <div className="flex flex-col items-start justify-start">
-              <span className="text-[0.6rem]">{name}</span>
-              <span className="text-[0.5rem]">{artist}</span>
+              <span className="text-[0.7rem]">{name}</span>
+              <span className="text-[0.6rem]">{artist}</span>
             </div>
 
             <div className="flex flex-row items-center">
@@ -121,18 +121,18 @@ export const AudioBar = ({ url, name, artist, id }) => {
               </Link>
               <LikeButton
                 songId={id}
-                className="mr-3 text-base cursor-pointer"
+                className="mr-3 text-xl cursor-pointer"
                 activeClass="text-teal"
                 disactiveClass="text-white"
               />
               <span
-                className="text-xs text-teal cursor-pointer hover:text-cyan-800"
+                className="text-md text-teal cursor-pointer hover:text-cyan-800"
                 onClick={prevSong}
               >
                 <FaStepBackward />
               </span>
 
-              <span className="justify-center mx-1 text-teal text-base rounded-full w-7 h-7 content-center flex items-center cursor-pointer">
+              <span className="justify-center mx-1 text-teal text-xl rounded-full w-7 h-7 content-center flex items-center cursor-pointer">
                 {audioRef.current?.paused ? (
                   <FaPlay onClick={handlePlay} />
                 ) : (
@@ -140,7 +140,7 @@ export const AudioBar = ({ url, name, artist, id }) => {
                 )}
               </span>
               <span
-                className="text-xs cursor-pointer text-teal hover:text-cyan-800"
+                className="text-md cursor-pointer text-teal hover:text-cyan-800"
                 onClick={nextSong}
               >
                 <FaStepForward />
