@@ -10,11 +10,11 @@ const Artistprofile = () => {
   const { getSongs, songs, setSongs } = useSongs();
   useEffect(() => {
     const getFilteredSongs = async () => {
-      setSongs(await getSongs(user));
+      await setSongs(await getSongs(user));
     };
     getFilteredSongs();
   }, []);
-  console.log("1");
+
   return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">
       <div className=" bg-newblack sm:pl-60">
