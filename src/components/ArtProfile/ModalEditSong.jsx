@@ -49,7 +49,7 @@ export default function ModalEditSong({ isvisible, onClose }) {
                                 <option value="blues">Blues</option>
                                 <option value="metal">Metal</option>
                                 <option value="classical">Classical</option>
-                                <option value="Country">Country</option>
+                                <option value="country">Country</option>
                                 <option value="grunge">Grunge</option>
                                 <option value="jazz">Jazz</option>
                                 <option value="rock">Rock</option>
