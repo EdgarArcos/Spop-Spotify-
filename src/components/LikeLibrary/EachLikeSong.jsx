@@ -1,4 +1,4 @@
-import { FaPlay, FaHeart } from 'react-icons/fa';
+import { FaPlay } from 'react-icons/fa';
 import { useContext } from 'react';
 import { MusicContext } from '../../context/MusicContext/MusicContext';
 import { LikeButton } from '../Reusable/LikeButton';

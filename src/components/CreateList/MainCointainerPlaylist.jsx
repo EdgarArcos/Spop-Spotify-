@@ -1,9 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { FaHeart, FaPlay, FaRegHeart } from 'react-icons/fa';
+import { FaPlay } from 'react-icons/fa';
 import { MusicContext } from '../../context/MusicContext/MusicContext';
-import { LikeButton } from '../Reusable/LikeButton';
-import { AiOutlineClose } from 'react-icons/ai';
-import { deleteSongFetch } from '../../api/playlistRequests';
 import { SongOptionModal } from './SongOptionModal';
 import { useScreenWidth } from '../../hooks/useScreenWidth';
 
@@ -45,19 +42,20 @@ export const MainCointainerPlaylist = ({ playlist }) => {
             <p className="text-start font-bold">{song.name}</p>
             <p className="text-start text-graytext font-bold">{song.artist}</p>
           </div>
-          <div className="grid col-span-1 content-end">
-            <SongOptionModal
-              onClose={handleOnClose}
-              visible={isModalOpen === song._id}
-              playlist={playlist}
-              song={song}
-            />
-            <button
+          <div className="grid relative  items-start justify-start content-start">
+          <button
               onClick={() => setIsModalOpen(song._id)}
               className="m-7 text-4xl"
             >
               ...
             </button>
+            <SongOptionModal
+              onClose={handleOnClose}
+              visible={isModalOpen}
+              playlist={playlist}
+              song={song}
+            />
+           
           </div>
         </div>
       ))}
@@ -126,6 +124,7 @@ export const MainCointainerPlaylist = ({ playlist }) => {
                       visible={isModalOpen}
                       playlist={playlist}
                       song={song}
+                      
                     />
                   </td>
                 </tr>

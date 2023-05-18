@@ -1,5 +1,3 @@
-import { useContext, useState } from 'react';
-import { UsersContext } from '../../context/UsersContext';
 import { ListCard } from './ListCard';
 
 export const ContainerLists = ({

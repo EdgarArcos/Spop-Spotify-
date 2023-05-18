@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { SongCard } from '../Reusable';
 import { UserCard } from './UserCard';
 import { TitleResults } from './TitleResults';

@@ -1,11 +1,8 @@
-import { useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { auth0loginRequest } from "../../api/userRequests";
-import { UsersContext } from "../../context/UsersContext";
+
 
 export const ButtonLogin = () => {
-  const { loginWithRedirect, user } = useAuth0();
-  const { auth0Login } = useContext(UsersContext);
+  const { loginWithRedirect } = useAuth0();
 
   const handleLogin = async () => {
     await loginWithRedirect();

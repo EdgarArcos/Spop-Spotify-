@@ -6,7 +6,7 @@ import ModalEditSong from "./ModalEditSong";
 import { FaPencilAlt } from "react-icons/fa";
 import { BsTrash3Fill } from "react-icons/bs";
 
-export default function Cardsongs({ song, index }) {
+export default function Cardsongs({ song }) {
   const [showEdit, setShowEdit] = useState(false);
   const { deleteSong } = useSongs();
   const navigate = useNavigate();

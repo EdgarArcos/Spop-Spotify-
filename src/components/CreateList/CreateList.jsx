@@ -19,6 +19,7 @@ const CreateList = () => {
 
   const query = searchParams.get('q') ?? '';
 
+
   const handleSearch = ({ target }) => {
     const { value } = target;
     setSearchParams({ q: value });
@@ -33,10 +34,15 @@ const CreateList = () => {
       .catch((err) => console.log(err));
   }, []);
 
+
+
   useEffect(() => {
     if (songs.length > 0) {
-      const resultsArr = songs.filter(({ name }) => {
-        return name?.toLowerCase().includes(query.toLowerCase());
+      const resultsArr = songs.filter(({ name, artist }) => {
+        const lowerCaseName = name?.toLowerCase();
+        const lowerCaseArtist = artist?.toLowerCase();
+        const lowerCaseQuery = query.toLowerCase();
+        return lowerCaseName.includes(lowerCaseQuery) || lowerCaseArtist.includes(lowerCaseQuery);
       });
       setSearchResults(resultsArr);
     }

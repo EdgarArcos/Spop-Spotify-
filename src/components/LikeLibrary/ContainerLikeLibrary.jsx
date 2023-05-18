@@ -2,8 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 import { EachLikeSong } from './EachLikeSong';
 import { PlayButtonLibrary } from './PlayButtonLibrary';
-import { FaHeart, FaRegHeart } from 'react-icons/fa';
-
+import { FaRegHeart } from 'react-icons/fa';
 import { MusicContext } from '../../context/MusicContext/MusicContext';
 import { useDragAndDrop } from '../../hooks/useDragAndDrop';
 import { saveChangesDragAndDrop } from '../../api/api-utils';

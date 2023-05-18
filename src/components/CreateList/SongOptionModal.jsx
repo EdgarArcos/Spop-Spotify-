@@ -39,7 +39,7 @@ export const SongOptionModal = ({ playlist, song, visible, onClose }) => {
   return (
     <div
       onClick={handleClose}
-      className="fixed inset-0 top-0 sm:absolute sm:top-0 z-10 bg-transparent flex justify-center items-center"
+      className="absolute inset-0 top-0 sm:absolute sm:top-0 z-10 bg-transparent flex justify-center items-center"
     >
       <ul className="bg-gradient-to-b from-zinc-700 to-zinc-900 smborder-b border-newblack border-2  p-2 ">
         <li
