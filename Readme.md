@@ -14,16 +14,16 @@ Poder seguir artistas y que te notifique si sube contenido, gestion de estaditic
 ## Tecnologias y librerias usadas
 
 * Reactjs
+* ReactQuery
+* Vite
 * Tailwind
 * Axios
 * Auth0
-* Json-Server
 * ReactDOM
 * ReactHookForm
 * ReactHotToast
 * ReactIcons
 * ReactRouterDOM
-* Uuid
 
 ## Instalar y ejecutar proyecto
 
