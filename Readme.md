@@ -18,7 +18,6 @@ Poder seguir artistas y que te notifique si sube contenido, gestion de estaditic
 * Axios
 * Auth0
 * Json-Server
-* Reactavatareditor
 * ReactDOM
 * ReactHookForm
 * ReactHotToast
