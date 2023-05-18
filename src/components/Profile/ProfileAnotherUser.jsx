@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import { getInfoAnotherUser } from "../../api/api-utils";
-import { ContainerLists } from "./ContainerLists";
-import {BiUser} from "react-icons/bi"
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+import { getInfoAnotherUser } from '../../api/api-utils';
+import { ContainerLists } from './ContainerLists';
+import { BiUser } from 'react-icons/bi';
 
 const ProfileAnotherUser = () => {
   const { userId } = useParams();
@@ -33,7 +33,7 @@ const ProfileAnotherUser = () => {
               {data.data.user.name}
             </h2>
           </header>
-          <ContainerLists lists={data.data.playlists} />
+          <ContainerLists lists={data.data.playlists} isAnotherUser={true} />
         </>
       )}
     </div>

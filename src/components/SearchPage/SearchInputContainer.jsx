@@ -15,7 +15,7 @@ export const SearchInputContainer = ({ setSearchParams, query }) => {
           type="search"
           value={query}
           onChange={handleSearch}
-          className="rounded-3xl bg-newgray text-lg w-full h-11 m-2 pl-11 pr-3"
+          className="focus:shadow-md  focus:shadow-teal rounded-3xl bg-newgray text-lg w-full h-11 m-2 pl-11 pr-3"
         />
       </label>
     </section>
