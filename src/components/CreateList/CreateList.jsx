@@ -57,7 +57,7 @@ const CreateList = () => {
           <p className='flex m-2 text-md font-semibold justify-center sm:justify-start sm:text-xl '>
             Let's find something for your list
           </p>
-          <label className='flex relative mt-4 md:w-11/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12'>
+          <label className='flex relative focus:shadow-teal focus:border-teal  mt-4 md:w-11/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12'>
             <BiSearch className='absolute top-5 left-5 text-2xl' />
             <input
               type='text'
@@ -65,7 +65,7 @@ const CreateList = () => {
               name='search'
               value={query}
               onChange={handleSearch}
-              className='rounded-3xl bg-newgray text-lg w-80 h-11 m-2 pl-11 pr-3'
+              className='focus:shadow-teal focus:border-teal rounded-3xl bg-newgray text-lg w-80 h-11 m-2 pl-11 pr-3'
             />
           </label>
         </div>

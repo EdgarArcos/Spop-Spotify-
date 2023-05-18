@@ -78,7 +78,7 @@ export default function Cardsongs({ song, index }) {
         <td>
           <div className=" my-1 text-end ml-4 pt-5 pr-5">
             <button
-              className="ml-5 bg-orange-600 text-sm px-4 py-2 rounded-sm hover:text-orange"
+              className="ml-5 bg-orange-600 text-sm px-4 py-2 rounded-sm hover:text-teal"
               onClick={() => handleEdit()}
             >
               <FaPencilAlt />
