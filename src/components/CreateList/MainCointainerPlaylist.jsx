@@ -31,9 +31,9 @@ export const MainCointainerPlaylist = ({ playlist }) => {
   return (
     <div>
   {screenWidth < 640 ? (
-    <div className="grid grid-cols-1 grid-rows-3 gap-4">
+    <div className="grid">
       {playlist.songs.map((song, index) => (
-        <div key={song._id} className="flex flex-row">
+        <div key={song._id} className="grid grid-cols-3 gap-2 grid-flow-row-dense">
           <div className="grid col-span-1 m-2" onClick={() => handlePlay(index)}>
             <img
               className="rounded-2xl ml-4 m-2 h-20 w-20"
