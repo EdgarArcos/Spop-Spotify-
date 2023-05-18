@@ -3,7 +3,7 @@ import { addSongPlaylistFetch } from '../../api/playlistRequests';
 import { MusicContext } from '../../context/MusicContext/MusicContext';
 import { useScreenWidth } from '../../hooks/useScreenWidth';
 
-export const ResultsOfSearchSongs = ({ resultsArr, playlistId }) => {
+export const ResultsOfSongs = ({ resultsArr, playlistId }) => {
   const screenWidth = useScreenWidth();
   const { handleAddSong } = useContext(MusicContext);
 
