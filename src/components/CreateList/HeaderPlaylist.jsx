@@ -7,7 +7,7 @@ import { PlayButtonLibrary } from '../LikeLibrary/PlayButtonLibrary';
 import { useScreenWidth } from '../../hooks/useScreenWidth';
 
 export const HeaderPlaylist = ({ playlist }) => {
-  const { musicState, handleEditImg, handleEdit } = useContext(MusicContext);
+  const { handleEditImg, handleEdit } = useContext(MusicContext);
   const screenWidth = useScreenWidth();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -55,11 +55,7 @@ export const HeaderPlaylist = ({ playlist }) => {
                   src={playlist.img}
                   alt="cover"
                 />
-                <input
-                  type="file"
-                  className="hidden"
-                  onChange={(e) => editImage(e, playlist.id)}
-                />
+                <input type="file" className="hidden" onChange={editImage} />
               </label>
             </div>
             <div className="flex flex-row">
@@ -89,11 +85,7 @@ export const HeaderPlaylist = ({ playlist }) => {
                 src={playlist.img}
                 alt="cover"
               />
-              <input
-                type="file"
-                className="hidden"
-                onChange={(e) => editImage(e, playlist.id)}
-              />
+              <input type="file" className="hidden" onChange={editImage} />
             </label>
             <div className="flex flex-row">
               <PlayButtonLibrary playlist={playlist} />

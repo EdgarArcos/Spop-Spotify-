@@ -12,13 +12,10 @@ const Home = () => {
   const screenWidth = useScreenWidth();
   const location = useLocation();
   const { musicState, userMusic } = useContext(MusicContext);
-  const { playOn, indexPlay, random, currentList } = musicState;
+  const { indexPlay, random, currentList } = musicState;
   const randomList = (listArr) => listArr.sort(() => Math.random() - 0.5);
 
-  const [musicToPlay, setMusicToPlay] = useState(
-    // random ? randomList([...currentList]) : currentList
-    currentList
-  );
+  const [musicToPlay, setMusicToPlay] = useState(currentList);
 
   const { user } = useAuth0();
   const { auth0Login } = useContext(UsersContext);
@@ -37,7 +34,7 @@ const Home = () => {
       if (user?.email && user?.name) {
         const { name, email } = user;
         const response = await auth0loginRequest({ name, email });
-        if (response && response.data.user) {
+        if (response?.data.user) {
           await auth0Login(response.data.user);
           await userMusic(response.data.playlist);
         } else {

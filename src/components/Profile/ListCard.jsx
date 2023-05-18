@@ -1,13 +1,19 @@
-import { IoMdMusicalNotes } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { IoMdMusicalNotes } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
 
-export const ListCard = ({ list }) => {
+export const ListCard = ({ list, followedList }) => {
   const navigate = useNavigate();
 
   return (
     <div
       className="flex pt-1 cursor-pointer"
-      onClick={() => navigate(`/search/playlist/${list._id}`)}
+      onClick={() =>
+        navigate(
+          followedList
+            ? `/search/playlist/${list._id}`
+            : `/playlist/${list._id}`
+        )
+      }
     >
       <div className="w-9 h-9 overflow-hidden rounded">
         {list.img ? (

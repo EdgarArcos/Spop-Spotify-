@@ -85,7 +85,7 @@ export default function Cardsongs({ song, index }) {
             </button>
             <button
               className="text-sm px-4 py-2 ml-5 rounded-sm hover:text-red-500"
-              onClick={() => handleDelete(song._id, song.name)}
+              onClick={() => handleDelete(song._id)}
             >
               <BsTrash3Fill />
             </button>
