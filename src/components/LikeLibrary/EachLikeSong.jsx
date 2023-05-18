@@ -35,7 +35,7 @@ export const EachLikeSong = ({
         onDragOver={(e) => e.preventDefault()}
         className="group/item flex hover:bg-newgray rounded-md cursor-pointer sm:grid sm:grid-cols-2 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 gap-4 sm:justify-center m-3"
       >
-        <td className="hidden sm:flex justify-center pt-6">
+        <td className="hidden sm:flex sm:content-center justify-center pt-6">
           <p className="visible group-hover/item:invisible">{index + 1}</p>
           <FaPlay className="invisible group-hover/item:visible flex justify-center" />
         </td>
@@ -52,12 +52,12 @@ export const EachLikeSong = ({
             src={img}
             alt={name}
           />
-          <p className="hidden sm:grid sm:col-span-1">{name}</p>
+          <p className="hidden sm:grid sm:content-center sm:col-span-1">{name}</p>
         </td>
-        <td className="hidden md:grid  pt-6 justify-start pl-14 font-bold text-graytext">
+        <td className="hidden md:grid  sm:content-center pt-6 justify-center pl-14 font-bold text-graytext">
           {artist}
         </td>
-        <td className="hidden lg:grid  pt-6 justify-start">
+        <td className="hidden lg:grid sm:content-center pt-6 justify-start">
           <LikeButton
             songId={_id}
             className="text-2xl cursor-pointer z-1"
