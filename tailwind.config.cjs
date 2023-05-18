@@ -8,7 +8,7 @@ module.exports = {
         newblack: '#100F0F',
         teal: '#02E4E6',
         newgray: '#282828',
-        graytext: '#424242',
+        graytext: '#f5f6fa',
         cancel: '#d63031',
         orange: '#FFA500',
         darkOrange: '#8B4000',

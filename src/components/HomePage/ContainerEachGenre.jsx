@@ -18,7 +18,7 @@ export const ContainerEachGenre = ({ genre }) => {
             <AiFillFire className="self-center mr-1" />
             {genre.toUpperCase()}
           </h2>
-          <div className="px-4 pt-3 h-[12rem] flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
+          <div className="px-4 pt-3 h-[13rem] flex flex-row gap-4 flex-nowrap align-middle justify-start overflow-x-auto">
             {data.data.songs.map((song) => (
               <SongCard key={song._id} song={song} />
             ))}
