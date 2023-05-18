@@ -85,11 +85,7 @@ export const HeaderPlaylist = ({ playlist }) => {
                 src={playlist.img}
                 alt="cover"
               />
-              <input
-                type="file"
-                className="hidden"
-                onChange={(e) => editImage(e, playlist.id)}
-              />
+              <input type="file" className="hidden" onChange={editImage} />
             </label>
             <div className="flex flex-row">
               <PlayButtonLibrary playlist={playlist} />

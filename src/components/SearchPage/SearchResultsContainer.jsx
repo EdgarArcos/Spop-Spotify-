@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { getMusicRequest, searchRequest } from "../../api/api-utils";
-import { MessageNotFound } from "./MessageNotFound";
-import { ResultsOfSearch } from "./ResultsOfSearch";
-import { SearchInputContainer } from "./SearchInputContainer";
-import { useQuery } from "@tanstack/react-query";
-import { ContainerGenres } from "./ContainerGenres";
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { getMusicRequest, searchRequest } from '../../api/api-utils';
+import { MessageNotFound } from './MessageNotFound';
+import { ResultsOfSearch } from './ResultsOfSearch';
+import { SearchInputContainer } from './SearchInputContainer';
+import { useQuery } from '@tanstack/react-query';
+import { ContainerGenres } from './ContainerGenres';
 
 const SearchResultsContainer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -13,11 +13,11 @@ const SearchResultsContainer = () => {
   const [songResults, setSongResults] = useState([]);
   const [playlistResults, setPlaylistResults] = useState([]);
 
-  const query = searchParams.get("q") ?? "";
+  const query = searchParams.get('q') ?? '';
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ["genres"],
-    queryFn: () => getMusicRequest("genres"),
+    queryKey: ['genres'],
+    queryFn: () => getMusicRequest('genres'),
   });
 
   const makeSearchRequest = async () => {

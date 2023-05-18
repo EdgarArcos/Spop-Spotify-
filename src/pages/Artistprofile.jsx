@@ -16,7 +16,7 @@ const Artistprofile = () => {
   }, []);
 
   return (
-    <div className="min-h-screen h-full w-full text-white flex flex-col">
+    <div className="min-h-screen h-full w-full text-white flex flex-col pb-20">
       <div className=" bg-newblack sm:pl-60">
         <div className="flex justify-center sm:justify-start sm:bg-gradient-to-b from-cyan-700 to-zinc-800 smborder-b border-graytext">
           <img
