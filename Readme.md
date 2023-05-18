@@ -17,7 +17,6 @@ Poder seguir artistas y que te notifique si sube contenido, gestion de estaditic
 * Tailwind
 * Axios
 * Auth0
-* Cloudinary
 * Json-Server
 * Reactavatareditor
 * ReactDOM
