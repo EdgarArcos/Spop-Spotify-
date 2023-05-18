@@ -13,8 +13,8 @@ const Artistprofile = () => {
       setSongs(await getSongs(user));
     };
     getFilteredSongs();
-  }, []);
-
+  }, [songs]);
+  console.log("1");
   return (
     <div className="min-h-screen h-full w-full text-white flex flex-col">
       <div className=" bg-newblack sm:pl-60">
